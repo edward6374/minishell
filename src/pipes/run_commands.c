@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:05:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 13:31:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 20:29:30 by gdominic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int check_command(t_minishell *cmd)
 static	int	is_cmd(t_command *token)
 {
 	(void)token;
-	if (ft_strncmp(token->cmd, "cat", ft_strlen(token->cmd)) != 0)
-		return (-2);
 	if (access("/bin/cat", F_OK | X_OK) == 0)
 		return (0);
 	perror("Access invalid");
@@ -66,34 +64,33 @@ static	int	is_cmd(t_command *token)
 		
 int	run_commands(t_command *token, char *env[])
 {
-	pid_t	pid;
-//	int		exit_status;
-	int		status;
+	pid_t		pid;
+	int			exit_status;
+	int			status;
 
+	printf("token->args: %s\n", token->args[0]);
 	pid = fork();
 	if (pid == 0)
 	{
 		if (is_cmd(token) == 0)
-			execve("/bin/cat", token->args, env);
-		printf("errno: %d\n", errno);
-//		perror("Error execve");
+			execve("/bin/ls", token->args, env);
+		perror("Error execve");
 		exit (0);
 	}
 	else if (pid > 0)
 	{
-		write (1, "Before\n", 7);
-		printf("Return value %d\n", waitpid(pid, &status, 0));
-		write (1, "After\n", 6);
-//		if (WIFEXITED(status))
-//		{
-//			exit_status = WEXITSTATUS(status);
-//			printf("Codice uscita child: %d\n", exit_status);
-//		}
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+		{
+			exit_status = WEXITSTATUS(status);
+			printf("Codice uscita child: %d\n", exit_status);
+		}
 	}
 	else
 	{
 		perror("fork");
 		return(1);
 	}
+	free(token->args[0]);
 	return (0);
 }

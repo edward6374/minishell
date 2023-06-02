@@ -6,11 +6,11 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/18 19:52:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 17:47:01 by gdominic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built-ins.h"
+#include "../../inc/built-ins.h"
 
 char	**free_double_pointer(char **arr, int i)
 {

@@ -6,14 +6,14 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/26 18:19:16 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 17:46:39 by gdominic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILT_INS_H
 # define BUILT_INS_H
 
-//# include "minishell.h"
+# include "minishell.h"
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
