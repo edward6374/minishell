@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 13:44:39 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 19:16:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	free_split(char **split, int i)
 	return (1);
 }
 
-t_command	*free_len(int **len_words)
+int	free_len(int **len_words)
 {
 	free(*len_words);
 	*len_words = NULL;
-	return (NULL);
+	return (1);
 }

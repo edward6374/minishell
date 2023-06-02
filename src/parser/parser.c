@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 13:48:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 20:14:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,18 @@ int	*count_words(char *str, int *words)
 	return (calculate_length(str, len_words));
 }
 
-t_command	*parse_string(char *str)
+int	parse_string(t_minishell *tokens, char *str)
 {
 	int			i;
 	int			index;
 	int			*len_words;
 	char		**split;
-	t_command	*tokens;
 
 	i = -1;
-	tokens = NULL;
 	index = 0;
 	len_words = count_words(str, &index);
 	if (!len_words)
-		return (NULL);
+		return (1);
 	split = (char **)malloc(sizeof(char *) * (index + 1));
 	//	Tutto qua sotto da errore vecio al compilare 😳
 	if (!split)
@@ -123,50 +121,18 @@ t_command	*parse_string(char *str)
 		printf("Word: %s-->\n", split[i]);
 	if (correct_quotes(split, index + 1))
 		return (free_len(&len_words));
-//	tokens = load_commands(split);
-	free_my_split(split, &len_words, i + 1);
-	return (tokens);
+//	load_commands(tokens, split);
+	tokens->command = (t_command *)malloc(sizeof(t_command));
+	tokens->command->cmd = ft_strdup(split[0]);
+	tokens->command->args = split;
+	tokens->command->next = NULL;
+	free_len(&len_words);
+	return (0);
 }
 
 int	parser(t_minishell *tokens, char *env[], char *string)
 {
 	(void)env;
-	tokens->command = parse_string(string);
+	parse_string(tokens, string);
 	return (1);
 }
-
-//int	main(void)
-//{
-//	int			check;
-//	char		*string;
-//	t_command	*tokens;
-//
-//	check = 1;
-//	while (check)
-//	{
-//		string = readline("$> ");
-//		if (string[0] == '\0')
-//		{
-//			free(string);
-//			string = NULL;
-//			check = 0;
-//		}
-//		else
-//		{
-//			tokens = parse_string(string);
-//			free(string);
-//			string = NULL;
-//		}
-//	}
-//	return (0);
-//}
-
-//char	**parser(char *str)
-//{
-//	char	**elements;
-
-//	elements = parse_string(str);
-//	if (!elements)
-//		return (NULL);
-//	return (elements);
-//}
