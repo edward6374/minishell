@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 20:14:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/03 20:12:35 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	*calculate_length(char *str, int *len_words)
 			|| (str[i + 1] == '\0' && str[i] != ' '))
 			len_words[++word] = i;
 	}
+	i = -1;
+	while (++i <= word)
+		printf("Len words %d: %d\n", i, len_words[i]);
 	return (len_words);
 }
 
@@ -119,7 +122,7 @@ int	parse_string(t_minishell *tokens, char *str)
 		return (free_len(&len_words));
 	while (++i < index)
 		printf("Word: %s-->\n", split[i]);
-	if (correct_quotes(split, index + 1))
+	if (correct_quotes(split))
 		return (free_len(&len_words));
 //	load_commands(tokens, split);
 	tokens->command = (t_command *)malloc(sizeof(t_command));
@@ -133,6 +136,10 @@ int	parse_string(t_minishell *tokens, char *str)
 int	parser(t_minishell *tokens, char *env[], char *string)
 {
 	(void)env;
-	parse_string(tokens, string);
-	return (1);
+	if (count_quotes(string))
+	{
+		free_tokens(&tokens);
+		return (SYNTAX);
+	}
+	return (parse_string(tokens, string));
 }

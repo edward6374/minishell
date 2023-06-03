@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/31 03:47:40 by gdominic         ###   ########.fr       */
+/*   Updated: 2023/06/03 19:07:23 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_string(char *str, int *quotes, int *j)
 		modify_string(str, &quotes[1], 0, j);
 }
 
-int	correct_quotes(char **split, int index)
+int	correct_quotes(char **split)
 {
 	int	i;
 	int	j;
@@ -65,8 +65,6 @@ int	correct_quotes(char **split, int index)
 	i = -1;
 	quotes[0] = 0;
 	quotes[1] = 0;
-	index = 0;
-	(void)index;
 	while (split[++i])
 	{
 		j = -1;
@@ -79,4 +77,24 @@ int	correct_quotes(char **split, int index)
 	while (split[++i])
 		printf("Word modified:%s-->\n", split[i]);
 	return (0);
+}
+
+int	count_quotes(char *string)
+{
+	int	i;
+	int	q[2];
+
+	i = -1;
+	q[0] = 0;
+	q[1] = 0;
+	while (string[++i])
+	{
+		if (string[i] == '\'')
+			q[0]++;
+		else if (string[i] == '\"')
+			q[1]++;
+	}
+	if (q[0] % 2 == 0 && q[1] % 2 == 0)
+		return (0);
+	return (1);
 }

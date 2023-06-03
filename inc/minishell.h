@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 19:58:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/03 20:11:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,25 @@
 # include "parser.h"
 # include "../readline/library/include/readline/readline.h"
 # include "../readline/library/include/readline/history.h"
+
+enum
+{
+	MALLOC,
+	SYNTAX
+};
+
+const static char	*g_error_array[] = {
+	"Malloc error", \
+	"Syntax error", \
+};
+
+int		d_key(void);
+int		end_program(char **string, int error);
+
+void	siginthandler(int sig);
+void	free_double(char ***dbl);
+void	free_tokens(t_minishell **tokens);
+
+char	*ft_find_path(char *env[]);
 
 #endif

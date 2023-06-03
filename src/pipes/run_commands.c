@@ -6,12 +6,13 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:05:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 13:31:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/03 18:07:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipes.h"
 
+/*
 char *ft_find_path(char *env[])
 {
 	int i;
@@ -25,6 +26,7 @@ char *ft_find_path(char *env[])
 	}
 	return (NULL);
 }
+*/
 
 static int is_builtin(char *str)
 {

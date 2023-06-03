@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:12:32 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 19:34:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/03 20:13:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(int argc, char *argv[], char *env[]);
 
+/*
 t_command	*add_elem(char *cmd, char **args)
 {
 	t_command	*tok;
@@ -26,37 +27,13 @@ t_command	*add_elem(char *cmd, char **args)
 	tok->next = NULL;
 	return (tok);
 }
+*/
 
 static void	minishell(t_minishell *tokens, char *env[], char *str)
 {
 	if (!str)
 		return ;
 	pipes(tokens, env);
-}
-
-static int	ft_readline(t_minishell *tokens, char *env[])
-{
-	char	*string;
-
-	string = readline("\033[1;32m min\033[1;37"
-			"mis\033[1;31mhell\033[0;0m> ");
-	if (!string)
-	{
-		rl_clear_history();
-//		ft_exit();
-		return (1) ;
-	}
-	else if (string && string[0] == '\0')
-		free(string);
-	else if (string && string[0] != '\0')
-	{
-		add_history(string);
-		parser(tokens, env, string);
-		minishell(tokens, env, string);
-		free (string);
-	}
-	string = NULL;
-	return (0);
 }
 
 t_minishell	*init_struct(char *env[])
@@ -66,42 +43,70 @@ t_minishell	*init_struct(char *env[])
 	tokens = (t_minishell *)malloc(sizeof(t_minishell));
 	if (!tokens)
 	{
-		perror("Malloc error #3");
-		exit (1);
+		perror("Malloc error");
+		return (NULL);
 	}
 	tokens->path = ft_split(ft_find_path(env), ':');
 	if (!tokens->path)
 	{
 		free(tokens);
 		tokens = NULL;
-		perror("Malloc error #4");
-		exit (1);
+		perror("Malloc error");
+		return (NULL);
 	}
 	tokens->command = NULL;
 	return (tokens);
 }
 
-static void	siginthandler(int sig)
+static int	program(char *env[], char *string)
 {
-	(void)sig;
-    write(1, "\n", 1);
-    rl_replace_line("", 0);
-	rl_on_new_line();
-    rl_redisplay();
+	int			err;
+	t_minishell	*tokens;
+
+	add_history(string);
+	tokens = init_struct(env);
+	if (!tokens)
+		return (end_program(&string, MALLOC));
+//	{
+//		free(string);
+//		printf("Malloc error");
+//		return (0);
+//	}
+	err = parser(tokens, env, string);
+	if (err)
+		return (end_program(&string, err));
+//	{
+//		free(string);
+//		printf("Syntax error\n");
+//		return (0);
+//	}
+	minishell(tokens, env, string);
+	free_tokens(&tokens);
+	free (string);
+	string = NULL;
+	return (0);
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	t_minishell	*tokens;
+	char	*string;
 
 	(void)argv;
 	signal(SIGINT, siginthandler);
 	if (argc == 1)
 	{
-		tokens = init_struct(env);
 		while (1)
-			if (ft_readline(tokens, env))
-				break ;
+		{
+			string = readline("\033[1;32m min\033[1;37"
+					"mis\033[1;31mhell\033[0;0m> ");
+			if (!string)
+				return (d_key());
+			else if (string && string[0] == '\0')
+				free(string);
+			else
+				if (program(env, string))
+					break ;
+		}
 //		system("leaks minishell");
 //		exit (0);
 	}
