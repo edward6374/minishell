@@ -6,22 +6,34 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 19:16:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/04 17:06:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/parser.h"
 
-void	quotes_check(char *c, int *quotes)
+void	check_quotes(char *c, int *quotes, int *counts)
 {
 	if (*c == '\'' && quotes[0] == 0 && quotes[1] == 0)
+	{
 		quotes[0] = 1;
+		counts[2]++;
+	}
 	else if (*c == '\'' && quotes[0] == 1)
+	{
 		quotes[0] = 0;
+		counts[2]++;
+	}
 	else if (*c == '\"' && quotes[1] == 0 && quotes[0] == 0)
+	{
 		quotes[1] = 1;
+		counts[3]++;
+	}
 	else if (*c == '\"' && quotes[1] == 1)
+	{
 		quotes[1] = 0;
+		counts[3]++;
+	}
 	if (quotes[0] == 0 && quotes[1] == 0 \
 		&& *c != '\'' && *c != '\"')
 		quotes[2] = 1;
@@ -60,7 +72,7 @@ int	free_split(char **split, int i)
 	return (1);
 }
 
-int	free_len(int **len_words)
+int	free_int_arr(int **len_words)
 {
 	free(*len_words);
 	*len_words = NULL;
