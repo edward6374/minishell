@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/04 17:59:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/05 12:53:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ int	fill_words(char **split, char *str, int *len_words, int index)
 	return (0);
 }
 
+//	quotes[0] = variable to check if you are in a single quote
+//	quotes[1] = variable to check if you are in a double quote
+//	quotes[2] = variable to check if you are in or out of any type of quotes
+//	counts[0] = index of where is the first character of a word
+//	counts[1] = counter to loop a string
+//	counts[2] = number of single quotes in the whole string
+//	counts[3] = number of double quotes in the whole string
+//	counts[4] = variable used to count the number of words or to loop through the len_words
+
 void	set_int_arr(int *quotes, int *counts)
 {
 	quotes[0] = 0;
@@ -68,13 +77,20 @@ void	if_pipe_or_redir(char *str, int *counts, int *len_words)
 				counts[4] = counts[4] + 2;
 			else
 			{
-				len_words[counts[4]] = i;
-				len_words[counts[4] + 1] = i + 1;
+				if ((str[i + 1] == '<' || str[i + 1] == '>')
+						&& str[i] != '|')
+				{
+					len_words[counts[4]] = i;
+					len_words[counts[4] + 1] = i + 2;
+					i++;
+				}
+				else
+				{
+					len_words[counts[4]] = i;
+					len_words[counts[4] + 1] = i + 1;
+				}
 				counts[4] = counts[4] + 2;
 			}
-			if ((str[i + 1] == '<' || str[i + 1] == '>')
-				&& str[i] != '|')
-				i++;
 		}
 	}
 }
@@ -85,9 +101,7 @@ void	check_if_word(char *str, int *quotes, int *counts, int *len_words)
 		|| (str[counts[1] + 1] == '\0' && str[counts[1]] != ' '))
 	{
 		if (counts[2] == 0 && counts[3] == 0)
-		{
 			if_pipe_or_redir(str, counts, len_words);
-		}
 		counts[0] = counts[1];
 		if (len_words)
 			len_words[counts[4]] = counts[1];
