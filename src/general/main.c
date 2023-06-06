@@ -89,19 +89,12 @@ static int	program(char *env[], char *string)
 	tokens = init_struct(env);
 	if (!tokens)
 		return (end_program(&string, MALLOC));
-//	{
-//		free(string);
-//		printf("Malloc error");
-//		return (0);
-//	}
 	err = parser(tokens, env, string);
 	if (err)
+	{
+		printf("Error\n");
 		return (end_program(&string, err));
-//	{
-//		free(string);
-//		printf("Syntax error\n");
-//		return (0);
-//	}
+	}
 	minishell(tokens, env, string);
 	free_tokens(&tokens);
 	free (string);

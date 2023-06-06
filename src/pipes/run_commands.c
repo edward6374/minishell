@@ -92,6 +92,6 @@ int	run_commands(t_command *token, char *env[])
 		perror("fork");
 		return(1);
 	}
-	free(token->args[0]);
+//	free(token->args[0]);
 	return (0);
 }

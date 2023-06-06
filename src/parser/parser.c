@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/05 12:53:44 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/06 17:58:48 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,13 @@ void	check_if_word(char *str, int *quotes, int *counts, int *len_words)
 	{
 		if (counts[2] == 0 && counts[3] == 0)
 			if_pipe_or_redir(str, counts, len_words);
+		else
+		{
+			if (len_words)
+				len_words[counts[4]] = counts[1];
+			counts[4]++;
+		}
 		counts[0] = counts[1];
-		if (len_words)
-			len_words[counts[4]] = counts[1];
-		counts[4]++;
 	}
 }
 
@@ -190,10 +193,10 @@ int	parse_string(t_minishell *tokens, char *str)
 	if (correct_quotes(split))
 		return (free_int_arr(&len_words));
 //	load_commands(tokens, split);
-	tokens->command = (t_command *)malloc(sizeof(t_command));
-	tokens->command->cmd = ft_strdup(split[0]);
-	tokens->command->args = split;
-	tokens->command->next = NULL;
+//	tokens->command = (t_command *)malloc(sizeof(t_command));
+//	tokens->command->cmd = ft_strdup(split[0]);
+//	tokens->command->args = split;
+	tokens->command = NULL;
 	free_int_arr(&len_words);
 	return (0);
 }

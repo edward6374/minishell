@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:17:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/05 11:54:32 by gdominic         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:10:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	pipes(t_minishell *tokens, char *env[])
 	int			res;
 	t_command	*tmp;
 
-	tmp = tokens->command;
 	res = 0;
+	tmp = tokens->command;
 	while (tmp)
 	{
 	    printf("Command: %s\n", tmp->cmd);
@@ -29,7 +29,7 @@ int	pipes(t_minishell *tokens, char *env[])
 	        printf(" - %s\n", *args);
 	        args++;
 	    }
-//	    printf("\n");
+//	    printf("P: %p\tValue 1: %s\tValue 2: %s\n", tmp->args, tmp->args[0], tmp->args[1]);
 	    tmp = tmp->next;  // Avanzar al siguiente nodo de la lista
 	}
 	if (check_command(tokens) == 0)

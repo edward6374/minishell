@@ -6,7 +6,7 @@
 /*   By: gdominic <gdominic@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:15:30 by gdominic          #+#    #+#             */
-/*   Updated: 2023/06/02 18:20:10 by gdominic         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:10:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_command	*add_elem(char *cmd, char **args)
 	tok = (t_command *)malloc(sizeof(t_command));
 	if (!tok)
 		return (NULL);
-	tok->cmd = cmd;
+	tok->cmd = ft_strdup(cmd);
 	tok->args = args;
 	tok->next = NULL;
 	return (tok);
