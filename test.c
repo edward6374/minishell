@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:03:37 by vduchi            #+#    #+#             */
+/*   Created: 2023/06/04 18:00:14 by vduchi            #+#    #+#             */
+/*   Updated: 2023/06/04 18:05:34 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built-ins.h"
+#include "inc/minishell.h"
 
-void	ft_exit(int value)
+int main(int argc, char **argv, char *env[])
 {
-	printf("exit\n");
-//	write(1, "\rexit", 5);
-//	rl_replace_line("exit", 0);
-//	rl_on_new_line();
-//	rl_redisplay();
-	exit(value);
+	char	*str = "/bin/cat";
+	char	**args;
+
+	args = malloc(sizeof(char *) * 4);
+	args[0] = ft_strdup("cat");
+	args[1] = ft_strdup("<test.txt");
+	args[2] = ft_strdup("<test.txt");
+	args[3] = NULL;
+	execve(str, args, env);
 }

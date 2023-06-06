@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 17:46:39 by gdominic         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:17:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "../libft/libft.h"
 # include "../readline/library/include/readline/readline.h"
 
-void	ft_exit(void);
 void	ft_cd(char *path);
+void	ft_exit(int value);
 void	ft_echo(char *str);
 void	ft_env(char *env[]);
 char	**ft_unset(char *env[], char *str);

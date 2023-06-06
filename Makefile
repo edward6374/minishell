@@ -6,19 +6,19 @@
 #    By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/05/30 19:41:18 by gdominic         ###   ########.fr        #
+#    Updated: 2023/06/05 12:37:04 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
--include directories.mk
+-include files_mk/directories.mk
 
--include sources_pipes.mk
--include sources_parser.mk
--include sources_built_ins.mk
--include sources_minishell.mk
--include sources_tester.mk
+-include files_mk/sources_pipes.mk
+-include files_mk/sources_parser.mk
+-include files_mk/sources_built_ins.mk
+-include files_mk/sources_minishell.mk
+-include files_mk/sources_tester.mk
 
 #=-=-=-=-=-=-=- COLORS DEFINITION =-=-=-=-=-=-=-=-=-#
 

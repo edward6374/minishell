@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 16:12:32 by vduchi            #+#    #+#             */
+/*   Updated: 2023/06/04 16:08:59 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,21 @@ static t_minishell	*init_struct(char *env[])
 	tokens = (t_minishell *)malloc(sizeof(t_minishell));
 	if (!tokens)
 	{
-		perror("Malloc error");
+//		perror("Malloc error");
 		return (NULL);
 	}
-	tokens->path = ft_split(ft_find_path(env), ':');
-	if (!tokens->path)
+	if (!ft_find_path(env))
+		tokens->path = NULL;
+	else
 	{
-		free(tokens);
-		tokens = NULL;
-		perror("Malloc error");
-		return (NULL);
+		tokens->path = ft_split(ft_find_path(env), ':');
+		if (!tokens->path)
+		{
+			free(tokens);
+			tokens = NULL;
+//			perror("Malloc error");
+			return (NULL);
+		}
 	}
 	tokens->command = NULL;
 	return (tokens);

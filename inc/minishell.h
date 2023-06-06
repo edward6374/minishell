@@ -19,7 +19,7 @@
 
 enum
 {
-	MALLOC,
+	MALLOC = 1,
 	SYNTAX
 };
 
