@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:05:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 20:29:30 by gdominic         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:12:20 by gdominic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static	int	is_cmd(t_command *token)
 		
 int	run_commands(t_command *token, char *env[])
 {
-	pid_t		pid;
-	int			exit_status;
-	int			status;
+	pid_t	pid;
+	int		exit_status;
+	int		status;
 
 	printf("token->args: %s\n", token->args[0]);
 	pid = fork();
