@@ -6,7 +6,6 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/03 20:11:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +16,6 @@
 # include "pipes.h"
 # include "built-ins.h"
 # include "parser.h"
-# include "../readline/library/include/readline/readline.h"
-# include "../readline/library/include/readline/history.h"
 
 enum
 {

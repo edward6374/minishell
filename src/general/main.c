@@ -6,13 +6,10 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:12:32 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/03 20:13:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-int	main(int argc, char *argv[], char *env[]);
 
 /*
 t_command	*add_elem(char *cmd, char **args)
@@ -29,14 +26,34 @@ t_command	*add_elem(char *cmd, char **args)
 }
 */
 
-static void	minishell(t_minishell *tokens, char *env[], char *str)
+/*
+static int	ft_readline(t_minishell *tokens, char *env[])
 {
-	if (!str)
-		return ;
-	pipes(tokens, env);
-}
+	char	*string;
 
-t_minishell	*init_struct(char *env[])
+	string = readline("\033[1;32m min\033[1;37"
+			"mis\033[1;31mhell\033[0;0m> ");
+	if (!string)
+	{
+		rl_clear_history();
+		printf("exit\n");
+		return (1) ;
+	}
+	else if (string && string[0] == '\0')
+		free(string);
+	else if (string && string[0] != '\0')
+	{
+		add_history(string);
+//		parser(tokens, env, string);
+		minishell(tokens, env, string);
+		free (string);
+	}
+	string = NULL;
+	return (0);
+}
+*/
+
+static t_minishell	*init_struct(char *env[])
 {
 	t_minishell	*tokens;
 

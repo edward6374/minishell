@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:03:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/02 13:19:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/02 17:44:05 by gdominic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	ft_exit(void)
 //	rl_replace_line("exit", 0);
 //	rl_on_new_line();
 //	rl_redisplay();
-	exit(0);
+	exit((unsigned char)-1);
 }

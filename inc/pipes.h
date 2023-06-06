@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/03 18:44:56 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/06 16:04:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include "../libft/libft.h"
+
+# include "../readline/library/include/readline/readline.h"
+# include "../readline/library/include/readline/history.h"
 
 typedef struct s_command
 {
@@ -39,6 +42,9 @@ typedef struct s_minishell
 }	t_minishell;
 
 int		check_command(t_minishell *comands);
+
+
+void	minishell(t_minishell *tokens, char *env[], char *str);
 
 /* ---		Run_command.c		--- */
 int		run_commands(t_command *token, char *env[]);
