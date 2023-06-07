@@ -44,7 +44,7 @@ static int	ft_readline(t_minishell *tokens, char *env[])
 	else if (string && string[0] != '\0')
 	{
 		add_history(string);
-//		parser(tokens, env, string);
+		//		parser(tokens, env, string);
 		minishell(tokens, env, string);
 		free (string);
 	}
@@ -100,6 +100,15 @@ static int	program(char *env[], char *string)
 	free (string);
 	string = NULL;
 	return (0);
+}
+
+void	siginthandler(int sig)
+{
+	(void)sig;
+	write(2, "\n", 1);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
 }
 
 int	main(int argc, char *argv[], char *env[])

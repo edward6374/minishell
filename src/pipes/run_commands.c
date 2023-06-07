@@ -5,7 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2023/06/05 12:12:20 by gdominic         ###   ########.fr       */
+/*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
+/*   Updated: 2023/06/07 20:24:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -13,8 +14,11 @@
 
 /*
 char *ft_find_path(char *env[])
+=======
+char	*ft_find_path(char *env[])
+>>>>>>> cde7f3523f81104e345425c9e4ecfc07fed347c1
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (env[i])
@@ -27,7 +31,7 @@ char *ft_find_path(char *env[])
 }
 */
 
-static int is_builtin(char *str)
+static	int	is_builtin(char *str)
 {
 	if (!ft_strncmp("echo", str, 4))
 		return (1);
@@ -38,7 +42,7 @@ static int is_builtin(char *str)
 	else if (!ft_strncmp("export", str, 6))
 		return (4);
 	else if (!ft_strncmp("unset", str, 5))
-		return (5);	
+		return (5);
 	else if (!ft_strncmp("env", str, 3))
 		return (6);
 	else if (!ft_strncmp("exit", str, 4))
@@ -46,9 +50,11 @@ static int is_builtin(char *str)
 	return (0);
 }
 
-int check_command(t_minishell *cmd)
+int	check_command(t_minishell *cmd)
 {
-	char	*str = cmd->command->args[0];
+	char	*str;
+
+	str = cmd->command->args[0];
 	if (is_builtin(str) == 0)
 		return (0);
 	return (1);
@@ -62,7 +68,7 @@ static	int	is_cmd(t_command *token)
 	perror("Access invalid");
 	return (-1);
 }
-		
+
 int	run_commands(t_command *token, char *env[])
 {
 	pid_t	pid;
@@ -90,7 +96,7 @@ int	run_commands(t_command *token, char *env[])
 	else
 	{
 		perror("fork");
-		return(1);
+		return (1);
 	}
 //	free(token->args[0]);
 	return (0);
