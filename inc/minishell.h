@@ -32,7 +32,7 @@ int		d_key(void);
 int		end_program(char **string, int error);
 
 void	siginthandler(int sig);
-void	free_double(char ***dbl);
+void	free_double(char **dbl);
 void	free_tokens(t_minishell **tokens);
 
 char	*ft_find_path(char *env[]);

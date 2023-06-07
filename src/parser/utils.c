@@ -6,39 +6,39 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/04 17:06:12 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/07 20:14:40 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/parser.h"
 
-void	check_quotes(char *c, int *quotes, int *counts)
+void	check_quotes(char *c, int *arr)
 {
-	if (*c == '\'' && quotes[0] == 0 && quotes[1] == 0)
+	if (*c == '\'' && arr[0] == 0 && arr[1] == 0)
 	{
-		quotes[0] = 1;
-		counts[2]++;
+		arr[0] = 1;
+		arr[3]++;
 	}
-	else if (*c == '\'' && quotes[0] == 1)
+	else if (*c == '\'' && arr[0] == 1)
 	{
-		quotes[0] = 0;
-		counts[2]++;
+		arr[0] = 0;
+		arr[3]++;
 	}
-	else if (*c == '\"' && quotes[1] == 0 && quotes[0] == 0)
+	else if (*c == '\"' && arr[1] == 0 && arr[0] == 0)
 	{
-		quotes[1] = 1;
-		counts[3]++;
+		arr[1] = 1;
+		arr[3]++;
 	}
-	else if (*c == '\"' && quotes[1] == 1)
+	else if (*c == '\"' && arr[1] == 1)
 	{
-		quotes[1] = 0;
-		counts[3]++;
+		arr[1] = 0;
+		arr[3]++;
 	}
-	if (quotes[0] == 0 && quotes[1] == 0 \
+	if (arr[0] == 0 && arr[1] == 0 \
 		&& *c != '\'' && *c != '\"')
-		quotes[2] = 1;
+		arr[2] = 1;
 	else
-		quotes[2] = 0;
+		arr[2] = 0;
 }
 
 char	**free_my_split(char **split, int **len_words, int i)

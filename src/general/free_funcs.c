@@ -6,26 +6,27 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/06 20:13:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/07 20:21:56 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	free_double(char ***dbl)
+void	free_double(char **dbl)
 {
 	int	i;
 
 	i = 0;
-	printf("Pointer: %p\tValue: %s\tI: %d\n", *dbl, *dbl[0], i);
-	while (*dbl[i])
+	printf("Pointer: %p\tValue: %s\tI: %d\n", dbl, dbl[0], i);
+	while (dbl[i])
 	{
-		free(*dbl[i]);
-		printf("After\n");
+		printf("Value: %s\n", dbl[i]);
+		free(dbl[i]);
 		i++;
 	}
-	free(*dbl);
-	*dbl = NULL;
+	free(dbl);
+	printf("Freed\n");
+//	*dbl = NULL;
 }
 
 void	free_tokens(t_minishell **tokens)
@@ -33,18 +34,15 @@ void	free_tokens(t_minishell **tokens)
 	t_command	*tmp;
 	t_command	*nxt;
 
-//	free((*tokens)->command->cmd);
-//	free_double(&(*tokens)->command->args);
-//	free((*tokens)->command);
 	if ((*tokens)->command)
 	{
 		tmp = (*tokens)->command;
 		nxt = (*tokens)->command->next;
 		while (tmp)
 		{
+			printf("CMD: %p\tNext: %p\tArgs: %p\n", tmp->cmd, tmp->next, tmp->args);
 			free(tmp->cmd);
-			printf("CMD: %p\tNext: %p\nArgs: %p\n", tmp->cmd, tmp->next, tmp->args);
-			free_double(&tmp->args);
+			free_double(tmp->args);
 			free(tmp);
 			tmp = nxt;
 			if (tmp)
@@ -53,7 +51,7 @@ void	free_tokens(t_minishell **tokens)
 				nxt = NULL;
 		}
 	}
-	free_double(&(*tokens)->path);
+	free_double((*tokens)->path);
 	free((*tokens));
 	*tokens = NULL;
 }
