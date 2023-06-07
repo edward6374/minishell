@@ -30,7 +30,7 @@ static int	ft_readline(t_minishell *tokens, char *env[])
 	else if (string && string[0] != '\0')
 	{
 		add_history(string);
-//		parser(tokens, env, string);
+		//		parser(tokens, env, string);
 		minishell(tokens, env, string);
 		free (string);
 	}
@@ -63,10 +63,10 @@ static t_minishell	*init_struct(char *env[])
 static void	siginthandler(int sig)
 {
 	(void)sig;
-    write(2, "\n", 1);
-    rl_replace_line("", 0);
+	write(2, "\n", 1);
+	rl_replace_line("", 0);
 	rl_on_new_line();
-    rl_redisplay();
+	rl_redisplay();
 }
 
 int	main(int argc, char *argv[], char *env[])
@@ -81,8 +81,8 @@ int	main(int argc, char *argv[], char *env[])
 		while (1)
 			if (ft_readline(tokens, env))
 				break ;
-//		system("leaks minishell");
-//		exit (0);
+		//		system("leaks minishell");
+		//		exit (0);
 	}
 	else
 		printf("Program requires no arguments\n");
