@@ -20,12 +20,16 @@
 enum
 {
 	MALLOC = 1,
-	SYNTAX
+	SYNTAX,
+	PIPE_FIRST,
+	ONLY_REDIR,
 };
 
 const static char	*g_error_array[] = {
-	"Malloc error", \
-	"Syntax error", \
+	"malloc error", \
+	"syntax error", \
+	"syntax error near unexpected token `|\'", \
+	"syntax error near unexpected token `newline\'", \
 };
 
 int		d_key(void);

@@ -1,5 +1,4 @@
-esto es simplemente una prueba
+Texto pequeno
 
-Si ves esto es que tu comando cat funciona
-
-felicidades
+A ver si funciona la redireccion
+Yo creo que si

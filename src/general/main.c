@@ -11,48 +11,6 @@
 
 #include "../../inc/minishell.h"
 
-/*
-t_command	*add_elem(char *cmd, char **args)
-{
-	t_command	*tok;
-
-	tok = (t_command *)malloc(sizeof(t_command));
-	if (!tok)
-		return (NULL);
-	tok->cmd = cmd;
-	tok->args = args;
-	tok->next = NULL;
-	return (tok);
-}
-*/
-
-/*
-static int	ft_readline(t_minishell *tokens, char *env[])
-{
-	char	*string;
-
-	string = readline("\033[1;32m min\033[1;37"
-			"mis\033[1;31mhell\033[0;0m> ");
-	if (!string)
-	{
-		rl_clear_history();
-		printf("exit\n");
-		return (1) ;
-	}
-	else if (string && string[0] == '\0')
-		free(string);
-	else if (string && string[0] != '\0')
-	{
-		add_history(string);
-		//		parser(tokens, env, string);
-		minishell(tokens, env, string);
-		free (string);
-	}
-	string = NULL;
-	return (0);
-}
-*/
-
 static t_minishell	*init_struct(char *env[])
 {
 	t_minishell	*tokens;
@@ -95,20 +53,11 @@ static int	program(char *env[], char *string)
 		printf("Error\n");
 		return (end_program(&string, err));
 	}
-	minishell(tokens, env, string);
+//	minishell(tokens, env, string);
 	free_tokens(&tokens);
 	free (string);
 	string = NULL;
 	return (0);
-}
-
-void	siginthandler(int sig)
-{
-	(void)sig;
-	write(2, "\n", 1);
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
 }
 
 int	main(int argc, char *argv[], char *env[])
