@@ -23,6 +23,7 @@ enum
 	SYNTAX,
 	PIPE_FIRST,
 	ONLY_REDIR,
+	OPEN_FAILED,
 };
 
 const static char	*g_error_array[] = {
@@ -30,6 +31,7 @@ const static char	*g_error_array[] = {
 	"syntax error", \
 	"syntax error near unexpected token `|\'", \
 	"syntax error near unexpected token `newline\'", \
+	"Open error: ", \
 };
 
 int		d_key(void);

@@ -53,7 +53,7 @@ static int	program(char *env[], char *string)
 		printf("Error\n");
 		return (end_program(&string, err));
 	}
-//	minishell(tokens, env, string);
+	minishell(tokens, env, string);
 	free_tokens(&tokens);
 	free (string);
 	string = NULL;
