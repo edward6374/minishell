@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/06 16:17:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/18 18:52:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define BUILT_INS_H
 
 # include "minishell.h"
-# include <stdio.h>
-# include <errno.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-# include "../readline/library/include/readline/readline.h"
 
 void	ft_cd(char *path);
 void	ft_exit(int value);

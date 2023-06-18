@@ -6,13 +6,15 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/06/05 12:35:53 by vduchi           ###   ########.fr        #
+#    Updated: 2023/06/18 18:55:47 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBS_DIR			=	libs
 SRC_DIR				=	src
-INC_DIR				=	inc readline/library/include/readline
+INC_DIR				=	inc
+INC_DIR				+=	libft
+INC_DIR				+=	readline
 OBJS_DIR			=	.obj
 DEPS_DIR			=	.dep
 SRC_DIR_MS			=	$(SRC_DIR)/general

@@ -12,10 +12,16 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <fcntl.h>
 # include <stdio.h>
-# include "pipes.h"
-# include "built-ins.h"
-# include "parser.h"
+# include <errno.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/wait.h>
+# include <sys/types.h>
+# include "libft.h"
+# include "library/include/readline/readline.h"
+# include "library/include/readline/history.h"
 
 enum
 {
@@ -33,6 +39,28 @@ const static char	*g_error_array[] = {
 	"syntax error near unexpected token `newline\'", \
 	"Open error: ", \
 };
+
+typedef struct s_command
+{
+	int					ok;
+	int					in;
+	int					out;
+	char				*cmd;
+	char				**args;
+	struct s_command	*next;
+	struct s_command	*before;
+}	t_command;
+
+typedef struct s_minishell
+{
+	int			num_comms;
+	char		**path;
+	t_command	*command;
+}	t_minishell;
+
+# include "pipes.h"
+# include "built-ins.h"
+# include "parser.h"
 
 int		d_key(void);
 int		end_program(char **string, int error);

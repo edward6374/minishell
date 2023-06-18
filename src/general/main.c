@@ -35,6 +35,7 @@ static t_minishell	*init_struct(char *env[])
 		}
 	}
 	tokens->command = NULL;
+	tokens->num_comms = 0;
 	return (tokens);
 }
 
@@ -53,7 +54,8 @@ static int	program(char *env[], char *string)
 		printf("Error\n");
 		return (end_program(&string, err));
 	}
-	minishell(tokens, env, string);
+	printf("Number of commands: %d\n", tokens->num_comms);
+//	minishell(tokens, env, string);
 	free_tokens(&tokens);
 	free (string);
 	string = NULL;
