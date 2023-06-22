@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/07 20:24:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/22 19:29:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_command(t_minishell *cmd)
 		return (0);
 	return (1);
 }
-
+/*
 static	int	is_cmd(t_command *token)
 {
 	(void)token;
@@ -68,7 +68,7 @@ static	int	is_cmd(t_command *token)
 	perror("Access invalid");
 	return (-1);
 }
-
+*/
 int	run_commands(t_command *token, char *env[])
 {
 	pid_t	pid;
@@ -79,8 +79,23 @@ int	run_commands(t_command *token, char *env[])
 	pid = fork();
 	if (pid == 0)
 	{
-		if (is_cmd(token) == 0)
-			execve("/bin/ls", token->args, env);
+		if (dup2(token->in, 0) < 0 || dup2(token->out, 1) < 0)
+		{
+			perror("Error dup2");
+			exit (0);
+		}
+		if (token->in != 0 && close(token->in) < 0)
+		{
+			perror("Error close input");
+			exit(0);
+		}
+		if (token->out != 1 && close(token->out) < 0)
+		{
+			perror("Error close out");
+			exit(0);
+		}
+//		if (is_cmd(token) == 0)
+		execve(token->cmd, token->args, env);
 		perror("Error execve");
 		exit (0);
 	}

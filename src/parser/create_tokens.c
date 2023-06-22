@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/18 15:21:23 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/22 19:34:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,77 +79,123 @@ void	free_lst_redir(t_parser **split)
 	*split = next_tmp;
 }
 
-int	minor_redir(t_parser **split, t_command *new)
+int	minor_redir(t_parser **tmp, t_parser **split, t_command *new)
 {
-	t_parser	*tmp;
+	t_parser	*before_tmp;
 
-	printf("In before: %d\n", new->in);
-	new->in = open((*split)->next->word, O_RDWR);
+	printf("In before: %d\tSplit %p\tTmp: %p\n", new->in, *split, *tmp);
+	printf("Word: --%s--\n", (*tmp)->next->word);
+	if (new->in != 0)
+		close(new->in);
+	new->in = open((*tmp)->next->word, O_RDWR);
 	if (new->in == -1)
 		return (OPEN_FAILED);
-	tmp = (*split)->before;
-	free_lst_redir(split);
-	if (tmp)
+	before_tmp = (*tmp)->before;
+//	printf("Before split: %p\tTmp: %p\n", before_tmp, *tmp);
+	free_lst_redir(tmp);
+//	printf("After free split: %p\n", *tmp);
+	if (before_tmp)
 	{
-		tmp->next = *split;
-		(*split)->before = tmp;
-		*split = tmp;
-		tmp = NULL;
+		before_tmp->next = *tmp;
+		if (*tmp)
+			(*tmp)->before = before_tmp;
+		*tmp = before_tmp;
+		before_tmp = NULL;
 	}
 	else
-		(*split)->before = NULL;
-	printf("Minor %d\n", new->in);
+		(*tmp)->before = NULL;
+	*tmp = *split;
+	printf("In after: %d\tSplit %p\n", new->in, *split);
 	return (0);
 }
 
-int	major_redir(t_parser **split, t_command *new)
+int	major_redir(t_parser **tmp, t_parser **split, t_command *new)
 {
-	t_parser	*tmp;
+	t_parser	*before_tmp;
 
 	printf("Out before: %d\n", new->out);
-	new->out = open((*split)->next->word, O_RDWR);
+	if (new->out != 1)
+		close(new->out);
+	new->out = open((*tmp)->next->word, O_RDWR | O_CREAT, 0644);
 	if (new->out == -1)
 		return (OPEN_FAILED);
-	tmp = (*split)->before;
-	free_lst_redir(split);
-	if (tmp)
+	before_tmp = (*tmp)->before;
+	free_lst_redir(tmp);
+	if (before_tmp)
 	{
-		tmp->next = *split;
-		(*split)->before = tmp;
-		*split = tmp;
-		tmp = NULL;
+		before_tmp->next = *tmp;
+		if (*tmp)
+			(*tmp)->before = before_tmp;
+		*tmp = before_tmp;
+		before_tmp = NULL;
 	}
 	else
-		(*split)->before = NULL;
-	printf("Minor %d\n", new->out);
+		(*tmp)->before = NULL;
+	*tmp = *split;
+	printf("Out after: %d\n", new->out);
 	return (0);
 }
 
-int	double_minor_redir(t_parser **split, t_command *new)
+int	double_minor_redir(t_parser **tmp, t_parser **split, t_command *new)
 {
+	(void)tmp;
 	(void)split;
 	(void)new;
 	return (0);
 }
 
-int	double_major_redir(t_parser **split, t_command *new)
+int	double_major_redir(t_parser **tmp, t_parser **split, t_command *new)
 {
+	(void)tmp;
 	(void)split;
 	(void)new;
 	return (0);
 }
 
-int	take_redir(t_parser **split, t_command *new)
+int	rel_path_file(t_parser **tmp)
 {
-	if (!ft_strncmp((*split)->word, "<", 2))
-		return (minor_redir(split, new));
-	else if (!ft_strncmp((*split)->word, ">", 2))
-		return (major_redir(split, new));
-	else if (!ft_strncmp((*split)->word, "<<", 3))
-		return (double_minor_redir(split, new));
-	else if (!ft_strncmp((*split)->word, ">>", 3))
-		return (double_major_redir(split, new));
-	printf("No redir\n");
+	char	*t1;
+	char	*t2;
+	char	here[256];
+
+	if (getcwd(here, sizeof(here)) == NULL)
+		return (GETCWD_ERROR);
+	t1 = ft_strjoin(here, "/");
+	if (!t1)
+		return (MALLOC);
+	t2 = ft_strjoin(t1, (*tmp)->next->word);
+	if (!t2)
+	{
+		free(t1);
+		return (MALLOC);
+	}
+	free(t1);
+	free((*tmp)->next->word);
+	(*tmp)->next->word = t2;
+	t2 = NULL;
+	return (0);
+}
+
+int	take_redir(t_parser **tmp, t_parser **split, t_command *new)
+{
+	int	err;
+
+	err = 0;
+	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
+		|| !ft_strncmp((*tmp)->word, "<<", 3)
+		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
+		err = rel_path_file(tmp);
+	if (err)
+		return (err);
+	if (!ft_strncmp((*tmp)->word, "<", 2))
+		return (minor_redir(tmp, split, new));
+	else if (!ft_strncmp((*tmp)->word, ">", 2))
+		return (major_redir(tmp, split, new));
+	else if (!ft_strncmp((*tmp)->word, "<<", 3))
+		return (double_minor_redir(tmp, split, new));
+	else if (!ft_strncmp((*tmp)->word, ">>", 3))
+		return (double_major_redir(tmp, split, new));
+	printf("No redir\tWord: --%s--\n", (*tmp)->word);
 	return (0);
 }
 
@@ -171,12 +217,100 @@ t_command	*set_new_command(t_minishell **tokens)
 	return (new);
 }
 
-int	add_command(t_parser **split, t_command *new)
+int	check_access(char **t1, char *str, int mode)
 {
+	free(*t1);
+	*t1 = NULL;
+	if (mode == 1)
+	{
+		if (access(str, X_OK) == 0)
+			return (0);
+		if (access(str, F_OK) == 0)
+			return (CMD_FOUND_NOT_EX);
+		return (CMD_NOT_FOUND);
+	}
+	else if (mode == 2)
+	{
+		if (access(str, R_OK) == 0)
+			return (0);
+		return (FILE_NOT_READ);
+	}
+	if (access(str, W_OK) == 0)
+		return (0);
+	return (FILE_NOT_WRITE);
+}
+
+int	join_paths(char **tmp, char *env)
+{
+	int		ret;
+	char	*t1;
+	char	*t2;
+
+	t1 = ft_strjoin(env, "/");
+	if (!t1)
+		return (MALLOC + 1);
+	t2 = ft_strjoin(t1, *tmp);
+	if (!t2)
+	{
+		free(t1);
+		return (MALLOC + 1);
+	}
+	ret = check_access(&t1, t2, 1);
+	if (!ret)
+	{
+		free(*tmp);
+		*tmp = t2;
+		return (0);
+	}
+	else
+	{
+		free(t2);
+		return (ret);
+	}
+}
+
+int	rel_path_cmd(t_minishell **tokens, char **tmp)
+{
+	int		i;
+	int		ret;
+
+	i = -1;
+	while ((*tokens)->path[++i])
+	{
+		ret = join_paths(tmp, (*tokens)->path[i]);
+		if (!ret)
+			break ;
+		else if (ret == CMD_NOT_FOUND)
+			continue ;
+		else
+			return (ret - 1);
+	}
+	if (!(*tokens)->path[i])
+		return (CMD_NOT_FOUND);
+	return (0);
+}
+
+int	add_command(t_minishell **tokens, t_parser **split, t_command *new)
+{
+	int		err;
+	char	*tmp;
+
+	err = 0;
 	printf("Cmd word:-->%s--<\n", (*split)->word);
-	new->cmd = ft_strdup((*split)->word);
+	tmp = ft_strdup((*split)->word);
+	if (!tmp)
+		return (MALLOC);
+	if (tmp[0] != '/')
+		err = rel_path_cmd(tokens, &tmp);
+	if (err)
+		return (err);
+	new->cmd = ft_strdup(tmp);
 	if (!new->cmd)
+	{
+		free(tmp);
 		return (1);
+	}
+	free(tmp);
 	return (0);
 }
 
@@ -208,7 +342,7 @@ int	add_arguments(t_parser **split, t_command *new)
 	pt = (*split)->next;
 	while (++k < i)
 	{
-		printf("Split: %p\tPt: %p\n", *split, pt);
+//		printf("Split: %p\tPt: %p\n", *split, pt);
 		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*split));
 		new->args[k] = ft_strdup((*split)->word);
 		if (!new->args[k])
@@ -233,7 +367,7 @@ int	look_for_redir(t_parser **split, t_command *new)
 	tmp = (*split);
 	while (tmp && ft_strncmp(tmp->word, "|", 2))
 	{
-		err = take_redir(split, new);
+		err = take_redir(&tmp, split, new);
 		if (err)
 			return (err);
 		tmp = tmp->next;
@@ -255,7 +389,7 @@ int	create_command(t_minishell **tokens, t_parser **split)
 		return (err);
 	lst = get_last_command(tokens);
 //	printf("New: %p\nDouble: %p\n", new, &new);
-	if (add_command(split, new) || add_arguments(split, new))
+	if (add_command(tokens, split, new) || add_arguments(split, new))
 		return (MALLOC);
 //	if (add_arguments(tokens, split, new))
 //		return (MALLOC);
@@ -272,12 +406,12 @@ int	create_command(t_minishell **tokens, t_parser **split)
 //	}
 	if (!(*tokens)->command)
 	{
-		printf("Empty\n");
+		printf("First command\n");
 		(*tokens)->command = new;
 	}
 	else
 	{
-		printf("Looped\n");
+		printf("Not first command\n");
 		lst->next = new;
 		lst->next->before = lst;
 	}

@@ -51,11 +51,11 @@ static int	program(char *env[], char *string)
 	err = parser(tokens, env, string);
 	if (err)
 	{
-		printf("Error\n");
+		printf("Error:\t");
 		return (end_program(&string, err));
 	}
 	printf("Number of commands: %d\n", tokens->num_comms);
-//	minishell(tokens, env, string);
+	minishell(tokens, env, string);
 	free_tokens(&tokens);
 	free (string);
 	string = NULL;

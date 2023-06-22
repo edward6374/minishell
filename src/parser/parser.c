@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/09 13:24:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/22 18:26:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	add_word(t_parser **tmp, char *word)
 {
 	t_parser	*new;
 
+//	printf("Add word: --%s--\n", word);
 	if (!(*tmp)->word)
 	{
 		(*tmp)->word = word;
@@ -82,7 +83,7 @@ int	create_word(t_parser **tmp, char *string, int k, int len)
 {
 	char	*word;
 
-	if (string[k + len + 1] == '\0')
+	if (string[k + len + 1] == '\0' && string[k + len] != ' ')
 		len++;
 //	printf("K: %d\tLen: %d\n", k, len);
 	if (!len)

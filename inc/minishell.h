@@ -30,6 +30,11 @@ enum
 	PIPE_FIRST,
 	ONLY_REDIR,
 	OPEN_FAILED,
+	CMD_NOT_FOUND,
+	CMD_FOUND_NOT_EX,
+	FILE_NOT_READ,
+	FILE_NOT_WRITE,
+	GETCWD_ERROR,
 };
 
 const static char	*g_error_array[] = {
@@ -37,7 +42,12 @@ const static char	*g_error_array[] = {
 	"syntax error", \
 	"syntax error near unexpected token `|\'", \
 	"syntax error near unexpected token `newline\'", \
-	"Open error: ", \
+	"Open error", \
+	"command not found", \
+	"Permission error", \
+	"File not readable", \
+	"File not writeable", \
+	"Getcwd() error", \
 };
 
 typedef struct s_command
