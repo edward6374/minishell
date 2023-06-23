@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/22 19:34:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/23 13:25:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,8 @@ t_command	*set_new_command(t_minishell **tokens)
 	new = (t_command *)malloc(sizeof(t_command));
 	if (!new)
 		return (NULL);
-	new->ok = 1;
+	new->n = (*tokens)->num_comms;
+	new->ok = 0;
 	new->in = 0;
 	new->out = 1;
 	new->cmd = NULL;
@@ -308,7 +309,7 @@ int	add_command(t_minishell **tokens, t_parser **split, t_command *new)
 	if (!new->cmd)
 	{
 		free(tmp);
-		return (1);
+		return (MALLOC);
 	}
 	free(tmp);
 	return (0);
@@ -319,7 +320,7 @@ int	free_args(char **args, int idx)
 	while (--idx)
 		free(args[idx]);
 	free(args);
-	return (1);
+	return (MALLOC);
 }
 
 int	add_arguments(t_parser **split, t_command *new)
@@ -338,7 +339,7 @@ int	add_arguments(t_parser **split, t_command *new)
 	}
 	new->args = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!new->args)
-		return (1);
+		return (MALLOC);
 	pt = (*split)->next;
 	while (++k < i)
 	{
@@ -368,8 +369,13 @@ int	look_for_redir(t_parser **split, t_command *new)
 	while (tmp && ft_strncmp(tmp->word, "|", 2))
 	{
 		err = take_redir(&tmp, split, new);
-		if (err)
+		if (err == MALLOC)
 			return (err);
+		else if (err)
+		{
+			new->ok = err;
+			return (err);
+		}
 		tmp = tmp->next;
 	}
 	return (0);
@@ -385,12 +391,24 @@ int	create_command(t_minishell **tokens, t_parser **split)
 	if (!new)
 		return (MALLOC);
 	err = look_for_redir(split, new);
-	if (err)
-		return (err);
+	if (err == MALLOC)
+		return (MALLOC);
+	else if (err)
+		return (0);
 	lst = get_last_command(tokens);
 //	printf("New: %p\nDouble: %p\n", new, &new);
-	if (add_command(tokens, split, new) || add_arguments(split, new))
+	err = add_command(tokens, split, new);
+	if (err == MALLOC)
 		return (MALLOC);
+	else if (err)
+	{
+		new->ok = err;
+		return (0);
+	}
+	if (add_arguments(split, new))
+		return (MALLOC);
+//	if (add_command(tokens, split, new) || add_arguments(split, new))
+//		return (MALLOC);
 //	if (add_arguments(tokens, split, new))
 //		return (MALLOC);
 //	if ((split->before == NULL || !ft_strncmp(split->before->word, "|", 2))
@@ -404,6 +422,8 @@ int	create_command(t_minishell **tokens, t_parser **split)
 //	{
 //		return (ret);
 //	}
+	if (pipe(new->pipe) == -1)
+		return (PIPE_ERROR);
 	if (!(*tokens)->command)
 	{
 		printf("First command\n");

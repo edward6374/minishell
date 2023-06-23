@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/09 13:26:35 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/23 15:25:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	end_program(char **string, int error)
 {
-	free(*string);
-	*string = NULL;
+	if (string)
+	{
+		free(*string);
+		*string = NULL;
+	}
 	if (error < 8)
 		printf("%s\n", g_error_array[error - 1]);
 	return (0);

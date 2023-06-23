@@ -35,6 +35,7 @@ enum
 	FILE_NOT_READ,
 	FILE_NOT_WRITE,
 	GETCWD_ERROR,
+	PIPE_ERROR,
 };
 
 const static char	*g_error_array[] = {
@@ -48,13 +49,16 @@ const static char	*g_error_array[] = {
 	"File not readable", \
 	"File not writeable", \
 	"Getcwd() error", \
+	"Error creating pipe", \
 };
 
 typedef struct s_command
 {
+	int					n;
 	int					ok;
 	int					in;
 	int					out;
+	int					pipe[2];
 	char				*cmd;
 	char				**args;
 	struct s_command	*next;
@@ -64,6 +68,7 @@ typedef struct s_command
 typedef struct s_minishell
 {
 	int			num_comms;
+	int			exit_value;
 	char		**path;
 	t_command	*command;
 }	t_minishell;

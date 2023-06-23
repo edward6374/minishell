@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/18 18:57:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/23 15:27:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		check_command(t_minishell *comands);
 void	minishell(t_minishell *tokens, char *env[], char *str);
 
 /* ---		Run_command.c		--- */
-int		run_commands(t_command *token, char *env[]);
+int		run_commands(t_minishell *tokens, char *env[]);
 
 int		pipes(t_minishell *tokens, char *env[]);
 //char 	*ft_find_path(char *env[]);

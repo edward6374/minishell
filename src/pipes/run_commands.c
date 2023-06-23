@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/22 19:29:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/06/23 16:41:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,49 +69,108 @@ static	int	is_cmd(t_command *token)
 	return (-1);
 }
 */
-int	run_commands(t_command *token, char *env[])
+int	run_commands(t_minishell *tokens, char *env[])
 {
-	pid_t	pid;
-	int		exit_status;
-	int		status;
+	pid_t		pid;
+	int			status;
+	t_command	*tmp;
 
-	printf("token->args: %s\n", token->args[0]);
-	pid = fork();
-	if (pid == 0)
+//	printf("token->args: %s\n", token->args[0]);
+	tmp = tokens->command;
+	while (tmp)
 	{
-		if (dup2(token->in, 0) < 0 || dup2(token->out, 1) < 0)
+		if (tmp->ok)
 		{
-			perror("Error dup2");
+			printf("Error: ");
+			end_program(NULL, tmp->ok);
+			tmp = tmp->next;
+			continue ;
+		}
+		pid = fork();
+		if (pid == 0)
+		{
+			if (tmp->in == 0 && tmp->before)
+			{
+				if (dup2(tmp->before->pipe[0], ) < 0)
+				{
+					perror("Error dup2 input pipe");
+					exit (0);
+				}
+				if (close(tmp->before->pipe[0]) < 0 || close(tmp->before->pipe[1]) < 0)
+				{
+					perror("Error close input pipe");
+					exit (0);
+				}
+				write(2, "Dup2 input pipe\n", 16);
+			}
+			else
+			{
+				if (dup2(tmp->in, 0) < 0)
+				{
+					perror("Error dup2 input");
+					exit (0);
+				}
+				if ((tmp->in != 0 && close(tmp->in) < 0) || close(tmp->pipe[0]) < 0)
+				{
+					perror("Error close input");
+					exit(0);
+				}
+				write(2, "Dup2 input\n", 11);
+			}
+			if (tmp->out == 1 && tmp->next)
+			{
+				if (dup2(tmp->pipe[1], 1) < 0)
+				{
+					perror("Error dup2 output pipe");
+					exit (0);
+				}
+				if (close(tmp->pipe[1]) < 0 || close(tmp->pipe[0]) < 0)
+				{
+					perror("Error close output pipe");
+					exit (0);
+				}
+				write(2, "Dup2 output pipe\n", 17);
+			}
+			else
+			{
+				if (tmp->out != 1 && dup2(tmp->out, 1) < 0)
+				{
+					perror("Error dup2 output");
+					exit (0);
+				}
+				if ((tmp->out != 1 && close(tmp->out) < 0) || close(tmp->pipe[1]) < 0)
+				{
+					perror("Error close output");
+					exit(0);
+				}
+				write(2, "Dup2 output\n", 12);
+			}
+			/*
+			if (dup2(tmp->in, 0) < 0 || dup2(tmp->out, 1) < 0)
+			{
+				perror("Error dup2");
+				exit (0);
+			}
+			*/
+			execve(tmp->cmd, tmp->args, env);
+			perror("Error execve");
 			exit (0);
 		}
-		if (token->in != 0 && close(token->in) < 0)
+		else if (pid > 0)
 		{
-			perror("Error close input");
-			exit(0);
+			waitpid(pid, &status, 0);
+			if (WIFEXITED(status))
+			{
+				tokens->exit_value = WEXITSTATUS(status);
+				printf("Codice uscita child: %d\n", tokens->exit_value);
+			}
 		}
-		if (token->out != 1 && close(token->out) < 0)
+		else
 		{
-			perror("Error close out");
-			exit(0);
+			perror("fork");
+			return (1);
 		}
-//		if (is_cmd(token) == 0)
-		execve(token->cmd, token->args, env);
-		perror("Error execve");
-		exit (0);
-	}
-	else if (pid > 0)
-	{
-		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
-		{
-			exit_status = WEXITSTATUS(status);
-			printf("Codice uscita child: %d\n", exit_status);
-		}
-	}
-	else
-	{
-		perror("fork");
-		return (1);
+		tmp = tmp->next;
 	}
 //	free(token->args[0]);
 	return (0);
