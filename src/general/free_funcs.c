@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/13 20:25:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/07 13:55:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_double(char **dbl)
 //	*dbl = NULL;
 }
 
-void	free_tokens(t_minishell **tokens)
+int	free_tokens(t_minishell **tokens, int out)
 {
 	t_command	*tmp;
 	t_command	*nxt;
@@ -55,5 +55,6 @@ void	free_tokens(t_minishell **tokens)
 	free_double((*tokens)->path);
 	free((*tokens));
 	*tokens = NULL;
+	return (out);
 }
 

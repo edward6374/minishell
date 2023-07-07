@@ -58,7 +58,6 @@ typedef struct s_command
 	int					ok;
 	int					in;
 	int					out;
-	int					pipe[2];
 	char				*cmd;
 	char				**args;
 	struct s_command	*next;
@@ -82,7 +81,7 @@ int		end_program(char **string, int error);
 
 void	siginthandler(int sig);
 void	free_double(char **dbl);
-void	free_tokens(t_minishell **tokens);
+int		free_tokens(t_minishell **tokens, int out);
 
 char	*ft_find_path(char *env[]);
 

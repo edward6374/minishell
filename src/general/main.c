@@ -55,8 +55,8 @@ static int	program(char *env[], char *string)
 		return (end_program(&string, err));
 	}
 	printf("Number of commands: %d\n", tokens->num_comms);
-	minishell(tokens, env, string);
-	free_tokens(&tokens);
+//	minishell(tokens, env, string);
+	free_tokens(&tokens, 0);
 	free (string);
 	string = NULL;
 	return (0);

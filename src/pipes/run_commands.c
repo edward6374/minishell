@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/23 16:41:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/07 13:03:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static	int	is_cmd(t_command *token)
 int	run_commands(t_minishell *tokens, char *env[])
 {
 	pid_t		pid;
+//	int			p1[2];
 	int			status;
 	t_command	*tmp;
 
@@ -89,69 +90,69 @@ int	run_commands(t_minishell *tokens, char *env[])
 		pid = fork();
 		if (pid == 0)
 		{
-			if (tmp->in == 0 && tmp->before)
-			{
-				if (dup2(tmp->before->pipe[0], ) < 0)
-				{
-					perror("Error dup2 input pipe");
-					exit (0);
-				}
-				if (close(tmp->before->pipe[0]) < 0 || close(tmp->before->pipe[1]) < 0)
-				{
-					perror("Error close input pipe");
-					exit (0);
-				}
-				write(2, "Dup2 input pipe\n", 16);
-			}
-			else
-			{
-				if (dup2(tmp->in, 0) < 0)
-				{
-					perror("Error dup2 input");
-					exit (0);
-				}
-				if ((tmp->in != 0 && close(tmp->in) < 0) || close(tmp->pipe[0]) < 0)
-				{
-					perror("Error close input");
-					exit(0);
-				}
-				write(2, "Dup2 input\n", 11);
-			}
-			if (tmp->out == 1 && tmp->next)
-			{
-				if (dup2(tmp->pipe[1], 1) < 0)
-				{
-					perror("Error dup2 output pipe");
-					exit (0);
-				}
-				if (close(tmp->pipe[1]) < 0 || close(tmp->pipe[0]) < 0)
-				{
-					perror("Error close output pipe");
-					exit (0);
-				}
-				write(2, "Dup2 output pipe\n", 17);
-			}
-			else
-			{
-				if (tmp->out != 1 && dup2(tmp->out, 1) < 0)
-				{
-					perror("Error dup2 output");
-					exit (0);
-				}
-				if ((tmp->out != 1 && close(tmp->out) < 0) || close(tmp->pipe[1]) < 0)
-				{
-					perror("Error close output");
-					exit(0);
-				}
-				write(2, "Dup2 output\n", 12);
-			}
-			/*
-			if (dup2(tmp->in, 0) < 0 || dup2(tmp->out, 1) < 0)
-			{
-				perror("Error dup2");
-				exit (0);
-			}
-			*/
+//			if (tmp->in == 0 && tmp->before)
+//			{
+//				if (dup2(tmp->before->pipe[0], ) < 0)
+//				{
+//					perror("Error dup2 input pipe");
+//					exit (0);
+//				}
+//				if (close(tmp->before->pipe[0]) < 0 || close(tmp->before->pipe[1]) < 0)
+//				{
+//					perror("Error close input pipe");
+//					exit (0);
+//				}
+//				write(2, "Dup2 input pipe\n", 16);
+//			}
+//			else
+//			{
+//				if (dup2(tmp->in, 0) < 0)
+//				{
+//					perror("Error dup2 input");
+//					exit (0);
+//				}
+//				if ((tmp->in != 0 && close(tmp->in) < 0) || close(tmp->pipe[0]) < 0)
+//				{
+//					perror("Error close input");
+//					exit(0);
+//				}
+//				write(2, "Dup2 input\n", 11);
+//			}
+//			if (tmp->out == 1 && tmp->next)
+//			{
+//				if (dup2(tmp->pipe[1], 1) < 0)
+//				{
+//					perror("Error dup2 output pipe");
+//					exit (0);
+//				}
+//				if (close(tmp->pipe[1]) < 0 || close(tmp->pipe[0]) < 0)
+//				{
+//					perror("Error close output pipe");
+//					exit (0);
+//				}
+//				write(2, "Dup2 output pipe\n", 17);
+//			}
+//			else
+//			{
+//				if (tmp->out != 1 && dup2(tmp->out, 1) < 0)
+//				{
+//					perror("Error dup2 output");
+//					exit (0);
+//				}
+//				if ((tmp->out != 1 && close(tmp->out) < 0) || close(tmp->pipe[1]) < 0)
+//				{
+//					perror("Error close output");
+//					exit(0);
+//				}
+//				write(2, "Dup2 output\n", 12);
+//			}
+//
+//			if (dup2(tmp->in, 0) < 0 || dup2(tmp->out, 1) < 0)
+//			{
+//				perror("Error dup2");
+//				exit (0);
+//			}
+//
 			execve(tmp->cmd, tmp->args, env);
 			perror("Error execve");
 			exit (0);

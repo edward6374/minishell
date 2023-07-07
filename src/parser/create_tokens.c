@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/23 13:25:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/07 13:06:35 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,20 +181,22 @@ int	take_redir(t_parser **tmp, t_parser **split, t_command *new)
 	int	err;
 
 	err = 0;
-	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
-		|| !ft_strncmp((*tmp)->word, "<<", 3)
-		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
-		err = rel_path_file(tmp);
-	if (err)
-		return (err);
-	if (!ft_strncmp((*tmp)->word, "<", 2))
-		return (minor_redir(tmp, split, new));
-	else if (!ft_strncmp((*tmp)->word, ">", 2))
-		return (major_redir(tmp, split, new));
-	else if (!ft_strncmp((*tmp)->word, "<<", 3))
-		return (double_minor_redir(tmp, split, new));
-	else if (!ft_strncmp((*tmp)->word, ">>", 3))
-		return (double_major_redir(tmp, split, new));
+	(void)split;
+	(void)new;
+//	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
+//		|| !ft_strncmp((*tmp)->word, "<<", 3)
+//		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
+//		err = rel_path_file(tmp);
+//	if (err)
+//		return (err);
+//	if (!ft_strncmp((*tmp)->word, "<", 2))
+//		return (minor_redir(tmp, split, new));
+//	else if (!ft_strncmp((*tmp)->word, ">", 2))
+//		return (major_redir(tmp, split, new));
+//	else if (!ft_strncmp((*tmp)->word, "<<", 3))
+//		return (double_minor_redir(tmp, split, new));
+//	else if (!ft_strncmp((*tmp)->word, ">>", 3))
+//		return (double_major_redir(tmp, split, new));
 	printf("No redir\tWord: --%s--\n", (*tmp)->word);
 	return (0);
 }
@@ -378,7 +380,7 @@ int	look_for_redir(t_parser **split, t_command *new)
 		}
 		tmp = tmp->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	create_command(t_minishell **tokens, t_parser **split)
@@ -396,7 +398,6 @@ int	create_command(t_minishell **tokens, t_parser **split)
 	else if (err)
 		return (0);
 	lst = get_last_command(tokens);
-//	printf("New: %p\nDouble: %p\n", new, &new);
 	err = add_command(tokens, split, new);
 	if (err == MALLOC)
 		return (MALLOC);
@@ -422,8 +423,8 @@ int	create_command(t_minishell **tokens, t_parser **split)
 //	{
 //		return (ret);
 //	}
-	if (pipe(new->pipe) == -1)
-		return (PIPE_ERROR);
+//	if (pipe(new->pipe) == -1)
+//		return (PIPE_ERROR);
 	if (!(*tokens)->command)
 	{
 		printf("First command\n");
