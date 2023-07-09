@@ -58,8 +58,11 @@ typedef struct s_command
 	int					ok;
 	int					in;
 	int					out;
+	int					if_here_doc;
 	char				*cmd;
 	char				**args;
+	char				*here_doc;
+	char				*stop_word;
 	struct s_command	*next;
 	struct s_command	*before;
 }	t_command;

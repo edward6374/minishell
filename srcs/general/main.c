@@ -9,7 +9,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../incs/minishell.h"
 
 static t_minishell	*init_struct(char *env[])
 {

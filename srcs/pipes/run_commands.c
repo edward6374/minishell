@@ -6,11 +6,11 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/07 13:03:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/08 18:01:58 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/pipes.h"
+#include "../../incs/pipes.h"
 
 /*
 char *ft_find_path(char *env[])

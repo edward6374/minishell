@@ -6,17 +6,17 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/06/18 18:55:47 by vduchi           ###   ########.fr        #
+#    Updated: 2023/07/08 17:57:33 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBS_DIR			=	libs
-SRC_DIR				=	src
-INC_DIR				=	inc
+SRC_DIR				=	srcs
+INC_DIR				=	incs
 INC_DIR				+=	libft
 INC_DIR				+=	readline
-OBJS_DIR			=	.obj
-DEPS_DIR			=	.dep
+OBJS_DIR			=	.objs
+DEPS_DIR			=	.deps
 SRC_DIR_MS			=	$(SRC_DIR)/general
 OBJ_DIR_MS			=	$(OBJS_DIR)/general
 DEP_DIR_MS			=	$(DEPS_DIR)/general

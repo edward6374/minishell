@@ -6,11 +6,11 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/07 13:55:21 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:59:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../incs/minishell.h"
 
 void	free_double(char **dbl)
 {

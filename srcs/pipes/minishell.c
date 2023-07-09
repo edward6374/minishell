@@ -6,11 +6,11 @@
 /*   By: gdominic <gdominic@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:15:30 by gdominic          #+#    #+#             */
-/*   Updated: 2023/06/22 18:44:36 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/08 18:01:52 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/pipes.h"
+#include "../../incs/pipes.h"
 
 t_command	*add_elem(char *cmd, char **args)
 {

@@ -6,11 +6,11 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:17:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/06/23 13:27:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/08 18:01:46 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/pipes.h"
+#include "../../incs/pipes.h"
 
 int	pipes(t_minishell *tokens, char *env[])
 {
