@@ -6,39 +6,42 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/08 18:01:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/13 15:37:27 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-void	check_quotes(char *c, int *arr)
+void	check_quotes(t_vars *vars, char *c)
 {
-	if (*c == '\'' && arr[0] == 0 && arr[1] == 0)
+	if (*c == '\"' && *(c + 1) == '$')
+		return ;
+	if (*c == '\'' && vars->sin_qts == 0 && vars->dbl_qts == 0)
 	{
-		arr[0] = 1;
-		arr[3]++;
+		vars->sin_qts = 1;
+		vars->num_qts++;
 	}
-	else if (*c == '\'' && arr[0] == 1)
+	else if (*c == '\'' && vars->sin_qts == 1)
 	{
-		arr[0] = 0;
-		arr[3]++;
+		vars->sin_qts = 0;
+		vars->num_qts++;
 	}
-	else if (*c == '\"' && arr[1] == 0 && arr[0] == 0)
+	else if (*c == '\"' && vars->dbl_qts == 0 && vars->sin_qts == 0)
 	{
-		arr[1] = 1;
-		arr[3]++;
+		vars->dbl_qts = 1;
+		vars->num_qts++;
 	}
-	else if (*c == '\"' && arr[1] == 1)
+	else if (*c == '\"' && vars->dbl_qts == 1)
 	{
-		arr[1] = 0;
-		arr[3]++;
+		vars->dbl_qts = 0;
+		vars->num_qts++;
 	}
-	if (arr[0] == 0 && arr[1] == 0 \
+	if (vars->sin_qts == 0 && vars->dbl_qts == 0 \
 		&& *c != '\'' && *c != '\"')
-		arr[2] = 1;
+		vars->out_qts = 1;
 	else
-		arr[2] = 0;
+		vars->out_qts = 0;
+//	printf("Char %c\tArr 0: %d\tArr 1: %d\tArr 2: %d\tArr 3:%d\tArr 4: %d\n", *c, arr[0], arr[1], arr[2], arr[3], arr[4]);
 }
 
 char	**free_my_split(char **split, int **len_words, int i)

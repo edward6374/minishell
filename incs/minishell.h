@@ -52,6 +52,13 @@ const static char	*g_error_array[] = {
 	"Error creating pipe", \
 };
 
+typedef struct	s_parser
+{
+	char			*word;
+	struct s_parser	*next;
+	struct s_parser	*before;
+}	t_parser;
+
 typedef struct s_command
 {
 	int					n;
@@ -84,7 +91,7 @@ int		end_program(char **string, int error);
 
 void	siginthandler(int sig);
 void	free_double(char **dbl);
-int		free_tokens(t_minishell **tokens, int out);
+int		free_tokens(t_minishell **tokens, t_parser **temp, int out);
 
 char	*ft_find_path(char *env[]);
 

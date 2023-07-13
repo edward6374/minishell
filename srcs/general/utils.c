@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/08 17:59:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/13 19:21:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	end_program(char **string, int error)
 	}
 	if (error < 8)
 		printf("%s\n", g_error_array[error - 1]);
-	return (0);
+	return (error);
 }
 
 int	d_key(void)
