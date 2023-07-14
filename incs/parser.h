@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/13 19:27:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/14 14:14:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 typedef struct s_vars
 {
 	int		i;				// variable used to loop through str
+	int		count;			// variable to used to checkk if a env variable is after another one
 	int		sin_qts;		// single_quotes -> variable used to check if you are in a single quote
 	int		dbl_qts;		// double_quotes -> variable used to check if you are in a double quote
 	int		out_qts;		// out_quotes -> variable used to check if you are in any quotes
 	int		num_qts;		// number_quotes -> variable that is the number of quotes in a word
 	int		start_point;	// starting_point -> variable that is the starting point of a word
-	char	*str;			// string -> variable that represent the string came fom readline
+	char	*s;			// string -> variable that represent the string came fom readline
 }	t_vars;
 
 int		free_int_arr(int **len_words);

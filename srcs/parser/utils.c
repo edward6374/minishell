@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/13 15:37:27 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/14 13:46:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	check_quotes(t_vars *vars, char *c)
 {
-	if (*c == '\"' && *(c + 1) == '$')
-		return ;
+//	if (*c == '\"' && *(c + 1) == '$')
+//		return ;
 	if (*c == '\'' && vars->sin_qts == 0 && vars->dbl_qts == 0)
 	{
 		vars->sin_qts = 1;
@@ -28,6 +28,7 @@ void	check_quotes(t_vars *vars, char *c)
 	}
 	else if (*c == '\"' && vars->dbl_qts == 0 && vars->sin_qts == 0)
 	{
+		printf("Double quotes found\n");
 		vars->dbl_qts = 1;
 		vars->num_qts++;
 	}
@@ -41,7 +42,8 @@ void	check_quotes(t_vars *vars, char *c)
 		vars->out_qts = 1;
 	else
 		vars->out_qts = 0;
-//	printf("Char %c\tArr 0: %d\tArr 1: %d\tArr 2: %d\tArr 3:%d\tArr 4: %d\n", *c, arr[0], arr[1], arr[2], arr[3], arr[4]);
+	printf("Char %c\tSingle: %d\tDouble: %d\tOut quotes: %d\tCount: %d\tStart point: %d\n", *c, \
+		vars->sin_qts, vars->dbl_qts, vars->out_qts, vars->num_qts, vars->start_point);
 }
 
 char	**free_my_split(char **split, int **len_words, int i)

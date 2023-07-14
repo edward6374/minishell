@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/13 17:01:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/14 14:38:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ int	join_strings(t_parser **temp, char *res)
 		return (MALLOC);
 	}
 //	printf("Res: --%s--\n", res);
-//	printf("Join: --%s--\n", join);
+	printf("Join: --%s--\n", join);
 	free(res);
 	free((*temp)->word);
 	(*temp)->word = join;
 	return (0);
 }
 
-int	check_name(char *str, char *value)
+int	check_name(char *s, char *value)
 {
 	int	i;
 
 	i = 0;
-//	printf("Check\tEnv: ---%s---\tVar: ---%s---\n", str, value);
-	while (str[i] && value[i] && str[i] == value[i])
+//	printf("Check\tEnv: ---%s---\tVar: ---%s---\n", s, value);
+	while (s[i] && value[i] && s[i] == value[i])
 	{
-//		printf("First: %c\tSecond: %c\n", str[i], value[i]);
+//		printf("First: %c\tSecond: %c\n", s[i], value[i]);
 		i++;
 	}
 	if (value[i] == '\0')
@@ -46,29 +46,29 @@ int	check_name(char *str, char *value)
 	return (1);
 }
 
-int	take_value(t_parser **temp, char *env[], char *str, int count)
+int	take_value(t_parser **temp, t_vars *vars, char *env[], char *s)
 {
 	int		i;
 	int		len;
 
 	i = -1;
 	while (env[++i])
-		if (!check_name(env[i], str))
+		if (!check_name(env[i], s))
 			break ;
 	if (!env[i])
 	{
 		printf("No correspondence\n");
-		free(str);
+		free(s);
 		return (127);
 	}
-	len = ft_strlen(str);
-	free(str);
-	str = ft_substr(env[i], len + 2, ft_strlen(env[i]) - len + 2);
-	if (!str)
+	len = ft_strlen(s);
+	free(s);
+	s = ft_substr(env[i], len + 2, ft_strlen(env[i]) - len + 2);
+	if (!s)
 		return (MALLOC);
-	if (!count && add_word(temp, str))
+	if (!vars->count && add_word(temp, s))
 		return (MALLOC);
-	else if (count && join_strings(temp, str))
+	else if (vars->count && join_strings(temp, s))
 		return (MALLOC);
 //	printf("New value: %s\tI: %d\n", (*temp)->word, *f);
 	return (0);
@@ -80,30 +80,37 @@ int	other_chars(t_parser **temp, t_vars *vars)
 	int		start;
 	char	c;
 	char	*other;
+	int		counter;
 
-	if (vars->str[vars->i] == '\'' || vars->str[vars->i] == '\"')
-		c = vars->str[vars->i++];
+	printf("Double: %d\n", vars->dbl_qts);
+	if (vars->s[vars->i] == '\'' || vars->s[vars->i] == '\"')
+		c = vars->s[vars->i++];
 	else
 		c = '\0';
-	end = vars->i - 1;
+	end = vars->i;
 	start = vars->i;
 	printf("C: %c\tStart: %d\n", c, start);
-	while ((c != '\0' && vars->str[++end] != c)
-		|| (c == '\0' && vars->str[end] != c && vars->str[end] != ' '))
+	counter = 0;
+	while ((c != '\0' && vars->s[end] != c)
+		|| (c == '\0' && vars->s[end] != c && vars->s[end] != ' '))
 	{
-		printf("Loop char: %c\tEnd: %d\n", vars->str[end], end);
-		if (vars->str[end] == '\"' && vars->str[end + 1] == '$')
+		printf("Loop char: %c\tEnd: %d\n", vars->s[end], end);
+		if (vars->s[end] == '\"' && vars->s[end + 1] == '$')
 			break ;
+		if (counter > 15)
+			break ;
+		counter++;
+		end++;
 	}
-	other = ft_substr(vars->str, start, end - start);
+	other = ft_substr(vars->s, start, end - start);
 	if (!other)
 		return (MALLOC);
 	printf("Other: --%s--\n", other);
 	join_strings(temp, other);
-	if ((vars->str[end] == '\"' && vars->str[end + 1] == '$')
-		|| vars->str[end] == '\'')
+	if ((vars->s[end] == '\"' && vars->s[end + 1] == '$')
+		|| vars->s[end] == '\'')
 		vars->i = end + 1;
-	else if (vars->str[end] == ' ' || vars->str[end] == '\0')
+	else if (vars->s[end] == ' ' || vars->s[end] == '\0')
 		vars->i = end;
 //	if (s[end] == '\0' || s[end] == ' ')
 //		*i = end - 1;
@@ -115,7 +122,7 @@ int	other_chars(t_parser **temp, t_vars *vars)
 	return (0);
 }
 
-char	*take_name(t_vars *vars, int *count)
+char	*take_name(t_vars *vars)
 {
 	int		end;
 	int		start;
@@ -123,45 +130,64 @@ char	*take_name(t_vars *vars, int *count)
 
 	end = vars->i + 1;
 	start = vars->i + 1;
-	while ((vars->str[end] >= 'a' && vars->str[end] <= 'z')
-		|| (vars->str[end] >= 'A' && vars->str[end] <= 'Z'))
+	while ((vars->s[end] >= 'a' && vars->s[end] <= 'z')
+		|| (vars->s[end] >= 'A' && vars->s[end] <= 'Z'))
 		end++;
-	name = ft_substr(vars->str, start, end - start);
+	name = ft_substr(vars->s, start, end - start);
 	if (!name)
 		return (NULL);
-	if (vars->dbl_qts && vars->str[end] == '\"')
+//	printf("End: --%c--\n", vars->s[end]);
+	if (vars->s[end] == '\"')
 	{
+		printf("Change if\n");
 		vars->dbl_qts = 0;
+		vars->num_qts = 0;
 		vars->i = end + 1;
 	}
 	else
 	{
-		printf("Here\n");
+		printf("Change else\n");
 		vars->i = end;
 	}
 	printf("Name: --%s--\t", name);
-	printf("Car : %c\tTake name: %d\n", vars->str[vars->i], vars->i);
-	(*count)++;
+	printf("Car : %c\tTake name i: %d\n", vars->s[vars->i], vars->i);
+	vars->count++;
 	return (name);
+}
+
+int	put_words(t_parser **temp, t_vars *vars)
+{
+	char	*word;
+
+	if (vars->s[vars->start_point] == '\"')
+		vars->start_point++;
+	word = ft_substr(vars->s, vars->start_point, vars->i - vars->start_point);
+	if (!word || add_word(temp, word))
+		return (MALLOC);
+	printf("Put word: --%s--\n", word);
+	vars->count++;
+	return (0);
 }
 
 int	check_env_var(t_parser **temp, t_vars *vars, char *env[])
 {
 	int		ret;
-	int		count;
+	int		c;
 	char	*name;
 
-	count = -1;
-	if (vars->str[vars->i] == '\"')
-		vars->i++;
-	while (vars->str[vars->i] != ' ' && vars->str[vars->i] != '\0')
+	c = 0;
+	vars->count = -1;
+	if ((vars->s[vars->i - 1] != ' ' || !vars->out_qts) && put_words(temp, vars))
+		return (MALLOC);
+	while (vars->s[vars->i] != ' ' && vars->s[vars->i] != '\0')
 	{
-		if (vars->str[vars->i] == '$')
+		printf("Car: --%c--\tI: %d\n", vars->s[vars->i], vars->i);
+		if (vars->s[vars->i] == '$')
 		{
-			name = take_name(vars, &count);
+			name = take_name(vars);
 			if (!name)
 				return (MALLOC);
-			ret = take_value(temp, env, name, count);
+			ret = take_value(temp, vars, env, name);
 			if (ret == 127)
 				continue ;
 			else if (ret == MALLOC)
@@ -169,30 +195,10 @@ int	check_env_var(t_parser **temp, t_vars *vars, char *env[])
 		}
 		else if (other_chars(temp, vars))
 			return (MALLOC);
+		if (c > 10)
+			break ;
+		c++;
 	}
 	vars->start_point = vars->i + 1;
 	return (0);
-	/*
-	while (s[(*i + 1)] != ' ' && s[*i + 1] != '\0')
-	{
-		printf("Car : %c\tBefore: %c\tI: %d\n", s[*i], s[*i - 1], *i);
-		if (s[*i] != '$' && !(s[*i] == '\"' && s[*i + 1] == '$'))
-		{
-			if (with_symbols(temp, s, i))
-				return (MALLOC);
-		}
-		else
-		{
-			name = take_name(s, i, &count);
-			if (!name)
-				return (MALLOC);
-			ret = take_value(temp, env, name, count);
-			if (ret == 127)
-				continue ;
-			else if (ret == MALLOC)
-				return (MALLOC);
-		}
-	}
-//	printf("End I: %d\tLast: %c\n", *i, s[*i]);
-	*/
 }
