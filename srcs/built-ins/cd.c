@@ -6,14 +6,15 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:25:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/22 17:32:59 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/15 14:13:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-void	ft_cd(char *path)
+int	ft_cd(char *path)
 {
 	if (chdir(path) == -1)
-		strerror(errno);
+		return (PATH_ERROR);
+	return (0);
 }

@@ -6,19 +6,18 @@
 #    By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/06/07 15:41:09 by vduchi           ###   ########.fr        #
+#    Updated: 2023/07/16 18:38:01 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
--include files_mk/directories.mk
+-include mk_files/directories.mk
 
--include files_mk/sources_pipes.mk
--include files_mk/sources_parser.mk
--include files_mk/sources_built_ins.mk
--include files_mk/sources_minishell.mk
--include files_mk/sources_tester.mk
+-include mk_files/sources_parser.mk
+-include mk_files/sources_execute.mk
+-include mk_files/sources_built_ins.mk
+-include mk_files/sources_minishell.mk
 
 #=-=-=-=-=-=-=- COLORS DEFINITION =-=-=-=-=-=-=-=-=-#
 
@@ -55,7 +54,7 @@ CFLAGS			+= 	-Wall -Werror -Wextra -DREADLINE_LIBRARY -g -O3 $(addprefix -I , $(
 LDFLAGS			= 	-L $(LIBS_DIR) -lft -lreadline -lncurses
 DFLAGS_MS		=	-MMD -MP -MF $(DEP_DIR_MS)/$*.d
 DFLAGS_BI		=	-MMD -MP -MF $(DEP_DIR_BI)/$*.d
-DFLAGS_PIPES	=	-MMD -MP -MF $(DEP_DIR_PIPES)/$*.d
+DFLAGS_EXEC		=	-MMD -MP -MF $(DEP_DIR_EXEC)/$*.d
 DFLAGS_PARSER	=	-MMD -MP -MF $(DEP_DIR_PARSER)/$*.d
 DFLAGS_TESTER	=	-MMD -MP -MF $(DEP_DIR_TESTER)/$*.d
 
@@ -73,11 +72,11 @@ $(OBJ_DIR_BI)/%.o	:	$(SRC_DIR_BI)/%.c
 
 $(OBJ_DIR_MS)/%.o	:	$(SRC_DIR_MS)/%.c
 	@$(CC) -c $< $(CFLAGS) $(DFLAGS_MS) -o $@
-	@echo "$(YELLOW)$(patsubst $(SRC_DIR_MS)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
+	@echo "$(YELLOW)$(patsubst $(SRC_DIR_MS)/%,%, $<)  \tcompiled!$(DEF_COLOR)"
 
-$(OBJ_DIR_PIPES)/%.o	:	$(SRC_DIR_PIPES)/%.c
-	@$(CC) -c $< $(CFLAGS) $(DFLAGS_PIPES) -o $@
-	@echo "$(YELLOW)$(patsubst $(SRC_DIR_PIPES)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
+$(OBJ_DIR_EXEC)/%.o	:	$(SRC_DIR_EXEC)/%.c
+	@$(CC) -c $< $(CFLAGS) $(DFLAGS_EXEC) -o $@
+	@echo "$(YELLOW)$(patsubst $(SRC_DIR_EXEC)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
 $(OBJ_DIR_PARSER)/%.o	:	$(SRC_DIR_PARSER)/%.c
 	@$(CC) -c $< $(CFLAGS) $(DFLAGS_PARSER) -o $@
@@ -93,7 +92,7 @@ all				:	directories $(LIBFT_PATH) $(RD_PATH)
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(OBJS_MS) $(OBJS_PIPES) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
+$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
 	@$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 
@@ -118,8 +117,8 @@ directories	:
 	@$(MKDIR) $(DEP_DIR_MS)
 	@$(MKDIR) $(OBJ_DIR_BI)
 	@$(MKDIR) $(DEP_DIR_BI)
-	@$(MKDIR) $(OBJ_DIR_PIPES)
-	@$(MKDIR) $(DEP_DIR_PIPES)
+	@$(MKDIR) $(OBJ_DIR_EXEC)
+	@$(MKDIR) $(DEP_DIR_EXEC)
 	@$(MKDIR) $(OBJ_DIR_PARSER)
 	@$(MKDIR) $(DEP_DIR_PARSER)
 	@$(MKDIR) $(OBJ_DIR_TESTER)
@@ -141,7 +140,7 @@ re				:	fclean all
 
 -include $(DEPS_MS)
 -include $(DEPS_BI)
--include $(DEPS_PIPES)
+-include $(DEPS_EXEC)
 -include $(DEPS_PARSER)
 -include $(DEPS_TESTER)
 

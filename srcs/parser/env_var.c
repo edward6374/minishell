@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/14 14:38:21 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/15 15:57:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	join_strings(t_parser **temp, char *res)
 
 	join = ft_strjoin((*temp)->word, res);
 	if (!join)
-	{
-		free(res);
-		return (MALLOC);
-	}
+		return (free_pointer(res, MALLOC));
 //	printf("Res: --%s--\n", res);
 	printf("Join: --%s--\n", join);
 	free(res);
@@ -35,7 +32,6 @@ int	check_name(char *s, char *value)
 	int	i;
 
 	i = 0;
-//	printf("Check\tEnv: ---%s---\tVar: ---%s---\n", s, value);
 	while (s[i] && value[i] && s[i] == value[i])
 	{
 //		printf("First: %c\tSecond: %c\n", s[i], value[i]);
@@ -52,23 +48,23 @@ int	take_value(t_parser **temp, t_vars *vars, char *env[], char *s)
 	int		len;
 
 	i = -1;
-	while (env[++i])
-		if (!check_name(env[i], s))
-			break ;
-	if (!env[i])
-	{
-		printf("No correspondence\n");
-		free(s);
-		return (127);
-	}
 	len = ft_strlen(s);
-	free(s);
-	s = ft_substr(env[i], len + 2, ft_strlen(env[i]) - len + 2);
-	if (!s)
+	if (ft_strncmp(s, "$?", 2))
+	{
+		while (env[++i])
+			if (!check_name(env[i], s))
+				break ;
+		if (!env[i])
+		{
+			printf("No correspondence\n");
+			return (free_pointer(s, 127));
+		}
+		free(s);
+		s = ft_substr(env[i], len + 2, ft_strlen(env[i]) - len + 2);
+	}
+	if (!s || (!vars->count && add_word(temp, s)))
 		return (MALLOC);
-	if (!vars->count && add_word(temp, s))
-		return (MALLOC);
-	else if (vars->count && join_strings(temp, s))
+	else if (!s || (vars->count && join_strings(temp, s)))
 		return (MALLOC);
 //	printf("New value: %s\tI: %d\n", (*temp)->word, *f);
 	return (0);
@@ -128,29 +124,25 @@ char	*take_name(t_vars *vars)
 	int		start;
 	char	*name;
 
-	end = vars->i + 1;
 	start = vars->i + 1;
+	if (vars->s[vars->i] == '$' && vars->s[vars->i + 1] == '?')
+		start = vars->i++;
+	end = vars->i + 1;
 	while ((vars->s[end] >= 'a' && vars->s[end] <= 'z')
 		|| (vars->s[end] >= 'A' && vars->s[end] <= 'Z'))
 		end++;
 	name = ft_substr(vars->s, start, end - start);
 	if (!name)
 		return (NULL);
-//	printf("End: --%c--\n", vars->s[end]);
+	printf("Name: --%s--\n", name);
 	if (vars->s[end] == '\"')
 	{
-		printf("Change if\n");
 		vars->dbl_qts = 0;
 		vars->num_qts = 0;
 		vars->i = end + 1;
 	}
 	else
-	{
-		printf("Change else\n");
 		vars->i = end;
-	}
-	printf("Name: --%s--\t", name);
-	printf("Car : %c\tTake name i: %d\n", vars->s[vars->i], vars->i);
 	vars->count++;
 	return (name);
 }

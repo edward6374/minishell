@@ -6,13 +6,14 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/26 17:09:42 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/15 14:13:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-void	ft_echo(char *str)
+int	ft_echo(char *str)
 {
 	printf("%s\n", str);
+	return (0);
 }

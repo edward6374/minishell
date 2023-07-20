@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/14 14:14:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/15 17:17:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ typedef struct s_vars
 	char	*s;			// string -> variable that represent the string came fom readline
 }	t_vars;
 
-int		free_int_arr(int **len_words);
-int		free_split(char **split, int i);
-int		free_split_with_index(char **split, int index, int i);
-char	**free_my_split(char **split, int **len_words, int i);
+int		free_pointer(void *pt, int out);
+
+int		check_name(char *s, char *value);
 
 int		count_quotes(char *string);
 int		correct_quotes(char **split);

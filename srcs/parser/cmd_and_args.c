@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/08 18:24:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/17 18:57:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ int	check_access(char *str, int mode)
 	return (FILE_NOT_WRITE);
 }
 
-int	free_args(char **args, int idx)
-{
-	while (--idx)
-		free(args[idx]);
-	free(args);
-	return (MALLOC);
-}
-
 int	add_arguments(t_parser **split, t_command *new)
 {
 	int			i;
@@ -65,7 +57,7 @@ int	add_arguments(t_parser **split, t_command *new)
 		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*split));
 		new->args[k] = ft_strdup((*split)->word);
 		if (!new->args[k])
-			return (free_args(new->args, k));
+			return (free_double_int(new->args, k));
 		free((*split)->word);
 		free(*split);
 		*split = pt;
@@ -92,7 +84,6 @@ t_command	*set_new_command(int *number)
 	new->if_here_doc = 0;
 	new->cmd = NULL;
 	new->args = NULL;
-	new->here_doc = NULL;
 	new->stop_word = NULL;
 	new->next = NULL;
 	new->before = NULL;
@@ -118,15 +109,17 @@ int	join_paths(char **tmp, char *env)
 	free(t1);
 	t1 = NULL;
 	ret = check_access(t2, 1);
-	if (!ret)
+//	(ret && (free(t2)) && (t2 = NULL) && ((ret != CMD_NOT_FOUND) && ret++));
+	if (ret)
 	{
-		free(*tmp);
-		*tmp = t2;
-		return (0);
+		free(t2);
+		t2 = NULL;
+		((ret != CMD_NOT_FOUND) && ret++);
+		return (ret);
 	}
-	free(t2);
-	t2 = NULL;
-	return (ret);
+	free(*tmp);
+	*tmp = t2;
+	return (0);
 }
 
 int	rel_path_cmd(t_minishell **tokens, char **tmp)
@@ -135,6 +128,8 @@ int	rel_path_cmd(t_minishell **tokens, char **tmp)
 	int		ret;
 
 	i = -1;
+	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
+		*tmp = ft_substr(*tmp, 2, ft_strlen(*tmp) - 2);
 	while ((*tokens)->path[++i])
 	{
 		ret = join_paths(tmp, (*tokens)->path[i]);
@@ -156,21 +151,12 @@ int	add_command(t_minishell **tokens, t_parser **split, t_command *new)
 	char	*tmp;
 
 	err = 0;
-	printf("Cmd word:-->%s--<\n", (*split)->word);
+	printf("Cmd word:--%s--\n", (*split)->word);
 	tmp = ft_strdup((*split)->word);
 	if (!tmp)
 		return (MALLOC);
 	if (tmp[0] != '/')
 		err = rel_path_cmd(tokens, &tmp);
-	if (err)
-		return (err);
-	new->cmd = ft_strdup(tmp);
-	if (!new->cmd)
-	{
-		free(tmp);
-		return (MALLOC);
-	}
-	free(tmp);
-	return (0);
+	new->cmd = tmp;
+	return (err);
 }
-

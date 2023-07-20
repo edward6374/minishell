@@ -11,7 +11,7 @@
 
 #include "built-ins.h"
 
-void	ft_exit(int value)
+int	ft_exit(int value)
 {
 	printf("exit\n");
 //	write(1, "\rexit", 5);
@@ -19,4 +19,5 @@ void	ft_exit(int value)
 //	rl_on_new_line();
 //	rl_redisplay();
 	exit(value);
+	return (0);
 }

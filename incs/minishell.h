@@ -19,9 +19,6 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/types.h>
-# include "libft.h"
-# include "library/include/readline/readline.h"
-# include "library/include/readline/history.h"
 
 enum
 {
@@ -36,6 +33,8 @@ enum
 	FILE_NOT_WRITE,
 	GETCWD_ERROR,
 	PIPE_ERROR,
+	DUP_ERROR,
+	PATH_ERROR,
 };
 
 const static char	*g_error_array[] = {
@@ -50,6 +49,8 @@ const static char	*g_error_array[] = {
 	"File not writeable", \
 	"Getcwd() error", \
 	"Error creating pipe", \
+	"Error creating dup", \
+	"no such file or directory: ", \
 };
 
 typedef struct	s_parser
@@ -66,9 +67,9 @@ typedef struct s_command
 	int					in;
 	int					out;
 	int					if_here_doc;
+	int					fd_here_doc[2];
 	char				*cmd;
 	char				**args;
-	char				*here_doc;
 	char				*stop_word;
 	struct s_command	*next;
 	struct s_command	*before;
@@ -76,23 +77,34 @@ typedef struct s_command
 
 typedef struct s_minishell
 {
-	int			num_comms;
+	int			num_cmds;
 	int			exit_value;
 	char		**path;
+	char		**env;
 	t_command	*command;
 }	t_minishell;
 
-# include "pipes.h"
-# include "built-ins.h"
+# include "libft.h"
 # include "parser.h"
+# include "execute.h"
+# include "built-ins.h"
+# include "library/include/readline/readline.h"
+# include "library/include/readline/history.h"
 
-int		d_key(void);
-int		end_program(char **string, int error);
+/* ---			Utils.c				--- */
+int			d_key(void);
+int			end_program(char **string, int error);
+void		siginthandler(int sig);
+char		*ft_find_path(char *env[]);
 
-void	siginthandler(int sig);
-void	free_double(char **dbl);
-int		free_tokens(t_minishell **tokens, t_parser **temp, int out);
+/* ---			Free_funcs.c			--- */
+int			free_double_int(char **old, int i);
+void		free_double_void(char **old);
+char		**free_double_char(char **old, int i);
+t_minishell	*free_struct(t_minishell **tokens);
 
-char	*ft_find_path(char *env[]);
+/* ---			Free_tokens.c			--- */
+void		free_commands(t_command **first);
+int			free_tokens(t_minishell **tokens, t_parser **temp, int out);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/08 18:51:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/17 18:44:57 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	look_for_redir(t_parser **split, t_command *new)
 			return (MALLOC);
 		else if (err)
 		{
-			new->ok = err;
+			new->ok = err; // Da controllare se con altri errori c'e' da uscire direttamente o no
 			return (err);
 		}
 		tmp = tmp->next;
@@ -96,10 +96,7 @@ int	create_token(t_minishell **tokens, t_parser **split, t_command *new)
 	if (err == MALLOC)
 		return (MALLOC);
 	else if (err)
-	{
 		new->ok = err;
-		return (0);
-	}
 	if (add_arguments(split, new))
 		return (MALLOC);
 	if (!(*tokens)->command)
@@ -126,7 +123,7 @@ int	load_commands(t_minishell *tokens, t_parser *split)
 		return (err);
 	while (split)
 	{
-		new = set_new_command(&tokens->num_comms);
+		new = set_new_command(&tokens->num_cmds);
 		if (!new)
 			return (MALLOC);
 		err = look_for_redir(&split, new);
