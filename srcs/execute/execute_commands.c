@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/19 02:55:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/21 21:40:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,12 @@ int	run_here_doc(t_command *temp, int *err)
 	return (0);
 }
 
-int	loop_commands(t_minishell *tokens, t_command *temp)
+int	check_pipes(t_command *temp, int *p, int *fd)
 {
-	int		fd;
-	int		p[2];
-	int		status;
-	char	*data;
-	pid_t	pid;
+	int		test;
 
-	printf("Number: %d\n", temp->n);
+	test = -1;
+	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
 	if (temp->n == 0 && pipe(p) == -1)
 	{
 		printf("First pipe\n");
@@ -75,21 +72,61 @@ int	loop_commands(t_minishell *tokens, t_command *temp)
 	}
 	if (temp->before && temp->in == 0)
 	{
-		printf("New pipe\n");
 		close(p[1]);
-		fd = dup(p[0]);
-		if (!fd)
+		printf("After Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
+		test = dup(1);
+		printf("New pipe: %d\n", test);
+		if (test == -1)
+		{
+			perror("dup failed");
+			printf("Errno: %d\n", errno);
 			return (DUP_ERROR);
+		}
 		close(p[0]);
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
-		data = (char *)malloc(sizeof(char));
-		if (!data)
-			return (MALLOC);
-		while (read(fd, data, 1) > 0)
-			write(p[1], data, 1);
-		close(fd);
+//		data = (char *)malloc(sizeof(char));
+//		if (!data)
+//			return (MALLOC);
+//		while (read(fd, data, 1) > 0)
+//			write(p[1], data, 1);
+//		close(fd);
 	}
+	*fd = test;
+	return (0);
+}
+
+int	loop_commands(t_minishell *tokens, t_command *temp, int *p, int fd)
+{
+	int		status;
+//	char	*data;
+	pid_t	pid;
+
+	printf("Number: %d\n", temp->n);
+//	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
+//	if (temp->n == 0 && pipe(p) == -1)
+//	{
+//		printf("First pipe\n");
+//		return (PIPE_ERROR);
+//	}
+//	printf("After Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
+//	if (temp->before && temp->in == 0)
+//	{
+//		close(p[1]);
+//		fd = dup2(p[0], 127);
+//		printf("New pipe: %d\n", fd);
+//		if (fd == -1)
+//			return (DUP_ERROR);
+//		close(p[0]);
+//		if (pipe(p) == -1)
+//			return (PIPE_ERROR);
+//		data = (char *)malloc(sizeof(char));
+//		if (!data)
+//			return (MALLOC);
+//		while (read(fd, data, 1) > 0)
+//			write(p[1], data, 1);
+//		close(fd);
+//	}
 	pid = fork();
 	if (pid == 0)
 	{
@@ -106,8 +143,9 @@ int	loop_commands(t_minishell *tokens, t_command *temp)
 			if (temp->before)
 			{
 				printf("Before exist\n");
-				if (dup2(p[0], 0) < 0)
+				if (dup2(fd, 0) < 0)
 					exit_error("dup", 1);
+				close(fd);
 			}
 			if (close(p[0]) < 0)
 				exit_error("close", 1);
@@ -152,6 +190,8 @@ int	loop_commands(t_minishell *tokens, t_command *temp)
 int	execute_commands(t_minishell *tokens)
 {
 	int			err;
+	int			fd;
+	int			pipe[2];
 	t_command	*temp;
 
 	temp = tokens->command;
@@ -164,7 +204,10 @@ int	execute_commands(t_minishell *tokens)
 	temp = tokens->command;
 	while (temp)
 	{
-		err = loop_commands(tokens, temp);
+		err = check_pipes(temp, pipe, &fd);
+		if (err)
+			return (err);
+		err = loop_commands(tokens, temp, pipe, fd);
 		if (err)
 			return (err);
 		temp = temp->next;
