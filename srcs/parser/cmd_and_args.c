@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/17 18:57:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:15:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_access(char *str, int mode)
 	return (FILE_NOT_WRITE);
 }
 
-int	add_arguments(t_parser **split, t_command *new)
+int	add_arguments(t_parser **split, t_cmd *new)
 {
 	int			i;
 	int			k;
@@ -70,11 +70,11 @@ int	add_arguments(t_parser **split, t_command *new)
 	return (0);
 }
 
-t_command	*set_new_command(int *number)
+t_cmd	*set_new_command(int *number)
 {
-	t_command	*new;
+	t_cmd	*new;
 
-	new = (t_command *)malloc(sizeof(t_command));
+	new = (t_cmd *)malloc(sizeof(t_cmd));
 	if (!new)
 		return (NULL);
 	new->n = *number;
@@ -122,7 +122,7 @@ int	join_paths(char **tmp, char *env)
 	return (0);
 }
 
-int	rel_path_cmd(t_minishell **tokens, char **tmp)
+int	rel_path_cmd(t_min **tk, char **tmp)
 {
 	int		i;
 	int		ret;
@@ -130,9 +130,9 @@ int	rel_path_cmd(t_minishell **tokens, char **tmp)
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
 		*tmp = ft_substr(*tmp, 2, ft_strlen(*tmp) - 2);
-	while ((*tokens)->path[++i])
+	while ((*tk)->path[++i])
 	{
-		ret = join_paths(tmp, (*tokens)->path[i]);
+		ret = join_paths(tmp, (*tk)->path[i]);
 		if (!ret)
 			break ;
 		else if (ret == CMD_NOT_FOUND)
@@ -140,12 +140,12 @@ int	rel_path_cmd(t_minishell **tokens, char **tmp)
 		else
 			return (ret - 1);
 	}
-	if (!(*tokens)->path[i])
+	if (!(*tk)->path[i])
 		return (CMD_NOT_FOUND);
 	return (0);
 }
 
-int	add_command(t_minishell **tokens, t_parser **split, t_command *new)
+int	add_command(t_min **tk, t_parser **split, t_cmd *new)
 {
 	int		err;
 	char	*tmp;
@@ -156,7 +156,7 @@ int	add_command(t_minishell **tokens, t_parser **split, t_command *new)
 	if (!tmp)
 		return (MALLOC);
 	if (tmp[0] != '/')
-		err = rel_path_cmd(tokens, &tmp);
+		err = rel_path_cmd(tk, &tmp);
 	new->cmd = tmp;
 	return (err);
 }

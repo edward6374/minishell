@@ -51,6 +51,7 @@ const static char	*g_error_array[] = {
 	"Error creating pipe", \
 	"Error creating dup", \
 	"no such file or directory: ", \
+	"numeric argument required", \
 };
 
 typedef struct	s_parser
@@ -60,29 +61,29 @@ typedef struct	s_parser
 	struct s_parser	*before;
 }	t_parser;
 
-typedef struct s_command
+typedef struct s_cmd
 {
-	int					n;
-	int					ok;
-	int					in;
-	int					out;
-	int					if_here_doc;
-	int					fd_here_doc[2];
-	char				*cmd;
-	char				**args;
-	char				*stop_word;
-	struct s_command	*next;
-	struct s_command	*before;
-}	t_command;
+	int				n;
+	int				ok;
+	int				in;
+	int				out;
+	int				if_here_doc;
+	int				fd_here_doc[2];
+	char			*cmd;
+	char			**args;
+	char			*stop_word;
+	struct s_cmd	*next;
+	struct s_cmd	*before;
+}	t_cmd;
 
-typedef struct s_minishell
+typedef struct s_min
 {
-	int			num_cmds;
-	int			exit_value;
-	char		**path;
-	char		**env;
-	t_command	*command;
-}	t_minishell;
+	int		num_cmds;
+	int		exit_value;
+	char	**path;
+	char	**env_vars;
+	t_cmd	*cmds;
+}	t_min;
 
 # include "libft.h"
 # include "parser.h"
@@ -95,16 +96,18 @@ typedef struct s_minishell
 int			d_key(void);
 int			end_program(char **string, int error);
 void		siginthandler(int sig);
+void		exit_error(const char *str, int i);
 char		*ft_find_path(char *env[]);
 
 /* ---			Free_funcs.c			--- */
 int			free_double_int(char **old, int i);
 void		free_double_void(char **old);
 char		**free_double_char(char **old, int i);
-t_minishell	*free_struct(t_minishell **tokens);
+t_min		*free_struct(t_min **tk);
 
 /* ---			Free_tokens.c			--- */
-void		free_commands(t_command **first);
-int			free_tokens(t_minishell **tokens, t_parser **temp, int out);
+void		free_commands(t_cmd **first);
+
+int			free_tokens(t_min **tk, t_parser **temp, int out);
 
 #endif

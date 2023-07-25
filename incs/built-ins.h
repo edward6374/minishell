@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/15 14:09:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:24:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include "minishell.h"
 
-int		ft_cd(char *path);
-int		ft_exit(int value);
-int		ft_echo(char *str);
-int		ft_env(char *env[]);
-char	**ft_unset(char *env[], char *str);
-char	**ft_export(char *env[], char *new_string);
+int		ft_pwd(void);
+int		ft_cd(t_cmd *temp);
+int		ft_echo(t_cmd *temp);
+int		ft_env(t_min *tk, t_cmd *temp);
+int		ft_exit(t_min *tk, t_cmd *temp);
+int		ft_unset(t_min *tk, t_cmd *temp);
+int		ft_export(t_min *tk, t_cmd *temp);
 
 char	**free_double_pointer(char **arr, int i);
 

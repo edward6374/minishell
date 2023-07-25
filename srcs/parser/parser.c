@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/17 18:13:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:31:27 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	find_more_words(t_parser **temp, t_vars *vars)
 		}
 	}
 //	printf("After:  Arr 4: %d\tK: %d\tI: %d\n", vars->start_point, idx, vars->i);
-	if (idx != vars->start_point && create_word(temp, vars, &idx))
+	if (create_word(temp, vars, &idx))
 		return (MALLOC);
 	return (0);
 }
@@ -170,7 +170,7 @@ int	find_word(t_parser **temp, t_vars *vars)
 	return (0);
 }
 
-int	check_for_exit_status(t_minishell *tokens, t_parser *all_words)
+int	check_for_exit_status(t_min *tk, t_parser *all_words)
 {
 	int			len;
 	char		*new;
@@ -184,7 +184,7 @@ int	check_for_exit_status(t_minishell *tokens, t_parser *all_words)
 		{
 			len = len - ft_strlen(ft_strnstr(p->word, "$?", len));
 			new = ft_strjoin(ft_substr(p->word, 0, len), \
-				ft_itoa(tokens->exit_value));
+				ft_itoa(tk->exit_value));
 			if (!new)
 				return (MALLOC);
 			new = ft_strjoin(new, ft_strnstr(p->word, "$?", \
@@ -209,7 +209,7 @@ int	check_for_exit_status(t_minishell *tokens, t_parser *all_words)
 	return (0);
 }
 
-int	parse_string(t_minishell *tokens, t_parser *all_words, char *env[], char *s)
+int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
 {
 	t_vars		vars;
 	t_parser	*temp;
@@ -236,22 +236,22 @@ int	parse_string(t_minishell *tokens, t_parser *all_words, char *env[], char *s)
 			return (MALLOC);
 	}
 	printf("\n");
-	return (check_for_exit_status(tokens, all_words));
+	return (check_for_exit_status(tk, all_words));
 }
 
-int	parser(t_minishell *tokens, char *env[], char *string)
+int	parser(t_min *tk, char *env[], char *string)
 {
 	t_parser	*all_words;
 
 	if (count_quotes(string))    // If the line you write has a impair number of quotes, the program will just stop
-		return (free_tokens(&tokens, NULL, SYNTAX));
+		return (free_tokens(&tk, NULL, SYNTAX));
 	all_words = (t_parser *)malloc(sizeof(t_parser));
 	if (!all_words)
-		return (free_tokens(&tokens, NULL, MALLOC));
+		return (free_tokens(&tk, NULL, MALLOC));
 	all_words->word = NULL;
 	all_words->next = NULL;
 	all_words->before = NULL;
-	if (parse_string(tokens, all_words, env, string))    // Here I parse the string and separate it into words
-		return (free_tokens(&tokens, NULL, MALLOC));
-	return (load_commands(tokens, all_words));           // Here I load all the words into commands in the main sucture
+	if (parse_string(tk, all_words, env, string))    // Here I parse the string and separate it into words
+		return (free_tokens(&tk, NULL, MALLOC));
+	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
 }

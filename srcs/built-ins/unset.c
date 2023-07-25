@@ -6,54 +6,62 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:01 by vduchi            #+#    #+#             */
-/*   Updated: 2023/05/18 19:52:40 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:24:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-char	**change_env(char *env[], char **new_env, int i)
+int	change_env(t_min *tk, t_cmd *temp, char **new_env)
 {
-	int	j;
+	int	i;
+	int	l;
 	int	k;
 
-	j = 0;
-	k = 0;
-	while (env[j])
+	l = 0;
+	i = -1;
+	while (tk->env_vars[++i])
 	{
-		if (i == j)
+		k = 0;
+		while (temp->args[++k])
 		{
-			j++;
-			continue ;
+			if (!ft_strncmp(temp->args[k], tk->env_vars[i], \
+				ft_strlen(temp->args[k])))
+				break ;
 		}
-		new_env[k] = ft_strdup(env[j]);
-		if (!new_env[k])
-			return (free_double_pointer(new_env, k - 1));
-		j++;
-		k++;
+		if (!temp->args[k])
+		{
+			new_env[l] = ft_strdup(tk->env_vars[i]);
+			if (!new_env[l])
+				return (free_double_int(new_env, l));
+			l++;
+		}
 	}
-	new_env[k] = NULL;
-	free_double_pointer(env, j - 1);
-	return (new_env);
+	new_env[l] = NULL;
+	free_double_void(tk->env_vars);
+	tk->env_vars = new_env;
+	return (0);
 }
 
-char	**ft_unset(char *env[], char *str)
+int	ft_unset(t_min *tk, t_cmd *temp)
 {
-	int		i;
 	int		j;
+	int		k;
+	int		count;
 	char	**new_env;
 
-	i = -1;
-	while (env[++i])
-		if (!ft_strncmp(env[i], str, ft_strlen(str)))
-			break ;
-	if (env[i] == NULL)
-		return (env);
+	k = 0;
 	j = 0;
-	while (env[j])
+	count = 0;
+	printf("Unset\n");
+	if (!temp->args[1])
+		return (0);
+	while (temp->args[++k])
+		count++;
+	while (tk->env_vars[j])
 		j++;
-	new_env = (char **)malloc(sizeof(char *) * (j - 1));
+	new_env = (char **)malloc(sizeof(char *) * (j - count + 1));
 	if (!new_env)
-		return (NULL);
-	return (change_env(env, new_env, i));
+		return (MALLOC);
+	return (change_env(tk, temp, new_env));
 }

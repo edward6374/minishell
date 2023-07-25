@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 18:00:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/16 15:03:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 13:35:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft/libft.h"
-#include "readline/library/include/readline/readline.h"
-#include "readline/library/include/readline/history.h"
+//#include "readline/library/include/readline/readline.h"
+//#include "readline/library/include/readline/history.h"
 
-int main(int argc, char **argv, char *env[])
-{
-	int		p[2];
-	int		status;
-	pid_t	pid;
-	char	*string;
-	char	*cmd;
-	char	**args;
+int main() {
+    int pipefd[2]; // Pipe file descriptors
+    int child1_pid, child2_pid;
 
-	pipe(p);
-	pid = fork();
-	if (pid == 0)
-	{
-		close(p[0]);
-		while (42)
-		{
-			string = readline("test> ");
-			printf("Res: --%s--\n", string);
-			if (!string || !ft_strncmp(string, "here", 5))
-				break ;
-			write(p[1], string, ft_strlen(string));
-			write(p[1], "\n", 1);
-			free(string);
-		}
-		exit(0);
-	}
-	else
-	{
-		waitpid(pid, &status, 0);
-		close(p[1]);
-		dup2(p[0], 0);
-		close(p[0]);
-		printf("Father\n");
-		cmd = ft_strdup("/bin/cat");
-		args = malloc(sizeof(char *) * 2);
-		args[0] = ft_strdup("cat");
-		args[1] = NULL;
-		execve(cmd, args, env);
-	}
+    // Create the pipe
+    if (pipe(pipefd) == -1) {
+        perror("pipe creation failed");
+        return 1;
+    }
+
+    // Fork the first child
+    child1_pid = fork();
+    if (child1_pid == -1) {
+        perror("fork failed");
+        return 1;
+    } else if (child1_pid == 0) {
+        // This is the first child (cat command)
+        close(pipefd[0]); // Close the read end of the pipe
+        dup2(pipefd[1], STDOUT_FILENO); // Redirect the write end of the pipe to stdout
+
+        // Now you can execute the cat command (or any other command that generates output)
+        execlp("cat", "cat", NULL);
+        perror("exec failed"); // If execlp fails, perror will print an error message
+        _exit(1); // Exit the child process with an error
+    }
+
+    // Fork the second child
+    child2_pid = fork();
+    if (child2_pid == -1) {
+        perror("fork failed");
+        return 1;
+    } else if (child2_pid == 0) {
+        // This is the second child (ls command)
+        close(pipefd[1]); // Close the write end of the pipe
+        dup2(pipefd[0], STDIN_FILENO); // Redirect the read end of the pipe to stdin
+
+        // Now you can execute the ls command (or any other command that takes input)
+        execlp("ls", "ls", NULL);
+        perror("exec failed"); // If execlp fails, perror will print an error message
+        _exit(1); // Exit the child process with an error
+    }
+
+    // This is the parent process
+    close(pipefd[0]); // Close the read end of the pipe (parent will not read from it)
+    close(pipefd[1]); // Close the write end of the pipe (parent will not write to it)
+
+    // Wait for both child processes to finish
+    waitpid(child1_pid, NULL, 0);
+    waitpid(child2_pid, NULL, 0);
+
+    return 0;
 }

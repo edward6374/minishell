@@ -6,11 +6,18 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/15 17:25:29 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 19:13:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
+
+void	exit_error(const char *str, int i)
+{
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+	exit(i);
+}
 
 int	end_program(char **string, int error)
 {

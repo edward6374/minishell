@@ -6,18 +6,19 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/16 13:46:20 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:12:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
 
-t_minishell	*free_struct(t_minishell **tokens)
+t_min	*free_struct(t_min **tk)
 {
-	free_double_void((*tokens)->path);
-	free_double_void((*tokens)->env);
-	free(*tokens);
-	*tokens = NULL;
+	free_double_void((*tk)->path);
+	free_double_void((*tk)->env_vars);
+	free_commands(&(*tk)->cmds);
+	free(*tk);
+	*tk = NULL;
 	return (NULL);
 }
 
@@ -26,7 +27,7 @@ int	free_double_int(char **old, int i)
 	while (old[--i])
 		free(old[i]);
 	free(old);
-	return (1);
+	return (MALLOC);
 }
 
 char	**free_double_char(char **old, int i)

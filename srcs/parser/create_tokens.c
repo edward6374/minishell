@@ -6,13 +6,13 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/17 18:44:57 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:17:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-int	look_for_redir(t_parser **split, t_command *new)
+int	look_for_redir(t_parser **split, t_cmd *new)
 {
 	int			err;
 	t_parser	*tmp;
@@ -33,35 +33,35 @@ int	look_for_redir(t_parser **split, t_command *new)
 	return (0);
 }
 
-t_command	*get_last_command(t_minishell **tokens)
+t_cmd	*get_last_cmd(t_min **tk)
 {
-	t_command	*tmp;
+	t_cmd	*tmp;
 
-	if (!(*tokens)->command)
+	if (!(*tk)->cmds)
 		return (NULL);
-	tmp = (*tokens)->command;
+	tmp = (*tk)->cmds;
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);
 }
 
-void	print_commands(t_minishell *tokens)
+void	print_commands(t_min *tk)
 {
 	int			i;
 	int			k;
-	t_command	*comm;
+	t_cmd		*cmd;
 
 	i = 0;
-	comm = tokens->command;
-//	printf("Comm %p\n", comm);
-	while (comm)
+	cmd = tk->cmds;
+//	printf("Comm %p\n", cmd);
+	while (cmd)
 	{
 		k = -1;
-		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i, comm, comm->ok, comm->in, comm->out, comm->cmd);
-		while (comm->args[++k])
-			printf("\tArg %d:-->%s\n", k, comm->args[k]);
-		printf("\tNext: %p\n\tBefore: %p\n", comm->next, comm->before);
-		comm = comm->next;
+		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i, cmd, cmd->ok, cmd->in, cmd->out, cmd->cmd);
+		while (cmd->args[++k])
+			printf("\tArg %d:-->%s\n", k, cmd->args[k]);
+		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
+		cmd = cmd->next;
 		i++;
 	}
 }
@@ -86,23 +86,23 @@ int	check_redir_syntax(t_parser *split)
 	return (0);
 }
 
-int	create_token(t_minishell **tokens, t_parser **split, t_command *new)
+int	create_token(t_min **tk, t_parser **split, t_cmd *new)
 {
 	int			err;
-	t_command	*lst;
+	t_cmd	*lst;
 
-	lst = get_last_command(tokens);
-	err = add_command(tokens, split, new);
+	lst = get_last_cmd(tk);
+	err = add_command(tk, split, new);
 	if (err == MALLOC)
 		return (MALLOC);
 	else if (err)
 		new->ok = err;
 	if (add_arguments(split, new))
 		return (MALLOC);
-	if (!(*tokens)->command)
+	if (!(*tk)->cmds)
 	{
 		printf("First command\n");
-		(*tokens)->command = new;
+		(*tk)->cmds = new;
 	}
 	else
 	{
@@ -113,17 +113,17 @@ int	create_token(t_minishell **tokens, t_parser **split, t_command *new)
 	return (0);
 }
 
-int	load_commands(t_minishell *tokens, t_parser *split)
+int	load_commands(t_min *tk, t_parser *split)
 {
 	int			err;
-	t_command	*new;
+	t_cmd	*new;
 
 	err = check_redir_syntax(split);
 	if (err)
 		return (err);
 	while (split)
 	{
-		new = set_new_command(&tokens->num_cmds);
+		new = set_new_command(&tk->num_cmds);
 		if (!new)
 			return (MALLOC);
 		err = look_for_redir(&split, new);
@@ -131,11 +131,11 @@ int	load_commands(t_minishell *tokens, t_parser *split)
 			return (MALLOC);
 		else if (err)		// Pulire il new
 			return (0);
-		err = create_token(&tokens, &split, new);
+		err = create_token(&tk, &split, new);
 		if (err)
 			return (err);
 		new = NULL;
 	}
-	print_commands(tokens);
+	print_commands(tk);
 	return (0);
 }

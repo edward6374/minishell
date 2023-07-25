@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/16 14:00:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:11:56 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 # include "minishell.h"
 
-//int		check_command(t_minishell *comands);
+//int		check_command(t_min *comands);
 
-//void	minishell(t_minishell *tokens, char *env[], char *str);
+//void	minishell(t_min *tk, char *env[], char *str);
 
 /* ---		Run_command.c		--- */
-//int		run_commands(t_minishell *tokens, char *env[]);
+//int		run_commands(t_min *tk, char *env[]);
 
-//int		pipes(t_minishell *tokens, char *env[]);
+//int		pipes(t_min *tk, char *env[]);
 //char 	*ft_find_path(char *env[]);
-//void	ft_printer(t_minishell *command, char **env);
+//void	ft_printer(t_min *command, char **env);
 
 /* ---			Execute_commands.c			--- */
-int	execute_commands(t_minishell *tokens);
+int	execute_commands(t_min *tk);
 
 #endif

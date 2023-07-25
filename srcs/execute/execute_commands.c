@@ -6,17 +6,17 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/21 21:40:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:33:20 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/execute.h"
 
-void	close_here_docs(t_minishell *tokens)
+void	close_here_docs(t_min *tk)
 {
-	t_command	*temp;
+	t_cmd	*temp;
 
-	temp = tokens->command;
+	temp = tk->cmds;
 	while (temp)
 	{
 		if (temp->if_here_doc)
@@ -28,14 +28,26 @@ void	close_here_docs(t_minishell *tokens)
 	}
 }
 
-void	exit_error(char *str, int i)
+static	int	is_builtin(t_min *tk, t_cmd *temp)
 {
-	write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
-	exit(i);
+	if (!ft_strncmp("echo", temp->args[0], 5))
+		return (ft_echo(temp));
+	else if (!ft_strncmp("cd", temp->args[0], 3))
+		return (ft_cd(temp));
+	else if (!ft_strncmp("pwd", temp->args[0], 4))
+		return (ft_pwd());
+	else if (!ft_strncmp("export", temp->args[0], 7))
+		return (ft_export(tk, temp));
+	else if (!ft_strncmp("unset", temp->args[0], 6))
+		return (ft_unset(tk, temp));
+	else if (!ft_strncmp("env", temp->args[0], 4))
+		return (ft_env(tk, temp));
+	else if (!ft_strncmp("exit", temp->args[0], 5))
+		return (ft_exit(tk, temp));
+	return (-1);
 }
 
-int	run_here_doc(t_command *temp, int *err)
+int	run_here_doc(t_cmd *temp, int *err)
 {
 	char	*string;
 
@@ -59,74 +71,40 @@ int	run_here_doc(t_command *temp, int *err)
 	return (0);
 }
 
-int	check_pipes(t_command *temp, int *p, int *fd)
+int	check_pipes(t_cmd *temp, int *p, int *fd)
 {
-	int		test;
-
-	test = -1;
-	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
-	if (temp->n == 0 && pipe(p) == -1)
+//	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
+	if (temp->n == 0)
 	{
 		printf("First pipe\n");
-		return (PIPE_ERROR);
+		if (pipe(p) == -1)
+			return (PIPE_ERROR);
 	}
-	if (temp->before && temp->in == 0)
+	if (temp->before && temp->in == 0 && temp->next)
 	{
-		close(p[1]);
-		printf("After Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
-		test = dup(1);
-		printf("New pipe: %d\n", test);
-		if (test == -1)
+		printf("Temp before\tOld: Pipe in: %d\tPipe out: %d\n", p[0], p[1]);
+		*fd = dup(p[0]);
+		printf("New pipe: %d\n", *fd);
+		if (*fd == -1)
 		{
 			perror("dup failed");
 			printf("Errno: %d\n", errno);
 			return (DUP_ERROR);
 		}
 		close(p[0]);
+		close(p[1]);
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
-//		data = (char *)malloc(sizeof(char));
-//		if (!data)
-//			return (MALLOC);
-//		while (read(fd, data, 1) > 0)
-//			write(p[1], data, 1);
-//		close(fd);
+		printf("Temp before\tNew: Pipe in: %d\tPipe out: %d\n", p[0], p[1]);
 	}
-	*fd = test;
 	return (0);
 }
 
-int	loop_commands(t_minishell *tokens, t_command *temp, int *p, int fd)
+int	loop_commands(t_min *tk, t_cmd *temp, int *p, int fd, pid_t *child_pid, int i)
 {
-	int		status;
-//	char	*data;
 	pid_t	pid;
 
 	printf("Number: %d\n", temp->n);
-//	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
-//	if (temp->n == 0 && pipe(p) == -1)
-//	{
-//		printf("First pipe\n");
-//		return (PIPE_ERROR);
-//	}
-//	printf("After Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
-//	if (temp->before && temp->in == 0)
-//	{
-//		close(p[1]);
-//		fd = dup2(p[0], 127);
-//		printf("New pipe: %d\n", fd);
-//		if (fd == -1)
-//			return (DUP_ERROR);
-//		close(p[0]);
-//		if (pipe(p) == -1)
-//			return (PIPE_ERROR);
-//		data = (char *)malloc(sizeof(char));
-//		if (!data)
-//			return (MALLOC);
-//		while (read(fd, data, 1) > 0)
-//			write(p[1], data, 1);
-//		close(fd);
-//	}
 	pid = fork();
 	if (pid == 0)
 	{
@@ -134,32 +112,38 @@ int	loop_commands(t_minishell *tokens, t_command *temp, int *p, int fd)
 			exit_error((char *)g_error_array[temp->ok - 1], temp->ok);
 		if (temp->in != 0)
 		{
+//			printf("Temp in\n");
 			if (dup2(temp->in, 0) < 0 || close(temp->in) < 0 || close(p[0]))
 				exit_error("dup", 1);
-			printf("Temp in\n");
 		}
-		else if (temp->in == 0)
+		else
 		{
-			if (temp->before)
+			printf("Input: %d\n", fd);
+			if (temp->before && temp->next)
 			{
-				printf("Before exist\n");
+				printf("Fd: %d\n", fd);
 				if (dup2(fd, 0) < 0)
 					exit_error("dup", 1);
 				close(fd);
 			}
+			else if (temp->before && !temp->next)
+			{
+				printf("Pipe: %d\n", fd);
+				if (dup2(p[0], 0) < 0)
+					exit_error("dup", 1);
+			}
 			if (close(p[0]) < 0)
 				exit_error("close", 1);
-			printf("Input\n");
 		}
 		if (temp->out != 1)
 		{
+			write(2, "Temp out\n", 9);
 			if (dup2(temp->out, 1) < 0 || close(temp->out) < 0 || close(p[1]) < 0)
 				exit_error("dup", 1);
-			write(2, "Temp out\n", 9);
-//			printf("Temp out\n")
 		}
-		else if (temp->out == 1)
+		else
 		{
+			write(2, "Output\n", 7);
 			if (temp->next)
 			{
 				printf("Next exist\n");
@@ -168,179 +152,83 @@ int	loop_commands(t_minishell *tokens, t_command *temp, int *p, int fd)
 			}
 			if (close(p[1]) < 0)
 				exit_error("close", 1);
-			write(2, "Output\n", 7);
-//			printf("Output\n");
 		}
-		execve(temp->cmd, temp->args, tokens->env);
+		execve(temp->cmd, temp->args, tk->env_vars);
 		exit_error("execve", 1);
-//		execute_child(tokens, temp, p);
+//		execute_child(tk, temp, p);
 	}
-	else
-	{
-		close(p[0]);
-		close(p[1]);
-		if (temp->before && temp->in == 0)
-			close(fd);
-		close_here_docs(tokens);
-		waitpid(-1, &status, 0);
-	}
+	child_pid[i] = pid;
 	return (0);
 }
 
-int	execute_commands(t_minishell *tokens)
+int	execute_commands(t_min *tk)
 {
+	int			i;
 	int			err;
 	int			fd;
-	int			pipe[2];
-	t_command	*temp;
+	int			status;
+	int			p[2];
+	pid_t		*child_pid;
+	t_cmd		*temp;
 
-	temp = tokens->command;
+	i = 0;
+	fd = -1; // Vediamo se e' utile
+	child_pid = (pid_t *)malloc(sizeof(pid_t) * tk->num_cmds);
+	if (!child_pid)
+		return (MALLOC);
+	temp = tk->cmds;
 	while (temp)
 	{
 		if (temp->if_here_doc && run_here_doc(temp, &err))
-			return (free_tokens(&tokens, NULL, err));
+			return (free_tokens(&tk, NULL, err));
 		temp = temp->next;
+
 	}
-	temp = tokens->command;
+	temp = tk->cmds;
 	while (temp)
 	{
-		err = check_pipes(temp, pipe, &fd);
+		err = is_builtin(tk, temp);
+		printf("Err: %d\n", err);
 		if (err)
-			return (err);
-		err = loop_commands(tokens, temp, pipe, fd);
-		if (err)
-			return (err);
-		temp = temp->next;
-	}
-	return (0);
-}
-
-/*
-static	int	is_builtin(char *str)
-{
-	if (!ft_strncmp("echo", str, 4))
-		return (1);
-	else if (!ft_strncmp("cd", str, 2))
-		return (2);
-	else if (!ft_strncmp("pwd", str, 3))
-		return (3);
-	else if (!ft_strncmp("export", str, 6))
-		return (4);
-	else if (!ft_strncmp("unset", str, 5))
-		return (5);
-	else if (!ft_strncmp("env", str, 3))
-		return (6);
-	else if (!ft_strncmp("exit", str, 4))
-		return (7);
-	return (0);
-}
-*/
-/*
-int	run_commands(t_minishell *tokens, char *env[])
-{
-	pid_t		pid;
-//	int			p1[2];
-	int			status;
-	t_command	*tmp;
-
-//	printf("token->args: %s\n", token->args[0]);
-	tmp = tokens->command;
-	while (tmp)
-	{
-		if (tmp->ok)
+			exit_error((char *)g_error_array[err], err);
+		else if (err == -1)
 		{
-			printf("Error: ");
-			end_program(NULL, tmp->ok);
-			tmp = tmp->next;
-			continue ;
-		}
-		pid = fork();
-		if (pid == 0)
-		{
-//			if (tmp->in == 0 && tmp->before)
-//			{
-//				if (dup2(tmp->before->pipe[0], ) < 0)
-//				{
-//					perror("Error dup2 input pipe");
-//					exit (0);
-//				}
-//				if (close(tmp->before->pipe[0]) < 0 || close(tmp->before->pipe[1]) < 0)
-//				{
-//					perror("Error close input pipe");
-//					exit (0);
-//				}
-//				write(2, "Dup2 input pipe\n", 16);
-//			}
-//			else
-//			{
-//				if (dup2(tmp->in, 0) < 0)
-//				{
-//					perror("Error dup2 input");
-//					exit (0);
-//				}
-//				if ((tmp->in != 0 && close(tmp->in) < 0) || close(tmp->pipe[0]) < 0)
-//				{
-//					perror("Error close input");
-//					exit(0);
-//				}
-//				write(2, "Dup2 input\n", 11);
-//			}
-//			if (tmp->out == 1 && tmp->next)
-//			{
-//				if (dup2(tmp->pipe[1], 1) < 0)
-//				{
-//					perror("Error dup2 output pipe");
-//					exit (0);
-//				}
-//				if (close(tmp->pipe[1]) < 0 || close(tmp->pipe[0]) < 0)
-//				{
-//					perror("Error close output pipe");
-//					exit (0);
-//				}
-//				write(2, "Dup2 output pipe\n", 17);
-//			}
-//			else
-//			{
-//				if (tmp->out != 1 && dup2(tmp->out, 1) < 0)
-//				{
-//					perror("Error dup2 output");
-//					exit (0);
-//				}
-//				if ((tmp->out != 1 && close(tmp->out) < 0) || close(tmp->pipe[1]) < 0)
-//				{
-//					perror("Error close output");
-//					exit(0);
-//				}
-//				write(2, "Dup2 output\n", 12);
-//			}
-//
-//			if (dup2(tmp->in, 0) < 0 || dup2(tmp->out, 1) < 0)
-//			{
-//				perror("Error dup2");
-//				exit (0);
-//			}
-//
-			execve(tmp->cmd, tmp->args, env);
-			perror("Error execve");
-			exit (0);
-		}
-		else if (pid > 0)
-		{
-			waitpid(pid, &status, 0);
-			if (WIFEXITED(status))
-			{
-				tokens->exit_value = WEXITSTATUS(status);
-				printf("Codice uscita child: %d\n", tokens->exit_value);
-			}
+			err = check_pipes(temp, p, &fd);
+			if (err)
+				return (err);
+			err = loop_commands(tk, temp, p, fd, child_pid, i);
+			if (err)
+				return (err);
 		}
 		else
-		{
-			perror("fork");
-			return (1);
-		}
-		tmp = tmp->next;
+			tk->num_cmds--;
+		temp = temp->next;
+		i++;
 	}
-//	free(token->args[0]);
+	close(p[0]);
+	close(p[1]);
+	if (fd != -1)
+		close(fd);
+	close_here_docs(tk);
+	int finished = 0;
+	int	final = 0;
+	while (finished < tk->num_cmds)
+	{
+		i = -1;
+		while (++i < tk->num_cmds)
+		{
+			int result = waitpid(child_pid[i], &status, WNOHANG);
+			if (result > 0)
+			{
+				finished++;
+				if (i == tk->num_cmds - 1)
+				{
+					final = status;
+					printf("Final: %d\n", final);
+				}
+			}
+		}
+	}
+	printf("Status: %d\n", WEXITSTATUS(final));
 	return (0);
 }
-*/

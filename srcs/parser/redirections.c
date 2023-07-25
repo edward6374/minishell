@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/08 18:39:12 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/25 20:18:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	change_tmp(t_parser **tmp)
 		(*tmp)->before = NULL;
 }
 
-int	minor_redir(t_parser **tmp, t_command *new, int mode)
+int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	if (!mode)
 	{
@@ -66,7 +66,7 @@ int	minor_redir(t_parser **tmp, t_command *new, int mode)
 	return (0);
 }
 
-int	major_redir(t_parser **tmp, t_command *new, int mode)
+int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	printf("Out before: %d\n", new->out);
 	if (new->out != 1)
@@ -106,7 +106,7 @@ int	rel_path_file(t_parser **tmp)
 	return (0);
 }
 
-int	take_redir(t_parser **tmp, t_command *new)
+int	take_redir(t_parser **tmp, t_cmd *new)
 {
 	int	err;
 
