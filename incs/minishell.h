@@ -54,6 +54,13 @@ const static char	*g_error_array[] = {
 	"numeric argument required", \
 };
 
+typedef struct	s_env
+{
+	char			*str;
+	struct s_env	*next;
+	struct s_env	*before;
+}	t_env;
+
 typedef struct	s_parser
 {
 	char			*word;
@@ -81,7 +88,7 @@ typedef struct s_min
 	int		num_cmds;
 	int		exit_value;
 	char	**path;
-	char	**env_vars;
+	t_env	*env;
 	t_cmd	*cmds;
 }	t_min;
 
@@ -106,8 +113,8 @@ char		**free_double_char(char **old, int i);
 t_min		*free_struct(t_min **tk);
 
 /* ---			Free_tokens.c			--- */
+void		free_env(t_env **first);
 void		free_commands(t_cmd **first);
-
 int			free_tokens(t_min **tk, t_parser **temp, int out);
 
 #endif

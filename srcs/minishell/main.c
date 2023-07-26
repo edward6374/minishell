@@ -14,29 +14,35 @@
 int	take_env(t_min *tk, char *env[])
 {
 	int		i;
-	char	**new;
+	t_env	*new;
+	t_env	*temp;
 
-	i = 0;
-	while (env[i])
-		i++;
-	new = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!new)
-		return (MALLOC);
 	i = -1;
+	temp = tk->env;
 	while (env[++i])
 	{
-		if (!check_name(env[i], "SHLVL"))
-			new[i] = ft_strjoin(ft_substr(env[i], 0, 6), \
-				ft_itoa(ft_atoi(ft_strrchr(env[i], '=') + 1) + 1));
-		else if (!check_name(env[i], "OLDPWD"))
-			new[i] = ft_substr(env[i], 0, 7);
+		new = (t_env *)malloc(sizeof(t_env));
+		if (!new)
+			return (MALLOC);
+		new->str = ft_strdup(env[i]);
+		if (!new->str)
+			return (free_pointer(new, MALLOC));
+		new->next = NULL;
+		if (!tk->env)
+		{
+			((tk->env = new) && (tk->env->before = NULL));
+			temp = tk->env;
+		}
 		else
-			new[i] = ft_strdup(env[i]);
-		if (!new[i])
-			return (free_double_int(new, i));
+			((temp->next = new) && (temp->next->before = temp) \
+			 && (temp = temp->next));
 	}
-	new[i] = NULL;
-	tk->env_vars = new;
+//	temp = tk->env;
+//	while (temp)
+//	{
+//		printf("Env: %s\n", temp->str);
+//		temp = temp->next;
+//	}
 	return (0);
 }
 
@@ -48,7 +54,7 @@ static t_min	*init_struct(char **argv, char *env[])
 	tk = (t_min *)malloc(sizeof(t_min));
 	if (!tk)
 		return (NULL);
-	tk->env_vars = NULL;
+	tk->env = NULL;
 	if (!ft_find_path(env))
 		tk->path = NULL;
 	else
@@ -77,7 +83,7 @@ static int	program(t_min *tk, char *env[], char *string)
 	err = parser(tk, env, string);
 	if (err)
 	{
-		printf("Error:\t");
+		printf("Parser error:\t");
 		return (end_program(&string, err));
 	}
 	printf("Number of commands: %d\n", tk->num_cmds);
@@ -90,7 +96,6 @@ static int	program(t_min *tk, char *env[], char *string)
 	free_commands(&tk->cmds);
 	tk->num_cmds = 0;
 	free (string);
-	string = NULL;
 	return (0);
 }
 
@@ -110,7 +115,10 @@ int	main(int argc, char *argv[], char *env[])
 			string = readline("\033[1;32m min\033[1;37"
 					"mis\033[1;31mhell\033[0;0m> ");
 			if (!string)
+			{
+				printf("NULL\n");
 				return (d_key());
+			}
 			else if (string && string[0] == '\0')
 				free(string);
 			else

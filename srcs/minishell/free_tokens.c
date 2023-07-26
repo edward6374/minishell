@@ -6,11 +6,28 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/25 20:20:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/26 17:54:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
+
+void	free_env(t_env **first)
+{
+	t_env	*next;
+
+	next = (*first)->next;
+	while (next)
+	{
+		free((*first)->str);
+		free((*first));
+		(*first) = next;
+		next = (*first)->next;
+	}
+	free((*first)->str);
+	free((*first));
+	*first = NULL;
+}
 
 void	free_commands(t_cmd **first)
 {
@@ -38,7 +55,8 @@ int	free_tokens(t_min **tk, t_parser **temp, int out)
 
 	if ((*tk)->cmds)
 		free_commands(&(*tk)->cmds);
-	free_double_void((*tk)->env_vars);
+	if ((*tk)->env)
+		free_env(&(*tk)->env);
 	free_double_void((*tk)->path);
 	free((*tk));
 	*tk = NULL;

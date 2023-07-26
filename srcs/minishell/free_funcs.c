@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/25 20:12:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/26 17:53:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_min	*free_struct(t_min **tk)
 {
 	free_double_void((*tk)->path);
-	free_double_void((*tk)->env_vars);
+	free_env(&(*tk)->env);
 	free_commands(&(*tk)->cmds);
 	free(*tk);
 	*tk = NULL;

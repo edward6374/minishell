@@ -6,26 +6,34 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/25 20:33:20 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/26 18:01:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/execute.h"
 
-void	close_here_docs(t_min *tk)
+char	**take_double(t_env *first)
 {
-	t_cmd	*temp;
+	int		i;
+	char	**env;
+	t_env	*temp;
 
-	temp = tk->cmds;
+	i = 0;
+	temp = first;
+	while (temp)
+		((i++) && (temp = temp->next));
+	env = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!env)
+		return (NULL);
+	((env[i] = NULL) && (i = -1) && (temp = first));
 	while (temp)
 	{
-		if (temp->if_here_doc)
-		{
-			close(temp->fd_here_doc[0]);
-			close(temp->fd_here_doc[1]);
-		}
+		env[++i] = ft_strdup(temp->str);
+		if (!env[i])
+			return (free_double_char(env, i));
 		temp = temp->next;
 	}
+	return (env);
 }
 
 static	int	is_builtin(t_min *tk, t_cmd *temp)
@@ -45,6 +53,22 @@ static	int	is_builtin(t_min *tk, t_cmd *temp)
 	else if (!ft_strncmp("exit", temp->args[0], 5))
 		return (ft_exit(tk, temp));
 	return (-1);
+}
+
+void	close_here_docs(t_min *tk)
+{
+	t_cmd	*temp;
+
+	temp = tk->cmds;
+	while (temp)
+	{
+		if (temp->if_here_doc)
+		{
+			close(temp->fd_here_doc[0]);
+			close(temp->fd_here_doc[1]);
+		}
+		temp = temp->next;
+	}
 }
 
 int	run_here_doc(t_cmd *temp, int *err)
@@ -103,13 +127,12 @@ int	check_pipes(t_cmd *temp, int *p, int *fd)
 int	loop_commands(t_min *tk, t_cmd *temp, int *p, int fd, pid_t *child_pid, int i)
 {
 	pid_t	pid;
+	char	**env;
 
 	printf("Number: %d\n", temp->n);
 	pid = fork();
 	if (pid == 0)
 	{
-		if (temp->ok)
-			exit_error((char *)g_error_array[temp->ok - 1], temp->ok);
 		if (temp->in != 0)
 		{
 //			printf("Temp in\n");
@@ -153,7 +176,8 @@ int	loop_commands(t_min *tk, t_cmd *temp, int *p, int fd, pid_t *child_pid, int 
 			if (close(p[1]) < 0)
 				exit_error("close", 1);
 		}
-		execve(temp->cmd, temp->args, tk->env_vars);
+		env = take_double(tk->env);
+		execve(temp->cmd, temp->args, env);
 		exit_error("execve", 1);
 //		execute_child(tk, temp, p);
 	}
@@ -172,7 +196,9 @@ int	execute_commands(t_min *tk)
 	t_cmd		*temp;
 
 	i = 0;
-	fd = -1; // Vediamo se e' utile
+	fd = -1; // Serve
+	p[0] = -1;
+	p[1] = -1;
 	child_pid = (pid_t *)malloc(sizeof(pid_t) * tk->num_cmds);
 	if (!child_pid)
 		return (MALLOC);
@@ -189,13 +215,23 @@ int	execute_commands(t_min *tk)
 	{
 		err = is_builtin(tk, temp);
 		printf("Err: %d\n", err);
-		if (err)
-			exit_error((char *)g_error_array[err], err);
+		if (err > 0)
+		{
+			printf("Toma:\t%d\n", err);
+			exit_error((char *)g_error_array[err - 1], 1);
+		}
 		else if (err == -1)
 		{
 			err = check_pipes(temp, p, &fd);
 			if (err)
 				return (err);
+			if (temp->ok)
+			{
+				printf("Error: \t%s\n", g_error_array[temp->ok - 1]);
+				temp = temp->next;
+				tk->num_cmds--;
+				continue ;
+			}
 			err = loop_commands(tk, temp, p, fd, child_pid, i);
 			if (err)
 				return (err);
@@ -203,7 +239,7 @@ int	execute_commands(t_min *tk)
 		else
 			tk->num_cmds--;
 		temp = temp->next;
-		i++;
+		printf("Temp: %p\n", temp);
 	}
 	close(p[0]);
 	close(p[1]);
