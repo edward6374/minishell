@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/26 18:01:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/27 17:12:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ char	**take_double(t_env *first)
 	return (env);
 }
 
-static	int	is_builtin(t_min *tk, t_cmd *temp)
+static	int	is_builtin(t_min *tk, t_cmd *temp, int *p)
 {
 	if (!ft_strncmp("echo", temp->args[0], 5))
-		return (ft_echo(temp));
+		return (ft_echo(temp, p));
 	else if (!ft_strncmp("cd", temp->args[0], 3))
 		return (ft_cd(temp));
 	else if (!ft_strncmp("pwd", temp->args[0], 4))
-		return (ft_pwd());
+		return (ft_pwd(temp, p));
 	else if (!ft_strncmp("export", temp->args[0], 7))
-		return (ft_export(tk, temp));
+		return (ft_export(tk, temp, p));
 	else if (!ft_strncmp("unset", temp->args[0], 6))
-		return (ft_unset(tk, temp));
+		return (ft_unset(tk, temp, p));
 	else if (!ft_strncmp("env", temp->args[0], 4))
-		return (ft_env(tk, temp));
+		return (ft_env(tk, temp, p));
 	else if (!ft_strncmp("exit", temp->args[0], 5))
-		return (ft_exit(tk, temp));
+		return (ft_exit(tk, temp, p));
 	return (-1);
 }
 
@@ -213,7 +213,10 @@ int	execute_commands(t_min *tk)
 	temp = tk->cmds;
 	while (temp)
 	{
-		err = is_builtin(tk, temp);
+		err = check_pipes(temp, p, &fd);
+		if (err)
+			return (err);
+		err = is_builtin(tk, temp, p);
 		printf("Err: %d\n", err);
 		if (err > 0)
 		{
@@ -222,9 +225,6 @@ int	execute_commands(t_min *tk)
 		}
 		else if (err == -1)
 		{
-			err = check_pipes(temp, p, &fd);
-			if (err)
-				return (err);
 			if (temp->ok)
 			{
 				printf("Error: \t%s\n", g_error_array[temp->ok - 1]);

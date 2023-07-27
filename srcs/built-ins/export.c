@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/26 19:42:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/27 16:37:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int	ft_export(t_min *tk, t_cmd *temp)
 			((new_temp->next = new_elem) \
 			 && (new_temp->next->before = new_temp) \
 			 && (new_temp = new_temp->next));
+		loop = loop->next;
 	}
 //	*new_env = (char **)malloc(sizeof(char *) * (i + 1));
 //	if (!*new_env)
@@ -131,7 +132,6 @@ int	ft_export(t_min *tk, t_cmd *temp)
 //		if (!(*new_env)[i])
 //			return (free_double_int(*new_env, i));
 //	}
-	printf("Here\n");
 //	if (add_vars(temp, *new_env, i))
 //		return (MALLOC);
 //	free_double_void(*old_env);
