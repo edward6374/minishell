@@ -56,7 +56,8 @@ const static char	*g_error_array[] = {
 
 typedef struct	s_env
 {
-	char			*str;
+	char			*name;
+	char			*value;
 	struct s_env	*next;
 	struct s_env	*before;
 }	t_env;
@@ -113,7 +114,7 @@ char		**free_double_char(char **old, int i);
 t_min		*free_struct(t_min **tk);
 
 /* ---			Free_tokens.c			--- */
-void		free_env(t_env **first);
+int			free_env(t_env **first);
 void		free_commands(t_cmd **first);
 int			free_tokens(t_min **tk, t_parser **temp, int out);
 

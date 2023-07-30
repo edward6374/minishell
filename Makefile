@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/07/25 18:52:08 by vduchi           ###   ########.fr        #
+#    Updated: 2023/07/29 19:46:01 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 -include mk_files/sources_parser.mk
 -include mk_files/sources_execute.mk
--include mk_files/sources_built_ins.mk
+#-include mk_files/sources_built_ins.mk
 -include mk_files/sources_minishell.mk
 
 #=-=-=-=-=-=-=- COLORS DEFINITION =-=-=-=-=-=-=-=-=-#
@@ -66,9 +66,9 @@ MKDIR			=	mkdir -p
 
 #=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
-$(OBJ_DIR_BI)/%.o	:	$(SRC_DIR_BI)/%.c
-	@$(CC) -c $< $(CFLAGS) $(DFLAGS_BI) -o $@
-	@echo "$(YELLOW)$(patsubst $(SRC_DIR_BI)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
+#$(OBJ_DIR_BI)/%.o	:	$(SRC_DIR_BI)/%.c
+#	@$(CC) -c $< $(CFLAGS) $(DFLAGS_BI) -o $@
+#	@echo "$(YELLOW)$(patsubst $(SRC_DIR_BI)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
 $(OBJ_DIR_MS)/%.o	:	$(SRC_DIR_MS)/%.c
 	@$(CC) -c $< $(CFLAGS) $(DFLAGS_MS) -o $@
@@ -92,7 +92,7 @@ all				:	directories $(LIBFT_PATH) $(RD_PATH)
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
+$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_PARSER) $(OBJS_TESTER)
 	@$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 

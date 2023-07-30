@@ -6,27 +6,32 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/26 17:54:37 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/29 19:05:14 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/minishell.h"
 
-void	free_env(t_env **first)
+int	free_env(t_env **first)
 {
 	t_env	*next;
 
 	next = (*first)->next;
 	while (next)
 	{
-		free((*first)->str);
+		free((*first)->name);
+		free((*first)->value);
 		free((*first));
 		(*first) = next;
 		next = (*first)->next;
 	}
-	free((*first)->str);
+	if ((*first)->name)
+		free((*first)->name);
+	if ((*first)->value)
+		free((*first)->value);
 	free((*first));
 	*first = NULL;
+	return (MALLOC);
 }
 
 void	free_commands(t_cmd **first)

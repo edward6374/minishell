@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/27 17:12:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/29 19:45:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ char	**take_double(t_env *first)
 	((env[i] = NULL) && (i = -1) && (temp = first));
 	while (temp)
 	{
-		env[++i] = ft_strdup(temp->str);
+		env[++i] = ft_strjoin(temp->name, temp->value);;
 		if (!env[i])
 			return (free_double_char(env, i));
 		temp = temp->next;
 	}
 	return (env);
 }
-
-static	int	is_builtin(t_min *tk, t_cmd *temp, int *p)
+/*
+static	int	is_builtin(t_min *tk, t_cmd *temp, int p)
 {
 	if (!ft_strncmp("echo", temp->args[0], 5))
 		return (ft_echo(temp, p));
@@ -47,14 +47,14 @@ static	int	is_builtin(t_min *tk, t_cmd *temp, int *p)
 	else if (!ft_strncmp("export", temp->args[0], 7))
 		return (ft_export(tk, temp, p));
 	else if (!ft_strncmp("unset", temp->args[0], 6))
-		return (ft_unset(tk, temp, p));
+		return (ft_unset(tk, temp));
 	else if (!ft_strncmp("env", temp->args[0], 4))
 		return (ft_env(tk, temp, p));
 	else if (!ft_strncmp("exit", temp->args[0], 5))
-		return (ft_exit(tk, temp, p));
+		return (ft_exit(tk, temp));
 	return (-1);
 }
-
+*/
 void	close_here_docs(t_min *tk)
 {
 	t_cmd	*temp;
@@ -216,15 +216,15 @@ int	execute_commands(t_min *tk)
 		err = check_pipes(temp, p, &fd);
 		if (err)
 			return (err);
-		err = is_builtin(tk, temp, p);
-		printf("Err: %d\n", err);
-		if (err > 0)
-		{
-			printf("Toma:\t%d\n", err);
-			exit_error((char *)g_error_array[err - 1], 1);
-		}
-		else if (err == -1)
-		{
+//		err = is_builtin(tk, temp, p[1]);
+//		printf("Err: %d\n", err);
+//		if (err > 0)
+//		{
+//			printf("Toma:\t%d\n", err);
+//			exit_error((char *)g_error_array[err - 1], 1);
+//		}
+//		else if (err == -1)
+//		{
 			if (temp->ok)
 			{
 				printf("Error: \t%s\n", g_error_array[temp->ok - 1]);
@@ -235,9 +235,9 @@ int	execute_commands(t_min *tk)
 			err = loop_commands(tk, temp, p, fd, child_pid, i);
 			if (err)
 				return (err);
-		}
-		else
-			tk->num_cmds--;
+//		}
+//		else
+//			tk->num_cmds--;
 		temp = temp->next;
 		printf("Temp: %p\n", temp);
 	}

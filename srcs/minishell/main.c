@@ -18,15 +18,15 @@ int	take_env(t_min *tk, char *env[])
 	t_env	*temp;
 
 	i = -1;
-	temp = tk->env;
 	while (env[++i])
 	{
-		new = (t_env *)malloc(sizeof(t_env));
+		new = ft_calloc(1, sizeof(t_env));
 		if (!new)
 			return (MALLOC);
-		new->str = ft_strdup(env[i]);
-		if (!new->str)
-			return (free_pointer(new, MALLOC));
+		new->name = ft_substr(env[i], 0, ft_strrchr(env[i], '=') - env[i] + 1);
+		new->value = ft_strdup(ft_strrchr(env[i], '=') + 1);
+		if (!new->name || !new->value)
+			return (free_env(&new));
 		new->next = NULL;
 		if (!tk->env)
 		{
@@ -37,12 +37,12 @@ int	take_env(t_min *tk, char *env[])
 			((temp->next = new) && (temp->next->before = temp) \
 			 && (temp = temp->next));
 	}
-//	temp = tk->env;
-//	while (temp)
-//	{
-//		printf("Env: %s\n", temp->str);
-//		temp = temp->next;
-//	}
+	temp = tk->env;
+	while (temp)
+	{
+		printf("Env: %s->%s\n", temp->name, temp->value);
+		temp = temp->next;
+	}
 	return (0);
 }
 
@@ -87,12 +87,12 @@ static int	program(t_min *tk, char *env[], char *string)
 		return (end_program(&string, err));
 	}
 	printf("Number of commands: %d\n", tk->num_cmds);
-	err = execute_commands(tk);
-	if (err)
-	{
-		printf("Execute error:\t");
-		return (end_program(&string, err));
-	}
+//	err = execute_commands(tk);
+//	if (err)
+//	{
+//		printf("Execute error:\t");
+//		return (end_program(&string, err));
+//	}
 	free_commands(&tk->cmds);
 	tk->num_cmds = 0;
 	free (string);

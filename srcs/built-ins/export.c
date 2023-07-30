@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/27 16:37:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/07/29 19:38:29 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,94 +52,71 @@ int	print_env(t_env *env)
 	small = env;
 	while (temp)
 	{
-		if (ft_strncmp(temp->str, small->str, ft_strlen(small->str)) < 0)
+		if (ft_strncmp(temp->name, small->name, ft_strlen(small->name)) < 0)
 			small = temp;
 		temp = temp->next;
 		len++;
 	}
-	printf("declare -x %s\n", small->str);
+	printf("declare -x %s%s\n", small->name, small->value);
 	while (++i < len - 1)
 	{
 		small = loop_all_env(env, small);
-		printf("declare -x %s\n", small->str);
+		printf("declare -x %s%s\n", small->name, small->value);
 	}
 	return (0);
 }
 
-int	add_vars(t_cmd *temp, char **new_env, int i)
+int	add_update_var(t_env *env, char *new, int mode)
 {
-	int	k;
+	int	i;
+	int	s_q;
+	int	d_q;
 
-	k = 0;
-	while (temp->args[++k])
+	s_q = 0;
+	d_q = 0;
+	if (mode && ft_strrchr(new, '\'') && ft_strrchr(new, '\"'))
 	{
-		if (!ft_isalpha(temp->args[k][0]) && temp->args[k][0] != '_')
-		{
-			printf("minishell: export: `%s': not a valid identifier\n", \
-				temp->args[k]);
-			continue ;
-		}
-		new_env[i] = ft_strdup(temp->args[k]);
-		printf("I: %d\tArg: %p\t%s\tNew: %p\t%s\n", i, temp->args[k], temp->args[k], new_env[i], new_env[i]);
-		if (!new_env[i])
-			return (free_double_int(new_env, i));
-		i++;
+		printf("minishell: export: %s: not a valid identifier\n");
+		return (0);
 	}
-	printf("I in the end: %d\n", i);
-	new_env[i] = NULL;
-	return (0);
+	if (!mode)
+	{
+		free(env->value);
+		i = ft_strrchr(new, '=') - new;
+		if (new[i + 1] == '\"')
+			i++;
+		while (new[++i])
+		{
+		}
+	}
 }
 
-int	ft_export(t_min *tk, t_cmd *temp)
+int	ft_export(t_min *tk, t_cmd *temp, int p)
 {
-	t_env	*new_list;
-	t_env	*new_elem;
-	t_env	*new_temp;
-	t_env	*loop;
+	int		i;
+	int		res;
+	t_env	*env;
 
-	loop = tk->env;
-	new_list = NULL;
+	i = 0;
+	res = 0;
 	if (!temp->args[1] || (temp->args[1] && temp->args[1][0] == '$'))
 		return (print_env(tk->env));
-	while (loop)
+	while (temp->args[++i])
 	{
-		new_elem = (t_env *)malloc(sizeof(t_env));
-		if (!new_elem)
-			return (free_tokens(&tk, NULL, 1));
-		new_elem->next = NULL;
-		new_elem->str = ft_strdup(loop->str);
-		if (!new_elem->str)
+		env = tk->env;
+		while (env)
 		{
-			free(new_elem);
-			return (free_tokens(&tk, NULL, 1));
+			if (ft_strrchr(temp->args[i], '=')
+				&& !ft_strncmp(temp->args[i], env->name, ft_strlen(env->name)))
+			{
+				if (add_update_var(env, temp->args[i], 0))
+					return (MALLOC);
+				break ;
+			}
+			env = env->next;
 		}
-		if (!new_temp)
-			((new_list = new_elem) && (new_list->before = NULL) \
-			 && (new_temp = new_list));
-		else
-			((new_temp->next = new_elem) \
-			 && (new_temp->next->before = new_temp) \
-			 && (new_temp = new_temp->next));
-		loop = loop->next;
+		if (!env && add_update_var(tk_env, temp->args[i], 1))
+			return (MALLOC);
 	}
-//	*new_env = (char **)malloc(sizeof(char *) * (i + 1));
-//	if (!*new_env)
-//		return (MALLOC);
-//	i = -1;
-//	while ((*old_env)[++i])
-//	{
-//		(*new_env)[i] = ft_strdup((*old_env)[i]);
-//		if (!(*new_env)[i])
-//			return (free_double_int(*new_env, i));
-//	}
-//	if (add_vars(temp, *new_env, i))
-//		return (MALLOC);
-//	free_double_void(*old_env);
-//	free(old_env);
-//	tk->env_vars = new_env;
-//	print_env(*new_env);
-//	i = -1;
-//	while (*tk->env_vars[++i])
-//		printf("New env: %s\t%p\n", *tk->env_vars[i], *tk->env_vars[i]);
 	return (0);
 }
