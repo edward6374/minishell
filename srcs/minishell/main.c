@@ -93,7 +93,8 @@ static int	program(t_min *tk, char *env[], char *string)
 //		printf("Execute error:\t");
 //		return (end_program(&string, err));
 //	}
-	free_commands(&tk->cmds);
+//	if (tk->cmds)
+		free_commands(&tk->cmds);
 	tk->num_cmds = 0;
 	free (string);
 	return (0);

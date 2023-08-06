@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/25 20:17:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/06 17:56:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	look_for_redir(t_parser **split, t_cmd *new)
 			return (MALLOC);
 		else if (err)
 		{
+			printf("Take redir error: %d\n", err);
 			new->ok = err; // Da controllare se con altri errori c'e' da uscire direttamente o no
 			return (err);
 		}
@@ -53,7 +54,7 @@ void	print_commands(t_min *tk)
 
 	i = 0;
 	cmd = tk->cmds;
-//	printf("Comm %p\n", cmd);
+	printf("Comm %p\n", cmd);
 	while (cmd)
 	{
 		k = -1;
@@ -92,10 +93,11 @@ int	create_token(t_min **tk, t_parser **split, t_cmd *new)
 	t_cmd	*lst;
 
 	lst = get_last_cmd(tk);
+	printf("Create token word: %s\n", (*split)->word);
 	err = add_command(tk, split, new);
 	if (err == MALLOC)
 		return (MALLOC);
-	else if (err)
+	else if (err && !new->ok)
 		new->ok = err;
 	if (add_arguments(split, new))
 		return (MALLOC);
@@ -123,17 +125,25 @@ int	load_commands(t_min *tk, t_parser *split)
 		return (err);
 	while (split)
 	{
+		printf("Load_commands: --%s--\n", split->word);
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
 			return (MALLOC);
 		err = look_for_redir(&split, new);
 		if (err == MALLOC)
+		{
+			printf("Malloc error\n");
 			return (MALLOC);
+		}
 		else if (err)		// Pulire il new
-			return (0);
+		{
+			printf("Here\n");
+			new->ok = err;
+		}
 		err = create_token(&tk, &split, new);
 		if (err)
 			return (err);
+		printf("Token created\n");
 		new = NULL;
 	}
 	print_commands(tk);

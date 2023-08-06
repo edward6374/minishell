@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/25 20:18:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/06 17:54:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ int	take_redir(t_parser **tmp, t_cmd *new)
 		return (major_redir(tmp, new, 0));
 	else if (!ft_strncmp((*tmp)->word, ">>", 3))
 		return (major_redir(tmp, new, 1));
-	printf("No redir\tWord: --%s--\n", (*tmp)->word);
+	printf("No redir\tWord: --%s--\tError value: %d\n", (*tmp)->word, err);
 	return (0);
 }

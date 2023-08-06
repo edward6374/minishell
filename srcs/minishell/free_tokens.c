@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/29 19:05:14 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/06 17:38:56 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	free_tokens(t_min **tk, t_parser **temp, int out)
 	t_parser	*mov;
 	t_parser	*after;
 
+	printf("Free tokens\n");
 	if ((*tk)->cmds)
 		free_commands(&(*tk)->cmds);
 	if ((*tk)->env)
@@ -78,8 +79,8 @@ int	free_tokens(t_min **tk, t_parser **temp, int out)
 		}
 		free(mov->word);
 		free(mov);
+		*temp = NULL;
 	}
-	*temp = NULL;
 	return (out);
 }
 
