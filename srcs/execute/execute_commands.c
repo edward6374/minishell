@@ -6,11 +6,36 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/29 19:45:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/09 20:56:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/execute.h"
+
+void end_exec(t_min *tk, pid_t *child_pid, char **env)
+{
+	int	final;
+	int	status;
+	int finished;
+
+	final = 0;
+	status = 0;
+	finished = 0;
+	while (finished < tk->num_cmds)
+	{
+		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1]) // Te lo explico manana
+		{
+			final = status;
+			printf("Final: %d\n", final);
+		}
+		finished++;
+	}
+	printf("Status: %d\n", WEXITSTATUS(final));
+	tk->exit_value = WEXITSTATUS(final);
+	if (child_pid)
+		free(child_pid);
+	free_double_void(env);
+}
 
 char	**take_double(t_env *first)
 {
@@ -55,60 +80,64 @@ static	int	is_builtin(t_min *tk, t_cmd *temp, int p)
 	return (-1);
 }
 */
-void	close_here_docs(t_min *tk)
+void	close_all_pipes(t_min *tk, int *p, int fd)
 {
 	t_cmd	*temp;
 
 	temp = tk->cmds;
 	while (temp)
 	{
-		if (temp->if_here_doc)
+		if (temp->here_doc->if_hdoc)
 		{
-			close(temp->fd_here_doc[0]);
-			close(temp->fd_here_doc[1]);
+			close(temp->here_doc->fd_hdoc[0]);
+			close(temp->here_doc->fd_hdoc[1]);
 		}
 		temp = temp->next;
 	}
+	if (close(p[0]) < 0)
+		write(2, "Close all input error\n", 22);
+	if (close(p[1]) < 0)
+		write(2, "Close all output error\n", 23);
+	if (fd != -1)
+		close(fd);
 }
 
-int	run_here_doc(t_cmd *temp, int *err)
+int	run_here_doc(t_cmd *tmp)
 {
 	char	*string;
 
-	if (pipe(temp->fd_here_doc) == -1)
-	{
-		*err = PIPE_ERROR;
-		return (1);
-	}
-	close(temp->fd_here_doc[0]);
+	if (!tmp->here_doc->if_hdoc)
+		return (0);
+	if (pipe(tmp->here_doc->fd_hdoc) == -1)
+		return (PIPE_ERROR);
+	close(tmp->here_doc->fd_hdoc[0]);
 	while (42)
 	{
 		string = readline(">");
-		if (!string || !ft_strncmp(string, temp->stop_word, ft_strlen(string)))
+		if (!ft_strncmp(string, tmp->here_doc->stop_word, ft_strlen(string)))
 			break ;
-		write(temp->fd_here_doc[1], string, ft_strlen(string));
-		write(temp->fd_here_doc[1], "\n", 1);
+		write(tmp->here_doc->fd_hdoc[1], string, ft_strlen(string));
+		write(tmp->here_doc->fd_hdoc[1], "\n", 1);
 		free(string);
+		string = NULL;
 	}
+	printf("\033[38;5;209mRun here doc\n\033[0;97m");
 	if (string)
 		free(string);
 	return (0);
 }
 
-int	check_pipes(t_cmd *temp, int *p, int *fd)
+int	check_temp_fd(t_cmd *temp, int *p, int *fd)
 {
-//	printf("Before Pipe out: %d\tPipe in: %d\n", p[1], p[0]);
 	if (temp->n == 0)
 	{
-		printf("First pipe\n");
+		printf("\033[0;97mFirst pipe\n\n");
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
 	}
-	if (temp->before && temp->in == 0 && temp->next)
+	if (temp->before && temp->in_fd == 0 && temp->next)
 	{
-		printf("Temp before\tOld: Pipe in: %d\tPipe out: %d\n", p[0], p[1]);
 		*fd = dup(p[0]);
-		printf("New pipe: %d\n", *fd);
 		if (*fd == -1)
 		{
 			perror("dup failed");
@@ -119,152 +148,162 @@ int	check_pipes(t_cmd *temp, int *p, int *fd)
 		close(p[1]);
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
-		printf("Temp before\tNew: Pipe in: %d\tPipe out: %d\n", p[0], p[1]);
+		printf("\033[0;97mTemp before\tNew: Pipe in: %d\tPipe out: %d\n\n", p[0], p[1]);
 	}
 	return (0);
 }
 
-int	loop_commands(t_min *tk, t_cmd *temp, int *p, int fd, pid_t *child_pid, int i)
+/* // NO BORRAR, esta es la version pequena, sin comentarios ni write
+void	redirect_pipes(t_cmd *tmp, int *p, int fd)
 {
+	if (tmp->in_fd != 0)
+		((dup2(tmp->in_fd, 0)) && (close(tmp->in_fd)));
+	else
+	{
+		if (tmp->before && tmp->next)
+			((dup2(fd, 0)) && (close(fd)));
+		else if (tmp->before && !tmp->next)
+			dup2(p[0], 0);
+	}
+	close(p[0]);
+	if (tmp->out_fd != 1)
+		((dup2(tmp->out_fd, 0)) && (close(tmp->out_fd)));
+	else
+		((tmp->next) && (dup2(p[1], 1)));
+	close(p[1]);
+}
+*/
+
+void	redirect_pipes(t_cmd *temp, int *p, int fd)
+{
+	if (temp->in_fd != 0)
+	{
+		write(2, "Temp in\t", 8);
+		if (dup2(temp->in_fd, 0) < 0)
+			exit_error("dup_in", 1);
+		close(temp->in_fd);
+	}
+	else
+	{
+		write(2, "Input\t", 6);
+		if (temp->before && temp->next)
+		{
+			write(2, "Fd\t", 3);
+			if (dup2(fd, 0) < 0)
+				exit_error("dup_fd", 1);
+			close(fd);
+		}
+		else if (temp->before && !temp->next)
+		{
+			write(2, "Pipe input\t", 11);
+			if (dup2(p[0], 0) < 0)
+				exit_error("dup_pipe", 1);
+		}
+	}
+	write(2, "Close input\n", 12);
+	close(p[0]);
+	if (temp->out_fd != 1)
+	{
+		write(2, "Temp out\t", 9);
+		if (dup2(temp->out_fd, 0) < 0)
+			exit_error("dup_in", 1);
+		close(temp->out_fd);
+	}
+	else
+	{
+		write(2, "Output\t", 7);
+		if (temp->next)
+		{
+			write(2, "Pipe output\t", 12);
+			if (dup2(p[1], 1) < 0)
+				exit_error("dup_pipe", 1);
+		}
+	}
+	write(2, "Close output\n\n", 14);
+	close(p[1]);
+}
+
+int	check_before_exec(t_min *tk, t_cmd *tmp, int *p, int *fd)
+{
+	int	err;
+
+	err = check_temp_fd(tmp, p, fd); //Es por el dup error y el pipe error -> borrar
+	if (err)
+		return (err);
+//	err = is_builtin(tk, tmp, p[1]); //Todo esto hay que activarlo cuando se trabaja con los built-ins
+//	if (err > 0)
+//		exit_error((char *)g_error_array[err - 1], 1);
+//	else if (err == -1)
+//	{
+		if (tmp->ok)
+		{
+			printf("Error: \t%s\n", g_error_array[tmp->ok - 1]);
+			tmp = tmp->next;
+			tk->num_cmds--;
+			return (0);
+		}
+//	}
+//	else
+//		tk->num_cmds--;
+	return (-1);
+}
+
+void	child(t_cmd *tmp, char **env, int *p, int fd)
+{
+	redirect_pipes(tmp, p, fd);
+	execve(tmp->cmd, tmp->args, env);
+}
+
+int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
+{
+	int		err;
 	pid_t	pid;
+	t_cmd	*tmp;
 	char	**env;
 
-	printf("Number: %d\n", temp->n);
-	pid = fork();
-	if (pid == 0)
+	env = take_double(tk->env);
+	if (!env)
+		return (MALLOC);
+	tmp = tk->cmds;
+	while (tmp)
 	{
-		if (temp->in != 0)
-		{
-//			printf("Temp in\n");
-			if (dup2(temp->in, 0) < 0 || close(temp->in) < 0 || close(p[0]))
-				exit_error("dup", 1);
-		}
-		else
-		{
-			printf("Input: %d\n", fd);
-			if (temp->before && temp->next)
-			{
-				printf("Fd: %d\n", fd);
-				if (dup2(fd, 0) < 0)
-					exit_error("dup", 1);
-				close(fd);
-			}
-			else if (temp->before && !temp->next)
-			{
-				printf("Pipe: %d\n", fd);
-				if (dup2(p[0], 0) < 0)
-					exit_error("dup", 1);
-			}
-			if (close(p[0]) < 0)
-				exit_error("close", 1);
-		}
-		if (temp->out != 1)
-		{
-			write(2, "Temp out\n", 9);
-			if (dup2(temp->out, 1) < 0 || close(temp->out) < 0 || close(p[1]) < 0)
-				exit_error("dup", 1);
-		}
-		else
-		{
-			write(2, "Output\n", 7);
-			if (temp->next)
-			{
-				printf("Next exist\n");
-				if (dup2(p[1], 1) < 0)
-					exit_error("dup", 1);
-			}
-			if (close(p[1]) < 0)
-				exit_error("close", 1);
-		}
-		env = take_double(tk->env);
-		execve(temp->cmd, temp->args, env);
-		exit_error("execve", 1);
-//		execute_child(tk, temp, p);
+		err = check_before_exec(tk, tmp, p, &fd);
+		if (!err)
+			continue ;
+		pid = fork();
+		if (pid == 0)
+			child(tmp, env, p, fd);
+		*child_pid = pid;
+		tmp = tmp->next;
 	}
-	child_pid[i] = pid;
+	close_all_pipes(tk, p, fd);
+	end_exec(tk, child_pid, env);
 	return (0);
 }
 
 int	execute_commands(t_min *tk)
 {
-	int			i;
-	int			err;
 	int			fd;
-	int			status;
+	int			err;
 	int			p[2];
+	t_cmd		*tmp;
 	pid_t		*child_pid;
-	t_cmd		*temp;
 
-	i = 0;
-	fd = -1; // Serve
+	fd = -1;
 	p[0] = -1;
 	p[1] = -1;
 	child_pid = (pid_t *)malloc(sizeof(pid_t) * tk->num_cmds);
 	if (!child_pid)
 		return (MALLOC);
-	temp = tk->cmds;
-	while (temp)
+	tmp = tk->cmds;
+	while (tmp)
 	{
-		if (temp->if_here_doc && run_here_doc(temp, &err))
-			return (free_tokens(&tk, NULL, err));
-		temp = temp->next;
-
+		if (run_here_doc(tmp))
+			return (free_tokens(&tk, NULL, PIPE_ERROR));
+		tmp = tmp->next;
 	}
-	temp = tk->cmds;
-	while (temp)
-	{
-		err = check_pipes(temp, p, &fd);
-		if (err)
-			return (err);
-//		err = is_builtin(tk, temp, p[1]);
-//		printf("Err: %d\n", err);
-//		if (err > 0)
-//		{
-//			printf("Toma:\t%d\n", err);
-//			exit_error((char *)g_error_array[err - 1], 1);
-//		}
-//		else if (err == -1)
-//		{
-			if (temp->ok)
-			{
-				printf("Error: \t%s\n", g_error_array[temp->ok - 1]);
-				temp = temp->next;
-				tk->num_cmds--;
-				continue ;
-			}
-			err = loop_commands(tk, temp, p, fd, child_pid, i);
-			if (err)
-				return (err);
-//		}
-//		else
-//			tk->num_cmds--;
-		temp = temp->next;
-		printf("Temp: %p\n", temp);
-	}
-	close(p[0]);
-	close(p[1]);
-	if (fd != -1)
-		close(fd);
-	close_here_docs(tk);
-	int finished = 0;
-	int	final = 0;
-	while (finished < tk->num_cmds)
-	{
-		i = -1;
-		while (++i < tk->num_cmds)
-		{
-			int result = waitpid(child_pid[i], &status, WNOHANG);
-			if (result > 0)
-			{
-				finished++;
-				if (i == tk->num_cmds - 1)
-				{
-					final = status;
-					printf("Final: %d\n", final);
-				}
-			}
-		}
-	}
-	printf("Status: %d\n", WEXITSTATUS(final));
+	err = loop_commands(tk, child_pid, p, fd);
+	if (err == MALLOC)
+		return (free_tokens(&tk, NULL, MALLOC));
 	return (0);
 }

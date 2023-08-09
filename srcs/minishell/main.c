@@ -87,13 +87,13 @@ static int	program(t_min *tk, char *env[], char *string)
 		return (end_program(&string, err));
 	}
 	printf("Number of commands: %d\n", tk->num_cmds);
-//	err = execute_commands(tk);
-//	if (err)
-//	{
-//		printf("Execute error:\t");
-//		return (end_program(&string, err));
-//	}
-//	if (tk->cmds)
+	err = execute_commands(tk);
+	if (err)
+	{
+		printf("Execute error:\t");
+		return (end_program(&string, err));
+	}
+	if (tk->cmds)
 		free_commands(&tk->cmds);
 	tk->num_cmds = 0;
 	free (string);

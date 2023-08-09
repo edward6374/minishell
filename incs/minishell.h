@@ -54,6 +54,14 @@ const static char	*g_error_array[] = {
 	"numeric argument required", \
 };
 
+typedef struct	s_here_doc
+{
+	int		first;
+	int		if_hdoc;
+	int		fd_hdoc[2];
+	char	*stop_word;
+}	t_here_doc;
+
 typedef struct	s_env
 {
 	char			*name;
@@ -73,13 +81,11 @@ typedef struct s_cmd
 {
 	int				n;
 	int				ok;
-	int				in;
-	int				out;
-	int				if_here_doc;
-	int				fd_here_doc[2];
+	int				in_fd;
+	int				out_fd;
 	char			*cmd;
 	char			**args;
-	char			*stop_word;
+	t_here_doc		*here_doc;
 	struct s_cmd	*next;
 	struct s_cmd	*before;
 }	t_cmd;
@@ -108,6 +114,7 @@ void		exit_error(const char *str, int i);
 char		*ft_find_path(char *env[]);
 
 /* ---			Free_funcs.c			--- */
+int			free_pointer(void *pt, int out);
 int			free_double_int(char **old, int i);
 void		free_double_void(char **old);
 char		**free_double_char(char **old, int i);

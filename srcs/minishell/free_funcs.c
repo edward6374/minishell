@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/26 17:53:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:44:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ void	free_double_void(char **old)
 	while (old[++i])
 		free(old[i]);
 	free(old);
+}
+
+int	free_pointer(void *pt, int out)
+{
+	printf("Free single pointer\n");
+	if (pt)
+		free(pt);
+	return (out);
 }

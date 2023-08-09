@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 17:54:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/09 20:51:58 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,25 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	if (!mode)
 	{
-		printf("In before: %d\tTmp: %p\n", new->in, *tmp);
+		printf("In before: %d\tTmp: %p\n", new->in_fd, *tmp);
 		printf("Word: --%s--\n", (*tmp)->next->word);
-		if (new->in != 0)
-			close(new->in);
-		new->in = open((*tmp)->next->word, O_RDWR);
-		if (new->in == -1)
+		if (new->here_doc->first)
+			new->here_doc->first = 0;
+		if (new->in_fd != 0)
+			close(new->in_fd);
+		new->in_fd = open((*tmp)->next->word, O_RDWR);
+		if (new->in_fd == -1)
 			return (OPEN_FAILED);
-		printf("In after: %d\tTmp: %p\n", new->in, *tmp);
+		printf("In after: %d\tTmp: %p\n", new->in_fd, *tmp);
 	}
 	else
 	{
 		printf("Old tmp before: %p\n", (*tmp)->before->word);
 		printf("Double minor stop word: %s\n", (*tmp)->next->word);
-		new->if_here_doc = 1;
-		new->stop_word = ft_strdup((*tmp)->next->word);
-		if (!new->stop_word)
+		new->here_doc->first = 1;
+		new->here_doc->if_hdoc = 1;
+		new->here_doc->stop_word = ft_strdup((*tmp)->next->word);
+		if (!new->here_doc->stop_word)
 			return (MALLOC);
 		printf("New tmp before: %p\n", (*tmp)->before->word);
 	}
@@ -68,17 +71,17 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 
 int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
-	printf("Out before: %d\n", new->out);
-	if (new->out != 1)
-		close(new->out);
+	printf("Out before: %d\n", new->out_fd);
+	if (new->out_fd != 1)
+		close(new->out_fd);
 	if (mode)
-		new->out = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT, 0644);
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT, 0644);
 	else
-		new->out = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT, 0644);
-	if (new->out == -1)
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT, 0644);
+	if (new->out_fd == -1)
 		return (OPEN_FAILED);
 	change_tmp(tmp);
-	printf("Out after: %d\n", new->out);
+	printf("Out after: %d\n", new->out_fd);
 	return (0);
 }
 

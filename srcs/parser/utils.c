@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 17:15:40 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:23:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,4 @@ void	check_quotes(t_vars *vars, char c)
 		vars->oq = 0;
 //	printf("Char %c\tSingle: %d\tDouble: %d\tOut quotes: %d\tCount: %d\tStart point: %d\n", c, \
 //		vars->sq, vars->dq, vars->oq, vars->nq, vars->stp);
-}
-
-int	free_pointer(void *pt, int out)
-{
-	if (pt)
-		free(pt);
-	return (out);
 }

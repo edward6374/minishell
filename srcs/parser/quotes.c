@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 16:29:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/09 11:00:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,24 @@ int	correct_quotes(char **split)
 int	count_quotes(char *string)
 {
 	int	i;
-	int	q[2];
+	int	sq;
+	int	dq;
 
 	i = -1;
-	q[0] = 0;
-	q[1] = 0;
+	sq = 0;
+	dq = 0;
 	while (string[++i])
 	{
-		if (string[i] == '\'')
-			q[0]++;
-		else if (string[i] == '\"')
-			q[1]++;
+		if (string[i] == '\'' && !sq && !dq)
+			sq++;
+		else if (string[i] == '\"' && !sq && !dq)
+			dq++;
+		else if (string[i] == '\'' && sq && !dq)
+			sq--;
+		else if (string[i] == '\"' && !sq && dq)
+			dq--;
 	}
-	if (q[0] % 2 == 0 && q[1] % 2 == 0)
+	if (!dq && !sq)
 		return (0);
 	return (1);
 }

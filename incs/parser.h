@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 17:15:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:23:35 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct s_vars
 	int		stp;	// starting_point -> variable that is the starting point of a word
 	char	*s;			// string -> variable that represent the string came fom readline
 }	t_vars;
-
-int		free_pointer(void *pt, int out);
 
 int		check_name(char *s, char *value);
 

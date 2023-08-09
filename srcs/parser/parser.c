@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 21:10:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/09 18:43:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 	{
 		printf("Temp:-->%p\n", p);
 		printf("Word:--%s--\n", p->word);
+//		printf("Word point:--%p--\n", p->word);
 		printf("Next:-->%p\n", p->next);
 		printf("Before:-->%p\n\n", p->before);
 		p = p->next;
@@ -67,19 +68,18 @@ int	add_word(t_parser **temp, char *word)
 {
 	t_parser	*new;
 
-//	printf("Add word: --%s--\n", word);
-	if (!word)
-		return (MALLOC);
+	printf("Bef\tTemp: %p\tAdd word: --%s--\n", *temp, (*temp)->word);
 	if (!(*temp)->word)
+	{
+		printf("Empty temp\n");
 		(*temp)->word = word;
+	}
 	else
 	{
+		printf("Next temp\n");
 		new = (t_parser *)malloc(sizeof(t_parser));
 		if (!new)
-		{
-			free(word);
-			return (MALLOC);
-		}
+			return (free_pointer(word, MALLOC));
 		new->word = word;
 		new->next = NULL;
 		new->before = (*temp);
@@ -87,26 +87,7 @@ int	add_word(t_parser **temp, char *word)
 		(*temp) = (*temp)->next;
 		new = NULL;
 	}
-	return (0);
-}
-
-int	add_redir(t_parser **temp, t_vars *v, int *idx, int redir)
-{
-	char	*word;
-
-	if (redir > 0 && (v->s[*idx] == '<' || v->s[*idx] == '>'))
-	{
-		if ((v->s[*idx] == '<' && v->s[*idx + 1] == '<')
-			|| (v->s[*idx] == '>' && v->s[*idx + 1] == '>'))
-		{
-			redir++;
-			(*idx)++;
-		}
-		word = ft_substr(v->s, v->stp, redir);
-		if (!word || add_word(temp, word))
-			return (MALLOC);
-	}
-	v->stp = *idx + 1;
+	printf("After\tTemp: %p\tAdd word: --%s--\n", *temp, (*temp)->word);
 	return (0);
 }
 
@@ -141,32 +122,6 @@ int	create_word(t_parser **temp, t_vars *v, int *k, int mode)
 	v->stp += len;
 	printf("End start: %d\n\n", v->stp);
 	return (0);
-//	redir = 0;
-//	if (*idx == v->stp && v->s[*idx] == ' ')
-//		return (0);
-//	if (*idx == v->stp)
-//		len = 1;
-//	else
-//	{
-//		redir++;
-//		len = *idx - v->stp;
-//	}
-//	if (len == 1 && ((v->s[*idx] == '<' && v->s[*idx + 1] == '<')
-//		|| (v->s[*idx] == '>' && v->s[*idx + 1] == '>')))
-//	{
-//		len++;
-//		(*idx)++;
-//	}
-//	else if (v->s[*idx + 1] == '\0' && v->s[*idx] != ' '
-//		&& v->s[*idx] != '<' && v->s[*idx] != '>')
-//		len++;
-//	printf("Len: %d\n", len);
-//	word = ft_substr(v->s, v->stp, len);
-//	if (!word || add_word(temp, word))
-//		return (MALLOC);
-//	v->stp = v->stp + len;
-//	printf("Start point: %d\n", v->stp);
-//	return (add_redir(temp, v, idx, redir));
 }
 
 int	find_more_words(t_parser **temp, t_vars *v)
@@ -187,149 +142,132 @@ int	find_more_words(t_parser **temp, t_vars *v)
 		}
 	}
 	printf("After:  Arr 4: %d\tK: %d\tI: %d\n", v->stp, k, v->i);
-	if (v->s[v->i + 1] == '\0')
+	if (v->s[v->i + 1] == '\0' && v->s[v->i] != ' ')
 		k++;
 	if (create_word(temp, v, &k, 1))
 		return (MALLOC);
 	return (0);
 }
 
-int	take_one_word(t_parser **temp, t_vars *v, int *i, int mode)
+void	quotes_loop(char c, int *sq, int *dq)
 {
-	int		k;
+	if (c == '\"' && !*dq && !*sq)
+		(*dq)++;
+	else if (c == '\'' && !*dq && !*sq)
+		(*sq)++;
+	else if (c == '\"' && *dq && !*sq)
+		(*dq)--;
+	else if (c == '\'' && !*dq && *sq)
+		(*sq)--;
+}
+
+int	last_word_quotes(t_parser **temp, t_vars *v, int count)
+{
 	int		l;
+	int		k;
 	int		sq;
 	int		dq;
-	int		end;
-	int		count;
 	char	*word;
 
-	(void)temp;
-	(void)mode;
-	end = *i;
-	count = 0;
+	l = -1;
 	sq = 0;
 	dq = 0;
 	k = v->stp - 1;
-	if ((v->s[*i] == '<' && v->s[*i + 1] == '<')
-		|| (v->s[*i] == '>' && v->s[*i + 1] == '>'))
-		end++;
-	while (++k < end)
-	{	
-		if (v->s[k] == '\"' && !dq && !sq)
-			dq++;
-		else if (v->s[k] == '\'' && !dq && !sq)
-			sq++;
-		else if (v->s[k] == '\"' && dq && !sq)
-			dq--;
-		else if (v->s[k] == '\'' && !dq && sq)
-			sq--;
-		else
-			count++;
-	}
+	if (!count)
+		return (0);
 	word = (char *)malloc(sizeof(char) * (count + 1));
 	if (!word)
 		return (MALLOC);
-	l = v->stp - 1;
-	k = v->stp - 1;
-	while (++k < end)
-	{		
-		if (v->s[k] == '\"' && !dq && !sq)
-			dq++;
-		else if (v->s[k] == '\'' && !dq && !sq)
-			sq++;
-		else if (v->s[k] == '\"' && dq && !sq)
-			dq--;
-		else if (v->s[k] == '\'' && !dq && sq)
-			sq--;
-		else
+	while (++k <= v->i)
+	{
+		quotes_loop(v->s[k], &sq, &dq);
+		if ((v->s[k] != '\'' && v->s[k] != '\"')
+			|| (v->s[k] == '\'' && dq && !sq) || (v->s[k] == '\"' && !dq && sq))
+		{
 			word[++l] = v->s[k];
+			printf("Last char: %c\tWord char: %c\n", word[l], v->s[k]);
+		}
 	}
 	word[++l] = '\0';
-	//	if (mode)
-	//	{
-	//		word = ft_substr(v->s, v->stp, *i - v->stp + 1);
-	//		if (!word || add_word(temp, word))
-	//			return (MALLOC);
-	//		return (0);
-	//	}
+	v->stp = k;
+	if (add_word(temp, word))
+		return (MALLOC);
 	return (0);
 }
 
-int	add_redir(t_parser **temp, t_vars *v, int *i, int *count)
+int	add_word_quotes(t_parser **temp, t_vars *v, char *word, int i)
 {
-	// Aggiungere la parola prima della redirezione e aggiungere la redirezione e aggiornare i e count
+	int	l;
+	int	k;
+	int	sq;
+	int	dq;
+
+	l = -1;
+	sq = 0;
+	dq = 0;
+	k = v->stp - 1;
+	printf("I char: %c\n", v->s[i]);
+	while (++k < i)
+	{
+		quotes_loop(v->s[k], &sq, &dq);
+		if ((v->s[k] != '\'' && v->s[k] != '\"')
+			|| (v->s[k] == '\'' && dq && !sq) || (v->s[k] == '\"' && !dq && sq))
+		{
+			word[++l] = v->s[k];
+			printf("New char: %c\n", word[l]);
+		}
+	}
+	if (v->s[i] != '<' && v->s[i] != '>' && v->s[i] != '|')
+		word[++l] = v->s[++k];
+	word[++l] = '\0';
+	v->stp = k;
+	if (add_word(temp, word) || ((v->s[i] == '<' || v->s[i] == '>'
+		|| v->s[i] == '|') && create_word(temp, v, &i, 0)))
+		return (MALLOC);
+	return (0);
 }
 
-int	take_words(t_parser **temp, t_vars *v)
+int	take_words_with_quotes(t_parser **temp, t_vars *v)
 {
 	int		i;
 	int		sq;
 	int		dq;
 	int		count;
+	char	*word;
 
+	sq = 0;
+	dq = 0;
+	count = 0;
 	i = v->stp - 1;
-	((sq = 0) && (dq = 0) && (count = 0));
-	while (++i < v->i)
+	printf("Count: %d\tSq: %d\tDq: %d\n", count, sq, dq);
+	while (++i <= v->i)
 	{
-		if (v->s[i] == '\"' && !dq && !sq)
-			dq++;
-		else if (v->s[i] == '\'' && !dq && !sq)
-			sq++;
-		else if (v->s[i] == '\"' && dq && !sq)
-			dq--;
-		else if (v->s[i] == '\'' && !dq && sq)
-			sq--;
-		else if ((v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|')
-			&& !dq && !sq && add_redir(temp, v, &i, &count))
+		quotes_loop(v->s[i], &sq, &dq);
+		printf("Char: %c\tSq: %d\tDq: %d\n", v->s[i], sq, dq);
+		if ((v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|') && !dq && !sq)
+		{
+			word = (char *)malloc(sizeof(char) * (count + 1));
+			if (!word || add_word_quotes(temp, v, word, i))
 				return (MALLOC);
+			count = 0;
+		}
 		else
 			count++;
 	}
-	return (0);
-//	printf("Count: %d\n", count);
-//	word = (char *)malloc(sizeof(char) * (count + 1));
-//	if (!word)
-//		return (NULL);
-//	i = v->stp - 1;
-//	l = -1;
-//	sq = 0;
-//	dq = 0;
-//	while (v->s[++i])
-//	{		
-//		if (v->s[i] == '\"' && !dq && !sq)
-//			dq++;
-//		else if (v->s[i] == '\'' && !dq && !sq)
-//			sq++;
-//		else if (v->s[i] == '\"' && dq && !sq)
-//			dq--;
-//		else if (v->s[i] == '\'' && !dq && sq)
-//			sq--;
-//		else
-//			word[++l] = v->s[i];
-//	}
-//	word[++l] = '\0';
-//	return (word);
+	printf("While end\n");
+	return (last_word_quotes(temp, v, count));
 }
 
 int	find_word(t_parser **temp, t_vars *v)
 {
-//	char	*word;
-
-//	printf("Check quotes\n");
 	check_quotes(v, v->s[v->i]);      // This function is used to count the number of quotes and to check
                                                 // whether you are in a simple or double quote or in neither of those
-	if (((v->s[v->i] == ' ' && v->oq)                    // This if is used to take a word, or multiple words if they are
+	if (((v->s[v->i] == ' ' && v->oq) // This if is used to take a word, or multiple words if they are
 		|| (v->s[v->i + 1] == '\0' && v->s[v->i] != ' '))) // all together and you put some special symbols into a single word
 	{
-		if (v->nq)   // This variable is to check if your word has quotes or not
-		{
-			if (take_words(temp, v))
-				return (MALLOC);
-//			if (!word || add_word(temp, word))
-//				return (MALLOC);
-		}
-		else if (find_more_words(temp, v))
+		if (v->nq && take_words_with_quotes(temp, v))   // This variable is to check if your word has quotes or not
+			return (MALLOC);
+		else if (!v->nq && find_more_words(temp, v))
 			return (MALLOC);
 		v->nq = 0;
 	}
@@ -352,8 +290,7 @@ int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
 		if ((s[v.i - 1] == ' ' || v.i == 0)
 			&& s[v.i] != ' ' && v.oq)
 			v.stp = v.i;
-		if (s[v.i] == '$'
-			&& (v.oq || (!v.oq && v.dq)))
+		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
 			if (check_env_var(&temp, &v, env))
 				return (MALLOC);
 		if (s[v.i] == '\0')
@@ -379,6 +316,6 @@ int	parser(t_min *tk, char *env[], char *string)
 	all_words->before = NULL;
 	if (parse_string(tk, all_words, env, string))    // Here I parse the string and separate it into words
 		return (free_tokens(&tk, &all_words, MALLOC));
-//	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
-	exit(0);
+	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
+//	exit(0);
 }

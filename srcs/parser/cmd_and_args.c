@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/26 16:23:37 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/09 19:55:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,29 @@ int	add_arguments(t_parser **split, t_cmd *new)
 
 t_cmd	*set_new_command(int *number)
 {
-	t_cmd	*new;
+	t_cmd		*new;
+	t_here_doc	*hdoc;
 
 	new = (t_cmd *)malloc(sizeof(t_cmd));
-	if (!new)
+	hdoc = (t_here_doc *)malloc(sizeof(t_here_doc));
+	if (!new || !hdoc)
+	{
+		if (new)
+			free(new);
 		return (NULL);
+	}
 	new->n = *number;
 	new->ok = 0;
-	new->in = 0;
-	new->out = 1;
-	new->if_here_doc = 0;
+	new->in_fd = 0;
+	new->out_fd = 1;
 	new->cmd = NULL;
 	new->args = NULL;
-	new->stop_word = NULL;
 	new->next = NULL;
 	new->before = NULL;
+	hdoc->first = 0;
+	hdoc->if_hdoc = 0;
+	hdoc->stop_word = NULL;
+	new->here_doc = hdoc;
 	(*number)++;
 	return (new);
 }
