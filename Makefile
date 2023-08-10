@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+         #
+#    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/07/29 19:46:01 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/10 15:55:32 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,13 +45,13 @@ DARK_YELLOW		=	\033[38;5;143m
 
 NAME			=	minishell
 
-RD_PATH			=	libs/libreadline.a
-LIBFT_PATH		=	libs/libft.a
+RD_PATH			=	readline/libreadline.a
+LIBFT_PATH		=	libft/libft.a
 
 #=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 CFLAGS			+= 	-Wall -Werror -Wextra -DREADLINE_LIBRARY -g -O3 $(addprefix -I , $(INC_DIR)) #-fsanitize=address
-LDFLAGS			= 	-L $(LIBS_DIR) -lft -lreadline -lncurses
+LDFLAGS			= 	-L libft -L readline -lft -lreadline -lncurses
 DFLAGS_MS		=	-MMD -MP -MF $(DEP_DIR_MS)/$*.d
 DFLAGS_BI		=	-MMD -MP -MF $(DEP_DIR_BI)/$*.d
 DFLAGS_EXEC		=	-MMD -MP -MF $(DEP_DIR_EXEC)/$*.d
@@ -86,13 +86,13 @@ $(OBJ_DIR_TESTER)/%.o	:	$(SRC_DIR_TESTER)/%.c
 	@$(CC) -c $< $(CFLAGS) $(DFLAGS_TESTER) -o $@
 	@echo "$(YELLOW)$(patsubst $(SRC_DIR_TESTER)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
-all				:	directories $(LIBFT_PATH) $(RD_PATH)
+all				:	directories
 	@$(MAKE) $(NAME)
 
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_PARSER) $(OBJS_TESTER)
+$(NAME)			::	$(LIBFT_PATH) $(RD_PATH) $(OBJS_MS) $(OBJS_EXEC) $(OBJS_PARSER) $(OBJS_TESTER)
 	@$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 
@@ -101,16 +101,13 @@ $(NAME)			::
 
 $(LIBFT_PATH)	:
 	@$(MAKE) -C libft
-	@cp libft/libft.a libs/
 
 $(RD_PATH)		:
 	@echo "$(ORANGE)\nCompiling readline library...$(DEF_COLOR)"
 	@cd readline; ./configure --prefix=$(shell pwd)/readline/library; make; make install;
-	@cp readline/libreadline.a libs/
 	@echo "$(GREEN)Readline library ready!$(DEF_COLOR)"
 
 directories	:
-	@$(MKDIR) $(LIBS_DIR)
 	@$(MKDIR) $(OBJS_DIR)
 	@$(MKDIR) $(DEPS_DIR)
 	@$(MKDIR) $(OBJ_DIR_MS)
@@ -128,12 +125,11 @@ directories	:
 clean			:
 	@$(RM) $(OBJS_DIR)
 	@$(RM) $(DEPS_DIR)
-	@$(RM) $(LIBS_DIR)
 
 fclean			:	clean
-	@$(RM) $(NAME) readline/library
 	@$(MAKE) -C libft fclean
 	@-cd readline; make distclean -sik;
+	@$(RM) readline/library
 	@echo "$(BLUE)\nMinishell cleaned!$(DEF_COLOR)"
 
 re				:	fclean all

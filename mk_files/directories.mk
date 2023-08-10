@@ -3,14 +3,13 @@
 #                                                         :::      ::::::::    #
 #    directories.mk                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/07/16 13:49:37 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/10 15:12:05 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBS_DIR			=	libs
 SRC_DIR				=	srcs
 INC_DIR				=	incs
 INC_DIR				+=	libft

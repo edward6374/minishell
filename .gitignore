@@ -53,3 +53,16 @@ dkms.conf
 sources/lib/libft
 sources/minishell
 *.swp
+
+minishell
+readline/library/
+readline/Makefile
+readline/config.h
+readline/config.log
+readline/config.status
+readline/doc/Makefile
+readline/examples/Makefile
+readline/history.pc
+readline/readline.pc
+readline/shlib/Makefile
+readline/stamp-h
