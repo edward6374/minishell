@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    sources_built_ins.mk                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:46:44 by vduchi            #+#    #+#              #
-#    Updated: 2023/07/08 17:57:56 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/10 16:02:58 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
