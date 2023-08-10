@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Updated: 2023/06/04 16:08:59 by vduchi           ###   ########.fr       */
+/*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
+/*   Updated: 2023/08/10 12:05:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/minishell.h"
+#include "minishell.h"
 
-int	take_env(t_min *tk, char *env[])
+int static	take_env(t_min *tk, char *env[])
 {
 	int		i;
 	t_env	*new;
@@ -34,8 +35,8 @@ int	take_env(t_min *tk, char *env[])
 			temp = tk->env;
 		}
 		else
-			((temp->next = new) && (temp->next->before = temp) \
-			 && (temp = temp->next));
+			((temp->next = new) && (temp->next->before = temp)
+					&& (temp = temp->next));
 	}
 	temp = tk->env;
 	while (temp)
@@ -51,10 +52,12 @@ static t_min	*init_struct(char **argv, char *env[])
 	t_min	*tk;
 
 	(void)argv;
-	tk = (t_min *)malloc(sizeof(t_min));
-	if (!tk)
-		return (NULL);
-	tk->env = NULL;
+	// tk = (t_min *)malloc(sizeof(t_min));¡
+	tk = ft_calloc(1, sizeof(t_min));
+	// tk = NULL;
+	// if (!tk)
+	// return (NULL);
+	// tk->env = NULL;
 	if (!ft_find_path(env))
 		tk->path = NULL;
 	else
@@ -68,16 +71,16 @@ static t_min	*init_struct(char **argv, char *env[])
 	tk->cmds = NULL;
 	tk->num_cmds = 0;
 	tk->exit_value = 0;
-//	int	i = -1;
-//	while (tk->env[++i])
-//		printf("%s\n", tk->env[i]);
-//	exit(0);
+	//	int	i = -1;
+	//	while (tk->env[++i])
+	//		printf("%s\n", tk->env[i]);
+	//	exit(0);
 	return (tk);
 }
 
 static int	program(t_min *tk, char *env[], char *string)
 {
-	int			err;
+	int	err;
 
 	add_history(string);
 	err = parser(tk, env, string);
@@ -96,14 +99,14 @@ static int	program(t_min *tk, char *env[], char *string)
 	if (tk->cmds)
 		free_commands(&tk->cmds);
 	tk->num_cmds = 0;
-	free (string);
+	free(string);
 	return (0);
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	t_min		*tk;
-	char		*string;
+	t_min	*tk;
+	char	*string;
 
 	signal(SIGINT, siginthandler);
 	if (argc == 1)
@@ -114,7 +117,7 @@ int	main(int argc, char *argv[], char *env[])
 		while (42)
 		{
 			string = readline("\033[1;32m min\033[1;37"
-					"mis\033[1;31mhell\033[0;0m> ");
+								"mis\033[1;31mhell\033[0;0m> ");
 			if (!string)
 			{
 				printf("NULL\n");
@@ -122,12 +125,11 @@ int	main(int argc, char *argv[], char *env[])
 			}
 			else if (string && string[0] == '\0')
 				free(string);
-			else
-				if (program(tk, env, string))
-					break ;
+			else if (program(tk, env, string))
+				break ;
 		}
-//		system("leaks minishell");
-//		exit (0);
+		//		system("leaks minishell");
+		//		exit (0);
 	}
 	else
 		printf("Program requires no arguments\n");

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/07/29 19:38:29 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/10 11:46:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
+#include "minishell.h"
 
 t_env	*loop_all_env(t_env *env, t_env *small)
 {
@@ -28,10 +29,9 @@ t_env	*loop_all_env(t_env *env, t_env *small)
 	temp = env;
 	while (temp)
 	{
-		if (ft_strncmp(temp->str, small->str, ft_strrchr(small->str, '=') \
-			- small->str + 1) > 0
-			&& ft_strncmp(temp->str, last->str, ft_strrchr(last->str, '=') \
-			- last->str + 1) < 0)
+		if (ft_strncmp(temp->str, small->str, ft_strrchr(small->str, '=')
+				- small->str + 1) > 0 && ft_strncmp(temp->str, last->str,
+				ft_strrchr(last->str, '=') - last->str + 1) < 0)
 			last = temp;
 		temp = temp->next;
 	}
@@ -106,8 +106,8 @@ int	ft_export(t_min *tk, t_cmd *temp, int p)
 		env = tk->env;
 		while (env)
 		{
-			if (ft_strrchr(temp->args[i], '=')
-				&& !ft_strncmp(temp->args[i], env->name, ft_strlen(env->name)))
+			if (ft_strrchr(temp->args[i], '=') && !ft_strncmp(temp->args[i],
+					env->name, ft_strlen(env->name)))
 			{
 				if (add_update_var(env, temp->args[i], 0))
 					return (MALLOC);
