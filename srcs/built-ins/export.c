@@ -6,12 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 13:02:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:36:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
-#include "minishell.h"
+// #include "minishell.h"
 
 // TODO
 // para tu libreria
@@ -131,7 +131,10 @@ int ft_export(t_min *tk, t_cmd *tmp, int p)
 		print_export(env);
 	}
 	else
+	{
 		ft_print_dptr(tmp->args);
+		export_add();
+	}
 
 	return (0);
 }

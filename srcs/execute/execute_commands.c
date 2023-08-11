@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 12:40:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:32:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,8 +263,6 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	pid_t	pid;
 	t_cmd	*tmp;
 	char	**env;
-
-	printf("Aki export %p\t%s\n", tk->env, tk->env->name);
 
 	env = take_double(tk->env);
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 12:59:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:36:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int ft_export(t_min *tk, t_cmd *temp, int p);
 
 // Utils
 char **take_double(t_env *first);
+void export_add(void);
 
 #endif
