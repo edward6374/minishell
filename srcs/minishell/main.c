@@ -6,11 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 15:41:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:20:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+// TODO
+// actualizar el SHLVL, PWD
 
 int static	take_env(t_min *tk, char *env[])
 {

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 11:20:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/11 12:40:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ char	**take_double(t_env *first)
 	env = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!env)
 		return (NULL);
-	((env[i] = NULL) && (i = -1) && (temp = first));
+	env[i] = NULL;
+	i = -1;
+	temp = first;
 	while (temp)
 	{
 		env[++i] = ft_strjoin(temp->name, temp->value);;
@@ -262,7 +264,10 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	t_cmd	*tmp;
 	char	**env;
 
+	printf("Aki export %p\t%s\n", tk->env, tk->env->name);
+
 	env = take_double(tk->env);
+
 	if (!env)
 		return (MALLOC);
 	tmp = tk->cmds;

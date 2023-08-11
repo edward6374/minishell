@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"*.js": "javascriptreact",
+		"*.hbs": "handlebars",
+		"*.c": "c",
+		"execute.h": "c",
+		"built-ins.h": "c",
+		"errno.h": "c"
+	}
+}
