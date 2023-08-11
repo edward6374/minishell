@@ -6,11 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 15:38:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:20:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/execute.h"
+#include "built-ins.h"
 #include <errno.h>
 
 void end_exec(t_min *tk, pid_t *child_pid, char **env)
@@ -61,7 +62,7 @@ char	**take_double(t_env *first)
 	}
 	return (env);
 }
-/*
+
 static	int	is_builtin(t_min *tk, t_cmd *temp, int p)
 {
 	if (!ft_strncmp("echo", temp->args[0], 5))
@@ -80,7 +81,7 @@ static	int	is_builtin(t_min *tk, t_cmd *temp, int p)
 		return (ft_exit(tk, temp));
 	return (-1);
 }
-*/
+
 void	close_all_pipes(t_min *tk, int *p, int fd)
 {
 	t_cmd	*temp;
@@ -231,21 +232,20 @@ int	check_before_exec(t_min *tk, t_cmd *tmp, int *p, int *fd)
 	err = check_temp_fd(tmp, p, fd); //Es por el dup error y el pipe error -> borrar
 	if (err)
 		return (err);
-//	err = is_builtin(tk, tmp, p[1]); //Todo esto hay que activarlo cuando se trabaja con los built-ins
-//	if (err > 0)
-//		exit_error((char *)g_error_array[err - 1], 1);
-//	else if (err == -1)
-//	{
+	err = is_builtin(tk, tmp, p[1]); //Todo esto hay que activarlo cuando se trabaja con los built-ins
+	if (err > 0)
+		exit_error((char *)g_error_array[err - 1], 1);
+	else if (err == -1)
+	{
 		if (tmp->ok)
 		{
 			printf("Error: \t%s\n", g_error_array[tmp->ok - 1]);
-			tmp = tmp->next;
 			tk->num_cmds--;
 			return (0);
 		}
-//	}
-//	else
-//		tk->num_cmds--;
+	}
+	else
+		tk->num_cmds--;
 	return (-1);
 }
 
@@ -269,8 +269,11 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	while (tmp)
 	{
 		err = check_before_exec(tk, tmp, p, &fd);
-		if (!err)
+		if (err == 0 || err == -1)
+		{
+			tmp = tmp->next;
 			continue ;
+		}
 		pid = fork();
 		if (pid == 0)
 			child(tmp, env, p, fd);

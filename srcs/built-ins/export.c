@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 16:13:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:19:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	ft_export(t_min *tk, t_cmd *temp, int p)
 	(void)tk;
 	(void)temp;
 	(void)p;
+	printf("\nExport command\n");
 	// int		i;
 	// int		res;
 	// t_env	*env;

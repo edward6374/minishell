@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/09 19:55:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/11 11:18:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int	join_paths(char **tmp, char *env)
 	char	*t1;
 	char	*t2;
 
+	if (!ft_strncmp(*tmp, "export", 7))
+		return (0);
 	t1 = ft_strjoin(env, "/");
 	if (!t1)
 		return (MALLOC + 1);
