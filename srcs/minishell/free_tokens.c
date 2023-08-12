@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 14:15:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 07:33:46 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ void	free_commands(t_cmd **first)
 	next = (*first)->next;
 	while (next)
 	{
+		printf("Free while start\n\n");
 		free((*first)->cmd);
-		free_double_void((*first)->args);
+		free_double_void(&(*first)->args);
 		free((*first));
 		(*first) = next;
 		next = (*first)->next;
+		printf("Free while end\n\n");
 	}
 	free((*first)->cmd);
-	free_double_void((*first)->args);
+	free_double_void(&(*first)->args);
 	free((*first));
 	*first = NULL;
 }
@@ -66,7 +68,7 @@ int	free_tokens(t_min **tk, t_parser **temp, int out)
 		free_commands(&(*tk)->cmds);
 	if ((*tk)->env)
 		free_env(&(*tk)->env);
-	free_double_void((*tk)->path);
+	free_double_void(&(*tk)->path);
 	free((*tk));
 	*tk = NULL;
 	if (temp && *temp)

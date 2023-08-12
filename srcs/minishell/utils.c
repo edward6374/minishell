@@ -6,11 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 11:22:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 06:42:41 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/minishell.h"
+#include <signal.h>
+#include "minishell.h"
 
 void	exit_error(const char *str, int i)
 {
@@ -19,32 +20,24 @@ void	exit_error(const char *str, int i)
 	exit(i);
 }
 
-int	end_program(char **string, int error)
+int	end_program(char **line, int error)
 {
-	if (string)
+	if (line)
 	{
-		free(*string);
-		*string = NULL;
+		free(*line);
+		*line = NULL;
 	}
 	if (error < 8)
 		printf("%s\n", g_error_array[error - 1]);
 	return (error);
 }
 
-int	d_key(void)
+int	d_key(t_min **tk)
 {
+	(void)tk;
 	rl_clear_history();
-	//	ft_exit();
-	return (1);
-}
-
-void	siginthandler(int sig)
-{
-	(void)sig;
-	write(1, "\n", 1);
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
+//	free_all(&tk);
+	return (0);
 }
 
 char	*ft_find_path(char *env[])
@@ -59,4 +52,15 @@ char	*ft_find_path(char *env[])
 		i++;
 	}
 	return (NULL);
+}
+
+char	*get_curr_path(void)
+{
+	char	*path;
+	char	get_path[256];
+
+	getcwd(get_path, sizeof(get_path));
+	path = ft_strjoin("\033[0;96m", get_path);
+	path = ft_strjoin(path, "\033[0;0m > ");
+	return (path);
 }

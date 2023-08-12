@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 15:50:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 07:32:59 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // # include <errno.h>
 // # include <fcntl.h>
-#include <stdio.h>
+# include <stdio.h>
 # include <stdlib.h>
 // #include <sys/types.h>
 // #include <sys/wait.h>
@@ -57,11 +57,11 @@ const static char *g_error_array[] = {
 
 typedef struct s_here_doc
 {
-	int first;
-	int if_hdoc;
-	int fd_hdoc[2];
-	char *stop_word;
-} t_here_doc;
+	int		first;
+	int		if_hdoc;
+	int		fd_hdoc[2];
+	char	*stop_word;
+}	t_here_doc;
 
 typedef struct s_env
 {
@@ -69,14 +69,14 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 	struct s_env	*before;
-} t_env;
+}	t_env;
 
 typedef struct s_parser
 {
 	char			*word;
 	struct s_parser	*next;
 	struct s_parser	*before;
-} t_parser;
+}	t_parser;
 
 typedef struct s_cmd
 {
@@ -89,41 +89,44 @@ typedef struct s_cmd
 	t_here_doc		*here_doc;
 	struct s_cmd	*next;
 	struct s_cmd	*before;
-} t_cmd;
+}	t_cmd;
 
 typedef struct s_min
 {
-	int num_cmds;
-	int exit_value;
-	char **path;
-	t_env *env;
-	t_cmd *cmds;
-} t_min;
+	int		num_cmds;
+	int		exit_value;
+	char	**path;
+	t_env	*env;
+	t_cmd	*cmds;
+}	t_min;
 
 // # include "built-ins.h"
-#include "execute.h"
-#include "history.h"
+# include "execute.h"
+# include "history.h"
 # include "libft.h"
 # include "parser.h"
-#include "readline.h"
+# include "readline.h"
+
+/* ---			Take_env.c			--- */
+int	take_env(t_min *tk, char *env[]);
 
 /* ---			Utils.c				--- */
-int d_key(void);
-int end_program(char **string, int error);
-void siginthandler(int sig);
-void exit_error(const char *str, int i);
-char *ft_find_path(char *env[]);
+int		d_key(t_min **tk);
+int		end_program(char **line, int error);
+void	exit_error(const char *str, int i);
+char	*ft_find_path(char *env[]);
+char	*get_curr_path(void);
 
 /* ---			Free_funcs.c			--- */
-int free_pointer(void *pt, int out);
-int free_double_int(char **old, int i);
-void free_double_void(char **old);
-char **free_double_char(char **old, int i);
-t_min *free_struct(t_min **tk);
+int		free_pointer(void *pt, int out);
+int		free_double_int(char **old, int i);
+void	free_double_void(char ***old);
+char	**free_double_char(char **old, int i);
+t_min	*free_struct(t_min **tk);
 
 /* ---			Free_tokens.c			--- */
-int free_env(t_env **first);
-void free_commands(t_cmd **first);
-int free_tokens(t_min **tk, t_parser **temp, int out);
+int		free_env(t_env **first);
+int		free_tokens(t_min **tk, t_parser **temp, int out);
+void	free_commands(t_cmd **first);
 
 #endif

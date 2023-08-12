@@ -6,61 +6,63 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 12:20:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 07:29:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
 #include "minishell.h"
 
 // TODO
 // actualizar el SHLVL, PWD
 
-int static	take_env(t_min *tk, char *env[])
+void	siginthandler(int sig)
 {
-	int		i;
-	t_env	*new;
-	t_env	*temp;
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+	{
+		//poner algo aqui
+	}
+}
 
-	i = -1;
-	while (env[++i])
+static int	program(t_min *tk, char *env[], char *line)
+{
+	int	err;
+
+	add_history(line);
+	err = parser(tk, env, line);
+	if (err)
 	{
-		new = ft_calloc(1, sizeof(t_env));
-		if (!new)
-			return (MALLOC);
-		new->name = ft_substr(env[i], 0, ft_strrchr(env[i], '=') - env[i] + 1);
-		new->value = ft_strdup(ft_strrchr(env[i], '=') + 1);
-		if (!new->name || !new->value)
-			return (free_env(&new));
-		new->next = NULL;
-		if (!tk->env)
-		{
-			((tk->env = new) && (tk->env->before = NULL));
-			temp = tk->env;
-		}
-		else
-			((temp->next = new) && (temp->next->before = temp)
-					&& (temp = temp->next));
+		printf("Parser error:\t");
+		return (end_program(&line, err));
 	}
-	temp = tk->env;
-	while (temp)
+	printf("Number of commands: %d\n", tk->num_cmds);
+	err = execute_commands(tk);
+	if (err)
 	{
-		printf("Env: %s->%s\n", temp->name, temp->value);
-		temp = temp->next;
+		printf("Execute error:\t");
+		return (end_program(&line, err));
 	}
+	if (tk->cmds)
+		free_commands(&tk->cmds);
+	tk->num_cmds = 0;
+	free(line);
 	return (0);
 }
 
-static t_min	*init_struct(char **argv, char *env[])
+static t_min	*init_struct(char *env[])
 {
 	t_min	*tk;
 
-	(void)argv;
-	// tk = (t_min *)malloc(sizeof(t_min));¡
 	tk = ft_calloc(1, sizeof(t_min));
-	// tk = NULL;
-	// if (!tk)
-	// return (NULL);
-	// tk->env = NULL;
+	if (!tk)
+		return (NULL);
 	if (!ft_find_path(env))
 		tk->path = NULL;
 	else
@@ -71,9 +73,9 @@ static t_min	*init_struct(char **argv, char *env[])
 	}
 	if (take_env(tk, env))
 		return (free_struct(&tk));
-	tk->cmds = NULL;
-	tk->num_cmds = 0;
-	tk->exit_value = 0;
+//	tk->cmds = NULL;
+//	tk->num_cmds = 0;
+//	tk->exit_value = 0;
 	//	int	i = -1;
 	//	while (tk->env[++i])
 	//		printf("%s\n", tk->env[i]);
@@ -81,54 +83,31 @@ static t_min	*init_struct(char **argv, char *env[])
 	return (tk);
 }
 
-static int	program(t_min *tk, char *env[], char *string)
-{
-	int	err;
-
-	add_history(string);
-	err = parser(tk, env, string);
-	if (err)
-	{
-		printf("Parser error:\t");
-		return (end_program(&string, err));
-	}
-	printf("Number of commands: %d\n", tk->num_cmds);
-	err = execute_commands(tk);
-	if (err)
-	{
-		printf("Execute error:\t");
-		return (end_program(&string, err));
-	}
-	if (tk->cmds)
-		free_commands(&tk->cmds);
-	tk->num_cmds = 0;
-	free(string);
-	return (0);
-}
-
 int	main(int argc, char *argv[], char *env[])
 {
 	t_min	*tk;
-	char	*string;
+	char	*line;
 
 	signal(SIGINT, siginthandler);
+	signal(SIGQUIT, siginthandler);
 	if (argc == 1)
 	{
-		tk = init_struct(argv, env);
+		tk = init_struct(env);
 		if (!tk)
 			return (end_program(NULL, MALLOC));
 		while (42)
 		{
-			string = readline("\033[1;32m min\033[1;37"
-								"mis\033[1;31mhell\033[0;0m> ");
-			if (!string)
+//			line = readline("\033[1;32m min\033[1;37"
+//								"mis\033[1;31mhell\033[0;0m> ");
+			line = readline(get_curr_path());
+			if (!line)
 			{
 				printf("NULL\n");
-				return (d_key());
+				return (d_key(&tk));
 			}
-			else if (string && string[0] == '\0')
-				free(string);
-			else if (program(tk, env, string))
+			else if (line && line[0] == '\0')
+				free(line);
+			else if (program(tk, env, line))
 				break ;
 		}
 		//		system("leaks minishell");

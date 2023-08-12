@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/08 15:44:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 07:32:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,17 @@ char	**free_double_char(char **old, int i)
 	return (NULL);
 }
 
-void	free_double_void(char **old)
+void	free_double_void(char ***old)
 {
 	int	i;
 
 	i = -1;
-	if (!old)
+	if (!old || !*old)
 		return ;
-	while (old[++i])
-		free(old[i]);
-	free(old);
+	while (*old[++i])
+		free(*old[i]);
+	free(*old);
+	*old = NULL;
 }
 
 int	free_pointer(void *pt, int out)
