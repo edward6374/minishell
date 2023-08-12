@@ -54,7 +54,6 @@ sources/lib/libft
 sources/minishell
 *.swp
 
-minishell
 readline/library/
 readline/Makefile
 readline/config.h
