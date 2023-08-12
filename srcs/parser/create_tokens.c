@@ -6,23 +6,23 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/09 17:05:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 18:37:02 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-int	look_for_redir(t_parser **split, t_cmd *new)
+int	look_for_redir(t_parser **list, t_cmd *new)
 {
 	int			err;
 	t_parser	*tmp;
 
-	tmp = (*split);
+	tmp = (*list);
 	while (tmp && ft_strncmp(tmp->word, "|", 2))
 	{
 		err = take_redir(&tmp, new);
 		if (err == MALLOC)
-			return (MALLOC);
+			return (free_parser(*list, MALLOC));
 		else if (err)
 		{
 			printf("Take redir error: %d\n", err);
@@ -32,18 +32,6 @@ int	look_for_redir(t_parser **split, t_cmd *new)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-t_cmd	*get_last_cmd(t_min **tk)
-{
-	t_cmd	*tmp;
-
-	if (!(*tk)->cmds)
-		return (NULL);
-	tmp = (*tk)->cmds;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp);
 }
 
 void	print_commands(t_min *tk)
@@ -67,40 +55,46 @@ void	print_commands(t_min *tk)
 	}
 }
 
-int	check_redir_syntax(t_parser *split)
+int	check_redir_syntax(t_parser *list)
 {
-	while (split)
+	while (list)
 	{
-		if (!ft_strncmp(split->word, "|", 2) && (split->before == NULL
-			|| !ft_strncmp(split->before->word, "<", 2)
-			|| !ft_strncmp(split->before->word, "<<", 3)
-			|| !ft_strncmp(split->before->word, ">", 2)
-			|| !ft_strncmp(split->before->word, ">>", 3)))
+		if (!ft_strncmp(list->word, "|", 2) && (list->before == NULL
+			|| !ft_strncmp(list->before->word, "<", 2)
+			|| !ft_strncmp(list->before->word, "<<", 3)
+			|| !ft_strncmp(list->before->word, ">", 2)
+			|| !ft_strncmp(list->before->word, ">>", 3)))
 			return (PIPE_FIRST); //	Significa che c'e' una redirezione prima di un pipe o il pipe e' al primo posto
-		else if ((!ft_strncmp(split->word, "<", 2)
-			|| !ft_strncmp(split->word, "<<", 3)
-			|| !ft_strncmp(split->word, ">", 2)
-			|| !ft_strncmp(split->word, ">>", 3)) && split->next == NULL)
+		else if ((!ft_strncmp(list->word, "<", 2)
+			|| !ft_strncmp(list->word, "<<", 3)
+			|| !ft_strncmp(list->word, ">", 2)
+			|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
 			return (ONLY_REDIR); // Significa che c'e' una redirezione, ma dopo non c'e' scritto niente
-		split = split->next;
+		list = list->next;
 	}
 	return (0);
 }
 
-int	create_token(t_min **tk, t_parser **split, t_cmd *new)
+int	create_token(t_min **tk, t_parser **list, t_cmd *new)
 {
 	int			err;
 	t_cmd	*lst;
 
 	lst = get_last_cmd(tk);
-	printf("Create token word: %s\n", (*split)->word);
-	err = add_command(tk, split, new);
+	printf("Create token word: %s\n", (*list)->word);
+	err = add_command(tk, list, new);
 	if (err == MALLOC)
-		return (MALLOC);
+	{
+		free_commands(&new);
+		return (free_parser(*list, MALLOC));
+	}
 	else if (err && !new->ok)
 		new->ok = err;
-	if (add_arguments(split, new))
-		return (MALLOC);
+	if (add_arguments(list, new))
+	{
+		free_commands(&new);
+		return (free_parser(*list, MALLOC));
+	}
 	if (!(*tk)->cmds)
 	{
 		printf("First command\n");
@@ -115,34 +109,34 @@ int	create_token(t_min **tk, t_parser **split, t_cmd *new)
 	return (0);
 }
 
-int	load_commands(t_min *tk, t_parser *split)
+int	load_commands(t_min *tk, t_parser *list)
 {
 	int			err;
 	t_cmd	*new;
 
-	err = check_redir_syntax(split);
+	err = check_redir_syntax(list);
 	if (err)
-		return (err);
-	while (split)
+		return (free_all(tk, err));
+	while (list)
 	{
-		printf("Load_commands: --%s--\n", split->word);
+		printf("Load_commands: --%s--\n", list->word);
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
-			return (MALLOC);
-		err = look_for_redir(&split, new);
+			return (free_all(tk, MALLOC));
+		err = look_for_redir(&list, new);
 		if (err == MALLOC)
 		{
 			printf("Malloc error\n");
-			return (MALLOC);
+			return (free_all(tk, MALLOC));
 		}
 		else if (err)		// Pulire il new
 		{
 			printf("Here\n");
 			new->ok = err;
 		}
-		err = create_token(&tk, &split, new);
+		err = create_token(&tk, &list, new);
 		if (err)
-			return (err);
+			return (free_all(tk, err));
 		printf("Token created\n");
 		new = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 15:28:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:29:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	change_tmp(t_parser **tmp)
 	t_parser	*before_tmp;
 
 	before_tmp = (*tmp)->before;
-//	free_lst_redir(tmp);
 	next_tmp = (*tmp)->next;
 	free((*tmp)->word);
 	free(*tmp);
@@ -63,7 +62,10 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		new->here_doc->if_hdoc = 1;
 		new->here_doc->stop_word = ft_strdup((*tmp)->next->word);
 		if (!new->here_doc->stop_word)
+		{
+			free_commands(&new);
 			return (MALLOC);
+		}
 		printf("New tmp before: %p\n", (*tmp)->before->word);
 	}
 	change_tmp(tmp);
@@ -119,7 +121,10 @@ int	take_redir(t_parser **tmp, t_cmd *new)
 		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
 		err = rel_path_file(tmp);
 	if (err)
+	{
+		free_commands(&new);
 		return (err);
+	}
 	if (!ft_strncmp((*tmp)->word, "<", 2))
 		return (minor_redir(tmp, new, 0));
 	else if (!ft_strncmp((*tmp)->word, "<<", 3))

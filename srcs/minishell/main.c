@@ -6,29 +6,35 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 07:29:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 18:11:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "minishell.h"
 
-// TODO
-// actualizar el SHLVL, PWD
+char	*get_curr_path(void)
+{
+	char	*path;
+	char	get_path[256];
+
+	getcwd(get_path, sizeof(get_path));
+	path = ft_strjoin("\033[0;96m", get_path);
+	if (!path)
+		return (NULL);
+	path = ft_strjoin(path, "\033[0;0m > ");
+	if (!path)
+		return (NULL);
+	return (path);
+}
 
 void	siginthandler(int sig)
 {
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-	else if (sig == SIGQUIT)
-	{
-		//poner algo aqui
-	}
+	(void)sig;
+	write(1, "\n", 1);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
 }
 
 static int	program(t_min *tk, char *env[], char *line)
@@ -69,17 +75,21 @@ static t_min	*init_struct(char *env[])
 	{
 		tk->path = ft_split(ft_find_path(env), ':');
 		if (!tk->path)
-			return (free_struct(&tk));
+		{
+			free(tk);
+			return (NULL);
+		}
 	}
 	if (take_env(tk, env))
-		return (free_struct(&tk));
-//	tk->cmds = NULL;
-//	tk->num_cmds = 0;
-//	tk->exit_value = 0;
-	//	int	i = -1;
-	//	while (tk->env[++i])
-	//		printf("%s\n", tk->env[i]);
-	//	exit(0);
+	{
+		free_double_void(tk->path);
+		free(tk);
+		return (NULL);
+	}
+//	int	i = -1;
+//	while (tk->env[++i])
+//		printf("%s\n", tk->env[i]);
+//	exit(0);
 	return (tk);
 }
 
@@ -88,8 +98,9 @@ int	main(int argc, char *argv[], char *env[])
 	t_min	*tk;
 	char	*line;
 
+	(void)argv;
+	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, siginthandler);
-	signal(SIGQUIT, siginthandler);
 	if (argc == 1)
 	{
 		tk = init_struct(env);

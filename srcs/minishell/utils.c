@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 06:42:41 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 11:21:13 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,4 @@ char	*ft_find_path(char *env[])
 		i++;
 	}
 	return (NULL);
-}
-
-char	*get_curr_path(void)
-{
-	char	*path;
-	char	get_path[256];
-
-	getcwd(get_path, sizeof(get_path));
-	path = ft_strjoin("\033[0;96m", get_path);
-	path = ft_strjoin(path, "\033[0;0m > ");
-	return (path);
 }

@@ -6,97 +6,53 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 11:18:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 18:43:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-int	check_access(char *str, int mode)
+int	loop_arguments(t_parser **list, t_parser **next, t_cmd *new, int k)
 {
-	if (mode == 1)
-	{
-		if (access(str, X_OK) == 0)
-			return (0);
-		if (access(str, F_OK) == 0)
-			return (CMD_FOUND_NOT_EX);
-		return (CMD_NOT_FOUND);
-	}
-	else if (mode == 2)
-	{
-		if (access(str, R_OK) == 0)
-			return (0);
-		return (FILE_NOT_READ);
-	}
-	if (access(str, W_OK) == 0)
-		return (0);
-	return (FILE_NOT_WRITE);
-}
-
-int	add_arguments(t_parser **split, t_cmd *new)
-{
-	int			i;
-	int			k;
-	t_parser	*pt;
-
-	i = 0;
-	k = -1;
-	pt = *split;
-	while (pt && ft_strncmp(pt->word, "|", 2))
-	{
-		pt = pt->next;
-		i++;
-	}
-	new->args = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!new->args)
-		return (MALLOC);
-	pt = (*split)->next;
-	while (++k < i)
-	{
-//		printf("Split: %p\tPt: %p\n", *split, pt);
-		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*split));
-		new->args[k] = ft_strdup((*split)->word);
-		if (!new->args[k])
-			return (free_double_int(new->args, k));
-		free((*split)->word);
-		free(*split);
-		*split = pt;
-		if (*split)
-			pt = (*split)->next;
-	}
-	new->args[k] = NULL;
-	if (*split && !ft_strncmp((*split)->word, "|", 2))
-		(*split) = (*split)->next;
+	new->args[k] = ft_strdup((*list)->word);
+	if (!new->args[k])
+		return (free_double_int(new->args, k));
+	free((*list)->word);
+	free(*list);
+	*list = *next;
+	if (*list)
+		*next = (*list)->next;
 	return (0);
 }
 
-t_cmd	*set_new_command(int *number)
+int	add_arguments(t_parser **list, t_cmd *new)
 {
-	t_cmd		*new;
-	t_here_doc	*hdoc;
+	int			i;
+	int			k;
+	t_parser	*next;
 
-	new = (t_cmd *)malloc(sizeof(t_cmd));
-	hdoc = (t_here_doc *)malloc(sizeof(t_here_doc));
-	if (!new || !hdoc)
+	i = 0;
+	k = -1;
+	next = *list;
+	while (next && ft_strncmp(next->word, "|", 2) && ++i)
+		next = next->next;
+	new->args = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!new->args)
+		return (MALLOC);
+	next = (*list)->next;
+	while (++k < i)
 	{
-		if (new)
-			free(new);
-		return (NULL);
+		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
+		if (loop_arguments(list, &next, new, k))
+		{
+			free_commands(&new);
+			return (free_parser(*list, MALLOC));
+		}
 	}
-	new->n = *number;
-	new->ok = 0;
-	new->in_fd = 0;
-	new->out_fd = 1;
-	new->cmd = NULL;
-	new->args = NULL;
-	new->next = NULL;
-	new->before = NULL;
-	hdoc->first = 0;
-	hdoc->if_hdoc = 0;
-	hdoc->stop_word = NULL;
-	new->here_doc = hdoc;
-	(*number)++;
-	return (new);
+	new->args[k] = NULL;
+	if (*list && !ft_strncmp((*list)->word, "|", 2))
+		(*list) = (*list)->next;
+	return (0);
 }
 
 int	join_paths(char **tmp, char *env)
@@ -112,18 +68,12 @@ int	join_paths(char **tmp, char *env)
 		return (MALLOC + 1);
 	t2 = ft_strjoin(t1, *tmp);
 	if (!t2)
-	{
-		free(t1);
-		return (MALLOC + 1);
-	}
+		return (free_pointer(t1, MALLOC + 1));
 	free(t1);
-	t1 = NULL;
 	ret = check_access(t2, 1);
-//	(ret && (free(t2)) && (t2 = NULL) && ((ret != CMD_NOT_FOUND) && ret++));
 	if (ret)
 	{
 		free(t2);
-		t2 = NULL;
 		((ret != CMD_NOT_FOUND) && ret++);
 		return (ret);
 	}
@@ -155,14 +105,14 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	return (0);
 }
 
-int	add_command(t_min **tk, t_parser **split, t_cmd *new)
+int	add_command(t_min **tk, t_parser **list, t_cmd *new)
 {
 	int		err;
 	char	*tmp;
 
 	err = 0;
-	printf("Cmd word:--%s--\n", (*split)->word);
-	tmp = ft_strdup((*split)->word);
+	printf("Cmd word:--%s--\n", (*list)->word);
+	tmp = ft_strdup((*list)->word);
 	if (!tmp)
 		return (MALLOC);
 	if (tmp[0] != '/')

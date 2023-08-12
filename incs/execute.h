@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 15:45:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:28:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 
 # include "minishell.h"
 
-//int		check_command(t_min *comands);
-
-//void	minishell(t_min *tk, char *env[], char *str);
-
-/* ---		Run_command.c		--- */
-//int		run_commands(t_min *tk, char *env[]);
-
-//int		pipes(t_min *tk, char *env[]);
-//char 	*ft_find_path(char *env[]);
-//void	ft_printer(t_min *command, char **env);
-
 /* ---			Execute_commands.c			--- */
-int	execute_commands(t_min *tk);
+int		execute_commands(t_min *tk);
+
+/* ---			Utils.c				--- */
+char	**take_double(t_env *first);
+int		is_builtin(t_min *tk, t_cmd *tmp, int p);
+void 	end_exec(t_min *tk, pid_t *child_pid, char **env);
 
 #endif

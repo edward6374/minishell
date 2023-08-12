@@ -6,11 +6,14 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/09 18:43:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 18:18:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
+
+// TODO
+// arreglar esta funcion de exit_status y ponerla en la ejecucion de los hijos
 
 int	check_for_exit_status(t_min *tk, t_parser *all_words)
 {
@@ -28,11 +31,11 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 			new = ft_strjoin(ft_substr(p->word, 0, len), \
 				ft_itoa(tk->exit_value));
 			if (!new)
-				return (MALLOC);
+				return (free_parser(all_words, MALLOC));
 			new = ft_strjoin(new, ft_strnstr(p->word, "$?", \
 				ft_strlen(p->word)) + 2);
 			if (!new)
-				return (free_pointer(new, MALLOC));
+				return (free_parser(all_words, free_pointer(new, MALLOC)));
 			free(p->word);
 			p->word = new;
 		}
@@ -49,228 +52,6 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 		p = p->next;
 	}
 	printf("Temp: %p\n", p);
-	return (0);
-}
-
-void	set_vars(t_vars *v, char *s)
-{
-	v->i = -1;
-	v->count = -1;
-	v->sq = 0;
-	v->dq = 0;
-	v->oq = 1;
-	v->nq = 0;
-	v->stp = 0;
-	v->s = s;
-}
-
-int	add_word(t_parser **temp, char *word)
-{
-	t_parser	*new;
-
-	printf("Bef\tTemp: %p\tAdd word: --%s--\n", *temp, (*temp)->word);
-	if (!(*temp)->word)
-	{
-		printf("Empty temp\n");
-		(*temp)->word = word;
-	}
-	else
-	{
-		printf("Next temp\n");
-		new = (t_parser *)malloc(sizeof(t_parser));
-		if (!new)
-			return (free_pointer(word, MALLOC));
-		new->word = word;
-		new->next = NULL;
-		new->before = (*temp);
-		(*temp)->next = new;
-		(*temp) = (*temp)->next;
-		new = NULL;
-	}
-	printf("After\tTemp: %p\tAdd word: --%s--\n", *temp, (*temp)->word);
-	return (0);
-}
-
-int	create_word(t_parser **temp, t_vars *v, int *k, int mode)
-{
-	int		len;
-	char	*word;
-
-	printf("Create word: Idx: %d\tStart: %d\tCar start: --%c--\tCar Idx: --%c--\n", *k, v->stp, v->s[v->stp], v->s[*k]);
-	if (!mode)
-	{
-		printf("Mode 0\n");
-		len = 1;
-		if ((v->s[*k] == '<' && v->s[*k + 1] == '<')
-			|| (v->s[*k] == '>' && v->s[*k + 1] == '>'))
-		{
-			len++;
-			(*k)++;
-		}
-	}
-	else
-	{
-		printf("Mode 1\n");
-		len = *k - v->stp;
-		if (!len)
-			return (0);
-	}
-	printf("Len: %d\n", len);
-	word = ft_substr(v->s, v->stp, len);
-	if (!word || add_word(temp, word))
-		return (MALLOC);
-	v->stp += len;
-	printf("End start: %d\n\n", v->stp);
-	return (0);
-}
-
-int	find_more_words(t_parser **temp, t_vars *v)
-{
-	int	k;
-
-	k = v->stp - 1;
-	printf("\nBefore: Arr 4: %d\tK: %d\tI: %d\n", v->stp, k, v->i);
-	while (++k < v->i)
-	{
-		if (v->s[k] == '<' || v->s[k] == '>'
-			|| v->s[k] == '|')
-		{
-			if (k - v->stp > 0 && create_word(temp, v, &k, 1))
-				return (MALLOC);
-			if (create_word(temp, v, &k, 0))
-				return (MALLOC);
-		}
-	}
-	printf("After:  Arr 4: %d\tK: %d\tI: %d\n", v->stp, k, v->i);
-	if (v->s[v->i + 1] == '\0' && v->s[v->i] != ' ')
-		k++;
-	if (create_word(temp, v, &k, 1))
-		return (MALLOC);
-	return (0);
-}
-
-void	quotes_loop(char c, int *sq, int *dq)
-{
-	if (c == '\"' && !*dq && !*sq)
-		(*dq)++;
-	else if (c == '\'' && !*dq && !*sq)
-		(*sq)++;
-	else if (c == '\"' && *dq && !*sq)
-		(*dq)--;
-	else if (c == '\'' && !*dq && *sq)
-		(*sq)--;
-}
-
-int	last_word_quotes(t_parser **temp, t_vars *v, int count)
-{
-	int		l;
-	int		k;
-	int		sq;
-	int		dq;
-	char	*word;
-
-	l = -1;
-	sq = 0;
-	dq = 0;
-	k = v->stp - 1;
-	if (!count)
-		return (0);
-	word = (char *)malloc(sizeof(char) * (count + 1));
-	if (!word)
-		return (MALLOC);
-	while (++k <= v->i)
-	{
-		quotes_loop(v->s[k], &sq, &dq);
-		if ((v->s[k] != '\'' && v->s[k] != '\"')
-			|| (v->s[k] == '\'' && dq && !sq) || (v->s[k] == '\"' && !dq && sq))
-		{
-			word[++l] = v->s[k];
-			printf("Last char: %c\tWord char: %c\n", word[l], v->s[k]);
-		}
-	}
-	word[++l] = '\0';
-	v->stp = k;
-	if (add_word(temp, word))
-		return (MALLOC);
-	return (0);
-}
-
-int	add_word_quotes(t_parser **temp, t_vars *v, char *word, int i)
-{
-	int	l;
-	int	k;
-	int	sq;
-	int	dq;
-
-	l = -1;
-	sq = 0;
-	dq = 0;
-	k = v->stp - 1;
-	printf("I char: %c\n", v->s[i]);
-	while (++k < i)
-	{
-		quotes_loop(v->s[k], &sq, &dq);
-		if ((v->s[k] != '\'' && v->s[k] != '\"')
-			|| (v->s[k] == '\'' && dq && !sq) || (v->s[k] == '\"' && !dq && sq))
-		{
-			word[++l] = v->s[k];
-			printf("New char: %c\n", word[l]);
-		}
-	}
-	if (v->s[i] != '<' && v->s[i] != '>' && v->s[i] != '|')
-		word[++l] = v->s[++k];
-	word[++l] = '\0';
-	v->stp = k;
-	if (add_word(temp, word) || ((v->s[i] == '<' || v->s[i] == '>'
-		|| v->s[i] == '|') && create_word(temp, v, &i, 0)))
-		return (MALLOC);
-	return (0);
-}
-
-int	take_words_with_quotes(t_parser **temp, t_vars *v)
-{
-	int		i;
-	int		sq;
-	int		dq;
-	int		count;
-	char	*word;
-
-	sq = 0;
-	dq = 0;
-	count = 0;
-	i = v->stp - 1;
-	printf("Count: %d\tSq: %d\tDq: %d\n", count, sq, dq);
-	while (++i <= v->i)
-	{
-		quotes_loop(v->s[i], &sq, &dq);
-		printf("Char: %c\tSq: %d\tDq: %d\n", v->s[i], sq, dq);
-		if ((v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|') && !dq && !sq)
-		{
-			word = (char *)malloc(sizeof(char) * (count + 1));
-			if (!word || add_word_quotes(temp, v, word, i))
-				return (MALLOC);
-			count = 0;
-		}
-		else
-			count++;
-	}
-	printf("While end\n");
-	return (last_word_quotes(temp, v, count));
-}
-
-int	find_word(t_parser **temp, t_vars *v)
-{
-	check_quotes(v, v->s[v->i]);      // This function is used to count the number of quotes and to check
-                                                // whether you are in a simple or double quote or in neither of those
-	if (((v->s[v->i] == ' ' && v->oq) // This if is used to take a word, or multiple words if they are
-		|| (v->s[v->i + 1] == '\0' && v->s[v->i] != ' '))) // all together and you put some special symbols into a single word
-	{
-		if (v->nq && take_words_with_quotes(temp, v))   // This variable is to check if your word has quotes or not
-			return (MALLOC);
-		else if (!v->nq && find_more_words(temp, v))
-			return (MALLOC);
-		v->nq = 0;
-	}
 	return (0);
 }
 
@@ -292,11 +73,11 @@ int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
 			v.stp = v.i;
 		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
 			if (check_env_var(&temp, &v, env))
-				return (MALLOC);
+				return (free_parser(all_words, MALLOC));
 		if (s[v.i] == '\0')
 			break ;
 		if (find_word(&temp, &v)) // Here I find the words or the multiple words to put into the all_words structure
-			return (MALLOC);
+			return (free_parser(all_words, MALLOC));
 	}
 	printf("\n");
 	return (check_for_exit_status(tk, all_words));
@@ -307,15 +88,14 @@ int	parser(t_min *tk, char *env[], char *string)
 	t_parser	*all_words;
 
 	if (count_quotes(string))    // If the line you write has a impair number of quotes, the program will just stop
-		return (free_tokens(&tk, NULL, SYNTAX));
+		return (free_all(tk, SYNTAX));
 	all_words = (t_parser *)malloc(sizeof(t_parser));
 	if (!all_words)
-		return (free_tokens(&tk, NULL, MALLOC));
+		return (free_all(tk, MALLOC));
 	all_words->word = NULL;
 	all_words->next = NULL;
 	all_words->before = NULL;
 	if (parse_string(tk, all_words, env, string))    // Here I parse the string and separate it into words
-		return (free_tokens(&tk, &all_words, MALLOC));
+		return (free_all(tk, MALLOC));
 	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
-//	exit(0);
 }

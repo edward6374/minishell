@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 07:32:59 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/12 18:11:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,17 @@ int		d_key(t_min **tk);
 int		end_program(char **line, int error);
 void	exit_error(const char *str, int i);
 char	*ft_find_path(char *env[]);
-char	*get_curr_path(void);
 
 /* ---			Free_funcs.c			--- */
 int		free_pointer(void *pt, int out);
 int		free_double_int(char **old, int i);
-void	free_double_void(char ***old);
+void	free_double_void(char **old);
 char	**free_double_char(char **old, int i);
-t_min	*free_struct(t_min **tk);
 
-/* ---			Free_tokens.c			--- */
-int		free_env(t_env **first);
-int		free_tokens(t_min **tk, t_parser **temp, int out);
+/* ---			Free_structs.c			--- */
+int		free_env(t_env *first);
+int		free_all(t_min *tk, int out);
+int		free_parser(t_parser *words, int out);
 void	free_commands(t_cmd **first);
 
 #endif
