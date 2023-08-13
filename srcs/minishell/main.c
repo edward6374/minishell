@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 18:13:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:27:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,29 @@
 
 char	*get_curr_path(void)
 {
-	char	*path;
-	char	get_path[256];
+	char *pwd;
+	char *tmp;
 
-	getcwd(get_path, sizeof(get_path));
-	path = ft_strjoin("\033[0;96m", get_path);
-	if (!path)
-		return (NULL);
-	path = ft_strjoin(path, "\033[0;0m$ ");
-	if (!path)
-		return (NULL);
-	return (path);
+	pwd = getcwd(NULL, 0);
+	tmp = ft_strjoin("\033[0;33m", pwd);
+	free(pwd);
+	pwd = ft_strjoin(tmp, "$ \033[0;37m");
+	free(tmp);
+	return (pwd);
 }
+// {
+// 	char	*path;
+// 	char	get_path[256];
+
+// 	getcwd(get_path, sizeof(get_path));
+// 	path = ft_strjoin("\033[0;96m", get_path);
+// 	if (!path)
+// 		return (NULL);
+// 	path = ft_strjoin(path, "\033[0;0m$ ");
+// 	if (!path)
+// 		return (NULL);
+// 	return (path);
+// }
 
 void	siginthandler(int sig)
 {
