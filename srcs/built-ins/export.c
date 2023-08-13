@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 17:57:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/13 20:00:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,7 @@ int ft_export(t_min *tk, t_cmd *tmp, int p)
 		print_export(env);
 	}
 	else
-	{
-		ft_print_dptr(tmp->args);
-		export_add();
-	}
+		export_add(tk->env, tmp->args);
 
 	return (0);
 }
