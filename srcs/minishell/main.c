@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:11:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/13 18:13:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_curr_path(void)
 	path = ft_strjoin("\033[0;96m", get_path);
 	if (!path)
 		return (NULL);
-	path = ft_strjoin(path, "\033[0;0m > ");
+	path = ft_strjoin(path, "\033[0;0m$ ");
 	if (!path)
 		return (NULL);
 	return (path);
