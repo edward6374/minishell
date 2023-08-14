@@ -26,12 +26,12 @@ char	*get_curr_path(void)
 	return (pwd);
 }
 
-static int	program(t_min *tk, char *env[], char *line)
+static int	program(t_min *tk, char *line)
 {
 	int	err;
 
 	add_history(line);
-	err = parser(tk, env, line);
+	err = parser(tk, line);
 	if (err)
 	{
 		printf("Parser error:\t");
@@ -96,7 +96,7 @@ int	loop_main(t_min *tk)
 	}
 	else if (line && line[0] == '\0')
 		free(line);
-	else if (program(tk, env, line))
+	else if (program(tk, line))
 		return (free_pointer(path, 2));
 	free(path);
 	return (0);
