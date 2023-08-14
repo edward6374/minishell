@@ -66,3 +66,4 @@ readline/readline.pc
 readline/shlib/Makefile
 readline/stamp-h
 *.DS_Store
+minishell
