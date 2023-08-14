@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 11:14:07 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 21:02:29 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	d_key(t_min **tk)
 {
 	(void)tk;
 	rl_clear_history();
-	free_all(&tk);
+	free_all(*tk, 0);
 	return (0);
 }
 

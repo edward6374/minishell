@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_free_dptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 21:08:22 by vduchi           ###   ########.fr       */
+/*   Created: 2023/08/14 19:46:18 by nmota-bu          #+#    #+#             */
+/*   Updated: 2023/08/14 19:47:29 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built-ins.h"
+#include "libft.h"
 
-int ft_env(t_min *tk, t_cmd *tmp, int p)
+void	ft_free_dptr(char **arr)
 {
-	(void)tmp;
-	t_env *env;
+	int	i;
 
-	env = tk->env;
-	while (env != NULL)
+	if (arr == NULL)
+		return ;
+	i = 0;
+	while (arr[i] != NULL)
 	{
-		if (env->value)
-		{
-			if (tmp->next)
-			{
-		 		ft_putstr_fd(env->name, p);
-		 		ft_putstr_fd(env->value, p);
-				ft_putchar_fd('\n', p);
-			}
-			else
-				printf("%s%s\n", env->name, env->value);
-		}
-		env = env->next;
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
 	}
-	return (0);
+	free(arr);
+	arr = NULL;
 }

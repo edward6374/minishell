@@ -6,67 +6,37 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 20:00:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:59:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-// TODO
-// para tu libreria
-//=========================================================================
-int ft_strcmp(char *s1, char *s2)
+void static	print_export(char **arr, int p)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
-}
-
-int ft_len_dptr(char **arr)
-{
-	int i;
-
+	(void)p;
+	// TODO
+	// La p es 4...?
 	i = -1;
-	while (arr[++i] != NULL)
-		;
-	return (i);
-}
-
-void ft_print_dptr(char **arr)
-{
-	int i;
-
-	i = 0;
 	if (arr == NULL)
-		return;
-	while (arr[i] != NULL)
+		return ;
+	while (arr[++i] != NULL)
 	{
-		printf("%s\n", arr[i]);
-		i++;
+		ft_putstr_fd("declare -x ", p);
+		ft_putstr_fd(arr[i], p);
+		ft_putchar_fd('\n', p);
+		// printf("declare -x %s\n", arr[i]);
 	}
 }
-//=========================================================================
 
-void static print_export(char **arr)
+void static	custom_qsort(char **env, size_t size)
 {
-	int i;
-
-	i = -1;
-	if (arr == NULL)
-		return;
-	while (arr[++i] != NULL)
-		printf("declare -x %s\n", arr[i]);
-}
-
-void static custom_qsort(char **env, size_t size)
-{
-	char *tmp;
-	size_t i;
-	size_t j;
-	size_t j_min;
+	char	*tmp;
+	size_t	i;
+	size_t	j;
+	size_t	j_min;
 
 	i = -1;
 	while (++i < size - 1)
@@ -87,9 +57,9 @@ void static custom_qsort(char **env, size_t size)
 	}
 }
 
-char *insert_quotes(char *input)
+char	*insert_quotes(char *input)
 {
-	t_qoutes data;
+	t_qoutes	data;
 
 	data.len = ft_strlen(input);
 	data.tmp = malloc((data.len + 3) * sizeof(char *));
@@ -114,11 +84,10 @@ char *insert_quotes(char *input)
 	return (data.tmp);
 }
 
-int ft_export(t_min *tk, t_cmd *tmp, int p)
+int	ft_export(t_min *tk, t_cmd *tmp, int p)
 {
-	(void)p;
-	char **env;
-	int i;
+	char	**env;
+	int		i;
 
 	env = take_double(tk->env);
 	if (tmp->args[1] == NULL)
@@ -127,10 +96,9 @@ int ft_export(t_min *tk, t_cmd *tmp, int p)
 		while (env[++i] != NULL)
 			env[i] = insert_quotes(env[i]);
 		custom_qsort(env, ft_len_dptr(env));
-		print_export(env);
+		print_export(env, p);
 	}
 	else
 		export_add(tk->env, tmp->args);
-
 	return (0);
 }

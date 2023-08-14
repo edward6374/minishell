@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:34:34 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 21:03:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_cmd	*set_new_command(int *number);
 int		load_commands(t_min *tk, t_parser *list);
 
 /* ---			Env_var.c			--- */
-int		check_env_var(t_parser **temp, t_vars *vars);
+int		check_env_var(t_min *tk, t_parser **temp, t_vars *vars);
 
 /* ---			Handle_quotes.c				--- */
 int		count_quotes(char *string);
