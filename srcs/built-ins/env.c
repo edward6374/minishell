@@ -6,18 +6,17 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 18:36:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:00:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-int ft_env(t_min *tk, t_cmd *tmp, int p)
+int	ft_env(t_min *tk, t_cmd *tmp, int p)
 {
-	t_env *env;
+	t_env	*env;
 
 	env = tk->env;
-
 	while (env != NULL)
 	{
 		if (env->value)

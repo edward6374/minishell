@@ -6,28 +6,31 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 18:59:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:03:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-void static	print_export(char **arr, int p)
+// #include "minishell.h"
+
+void static	print_export(char **arr, t_cmd *tmp, int p)
 {
 	int	i;
 
-	(void)p;
-	// TODO
-	// La p es 4...?
 	i = -1;
 	if (arr == NULL)
 		return ;
 	while (arr[++i] != NULL)
 	{
-		ft_putstr_fd("declare -x ", p);
-		ft_putstr_fd(arr[i], p);
-		ft_putchar_fd('\n', p);
-		// printf("declare -x %s\n", arr[i]);
+		if (tmp->next)
+		{
+			ft_putstr_fd("declare -x ", p);
+			ft_putstr_fd(arr[i], p);
+			ft_putchar_fd('\n', p);
+		}
+		else
+			printf("declare -x %s\n", arr[i]);
 	}
 }
 
@@ -96,9 +99,10 @@ int	ft_export(t_min *tk, t_cmd *tmp, int p)
 		while (env[++i] != NULL)
 			env[i] = insert_quotes(env[i]);
 		custom_qsort(env, ft_len_dptr(env));
-		print_export(env, p);
+		print_export(env, tmp, p);
 	}
 	else
 		export_add(tk->env, tmp->args);
+	ft_free_dptr(env);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:24:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 18:46:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 19:47:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t				ft_strcspn(const char *s, const char *reject);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_len_dptr(char **arr);
-void	ft_print_dptr(char **arr);
+void				ft_print_dptr(char **arr);
+void				ft_free_dptr(char **arr);
 
 #endif

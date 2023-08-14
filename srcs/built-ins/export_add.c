@@ -6,35 +6,18 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/13 20:21:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 21:51:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
-
-//=============tmp=====================================================
-
-void ft_print_dptr_v2(char **arr)
-{
-	int i;
-
-	i = 0;
-	if (arr == NULL)
-		return;
-	while (arr[i] != NULL)
-	{
-		printf("\t%s\n", arr[i]);
-		i++;
-	}
-}
-
-//=========================================================================
+#include "libft.h"
 
 // Encuentra el valor, del nombre pasado en un lista
 
-int find_env(char *s1, char *s2)
+int	find_env(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s2[i])
@@ -49,9 +32,9 @@ int find_env(char *s1, char *s2)
 	return (1);
 }
 
-t_env *env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *))
+t_env	*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *))
 {
-	t_env *curr;
+	t_env	*curr;
 
 	curr = env;
 	while (curr)
@@ -63,26 +46,29 @@ t_env *env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *))
 	return (NULL);
 }
 
-t_env *env_new(void *content)
+t_env	*new_env(char *str, char *value)
 {
-	t_env *new;
+	t_env	*new;
+	char	*name;
 
 	new = (t_env *)malloc(sizeof(t_env));
 	if (!new)
 		return (NULL);
-	new->name = ft_strdup(content);
+	name = ft_strjoin(str, "=");
+	new->name = name;
+	new->value = value;
 	new->next = NULL;
 	return (new);
 }
 
-void env_add_back(t_env **env, t_env *new_node)
+void	env_add_back(t_env **env, t_env *new_node)
 {
-	t_env *tmp;
+	t_env	*tmp;
 
 	if (*env == NULL)
 	{
 		*env = new_node;
-		return;
+		return ;
 	}
 	tmp = *env;
 	while (tmp->next != NULL)
@@ -90,28 +76,28 @@ void env_add_back(t_env **env, t_env *new_node)
 	tmp->next = new_node;
 }
 
-void export_add(t_env *env, char **args)
+void	export_add(t_env *env, char **args)
 {
-	int i;
-	t_env *find;
-	char *tmp;
+	int		i;
+	t_env	*find;
+	char	*name;
+	char	*value;
 
 	find = NULL;
 	i = 1;
-
-	ft_print_dptr_v2(args);
 	while (args[i] != NULL)
 	{
-		tmp = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
-
-		if (!env_find(env, tmp, find_env))
-		{
-			printf("\ttmp:%s\n", tmp);
-		}
+		name = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
+		value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
+		if (!env_find(env, name, find_env))
+			env_add_back(&env, new_env(name, value));
 		else
 		{
-			printf("Si esta\n");
+			find = env_find(env, name, find_env);
+			free(find->value);
+			find->value = value;
 		}
+		free(name);
 		i++;
 	}
 }
