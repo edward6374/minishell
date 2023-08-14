@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 17:19:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 10:17:14 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,8 @@ int	put_words(t_parser **temp, t_vars *v)
 
 int	check_env_var(t_parser **temp, t_vars *v, char *env[])
 {
-	int		ret;
 	int		c;
+	int		ret;
 	char	*name;
 
 	c = 0;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_commands.c                                 :+:      :+:    :+:   */
+/*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:09:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 10:50:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 	{
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
-		printf("\033[0;97mFirst pipe\n\n");
+		printf("First pipe\n\n");
 	}
 	if (tmp->before && tmp->in_fd == 0 && tmp->next)
 	{
@@ -79,7 +79,7 @@ int	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 		close(p[1]);
 		if (pipe(p) == -1)
 			return (PIPE_ERROR);
-		printf("\033[0;97mTemp before\tNew: Pipe in: %d\tPipe out: %d\n\n", p[0], p[1]);
+		printf("Temp before\tNew: Pipe in: %d\tPipe out: %d\n\n", p[0], p[1]);
 	}
 	return (0);
 }
@@ -182,7 +182,7 @@ int	check_before_exec(t_min *tk, t_cmd *tmp, int *p, int *fd)
 void	child(t_cmd *tmp, char **env, int *p, int fd)
 {
 	redirect_pipes(tmp, p, fd);
-	printf("Child\n");
+	printf("\033[0;39mChild\n");
 	execve(tmp->cmd, tmp->args, env);
 }
 

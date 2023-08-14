@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/10 15:12:05 by nmota-bu         ###   ########.fr        #
+#    Updated: 2023/08/14 10:59:49 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ INC_DIR				+=	libft
 INC_DIR				+=	readline
 OBJS_DIR			=	.objs
 DEPS_DIR			=	.deps
-SRC_DIR_MS			=	$(SRC_DIR)/minishell
-OBJ_DIR_MS			=	$(OBJS_DIR)/minishell
-DEP_DIR_MS			=	$(DEPS_DIR)/minishell
+SRC_DIR_MS			=	$(SRC_DIR)/general
+OBJ_DIR_MS			=	$(OBJS_DIR)/general
+DEP_DIR_MS			=	$(DEPS_DIR)/general
 SRC_DIR_EXEC		=	$(SRC_DIR)/execute
 OBJ_DIR_EXEC		=	$(OBJS_DIR)/execute
 DEP_DIR_EXEC		=	$(DEPS_DIR)/execute

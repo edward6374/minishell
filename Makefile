@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/12 13:16:28 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/14 11:06:35 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 -include mk_files/sources_parser.mk
 -include mk_files/sources_execute.mk
 -include mk_files/sources_built_ins.mk
--include mk_files/sources_minishell.mk
+-include mk_files/sources_general.mk
 
 #=-=-=-=-=-=-=- COLORS DEFINITION =-=-=-=-=-=-=-=-=-#
 

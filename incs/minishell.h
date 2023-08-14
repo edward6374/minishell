@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 18:31:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 11:12:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int	take_env(t_min *tk, char *env[]);
 /* ---			Utils.c				--- */
 int		d_key(t_min **tk);
 int		end_program(char **line, int error);
+void	siginthandler(int sig);
 void	exit_error(const char *str, int i);
 char	*ft_find_path(char *env[]);
 
