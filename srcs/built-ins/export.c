@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 22:04:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:44:17 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void static	custom_qsort(char **env, size_t size)
 	}
 }
 
-char	*insert_quotes(char *input)
+char static	*insert_quotes(char *input)
 {
 	t_qoutes	data;
 
