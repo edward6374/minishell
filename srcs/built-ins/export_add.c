@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/14 21:51:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:11:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ t_env	*new_env(char *str, char *value)
 		return (NULL);
 	name = ft_strjoin(str, "=");
 	new->name = name;
-	new->value = value;
+	if (ft_strlen(value) == 0)
+		new->value = NULL;
+	else
+		new->value = value;
 	new->next = NULL;
 	return (new);
 }
