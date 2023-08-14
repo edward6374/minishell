@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 20:47:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 20:56:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 // 	return (env);
 // }
 
-//========================OK=============================================
 char	**take_double(t_env *first)
 {
 	int		i;
@@ -97,11 +96,8 @@ char	**take_double(t_env *first)
 	i = 0;
 	env = NULL;
 	tmp = first;
-	while (tmp)
-	{
-		i++;
+	while (tmp && ++i)
 		tmp = tmp->next;
-	}
 	env = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!env)
 		return (NULL);
@@ -113,11 +109,11 @@ char	**take_double(t_env *first)
 			env[i] = ft_strjoin(tmp->name, "");
 		else
 			env[i] = ft_strjoin(tmp->name, tmp->value);
-		if (!env[i])
-		{
-			free_double_char(env, i);
-			return (NULL);
-		}
+		// if (!env[i])
+		// {
+		// 	free_double_char(env, i);
+		// 	return (NULL);
+		// }
 		i++;
 		tmp = tmp->next;
 	}
