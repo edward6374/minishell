@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:18:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 12:03:29 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // TODO
 // arreglar esta funcion de exit_status y ponerla en la ejecucion de los hijos
+
 
 int	check_for_exit_status(t_min *tk, t_parser *all_words)
 {
