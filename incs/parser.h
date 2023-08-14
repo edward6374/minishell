@@ -36,7 +36,7 @@ t_cmd	*set_new_command(int *number);
 int		load_commands(t_min *tk, t_parser *list);
 
 /* ---			Env_var.c			--- */
-int		check_env_var(t_parser **temp, t_vars *vars, char *env[]);
+int		check_env_var(t_parser **temp, t_vars *vars);
 
 /* ---			Handle_quotes.c				--- */
 int		count_quotes(char *string);
@@ -48,7 +48,7 @@ int		create_word(t_parser **temp, t_vars *v, int *k, int mode);
 
 /* ---			Parser.c			--- */
 int		add_word(t_parser **tmp, char *word);
-int		parser(t_min *tk, char *env[], char *string);
+int		parser(t_min *tk, char *string);
 
 /* ---			Redirections.c			--- */
 int		take_redir(t_parser **tmp, t_cmd *new);
