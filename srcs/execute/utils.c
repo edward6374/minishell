@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 13:28:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 20:47:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execute.h"
 #include "built-ins.h"
+#include "execute.h"
 
-void end_exec(t_min *tk, pid_t *child_pid, char **env)
+void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 {
 	int	final;
 	int	status;
-	int finished;
+	int	finished;
 
 	final = 0;
 	status = 0;
 	finished = 0;
 	while (finished < tk->num_cmds)
 	{
-		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1]) // Te lo explico manana
+		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
+		// Te lo explico manana
 		{
 			final = status;
 			printf("Final: %d\n", final);
@@ -57,29 +58,67 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 	return (-1);
 }
 
+// char	**take_double(t_env *first)
+// {
+// 	int		i;
+// 	char	**env;
+// 	t_env	*tmp;
+
+// 	i = 0;
+// 	tmp = first;
+// 	while (tmp && ++i)
+// 		tmp = tmp->next;
+// 	env = (char **)malloc(sizeof(char *) * (i + 1));
+// 	if (!env)
+// 		return (NULL);
+// 	i = -1;
+// 	tmp = first;
+// 	while (tmp)
+// 	{
+// 		if (!tmp->value)
+// 			env[++i] = ft_strjoin(tmp->name, "");
+// 		else
+// 			env[++i] = ft_strjoin(tmp->name, tmp->value);
+// 		if (!env[i])
+// 			return (free_double_char(env, i));
+// 		tmp = tmp->next;
+// 	}
+// 	env[i] = NULL;
+// 	return (env);
+// }
+
+//========================OK=============================================
 char	**take_double(t_env *first)
 {
 	int		i;
-	char	**env;
 	t_env	*tmp;
+	char	**env;
 
 	i = 0;
+	env = NULL;
 	tmp = first;
-	while (tmp && ++i)
+	while (tmp)
+	{
+		i++;
 		tmp = tmp->next;
+	}
 	env = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!env)
 		return (NULL);
-	i = -1;
+	i = 0;
 	tmp = first;
 	while (tmp)
 	{
 		if (!tmp->value)
-			env[++i] = ft_strjoin(tmp->name, "");
+			env[i] = ft_strjoin(tmp->name, "");
 		else
-			env[++i] = ft_strjoin(tmp->name, tmp->value);
+			env[i] = ft_strjoin(tmp->name, tmp->value);
 		if (!env[i])
-			return (free_double_char(env, i));
+		{
+			free_double_char(env, i);
+			return (NULL);
+		}
+		i++;
 		tmp = tmp->next;
 	}
 	env[i] = NULL;
