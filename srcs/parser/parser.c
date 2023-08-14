@@ -56,7 +56,7 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 	return (0);
 }
 
-int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
+int	parse_string(t_min *tk, t_parser *all_words, char *s)
 {
 	t_vars		v;
 	t_parser	*temp;
@@ -73,7 +73,7 @@ int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
 			&& s[v.i] != ' ' && v.oq)
 			v.stp = v.i;
 		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
-			if (check_env_var(&temp, &v, env))
+			if (check_env_var(tk, &temp, &v))
 				return (free_parser(all_words, MALLOC));
 		if (s[v.i] == '\0')
 			break ;
@@ -84,7 +84,7 @@ int	parse_string(t_min *tk, t_parser *all_words, char *env[], char *s)
 	return (check_for_exit_status(tk, all_words));
 }
 
-int	parser(t_min *tk, char *env[], char *string)
+int	parser(t_min *tk, char *string)
 {
 	t_parser	*all_words;
 
@@ -96,7 +96,7 @@ int	parser(t_min *tk, char *env[], char *string)
 	all_words->word = NULL;
 	all_words->next = NULL;
 	all_words->before = NULL;
-	if (parse_string(tk, all_words, env, string))    // Here I parse the string and separate it into words
+	if (parse_string(tk, all_words, string))    // Here I parse the string and separate it into words
 		return (free_all(tk, MALLOC));
 	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
 }
