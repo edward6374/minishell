@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 21:03:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/15 20:04:41 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		create_word(t_parser **temp, t_vars *v, int *k, int mode);
 
 /* ---			Parser.c			--- */
 int		add_word(t_parser **tmp, char *word);
-int		parser(t_min *tk, char *string);
+int		parser(t_min *tk, char *line);
 
 /* ---			Redirections.c			--- */
 int		take_redir(t_parser **tmp, t_cmd *new);

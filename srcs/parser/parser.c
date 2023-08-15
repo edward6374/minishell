@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 12:03:29 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/15 20:05:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 	return (0);
 }
 
-int	parse_string(t_min *tk, t_parser *all_words, char *s)
+int	parse_line(t_min *tk, t_parser *all_words, char *s)
 {
 	t_vars		v;
 	t_parser	*temp;
@@ -84,11 +84,11 @@ int	parse_string(t_min *tk, t_parser *all_words, char *s)
 	return (check_for_exit_status(tk, all_words));
 }
 
-int	parser(t_min *tk, char *string)
+int	parser(t_min *tk, char *line)
 {
 	t_parser	*all_words;
 
-	if (count_quotes(string))    // If the line you write has a impair number of quotes, the program will just stop
+	if (count_quotes(line))    // If the line you write has a impair number of quotes, the program will just stop
 		return (free_all(tk, SYNTAX));
 	all_words = (t_parser *)malloc(sizeof(t_parser));
 	if (!all_words)
@@ -96,7 +96,7 @@ int	parser(t_min *tk, char *string)
 	all_words->word = NULL;
 	all_words->next = NULL;
 	all_words->before = NULL;
-	if (parse_string(tk, all_words, string))    // Here I parse the string and separate it into words
+	if (parse_line(tk, all_words, line))    // Here I parse the string and separate it into words
 		return (free_all(tk, MALLOC));
 	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
 }
