@@ -6,12 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 22:44:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:02:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
+// TODO
+// NO realiza > ni >>
 void static	print_export(char **arr, t_cmd *tmp, int p)
 {
 	int	i;
@@ -19,6 +21,8 @@ void static	print_export(char **arr, t_cmd *tmp, int p)
 	i = -1;
 	if (arr == NULL)
 		return ;
+	printf("\tp: %d\n", p);
+	printf("\tout_fd: %d\n", tmp->out_fd);
 	while (arr[++i] != NULL)
 	{
 		if (tmp->next)
