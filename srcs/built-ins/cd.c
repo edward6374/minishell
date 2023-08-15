@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:25:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 23:01:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:03:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	change_directory(const char *path)
 {
 	if (chdir(path) == 0)
-		return (0); // Cambio de directorio exitoso
+		return (0);
 	else
 	{
-		perror("cd"); // Imprime un mensaje de error similar a Bash
-		return (-1);  // Cambio de directorio fallido
+		perror("cd");
+		return (-1);
 	}
 }
 
