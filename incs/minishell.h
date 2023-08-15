@@ -6,20 +6,31 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 18:31:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:44:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-// # include <errno.h>
-// # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-// #include <sys/types.h>
-// #include <sys/wait.h>
-// #include <unistd.h>
+
+# define	GRAY			"\033[0;90m"
+# define	RED				"\033[0;91m"
+# define	GREEN			"\033[0;92m"
+# define	YELLOW			"\033[0;93m"
+# define	BLUE			"\033[0;94m"
+# define	MAGENTA			"\033[0;95m"
+# define	CYAN			"\033[0;96m"
+# define	WHITE			"\033[0;97m"
+# define	BLACK			"\033[0;99m"
+# define	ORANGE			"\033[38;5;209m"
+# define	BROWN			"\033[38;2;184;143;29m"
+# define	DARK_GRAY		"\033[38;5;234m"
+# define	MID_GRAY		"\033[38;5;245m"
+# define	DARK_GREEN		"\033[38;2;75;179;82m"
+# define	DARK_YELLOW		"\033[38;5;143m"
 
 enum
 {
@@ -57,10 +68,10 @@ const static char *g_error_array[] = {
 
 typedef struct s_here_doc
 {
+	int		yes;
 	int		first;
-	int		if_hdoc;
-	int		fd_hdoc[2];
-	char	*stop_word;
+	int		fd[2];
+	char	*stop;
 }	t_here_doc;
 
 typedef struct s_env
@@ -86,7 +97,7 @@ typedef struct s_cmd
 	int				out_fd;
 	char			*cmd;
 	char			**args;
-	t_here_doc		*here_doc;
+	t_here_doc		*hdoc;
 	struct s_cmd	*next;
 	struct s_cmd	*before;
 }	t_cmd;
@@ -113,6 +124,7 @@ int	take_env(t_min *tk, char *env[]);
 /* ---			Utils.c				--- */
 int		d_key(t_min **tk);
 int		end_program(char **line, int error);
+void	siginthandler(int sig);
 void	exit_error(const char *str, int i);
 char	*ft_find_path(char *env[]);
 

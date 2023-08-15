@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:34:05 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/15 19:50:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_cmd	*set_new_command(int *number)
 	}
 	new->n = *number;
 	new->out_fd = 1;
-	new->here_doc = hdoc;
+	new->hdoc = hdoc;
 	(*number)++;
 	return (new);
 }

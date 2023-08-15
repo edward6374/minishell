@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:29:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/15 19:50:34 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 	{
 		printf("In before: %d\tTmp: %p\n", new->in_fd, *tmp);
 		printf("Word: --%s--\n", (*tmp)->next->word);
-		if (new->here_doc->first)
-			new->here_doc->first = 0;
+		if (new->hdoc->first)
+			new->hdoc->first = 0;
 		if (new->in_fd != 0)
 			close(new->in_fd);
 		new->in_fd = open((*tmp)->next->word, O_RDWR);
@@ -58,10 +58,10 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 	{
 		printf("Old tmp before: %p\n", (*tmp)->before->word);
 		printf("Double minor stop word: %s\n", (*tmp)->next->word);
-		new->here_doc->first = 1;
-		new->here_doc->if_hdoc = 1;
-		new->here_doc->stop_word = ft_strdup((*tmp)->next->word);
-		if (!new->here_doc->stop_word)
+		new->hdoc->first = 1;
+		new->hdoc->yes = 1;
+		new->hdoc->stop = ft_strdup((*tmp)->next->word);
+		if (!new->hdoc->stop)
 		{
 			free_commands(&new);
 			return (MALLOC);

@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/12 13:16:28 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/14 21:19:55 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 -include mk_files/sources_parser.mk
 -include mk_files/sources_execute.mk
 -include mk_files/sources_built_ins.mk
--include mk_files/sources_minishell.mk
+-include mk_files/sources_general.mk
 
 #=-=-=-=-=-=-=- COLORS DEFINITION =-=-=-=-=-=-=-=-=-#
 
@@ -87,22 +87,18 @@ $(OBJ_DIR_TESTER)/%.o	:	$(SRC_DIR_TESTER)/%.c
 	@echo "$(YELLOW)$(patsubst $(SRC_DIR_TESTER)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
 all				:	directories
+	@$(MAKE) -C libft
 	@$(MAKE) $(NAME)
-
-$(NAME)			::	$(LIBFT_PATH) $(RD_PATH)
 
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
+$(NAME)			::	$(RD_PATH) $(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
 	@$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 
 $(NAME)			::
 	@echo "$(GREEN)Minishell executable ready!$(DEF_COLOR)"
-
-$(LIBFT_PATH)	:
-	@$(MAKE) -C libft
 
 $(RD_PATH)		:
 	@echo "$(ORANGE)\nCompiling readline library...$(DEF_COLOR)"

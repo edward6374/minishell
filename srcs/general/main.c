@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/13 18:27:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 12:02:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,13 @@ char	*get_curr_path(void)
 	free(tmp);
 	return (pwd);
 }
-// {
-// 	char	*path;
-// 	char	get_path[256];
 
-// 	getcwd(get_path, sizeof(get_path));
-// 	path = ft_strjoin("\033[0;96m", get_path);
-// 	if (!path)
-// 		return (NULL);
-// 	path = ft_strjoin(path, "\033[0;0m$ ");
-// 	if (!path)
-// 		return (NULL);
-// 	return (path);
-// }
-
-void	siginthandler(int sig)
-{
-	(void)sig;
-	write(1, "\n", 1);
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
-}
-
-static int	program(t_min *tk, char *env[], char *line)
+static int	program(t_min *tk, char *line)
 {
 	int	err;
 
 	add_history(line);
-	err = parser(tk, env, line);
+	err = parser(tk, line);
 	if (err)
 	{
 		printf("Parser error:\t");
@@ -104,10 +82,30 @@ static t_min	*init_struct(char *env[])
 	return (tk);
 }
 
+int	loop_main(t_min *tk)
+{
+	char	*path;
+	char	*line;
+
+	path = get_curr_path();
+	line = readline(path);
+	if (!line)
+	{
+		printf("NULL\n");
+		return (free_pointer(path, 1));
+	}
+	else if (line && line[0] == '\0')
+		free(line);
+	else if (program(tk, line))
+		return (free_pointer(path, 2));
+	free(path);
+	return (0);
+}
+
 int	main(int argc, char *argv[], char *env[])
 {
+	int		result;
 	t_min	*tk;
-	char	*line;
 
 	(void)argv;
 	signal(SIGQUIT, SIG_IGN);
@@ -119,18 +117,13 @@ int	main(int argc, char *argv[], char *env[])
 			return (end_program(NULL, MALLOC));
 		while (42)
 		{
+			result = loop_main(tk);
+			if (result == 1)
+				return (d_key(&tk));
+			else if (result == 2)
+				break ;
 //			line = readline("\033[1;32m min\033[1;37"
 //								"mis\033[1;31mhell\033[0;0m> ");
-			line = readline(get_curr_path());
-			if (!line)
-			{
-				printf("NULL\n");
-				return (d_key(&tk));
-			}
-			else if (line && line[0] == '\0')
-				free(line);
-			else if (program(tk, env, line))
-				break ;
 		}
 		//		system("leaks minishell");
 		//		exit (0);

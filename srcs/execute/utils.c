@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 21:18:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:22:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	while (finished < tk->num_cmds)
 	{
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
-		// Te lo explico manana
 		{
 			final = status;
 			printf("Final: %d\n", final);
 		}
 		finished++;
 	}
-	printf("Status: %d\n", WEXITSTATUS(final));
+	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
 	tk->exit_value = WEXITSTATUS(final);
 	if (child_pid)
 		free(child_pid);
@@ -80,11 +79,6 @@ char	**take_double(t_env *first)
 			env[i] = ft_strjoin(tmp->name, "");
 		else
 			env[i] = ft_strjoin(tmp->name, tmp->value);
-		// if (!env[i])
-		// {
-		// 	free_double_char(env, i);
-		// 	return (NULL);
-		// }
 		i++;
 		tmp = tmp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/06 17:19:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/14 21:05:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,30 @@ int	check_name(char *s, char *value)
 	return (1);
 }
 
-int	take_value(t_parser **temp, t_vars *v, char *env[], char *s)
+int	take_value(t_min *tk, t_parser **temp, t_vars *v, char *s)
 {
 	int		i;
 	int		len;
+	t_env           *tmp;
 
 	i = -1;
 	len = ft_strlen(s);
 	if (ft_strncmp(s, "$?", 2))
 	{
-		while (env[++i])
-			if (!check_name(env[i], s))
+		tmp = tk->env;
+		while (tmp)
+		{
+			if (!check_name(tmp->name, s))
 				break ;
-		if (!env[i])
+			tmp = tmp->next;
+		}
+		if (!tmp)
 		{
 			printf("No correspondence\n");
 			return (free_pointer(s, 127));
 		}
 		free(s);
-		s = ft_substr(env[i], len + 2, ft_strlen(env[i]) - len + 2);
+		s = ft_substr(tmp->value, 0, ft_strlen(tmp->value));
 	}
 	if (!s || (!v->count && add_word(temp, s)))
 		return (MALLOC);
@@ -161,10 +166,10 @@ int	put_words(t_parser **temp, t_vars *v)
 	return (0);
 }
 
-int	check_env_var(t_parser **temp, t_vars *v, char *env[])
+int	check_env_var(t_min *tk, t_parser **temp, t_vars *v)
 {
-	int		ret;
 	int		c;
+	int		ret;
 	char	*name;
 
 	c = 0;
@@ -179,7 +184,7 @@ int	check_env_var(t_parser **temp, t_vars *v, char *env[])
 			name = take_name(v);
 			if (!name)
 				return (MALLOC);
-			ret = take_value(temp, v, env, name);
+			ret = take_value(tk, temp, v, name);
 			if (ret == 127)
 				continue ;
 			else if (ret == MALLOC)
