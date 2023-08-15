@@ -6,16 +6,46 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 21:08:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/15 19:10:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-int ft_env(t_min *tk, t_cmd *tmp, int p)
+int	find_env(char *s1, char *s2)
 {
-	(void)tmp;
-	t_env *env;
+	int	i;
+
+	i = 0;
+	while (s2[i])
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return (1);
+	}
+	if (s1[i] == '=')
+		return (0);
+	return (1);
+}
+
+t_env	*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *))
+{
+	t_env	*curr;
+
+	curr = env;
+	while (curr)
+	{
+		if ((*cmp)(curr->name, data_ref) == 0)
+			return (curr);
+		curr = curr->next;
+	}
+	return (NULL);
+}
+
+int	ft_env(t_min *tk, t_cmd *tmp, int p)
+{
+	t_env	*env;
 
 	env = tk->env;
 	while (env != NULL)

@@ -6,16 +6,16 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 20:18:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/13 20:19:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:14:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strcspn(const char *s, const char *reject)
+size_t	ft_strcspn(const char *s, const char *reject)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

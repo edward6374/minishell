@@ -6,50 +6,55 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:01 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/10 16:13:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/14 22:57:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-// void	change_var(t_env *loop, int *i)
-// {
-// 	t_env *next;
-
-// 	next = loop->next;
-// 	loop->before->next = loop->next;
-// 	loop->next->before = loop->before;
-// 	free(loop->str);
-// 	free(loop);
-// 	loop = next;
-// 	*i = -1;
-// }
-
-int	ft_unset(t_min *tk, t_cmd *temp)
+void static	env_find_rm(t_env **head, void *data_ref, int (*cmp)(char *,
+			char *))
 {
-	(void)tk;
-	(void)temp;
-	// int		i;
-	// int		len;
-	// t_env	*loop;
+	t_env	*current;
+	t_env	*prev;
 
-	// printf("Unset\n");
-	// loop = tk->env;
-	// if (!temp->args[1])
-	// 	return (0);
-	// while (loop)
-	// {
-	// 	i = -1;
-	// 	while (temp->args[++i])
-	// 	{
-	// 		if (!ft_strrchr(loop->str, '='))
-	// 			len = (int)ft_strlen(loop->str);
-	// 		else
-	// 			len = ft_strrchr(loop->str, '=') - loop->str + 1;
-	// 		if (!ft_strncmp(temp->args[i], loop->str, len))
-	// 			change_var(loop, &i);
-	// 	}
-	// 	loop = loop->next;
-	// }
+	current = *head;
+	prev = NULL;
+	while (current != NULL)
+	{
+		if ((*cmp)(current->name, data_ref) == 0)
+		{
+			if (prev != NULL)
+				prev->next = current->next;
+			else
+				*head = current->next;
+			free(current->name);
+			free(current->value);
+			free(current);
+			current = NULL;
+		}
+		else
+		{
+			prev = current;
+			current = current->next;
+		}
+	}
+}
+int	ft_unset(t_min *tk, t_cmd *tmp)
+{
+	int	i;
+
+	if (!tmp->args[1])
+		return (0);
+	else
+	{
+		i = 1;
+		while (tmp->args[i])
+		{
+			if (env_find(tk->env, tmp->args[i], find_env))
+				env_find_rm(&tk->env, tmp->args[i], find_env);
+			i++;
+		}
+	}
 	return (0);
 }
