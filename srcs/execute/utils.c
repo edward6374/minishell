@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 20:40:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:18:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 	if (!ft_strncmp("echo", tmp->args[0], 5))
 		return (ft_echo(tmp, p));
 	else if (!ft_strncmp("cd", tmp->args[0], 3))
-		return (ft_cd(tmp));
+		return (ft_cd(tmp->args, tk->env));
 	else if (!ft_strncmp("pwd", tmp->args[0], 4))
 		return (ft_pwd(tmp, p));
 	else if (!ft_strncmp("export", tmp->args[0], 7))

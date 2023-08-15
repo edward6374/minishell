@@ -6,14 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/14 22:58:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:40:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "libft.h"
 
-t_env static *new_env(char *str, char *value)
+t_env	*new_env(char *str, char *value)
 {
 	t_env	*new;
 	char	*name;
@@ -31,7 +31,7 @@ t_env static *new_env(char *str, char *value)
 	return (new);
 }
 
-void static	env_add_back(t_env **env, t_env *new_node)
+void	env_add_back(t_env **env, t_env *new_node)
 {
 	t_env	*tmp;
 
