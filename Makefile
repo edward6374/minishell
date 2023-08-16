@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/14 21:19:55 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/16 18:45:58 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ DFLAGS_MS		=	-MMD -MP -MF $(DEP_DIR_MS)/$*.d
 DFLAGS_BI		=	-MMD -MP -MF $(DEP_DIR_BI)/$*.d
 DFLAGS_EXEC		=	-MMD -MP -MF $(DEP_DIR_EXEC)/$*.d
 DFLAGS_PARSER	=	-MMD -MP -MF $(DEP_DIR_PARSER)/$*.d
-DFLAGS_TESTER	=	-MMD -MP -MF $(DEP_DIR_TESTER)/$*.d
 
 #=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
@@ -93,8 +92,8 @@ all				:	directories
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(RD_PATH) $(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER) $(OBJS_TESTER)
-	@$(CC) $^ $(CFLAGS) $(LDFLAGS) -o $@
+$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER)
+	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 
 $(NAME)			::
@@ -116,8 +115,6 @@ directories	:
 	@$(MKDIR) $(DEP_DIR_EXEC)
 	@$(MKDIR) $(OBJ_DIR_PARSER)
 	@$(MKDIR) $(DEP_DIR_PARSER)
-	@$(MKDIR) $(OBJ_DIR_TESTER)
-	@$(MKDIR) $(DEP_DIR_TESTER)
 
 
 clean			:
@@ -126,8 +123,8 @@ clean			:
 
 fclean			:	clean
 	@$(MAKE) -C libft fclean
-	@-cd readline; make distclean -sik;
-	@$(RM) readline/library
+	#@-cd readline; make distclean -sik;
+	#@$(RM) readline/library
 	@echo "$(BLUE)\nMinishell cleaned!$(DEF_COLOR)"
 
 re				:	fclean all
@@ -136,7 +133,6 @@ re				:	fclean all
 -include $(DEPS_BI)
 -include $(DEPS_EXEC)
 -include $(DEPS_PARSER)
--include $(DEPS_TESTER)
 
 .PHONY: all clean fclean re
 

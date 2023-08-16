@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 19:50:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:23:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ int	check_access(char *str, int mode)
 	{
 		if (access(str, R_OK) == 0)
 			return (0);
-		return (FILE_NOT_READ);
+		if (access(str, F_OK) == 0)
+			return (FILE_NOT_READ);
+		return (FILE_NOT_FOUND);
 	}
 	if (access(str, W_OK) == 0)
 		return (0);
-	return (FILE_NOT_WRITE);
+	if (access(str, F_OK) == 0)
+		return (FILE_NOT_WRITE);
+	return (FILE_NOT_FOUND);
 }
 
 t_cmd	*set_new_command(int *number)
@@ -104,6 +108,4 @@ void	check_quotes(t_vars *vars, char c)
 		vars->oq = 1;
 	else
 		vars->oq = 0;
-//	printf("Char %c\tSingle: %d\tDouble: %d\tOut quotes: %d\tCount: %d\tStart point: %d\n", c, \
-//		vars->sq, vars->dq, vars->oq, vars->nq, vars->stp);
 }

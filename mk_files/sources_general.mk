@@ -6,13 +6,13 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:46:18 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/14 11:00:07 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/16 18:47:04 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_MS		=	srcs/general/main.c
-SRCS_MS		+=	srcs/general/utils.c
 SRCS_MS		+=	srcs/general/take_env.c
+SRCS_MS		+=	srcs/general/gen_utils.c
 SRCS_MS		+=	srcs/general/free_funcs.c
 SRCS_MS		+=	srcs/general/free_structs.c
 

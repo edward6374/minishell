@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:43:37 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:29:11 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ int	add_arguments(t_parser **list, t_cmd *new)
 	{
 		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
 		if (loop_arguments(list, &next, new, k))
-		{
-			free_commands(&new);
-			return (free_parser(*list, MALLOC));
-		}
+			return (free_commands(&new, free_parser(*list, MALLOC)));
 	}
 	new->args[k] = NULL;
 	if (*list && !ft_strncmp((*list)->word, "|", 2))
@@ -74,7 +71,8 @@ int	join_paths(char **tmp, char *env)
 	if (ret)
 	{
 		free(t2);
-		((ret != CMD_NOT_FOUND) && ret++);
+		if (ret != CMD_NOT_FOUND)
+			ret++;
 		return (ret);
 	}
 	free(*tmp);

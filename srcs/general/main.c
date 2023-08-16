@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 12:02:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:28:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char	*get_curr_path(void)
 {
-	char *pwd;
-	char *tmp;
+	char	*pwd;
+	char	*tmp;
 
 	pwd = getcwd(NULL, 0);
 	tmp = ft_strjoin("\033[0;33m", pwd);
@@ -26,32 +26,7 @@ char	*get_curr_path(void)
 	return (pwd);
 }
 
-static int	program(t_min *tk, char *line)
-{
-	int	err;
-
-	add_history(line);
-	err = parser(tk, line);
-	if (err)
-	{
-		printf("Parser error:\t");
-		return (end_program(&line, err));
-	}
-	printf("Number of commands: %d\n", tk->num_cmds);
-	err = execute_commands(tk);
-	if (err)
-	{
-		printf("Execute error:\t");
-		return (end_program(&line, err));
-	}
-	if (tk->cmds)
-		free_commands(&tk->cmds);
-	tk->num_cmds = 0;
-	free(line);
-	return (0);
-}
-
-static t_min	*init_struct(char *env[])
+t_min	*init_struct(char *env[])
 {
 	t_min	*tk;
 
@@ -75,11 +50,32 @@ static t_min	*init_struct(char *env[])
 		free(tk);
 		return (NULL);
 	}
-//	int	i = -1;
-//	while (tk->env[++i])
-//		printf("%s\n", tk->env[i]);
-//	exit(0);
 	return (tk);
+}
+
+int	program(t_min *tk, char *line)
+{
+	int	err;
+
+	add_history(line);
+	err = parser(tk, line);
+	if (err)
+	{
+		printf("Parser error:\t");
+		return (end_program(&line, err));
+	}
+	printf("Number of commands: %d\n", tk->num_cmds);
+	err = execute_commands(tk);
+	if (err)
+	{
+		printf("Execute error:\t");
+		return (end_program(&line, err));
+	}
+	if (tk->cmds)
+		free_commands(&tk->cmds, 0);
+	tk->num_cmds = 0;
+	free(line);
+	return (0);
 }
 
 int	loop_main(t_min *tk)
@@ -122,11 +118,7 @@ int	main(int argc, char *argv[], char *env[])
 				return (d_key(&tk));
 			else if (result == 2)
 				break ;
-//			line = readline("\033[1;32m min\033[1;37"
-//								"mis\033[1;31mhell\033[0;0m> ");
 		}
-		//		system("leaks minishell");
-		//		exit (0);
 	}
 	else
 		printf("Program requires no arguments\n");

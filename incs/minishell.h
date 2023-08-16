@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 21:44:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:27:34 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+# define	NO_COLOR		"\033[0;0m"
 # define	GRAY			"\033[0;90m"
 # define	RED				"\033[0;91m"
 # define	GREEN			"\033[0;92m"
@@ -41,6 +42,7 @@ enum
 	OPEN_FAILED,
 	CMD_NOT_FOUND,
 	CMD_FOUND_NOT_EX,
+	FILE_NOT_FOUND,
 	FILE_NOT_READ,
 	FILE_NOT_WRITE,
 	GETCWD_ERROR,
@@ -57,6 +59,7 @@ const static char *g_error_array[] = {
 	"Open error",
 	"command not found",
 	"Permission error",
+	"no such file or directory",
 	"File not readable",
 	"File not writeable",
 	"Getcwd() error",
@@ -111,15 +114,14 @@ typedef struct s_min
 	t_cmd	*cmds;
 }	t_min;
 
-// # include "built-ins.h"
-# include "execute.h"
-# include "history.h"
-# include "libft.h"
 # include "parser.h"
+# include "execute.h"
+# include "libft.h"
+# include "history.h"
 # include "readline.h"
 
 /* ---			Take_env.c			--- */
-int	take_env(t_min *tk, char *env[]);
+int		take_env(t_min *tk, char *env[]);
 
 /* ---			Utils.c				--- */
 int		d_key(t_min **tk);
@@ -138,6 +140,6 @@ char	**free_double_char(char **old, int i);
 int		free_env(t_env *first);
 int		free_all(t_min *tk, int out);
 int		free_parser(t_parser *words, int out);
-void	free_commands(t_cmd **first);
+int		free_commands(t_cmd **first, int out);
 
 #endif

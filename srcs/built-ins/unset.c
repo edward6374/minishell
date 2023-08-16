@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:01 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 22:57:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:50:24 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void static	env_find_rm(t_env **head, void *data_ref, int (*cmp)(char *,
 		}
 	}
 }
+
 int	ft_unset(t_min *tk, t_cmd *tmp)
 {
 	int	i;

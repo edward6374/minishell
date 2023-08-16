@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:37:02 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:29:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	look_for_redir(t_parser **list, t_cmd *new)
 		else if (err)
 		{
 			printf("Take redir error: %d\n", err);
-			new->ok = err; // Da controllare se con altri errori c'e' da uscire direttamente o no
+			new->ok = err;
 			return (err);
 		}
 		tmp = tmp->next;
@@ -81,20 +81,14 @@ int	create_token(t_min **tk, t_parser **list, t_cmd *new)
 	t_cmd	*lst;
 
 	lst = get_last_cmd(tk);
-	printf("Create token word: %s\n", (*list)->word);
+//	printf("Create token word: %s\n", (*list)->word);
 	err = add_command(tk, list, new);
 	if (err == MALLOC)
-	{
-		free_commands(&new);
-		return (free_parser(*list, MALLOC));
-	}
+		return (free_commands(&new, free_parser(*list, MALLOC)));
 	else if (err && !new->ok)
 		new->ok = err;
 	if (add_arguments(list, new))
-	{
-		free_commands(&new);
-		return (free_parser(*list, MALLOC));
-	}
+		return (free_commands(&new, free_parser(*list, MALLOC)));
 	if (!(*tk)->cmds)
 	{
 		printf("First command\n");
@@ -116,24 +110,16 @@ int	load_commands(t_min *tk, t_parser *list)
 
 	err = check_redir_syntax(list);
 	if (err)
-		return (free_all(tk, err));
+		return (free_parser(list, free_all(tk, err)));
 	while (list)
 	{
 		printf("Load_commands: --%s--\n", list->word);
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
-			return (free_all(tk, MALLOC));
+			return (free_parser(list, free_all(tk, MALLOC)));
 		err = look_for_redir(&list, new);
 		if (err == MALLOC)
-		{
-			printf("Malloc error\n");
 			return (free_all(tk, MALLOC));
-		}
-		else if (err)		// Pulire il new
-		{
-			printf("Here\n");
-			new->ok = err;
-		}
 		err = create_token(&tk, &list, new);
 		if (err)
 			return (free_all(tk, err));

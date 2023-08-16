@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:03:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:52:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ int	take_env(t_min *tk, char *env[])
 		if (!new->name || (ft_strncmp(new->name, "OLDPWD=", 7) && !new->value))
 			return (free_env(new));
 		tmp = save_node(tk, new, tmp);
-	}
-	tmp = tk->env;
-	while (tmp)
-	{
-		printf("Env: %s%s\n", tmp->name, tmp->value);
-		tmp = tmp->next;
 	}
 	return (0);
 }
