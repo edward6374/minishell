@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 17:45:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 16:39:40 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,8 @@ void	free_double_void(char **old)
 	if (!old)
 		return ;
 	while (old[++i])
-	{
-//		printf("\nPointer: %p\n", old[i]);
-//		printf("Element: %s\n", old[i]);
 		free(old[i]);
-//		printf("Free element\n\n");
-	}
-//	printf("Array\n");
 	free(old);
-//	printf("Free array\n");
 }
 
 int	free_pointer(void *pt, int out)

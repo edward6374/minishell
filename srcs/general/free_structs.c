@@ -6,14 +6,11 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 13:21:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/16 16:40:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// TODO
-// cambiar nombre y mover las funciones dondes corresponda
 
 int	free_parser(t_parser *words, int out)
 {
@@ -66,7 +63,6 @@ void	free_commands(t_cmd **first)
 	next = (*first)->next;
 	while (next)
 	{
-		//		printf("Free while start\n\n");
 		if (tmp->cmd)
 			free(tmp->cmd);
 		if (tmp->args)
@@ -74,15 +70,11 @@ void	free_commands(t_cmd **first)
 		free(tmp);
 		tmp = next;
 		next = tmp->next;
-		//		printf("Free while end\n\n");
 	}
-	//	printf("While commands finished\n");
 	if (tmp->cmd)
 		free(tmp->cmd);
-	//	printf("Free last command\n");
 	if (tmp->args)
 		free_double_void(tmp->args);
-	//	printf("Free double void\n");
 	free(tmp);
 	*first = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   take_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:03:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 16:42:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	take_env(t_min *tk, char *env[])
 			return (MALLOC);
 		new->name = ft_substr(env[i], 0, ft_strrchr(env[i], '=') - env[i] + 1);
 		if (!ft_strncmp(env[i], "SHLVL=", 6))
-			new->value = ft_strdup(ft_itoa(ft_atoi(ft_strrchr(env[i], \
-				'=') + 1) + 1));
+			new->value = ft_strdup(ft_itoa(ft_atoi(ft_strrchr(env[i], '=') + 1)
+						+ 1));
 		else if (!ft_strncmp(env[i], "OLDPWD=", 7))
 			new->value = NULL;
 		else
@@ -56,11 +56,11 @@ int	take_env(t_min *tk, char *env[])
 			return (free_env(new));
 		tmp = save_node(tk, new, tmp);
 	}
-	tmp = tk->env;
-	while (tmp)
-	{
-		printf("Env: %s%s\n", tmp->name, tmp->value);
-		tmp = tmp->next;
-	}
+	// tmp = tk->env;
+	// while (tmp)
+	// {
+	// 	printf("Env: %s%s\n", tmp->name, tmp->value);
+	// 	tmp = tmp->next;
+	// }
 	return (0);
 }
