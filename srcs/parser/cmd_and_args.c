@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:29:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:35:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	add_arguments(t_parser **list, t_cmd *new)
 	next = (*list)->next;
 	while (++k < i)
 	{
+		// TODO QUITAR Y NORM OK
 		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
 		if (loop_arguments(list, &next, new, k))
 			return (free_commands(&new, free_parser(*list, MALLOC)));
@@ -82,8 +83,8 @@ int	join_paths(char **tmp, char *env)
 
 int	rel_path_cmd(t_min **tk, char **tmp)
 {
-	int		i;
-	int		ret;
+	int	i;
+	int	ret;
 
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')

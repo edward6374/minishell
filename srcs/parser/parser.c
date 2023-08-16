@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 20:05:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 16:31:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,32 @@
 // TODO
 // arreglar esta funcion de exit_status y ponerla en la ejecucion de los hijos
 
-
 int	check_for_exit_status(t_min *tk, t_parser *all_words)
 {
-	int			len;
-	char		*new;
+	t_check		dt;
 	t_parser	*p;
 
 	p = all_words;
 	while (p)
 	{
-		len = ft_strlen(p->word);
-		if (ft_strncmp(p->word, "$?", 3) && (ft_strnstr(p->word, "$?", len)))
+		dt.len = ft_strlen(p->word);
+		if (ft_strncmp(p->word, "$?", 3) && (ft_strnstr(p->word, "$?", dt.len)))
 		{
-			len = len - ft_strlen(ft_strnstr(p->word, "$?", len));
-			new = ft_strjoin(ft_substr(p->word, 0, len), \
-				ft_itoa(tk->exit_value));
-			if (!new)
+			dt.len = dt.len - ft_strlen(ft_strnstr(p->word, "$?", dt.len));
+			dt.new = ft_strjoin(ft_substr(p->word, 0, dt.len),
+					ft_itoa(tk->exit_value));
+			if (!dt.new)
 				return (free_parser(all_words, MALLOC));
-			new = ft_strjoin(new, ft_strnstr(p->word, "$?", \
-				ft_strlen(p->word)) + 2);
-			if (!new)
-				return (free_parser(all_words, free_pointer(new, MALLOC)));
+			dt.new = ft_strjoin(dt.new, ft_strnstr(p->word, "$?",
+						ft_strlen(p->word)) + 2);
+			if (!dt.new)
+				return (free_parser(all_words, free_pointer(dt.new, MALLOC)));
 			free(p->word);
-			p->word = new;
+			p->word = dt.new;
 		}
 		p = p->next;
 	}
 	p = all_words;
-	while (p)    // This while is just for printing the resulted structure
-	{
-		printf("Temp:-->%p\n", p);
-		printf("Word:--%s--\n", p->word);
-//		printf("Word point:--%p--\n", p->word);
-		printf("Next:-->%p\n", p->next);
-		printf("Before:-->%p\n\n", p->before);
-		p = p->next;
-	}
-	printf("Temp: %p\n", p);
 	return (0);
 }
 
@@ -61,26 +49,24 @@ int	parse_line(t_min *tk, t_parser *all_words, char *s)
 	t_vars		v;
 	t_parser	*temp;
 
-	set_vars(&v, s);  // Here I set the structure with all variables
-	temp = all_words;    // This temp is the one used to create every word, since the pointer 'all_words'
-	while (s[++v.i])  // has always to point to the first word
+	set_vars(&v, s);
+	temp = all_words;
+	while (s[++v.i])
 	{
-		if ((s[v.i] == ' ' && v.i == 0 && v.oq)
-				|| (s[v.i - 1] == ' ' && s[v.i] == ' ' && v.oq))
+		if ((s[v.i] == ' ' && v.i == 0 && v.oq) || (s[v.i - 1] == ' '
+				&& s[v.i] == ' ' && v.oq))
 			while (s[v.i] == ' ')
 				v.i++;
-		if ((s[v.i - 1] == ' ' || v.i == 0)
-			&& s[v.i] != ' ' && v.oq)
+		if ((s[v.i - 1] == ' ' || v.i == 0) && s[v.i] != ' ' && v.oq)
 			v.stp = v.i;
 		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
 			if (check_env_var(tk, &temp, &v))
 				return (free_parser(all_words, MALLOC));
 		if (s[v.i] == '\0')
 			break ;
-		if (find_word(&temp, &v)) // Here I find the words or the multiple words to put into the all_words structure
+		if (find_word(&temp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
-	printf("\n");
 	return (check_for_exit_status(tk, all_words));
 }
 
@@ -88,7 +74,7 @@ int	parser(t_min *tk, char *line)
 {
 	t_parser	*all_words;
 
-	if (count_quotes(line))    // If the line you write has a impair number of quotes, the program will just stop
+	if (count_quotes(line))
 		return (free_all(tk, SYNTAX));
 	all_words = (t_parser *)malloc(sizeof(t_parser));
 	if (!all_words)
@@ -96,7 +82,7 @@ int	parser(t_min *tk, char *line)
 	all_words->word = NULL;
 	all_words->next = NULL;
 	all_words->before = NULL;
-	if (parse_line(tk, all_words, line))    // Here I parse the string and separate it into words
+	if (parse_line(tk, all_words, line))
 		return (free_all(tk, MALLOC));
-	return (load_commands(tk, all_words));           // Here I load all the words into commands in the main sucture
+	return (load_commands(tk, all_words));
 }

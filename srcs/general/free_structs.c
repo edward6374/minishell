@@ -6,14 +6,11 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:28:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:36:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// TODO
-// cambiar nombre y mover las funciones dondes corresponda
 
 int	free_parser(t_parser *words, int out)
 {

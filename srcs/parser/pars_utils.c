@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:23:44 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:34:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ void	check_quotes(t_vars *vars, char c)
 		vars->dq = 0;
 		vars->nq++;
 	}
-	if (vars->sq == 0 && vars->dq == 0 \
-		&& c != '\'' && c != '\"')
+	if (vars->sq == 0 && vars->dq == 0 && c != '\'' && c != '\"')
 		vars->oq = 1;
 	else
 		vars->oq = 0;

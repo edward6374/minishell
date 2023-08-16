@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:28:43 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:33:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		if (err)
 			return (err);
 		new->in_fd = open((*tmp)->next->word, O_RDWR);
+		if (new->in_fd == -1)
+			return (OPEN_FAILED);
 	}
 	else
 	{
@@ -73,9 +75,11 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 	if (check_access((*tmp)->next->word, 0))
 		return (FILE_NOT_READ);
 	if (mode)
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT, 0644);
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
+				0644);
 	else
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT, 0644);
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
+				0644);
 	if (new->out_fd == -1)
 		return (OPEN_FAILED);
 	change_tmp(tmp);
