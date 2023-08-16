@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/12 18:27:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 13:21:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	free_commands(t_cmd **first)
 	next = (*first)->next;
 	while (next)
 	{
-//		printf("Free while start\n\n");
+		//		printf("Free while start\n\n");
 		if (tmp->cmd)
 			free(tmp->cmd);
 		if (tmp->args)
@@ -74,15 +74,15 @@ void	free_commands(t_cmd **first)
 		free(tmp);
 		tmp = next;
 		next = tmp->next;
-//		printf("Free while end\n\n");
+		//		printf("Free while end\n\n");
 	}
-//	printf("While commands finished\n");
+	//	printf("While commands finished\n");
 	if (tmp->cmd)
 		free(tmp->cmd);
-//	printf("Free last command\n");
+	//	printf("Free last command\n");
 	if (tmp->args)
 		free_double_void(tmp->args);
-//	printf("Free double void\n");
+	//	printf("Free double void\n");
 	free(tmp);
 	*first = NULL;
 }
@@ -99,4 +99,3 @@ int	free_all(t_min *tk, int out)
 	free(tk);
 	return (out);
 }
-

@@ -6,27 +6,60 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/11 14:21:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/16 13:35:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-int ft_echo(t_cmd *tmp, int p)
+char	*take_dollar(char *env)
 {
-	(void)tmp;
-	(void)p;
+	if (*env == '$')
+		env++;
+	return (env);
+}
 
-	printf("%s\n", tmp->args[1]);
-	// int	i;
+void	print_echo(t_env *env, char *args)
+{
+	t_env	*find;
 
-	// i = -1;
-	// while (temp->args[++i])
-	// {
-	// 	printf("%s", temp->args[i]);
-	// 	if (temp->args[i + 1])
-	// 		printf(" ");
-	// }
-	// printf("\n");
+	find = env_find(env, take_dollar(args), find_env);
+	printf("%s", find->value);
+}
+
+int	is_n(char *args, int *i)
+{
+	if (args != NULL && ft_strncmp(args, "-n", 2) == 0)
+	{
+		(*i)++;
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int	ft_echo(t_cmd *tmp, char **args, int p)
+{
+	int	i;
+	int	no_newline;
+
+	i = 0;
+	no_newline = is_n(args[1], &i);
+	while (args[++i] != NULL)
+	{
+		if (tmp->next)
+		{
+			ft_putstr_fd(args[i], p);
+			if (args[i + 1])
+				ft_putchar_fd(' ', p);
+		}
+		else
+		{
+			printf("%s", args[i]);
+			if (args[i + 1])
+				printf(" ");
+		}
+	}
+	if (!no_newline)
+		printf("\n");
 	return (0);
 }
