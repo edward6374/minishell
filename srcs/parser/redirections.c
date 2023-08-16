@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/15 19:50:34 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/16 16:19:40 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	if (!mode)
 	{
-		printf("In before: %d\tTmp: %p\n", new->in_fd, *tmp);
-		printf("Word: --%s--\n", (*tmp)->next->word);
 		if (new->hdoc->first)
 			new->hdoc->first = 0;
 		if (new->in_fd != 0)
@@ -52,12 +50,9 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		new->in_fd = open((*tmp)->next->word, O_RDWR);
 		if (new->in_fd == -1)
 			return (OPEN_FAILED);
-		printf("In after: %d\tTmp: %p\n", new->in_fd, *tmp);
 	}
 	else
 	{
-		printf("Old tmp before: %p\n", (*tmp)->before->word);
-		printf("Double minor stop word: %s\n", (*tmp)->next->word);
 		new->hdoc->first = 1;
 		new->hdoc->yes = 1;
 		new->hdoc->stop = ft_strdup((*tmp)->next->word);
@@ -66,7 +61,6 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 			free_commands(&new);
 			return (MALLOC);
 		}
-		printf("New tmp before: %p\n", (*tmp)->before->word);
 	}
 	change_tmp(tmp);
 	return (0);
@@ -74,17 +68,17 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 
 int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
-	printf("Out before: %d\n", new->out_fd);
 	if (new->out_fd != 1)
 		close(new->out_fd);
 	if (mode)
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT, 0644);
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
+				0644);
 	else
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT, 0644);
+		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
+				0644);
 	if (new->out_fd == -1)
 		return (OPEN_FAILED);
 	change_tmp(tmp);
-	printf("Out after: %d\n", new->out_fd);
 	return (0);
 }
 
@@ -118,7 +112,8 @@ int	take_redir(t_parser **tmp, t_cmd *new)
 
 	err = 0;
 	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
-		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
+			|| !ft_strncmp((*tmp)->word, ">>", 3))
+		&& (*tmp)->next->word[0] != '/')
 		err = rel_path_file(tmp);
 	if (err)
 	{
