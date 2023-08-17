@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 15:27:07 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 22:53:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	add_arguments(t_parser **list, t_cmd *new)
 	next = (*list)->next;
 	while (++k < i)
 	{
-		// TODO QUITAR Y NORM OK
-//		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
 		if (loop_arguments(list, &next, new, k))
 			return (free_commands(&new, free_parser(*list, MALLOC)));
 	}
@@ -59,12 +57,9 @@ int	join_paths(char **tmp, char *env)
 	char	*t1;
 	char	*t2;
 
-	if (!ft_strncmp(*tmp, "cd", 3)
-		|| !ft_strncmp(*tmp, "echo", 5)
-		|| !ft_strncmp(*tmp, "env", 4)
-		|| !ft_strncmp(*tmp, "exit", 5)
-		|| !ft_strncmp(*tmp, "export", 7)
-		|| !ft_strncmp(*tmp, "pwd", 4)
+	if (!ft_strncmp(*tmp, "cd", 3) || !ft_strncmp(*tmp, "echo", 5)
+		|| !ft_strncmp(*tmp, "env", 4) || !ft_strncmp(*tmp, "exit", 5)
+		|| !ft_strncmp(*tmp, "export", 7) || !ft_strncmp(*tmp, "pwd", 4)
 		|| !ft_strncmp(*tmp, "unset", 6))
 		return (0);
 	t1 = ft_strjoin(env, "/");
@@ -89,15 +84,17 @@ int	join_paths(char **tmp, char *env)
 
 int	rel_path_cmd(t_min **tk, char **tmp)
 {
-	int	i;
-	int	err;
+	int		i;
+	int		err;
+	char	**path;
 
+	path = path_env((*tk)->env);
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
 		return (check_access((*tmp), 1));
-	while ((*tk)->path[++i])
+	while (path[++i])
 	{
-		err = join_paths(tmp, (*tk)->path[i]);
+		err = join_paths(tmp, path[i]);
 		if (!err)
 			break ;
 		else if (err == CMD_NOT_FOUND)
@@ -105,7 +102,7 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 		else
 			return (err - 1);
 	}
-	if (!(*tk)->path[i])
+	if (!path[i])
 		return (CMD_NOT_FOUND);
 	return (0);
 }

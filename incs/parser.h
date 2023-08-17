@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 13:54:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 22:37:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ typedef struct s_check
 	char *new;
 }	t_check;
 
+typedef struct s_path_env
+{
+	char *res;
+	char **paths;
+	int num_paths;
+	char *path_copy;
+	char *token;
+	int i;
+} t_path_env;
+
 /* ---			Cmd_and_args.c			--- */
 int		add_arguments(t_parser **list, t_cmd *new);
 int		add_command(t_min **tk, t_parser **list, t_cmd *new);
@@ -74,5 +84,6 @@ void	set_vars(t_vars *v, char *s);
 void	check_quotes(t_vars *vars, char c);
 t_cmd	*get_last_cmd(t_min **tk);
 t_cmd	*set_new_command(int *number);
+char **path_env(t_env *env);
 
 #endif
