@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:15:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:05:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	load_commands(t_min *tk, t_parser *list)
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
 			return (free_parser(list, free_all(tk, MALLOC)));
+		printf("New err_f: %p\n", new->err_f);
 		err = look_for_redir(&list, new);
 		if (err == MALLOC)
 			return (free_all(tk, MALLOC));

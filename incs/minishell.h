@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:45:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:15:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	siginthandler(int sig);
 char	*ft_find_path(char *env[]);
 
 /* ---			Free_funcs.c			--- */
+void	free_err_f(char **line);
 int		free_pointer(void *pt, int out);
 int		free_double_int(char **old, int i);
 void	free_double_void(char **old);

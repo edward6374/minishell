@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:29:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:17:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,13 @@ int	free_commands(t_cmd **first, int out)
 
 int	free_all(t_min *tk, int out)
 {
+	printf("Free all commands\n");
 	if (tk->cmds)
 		free_commands(&tk->cmds, 0);
+	printf("Free all env\n");
 	if (tk->env)
 		free_env(tk->env);
+	printf("Free all path\n");
 	free_double_void(tk->path);
 	tk->path = NULL;
 	free(tk);

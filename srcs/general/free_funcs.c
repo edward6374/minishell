@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:36:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:15:36 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,10 @@ int	free_pointer(void *pt, int out)
 	if (pt)
 		free(pt);
 	return (out);
+}
+
+void	free_err_f(char **line)
+{
+	free(*line);
+	*line = NULL;
 }

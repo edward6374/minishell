@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:31:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:16:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 			return (free_commands(&new, MALLOC));
 	}
 	if (new->err_f)
-		free(new->err_f);
+		free_err_f(&new->err_f);
 	change_tmp(tmp);
 	return (0);
 }
@@ -81,7 +81,7 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
 				0644);
 	if (new->err_f)
-		free(new->err_f);
+		free_err_f(&new->err_f);
 	change_tmp(tmp);
 	return (0);
 }
