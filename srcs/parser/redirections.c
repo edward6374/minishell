@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:33:45 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:31:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		if (err)
 			return (err);
 		new->in_fd = open((*tmp)->next->word, O_RDWR);
-		if (new->in_fd == -1)
-			return (OPEN_FAILED);
 	}
 	else
 	{
-		new->hdoc->first = 1;
 		new->hdoc->yes = 1;
+		new->hdoc->first = 1;
 		new->hdoc->stop = ft_strdup((*tmp)->next->word);
 		if (!new->hdoc->stop)
 			return (free_commands(&new, MALLOC));
 	}
+	if (new->err_f)
+		free(new->err_f);
 	change_tmp(tmp);
 	return (0);
 }
@@ -80,19 +80,20 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 	else
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
 				0644);
-	if (new->out_fd == -1)
-		return (OPEN_FAILED);
+	if (new->err_f)
+		free(new->err_f);
 	change_tmp(tmp);
 	return (0);
 }
 
-int	rel_path_file(t_parser **tmp)
+int	rel_path_file(t_parser **tmp, t_cmd *new)
 {
 	char	*t1;
 	char	*t2;
 	char	*here;
 
 	here = getcwd(NULL, 0);
+	new->err_f = ft_strdup((*tmp)->next->word);
 	t1 = ft_strjoin(here, "/");
 	if (!t1)
 		return (MALLOC);
@@ -113,7 +114,7 @@ int	take_redir(t_parser **tmp, t_cmd *new)
 	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
 		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
 	{
-		if (rel_path_file(tmp))
+		if (rel_path_file(tmp, new))
 			return (free_commands(&new, MALLOC));
 	}
 	if (!ft_strncmp((*tmp)->word, "<", 2))

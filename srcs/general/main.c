@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:28:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:46:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ int	program(t_min *tk, char *line)
 
 	add_history(line);
 	err = parser(tk, line);
+	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
 	if (err)
 	{
 		printf("Parser error:\t");
 		return (end_program(&line, err));
 	}
-	printf("Number of commands: %d\n", tk->num_cmds);
+//	printf("Number of commands: %d\n", tk->num_cmds);
 	err = execute_commands(tk);
+	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
 	if (err)
 	{
 		printf("Execute error:\t");
@@ -92,8 +94,7 @@ int	loop_main(t_min *tk)
 	}
 	else if (line && line[0] == '\0')
 		free(line);
-	else if (program(tk, line))
-		return (free_pointer(path, 2));
+	program(tk, line);
 	free(path);
 	return (0);
 }
@@ -116,8 +117,6 @@ int	main(int argc, char *argv[], char *env[])
 			result = loop_main(tk);
 			if (result == 1)
 				return (d_key(&tk));
-			else if (result == 2)
-				break ;
 		}
 	}
 	else

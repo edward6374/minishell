@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:09:40 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:30:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	check_temp_fd(*tmp, p, fd);
 	if ((*tmp)->ok)
 	{
-		printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
+		if ((*tmp)->err_f)
+			printf("minishell: %s: %s\n", (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
+		else
+			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
+		return (-1);
 	}
 	res = is_builtin(tk, *tmp, p[1]);
 	if (res == 0)
@@ -49,6 +53,7 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		printf("Command: %s\n", tmp->cmd);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
 			continue ;
 		pid = fork();
@@ -61,6 +66,7 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		*child_pid = pid;
 		tmp = tmp->next;
 	}
+	printf("End commands\n");
 	close_all_pipes(tk, p, fd);
 	end_exec(tk, child_pid, env);
 	return (0);

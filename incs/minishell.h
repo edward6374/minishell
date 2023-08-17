@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:27:34 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:45:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,6 @@ enum
 	FILE_NOT_FOUND,
 	FILE_NOT_READ,
 	FILE_NOT_WRITE,
-	GETCWD_ERROR,
-	PIPE_ERROR,
-	DUP_ERROR,
-	PATH_ERROR,
 };
 
 const static char *g_error_array[] = {
@@ -56,17 +52,12 @@ const static char *g_error_array[] = {
 	"syntax error",
 	"syntax error near unexpected token `|\'",
 	"syntax error near unexpected token `newline\'",
-	"Open error",
+	"open error",
 	"command not found",
-	"Permission error",
+	"permission error",
 	"no such file or directory",
-	"File not readable",
-	"File not writeable",
-	"Getcwd() error",
-	"Error creating pipe",
-	"Error creating dup",
-	"no such file or directory: ",
-	"numeric argument required",
+	"file not readable",
+	"file not writeable",
 };
 
 typedef struct s_here_doc
@@ -99,6 +90,7 @@ typedef struct s_cmd
 	int				in_fd;
 	int				out_fd;
 	char			*cmd;
+	char			*err_f;
 	char			**args;
 	t_here_doc		*hdoc;
 	struct s_cmd	*next;
@@ -125,9 +117,9 @@ int		take_env(t_min *tk, char *env[]);
 
 /* ---			Utils.c				--- */
 int		d_key(t_min **tk);
+int		exit_error(const char *str, int i);
 int		end_program(char **line, int error);
 void	siginthandler(int sig);
-void	exit_error(const char *str, int i);
 char	*ft_find_path(char *env[]);
 
 /* ---			Free_funcs.c			--- */

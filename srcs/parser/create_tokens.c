@@ -6,13 +6,13 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:35:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:15:48 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-int static	look_for_redir(t_parser **list, t_cmd *new)
+static int	look_for_redir(t_parser **list, t_cmd *new)
 {
 	int			err;
 	t_parser	*tmp;
@@ -56,7 +56,7 @@ int static	look_for_redir(t_parser **list, t_cmd *new)
 // 	}
 // }
 
-int static	check_redir_syntax(t_parser *list)
+static int	check_redir_syntax(t_parser *list)
 {
 	while (list)
 	{
@@ -75,7 +75,7 @@ int static	check_redir_syntax(t_parser *list)
 	return (0);
 }
 
-int static	create_token(t_min **tk, t_parser **list, t_cmd *new)
+static int	create_token(t_min **tk, t_parser **list, t_cmd *new)
 {
 	int		err;
 	t_cmd	*lst;

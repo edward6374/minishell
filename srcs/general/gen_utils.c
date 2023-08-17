@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   gen_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 21:02:29 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 11:45:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	siginthandler(int sig)
 	rl_redisplay();
 }
 
-void	exit_error(const char *str, int i)
+int	exit_error(const char *str, int i)
 {
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
 	exit(i);
+	return (1);
 }
 
 int	end_program(char **line, int error)
@@ -36,8 +37,6 @@ int	end_program(char **line, int error)
 		free(*line);
 		*line = NULL;
 	}
-	if (error < 8)
-		printf("%s\n", g_error_array[error - 1]);
 	return (error);
 }
 
