@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 22:53:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:04:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	path = path_env((*tk)->env);
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
+	{
+		ft_free_dptr(path);
 		return (check_access((*tmp), 1));
+	}
 	while (path[++i])
 	{
 		err = join_paths(tmp, path[i]);
@@ -104,6 +107,7 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	}
 	if (!path[i])
 		return (CMD_NOT_FOUND);
+	ft_free_dptr(path);
 	return (0);
 }
 
