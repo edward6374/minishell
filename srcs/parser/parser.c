@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 16:31:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:52:34 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,25 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 		p = p->next;
 	}
 	p = all_words;
+	while (p)    // This while is just for printing the resulted structure
+	{
+		printf("Temp:-->%p\n", p);
+		printf("Word:--%s--\n", p->word);
+		printf("Next:-->%p\n", p->next);
+		printf("Before:-->%p\n\n", p->before);
+		p = p->next;
+	}
+	printf("Temp: %p\n", p);
 	return (0);
 }
 
 int	parse_line(t_min *tk, t_parser *all_words, char *s)
 {
 	t_vars		v;
-	t_parser	*temp;
+	t_parser	*tmp;
 
 	set_vars(&v, s);
-	temp = all_words;
+	tmp = all_words;
 	while (s[++v.i])
 	{
 		if ((s[v.i] == ' ' && v.i == 0 && v.oq) || (s[v.i - 1] == ' '
@@ -60,11 +69,11 @@ int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if ((s[v.i - 1] == ' ' || v.i == 0) && s[v.i] != ' ' && v.oq)
 			v.stp = v.i;
 		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
-			if (check_env_var(tk, &temp, &v))
+			if (check_env_var(tk, &tmp, &v))
 				return (free_parser(all_words, MALLOC));
 		if (s[v.i] == '\0')
 			break ;
-		if (find_word(&temp, &v))
+		if (find_word(&tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
 	return (check_for_exit_status(tk, all_words));

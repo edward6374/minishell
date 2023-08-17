@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:38:20 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 13:54:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ typedef struct s_lastword
 	int		sq;
 	int		dq;
 	char	*word;
-} t_lastword;
+}	t_word;
 
 typedef struct s_check
 {
 	int len;
 	char *new;
-} t_check;
+}	t_check;
 
 /* ---			Cmd_and_args.c			--- */
 int		add_arguments(t_parser **list, t_cmd *new);

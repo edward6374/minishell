@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 13:35:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:52:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 				printf(" ");
 		}
 	}
-	if (!no_newline)
+	if (!no_newline && tmp->next)
+		ft_putchar_fd('\n', p);
+	else if (!no_newline && !tmp->next)
 		printf("\n");
 	return (0);
 }

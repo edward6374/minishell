@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:46:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:31:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int	loop_main(t_min *tk)
 		return (free_pointer(path, 1));
 	}
 	else if (line && line[0] == '\0')
+	{
 		free(line);
+		return (0);
+	}
 	program(tk, line);
 	free(path);
 	return (0);

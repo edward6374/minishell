@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 14:49:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:22:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	quotes_loop(char c, int *sq, int *dq)
 
 int	last_word_quotes(t_parser **temp, t_vars *v, int count)
 {
-	t_lastword	data;
+	t_word	data;
 
 	data.l = -1;
 	data.sq = 0;
@@ -37,7 +37,7 @@ int	last_word_quotes(t_parser **temp, t_vars *v, int count)
 	data.word = (char *)malloc(sizeof(char) * (count + 1));
 	if (!data.word)
 		return (MALLOC);
-	while (++data.k <= v->i)
+	while (++data.k < v->i)
 	{
 		quotes_loop(v->s[data.k], &data.sq, &data.dq);
 		if ((v->s[data.k] != '\'' && v->s[data.k] != '\"')
@@ -45,8 +45,10 @@ int	last_word_quotes(t_parser **temp, t_vars *v, int count)
 			|| (v->s[data.k] == '\"' && !data.dq && data.sq))
 			data.word[++data.l] = v->s[data.k];
 	}
+//	printf("Char k: %c\tK: %c\tChar l: %d\n", v->s[v->i - 1], v->s[data.k - 1], data.l);
 	data.word[++data.l] = '\0';
 	v->stp = data.k;
+//	printf("Word: --%s--\n", data.word);
 	if (add_word(temp, data.word))
 		return (MALLOC);
 	return (0);
@@ -54,26 +56,25 @@ int	last_word_quotes(t_parser **temp, t_vars *v, int count)
 
 int	add_word_quotes(t_parser **temp, t_vars *v, char *word, int i)
 {
-	int	l;
-	int	k;
-	int	sq;
-	int	dq;
+	t_word	data;
 
-	l = -1;
-	sq = 0;
-	dq = 0;
-	k = v->stp - 1;
-	while (++k < i)
+	data.l = -1;
+	data.sq = 0;
+	data.dq = 0;
+	data.k = v->stp - 1;
+	while (++data.k < i)
 	{
-		quotes_loop(v->s[k], &sq, &dq);
-		if ((v->s[k] != '\'' && v->s[k] != '\"') || (v->s[k] == '\'' && dq
-				&& !sq) || (v->s[k] == '\"' && !dq && sq))
-			word[++l] = v->s[k];
+		quotes_loop(v->s[data.k], &data.sq, &data.dq);
+		if ((v->s[data.k] != '\'' && v->s[data.k] != '\"')
+			|| (v->s[data.k] == '\'' && data.dq && !data.sq)
+			|| (v->s[data.k] == '\"' && !data.dq && data.sq))
+			word[++data.l] = v->s[data.k];
 	}
 	if (v->s[i] != '<' && v->s[i] != '>' && v->s[i] != '|')
-		word[++l] = v->s[++k];
-	word[++l] = '\0';
-	v->stp = k;
+		word[++data.l] = v->s[++data.k];
+	word[++data.l] = '\0';
+	v->stp = data.k;
+//	printf("Word: %s\n", word);
 	if (add_word(temp, word) || ((v->s[i] == '<' || v->s[i] == '>'
 				|| v->s[i] == '|') && create_word(temp, v, &i, 0)))
 		return (MALLOC);
@@ -92,6 +93,7 @@ int	take_words_with_quotes(t_parser **temp, t_vars *v)
 	dq = 0;
 	count = 0;
 	i = v->stp - 1;
+//	printf("I: %d\tv->i: %d\n", i, v->i);
 	while (++i <= v->i)
 	{
 		quotes_loop(v->s[i], &sq, &dq);
@@ -102,9 +104,10 @@ int	take_words_with_quotes(t_parser **temp, t_vars *v)
 				return (MALLOC);
 			count = 0;
 		}
-		else
+		else if (i != v->stp && i != v->i)
 			count++;
 	}
+//	printf("Count: %d\n", count);
 	return (last_word_quotes(temp, v, count));
 }
 

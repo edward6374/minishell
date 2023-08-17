@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 13:05:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:24:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 // 	int		i;
 // 	int		k;
 // 	t_cmd	*cmd;
-
+//
 // 	i = 0;
 // 	cmd = tk->cmds;
 // 	printf("Comm %p\n", cmd);
@@ -49,7 +49,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 // 		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
 // 				cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
 // 		while (cmd->args[++k])
-// 			printf("\tArg %d:-->%s\n", k, cmd->args[k]);
+// 			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
 // 		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
 // 		cmd = cmd->next;
 // 		i++;
@@ -111,7 +111,6 @@ int	load_commands(t_min *tk, t_parser *list)
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
 			return (free_parser(list, free_all(tk, MALLOC)));
-		printf("New err_f: %p\n", new->err_f);
 		err = look_for_redir(&list, new);
 		if (err == MALLOC)
 			return (free_all(tk, MALLOC));

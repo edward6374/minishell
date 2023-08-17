@@ -6,28 +6,42 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/14 21:05:42 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 
-int	join_strings(t_parser **temp, char *res)
+static int	put_word(t_parser **list, t_vars *v)
+{
+	char	*word;
+
+	if (v->s[v->stp] == '\"')
+		v->stp++;
+	word = ft_substr(v->s, v->stp, v->i - v->stp);
+	if (!word || add_word(list, word))
+		return (MALLOC);
+	printf("Put word: --%s--\n", word);
+	v->count++;
+	return (0);
+}
+
+static int	join_strings(t_parser **list, char *res)
 {
 	char	*join;
 
-	join = ft_strjoin((*temp)->word, res);
+	join = ft_strjoin((*list)->word, res);
 	if (!join)
 		return (free_pointer(res, MALLOC));
 //	printf("Res: --%s--\n", res);
 	printf("Join: --%s--\n", join);
 	free(res);
-	free((*temp)->word);
-	(*temp)->word = join;
+	free((*list)->word);
+	(*list)->word = join;
 	return (0);
 }
 
-int	check_name(char *s, char *value)
+static int	check_name(char *s, char *value)
 {
 	int	i;
 
@@ -42,40 +56,7 @@ int	check_name(char *s, char *value)
 	return (1);
 }
 
-int	take_value(t_min *tk, t_parser **temp, t_vars *v, char *s)
-{
-	int		i;
-	int		len;
-	t_env           *tmp;
-
-	i = -1;
-	len = ft_strlen(s);
-	if (ft_strncmp(s, "$?", 2))
-	{
-		tmp = tk->env;
-		while (tmp)
-		{
-			if (!check_name(tmp->name, s))
-				break ;
-			tmp = tmp->next;
-		}
-		if (!tmp)
-		{
-			printf("No correspondence\n");
-			return (free_pointer(s, 127));
-		}
-		free(s);
-		s = ft_substr(tmp->value, 0, ft_strlen(tmp->value));
-	}
-	if (!s || (!v->count && add_word(temp, s)))
-		return (MALLOC);
-	else if (!s || (v->count && join_strings(temp, s)))
-		return (MALLOC);
-//	printf("New value: %s\tI: %d\n", (*temp)->word, *f);
-	return (0);
-}
-
-int	other_chars(t_parser **temp, t_vars *v)
+static int	other_chars(t_parser **list, t_vars *v)
 {
 	int		end;
 	int		start;
@@ -107,10 +88,16 @@ int	other_chars(t_parser **temp, t_vars *v)
 	if (!other)
 		return (MALLOC);
 	printf("Other: --%s--\n", other);
-	join_strings(temp, other);
+	join_strings(list, other);
 	if ((v->s[end] == '\"' && v->s[end + 1] == '$')
 		|| v->s[end] == '\'')
-		v->i = end + 1;
+	{
+		printf("Here End: %d\tChar end: %c\n", end, v->s[end]);
+		end++;
+		if (v->s[end] == '\"')
+			end++;
+		v->i = end;
+	}
 	else if (v->s[end] == ' ' || v->s[end] == '\0')
 		v->i = end;
 //	if (s[end] == '\0' || s[end] == ' ')
@@ -119,11 +106,44 @@ int	other_chars(t_parser **temp, t_vars *v)
 //		*i = end + 1;
 //	else
 //		*i = end;
-	printf("I symbols: %d\n", v->i);
+	printf("I symbols: %d\tChar i: %c\n", v->i, v->s[v->i]);
 	return (0);
 }
 
-char	*take_name(t_vars *v)
+static int	take_value(t_min *tk, t_parser **list, t_vars *v, char *s)
+{
+	int		i;
+	int		len;
+	t_env	*tmp;
+
+	i = -1;
+	len = ft_strlen(s);
+	if (ft_strncmp(s, "$?", 2))
+	{
+		tmp = tk->env;
+		while (tmp)
+		{
+			if (!check_name(tmp->name, s))
+				break ;
+			tmp = tmp->next;
+		}
+		if (!tmp)
+		{
+			printf("No correspondence\n");
+			return (free_pointer(s, 127));
+		}
+		free(s);
+		s = ft_substr(tmp->value, 0, ft_strlen(tmp->value));
+	}
+	printf("S: %s\n", s);
+	if (!s || (!v->count && add_word(list, s)))
+		return (MALLOC);
+	else if (!s || (v->count && join_strings(list, s)))
+		return (MALLOC);
+	return (0);
+}
+
+static char	*take_name(t_vars *v)
 {
 	int		end;
 	int		start;
@@ -136,6 +156,7 @@ char	*take_name(t_vars *v)
 	while ((v->s[end] >= 'a' && v->s[end] <= 'z')
 		|| (v->s[end] >= 'A' && v->s[end] <= 'Z'))
 		end++;
+	printf("Start: %d\tChar start: %c\tEnd: %d\tChar end:%c\n", start, v->s[start], end, v->s[end]);
 	name = ft_substr(v->s, start, end - start);
 	if (!name)
 		return (NULL);
@@ -152,29 +173,15 @@ char	*take_name(t_vars *v)
 	return (name);
 }
 
-int	put_words(t_parser **temp, t_vars *v)
-{
-	char	*word;
-
-	if (v->s[v->stp] == '\"')
-		v->stp++;
-	word = ft_substr(v->s, v->stp, v->i - v->stp);
-	if (!word || add_word(temp, word))
-		return (MALLOC);
-	printf("Put word: --%s--\n", word);
-	v->count++;
-	return (0);
-}
-
-int	check_env_var(t_min *tk, t_parser **temp, t_vars *v)
+int	check_env_var(t_min *tk, t_parser **list, t_vars *v)
 {
 	int		c;
-	int		ret;
+	int		err;
 	char	*name;
 
 	c = 0;
 	v->count = -1;
-	if ((v->s[v->i - 1] != ' ' || !v->oq) && put_words(temp, v))
+	if ((v->s[v->i - 1] != ' ' || !v->oq) && put_word(list, v))
 		return (MALLOC);
 	while (v->s[v->i] != ' ' && v->s[v->i] != '\0')
 	{
@@ -184,13 +191,13 @@ int	check_env_var(t_min *tk, t_parser **temp, t_vars *v)
 			name = take_name(v);
 			if (!name)
 				return (MALLOC);
-			ret = take_value(tk, temp, v, name);
-			if (ret == 127)
+			err = take_value(tk, list, v, name);
+			if (err == 127)
 				continue ;
-			else if (ret == MALLOC)
+			else if (err == MALLOC)
 				return (MALLOC);
 		}
-		else if (other_chars(temp, v))
+		else if (other_chars(list, v))
 			return (MALLOC);
 		if (c > 10)
 			break ;

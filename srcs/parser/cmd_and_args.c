@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:35:12 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:27:07 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	add_arguments(t_parser **list, t_cmd *new)
 	while (++k < i)
 	{
 		// TODO QUITAR Y NORM OK
-		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
+//		printf("K: %d\tI: %d\tTmp:-->%p\n", k, i, (*list));
 		if (loop_arguments(list, &next, new, k))
 			return (free_commands(&new, free_parser(*list, MALLOC)));
 	}
@@ -55,11 +55,17 @@ int	add_arguments(t_parser **list, t_cmd *new)
 
 int	join_paths(char **tmp, char *env)
 {
-	int		ret;
+	int		err;
 	char	*t1;
 	char	*t2;
 
-	if (!ft_strncmp(*tmp, "export", 7))
+	if (!ft_strncmp(*tmp, "cd", 3)
+		|| !ft_strncmp(*tmp, "echo", 5)
+		|| !ft_strncmp(*tmp, "env", 4)
+		|| !ft_strncmp(*tmp, "exit", 5)
+		|| !ft_strncmp(*tmp, "export", 7)
+		|| !ft_strncmp(*tmp, "pwd", 4)
+		|| !ft_strncmp(*tmp, "unset", 6))
 		return (0);
 	t1 = ft_strjoin(env, "/");
 	if (!t1)
@@ -68,13 +74,13 @@ int	join_paths(char **tmp, char *env)
 	if (!t2)
 		return (free_pointer(t1, MALLOC + 1));
 	free(t1);
-	ret = check_access(t2, 1);
-	if (ret)
+	err = check_access(t2, 1);
+	if (err)
 	{
 		free(t2);
-		if (ret != CMD_NOT_FOUND)
-			ret++;
-		return (ret);
+		if (err != CMD_NOT_FOUND)
+			err++;
+		return (err);
 	}
 	free(*tmp);
 	*tmp = t2;
@@ -84,20 +90,20 @@ int	join_paths(char **tmp, char *env)
 int	rel_path_cmd(t_min **tk, char **tmp)
 {
 	int	i;
-	int	ret;
+	int	err;
 
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
-		*tmp = ft_substr(*tmp, 2, ft_strlen(*tmp) - 2);
+		return (check_access((*tmp), 1));
 	while ((*tk)->path[++i])
 	{
-		ret = join_paths(tmp, (*tk)->path[i]);
-		if (!ret)
+		err = join_paths(tmp, (*tk)->path[i]);
+		if (!err)
 			break ;
-		else if (ret == CMD_NOT_FOUND)
+		else if (err == CMD_NOT_FOUND)
 			continue ;
 		else
-			return (ret - 1);
+			return (err - 1);
 	}
 	if (!(*tk)->path[i])
 		return (CMD_NOT_FOUND);
@@ -110,7 +116,6 @@ int	add_command(t_min **tk, t_parser **list, t_cmd *new)
 	char	*tmp;
 
 	err = 0;
-	printf("Cmd word:--%s--\n", (*list)->word);
 	tmp = ft_strdup((*list)->word);
 	if (!tmp)
 		return (MALLOC);

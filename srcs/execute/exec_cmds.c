@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:30:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:32:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	tmp = tk->cmds;
 	while (tmp)
 	{
-		printf("Command: %s\n", tmp->cmd);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
 			continue ;
 		pid = fork();
@@ -61,12 +60,12 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		{
 			redirect_pipes(tmp, p, fd);
 			close_here_doc(tk);
+			signal(SIGQUIT, siginthandler);
 			execve(tmp->cmd, tmp->args, env);
 		}
 		*child_pid = pid;
 		tmp = tmp->next;
 	}
-	printf("End commands\n");
 	close_all_pipes(tk, p, fd);
 	end_exec(tk, child_pid, env);
 	return (0);

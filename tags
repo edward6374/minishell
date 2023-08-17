@@ -1971,7 +1971,7 @@ execute_line	readline/library/share/readline/fileman.c	/^execute_line (line)$/;"
 executing_macro_index	readline/macro.c	/^static int executing_macro_index;$/;"	v	file:
 exit	readline/examples/rlfe/os.h	52;"	d
 exit	readline/examples/rlfe/os.h	62;"	d
-exit_error	srcs/general/gen_utils.c	/^void	exit_error(const char *str, int i)$/;"	f
+exit_error	srcs/general/gen_utils.c	/^int	exit_error(const char *str, int i)$/;"	f
 exit_value	incs/minishell.h	/^	int		exit_value;$/;"	m	struct:s_min
 expand_prompt	readline/display.c	/^expand_prompt (char *pmt, int flags, int *lp, int *lip, int *niflp, int *vlp)$/;"	f	file:
 export_add	srcs/built-ins/export_add.c	/^void	export_add(t_env *env, char **args)$/;"	f
@@ -2020,6 +2020,7 @@ free_double_char	srcs/general/free_funcs.c	/^char	**free_double_char(char **old,
 free_double_int	srcs/general/free_funcs.c	/^int	free_double_int(char **old, int i)$/;"	f
 free_double_void	srcs/general/free_funcs.c	/^void	free_double_void(char **old)$/;"	f
 free_env	srcs/general/free_structs.c	/^int	free_env(t_env *first)$/;"	f
+free_err_f	srcs/general/free_funcs.c	/^void	free_err_f(char **line)$/;"	f
 free_history_entry	readline/history.c	/^free_history_entry (HIST_ENTRY *hist)$/;"	f
 free_parser	srcs/general/free_structs.c	/^int	free_parser(t_parser *words, int out)$/;"	f
 free_pointer	srcs/general/free_funcs.c	/^int	free_pointer(void *pt, int out)$/;"	f
@@ -3291,7 +3292,7 @@ sv_viins_modestr	readline/bind.c	/^sv_viins_modestr (const char *value)$/;"	f	fi
 symbolic_link	readline/colors.h	/^    symbolic_link,$/;"	e	enum:filetype
 syscom	readline/examples/fileman.c	/^static char syscom[1024];$/;"	v	file:
 syscom	readline/library/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
-t_check	incs/parser.h	/^} t_check;$/;"	t	typeref:struct:s_check
+t_check	incs/parser.h	/^}	t_check;$/;"	t	typeref:struct:s_check
 t_cmd	incs/minishell.h	/^}	t_cmd;$/;"	t	typeref:struct:s_cmd
 t_dsusp	readline/rltty.h	/^  unsigned char t_dsusp;$/;"	m	struct:_rl_tty_chars
 t_env	incs/minishell.h	/^}	t_env;$/;"	t	typeref:struct:s_env
@@ -3303,7 +3304,6 @@ t_flush	readline/rltty.h	/^  unsigned char t_flush;$/;"	m	struct:_rl_tty_chars
 t_here_doc	incs/minishell.h	/^}	t_here_doc;$/;"	t	typeref:struct:s_here_doc
 t_intr	readline/rltty.h	/^  unsigned char t_intr;$/;"	m	struct:_rl_tty_chars
 t_kill	readline/rltty.h	/^  unsigned char t_kill;$/;"	m	struct:_rl_tty_chars
-t_lastword	incs/parser.h	/^} t_lastword;$/;"	t	typeref:struct:s_lastword
 t_list	libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_lnext	readline/rltty.h	/^  unsigned char t_lnext;$/;"	m	struct:_rl_tty_chars
 t_min	incs/minishell.h	/^}	t_min;$/;"	t	typeref:struct:s_min
@@ -3317,6 +3317,7 @@ t_stop	readline/rltty.h	/^  unsigned char t_stop;$/;"	m	struct:_rl_tty_chars
 t_susp	readline/rltty.h	/^  unsigned char t_susp;$/;"	m	struct:_rl_tty_chars
 t_vars	incs/parser.h	/^} t_vars;$/;"	t	typeref:struct:s_vars
 t_werase	readline/rltty.h	/^  unsigned char t_werase;$/;"	m	struct:_rl_tty_chars
+t_word	incs/parser.h	/^}	t_word;$/;"	t	typeref:struct:s_lastword
 take_dollar	srcs/built-ins/echo.c	/^char	*take_dollar(char *env)$/;"	f
 take_double	srcs/execute/exec_utils.c	/^char	**take_double(t_env *first)$/;"	f
 take_env	srcs/general/take_env.c	/^int	take_env(t_min *tk, char *env[])$/;"	f
