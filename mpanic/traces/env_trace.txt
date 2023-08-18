@@ -1,0 +1,384 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [35]
+|  CMD: ->env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7feb01c07730$
+| Tokens 0	0x7feb01c07730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7feb01c077c0$
+| 	Before: 0x0$
+| Tokens 1	0x7feb01c077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7feb01c07730$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [36]
+|  CMD: ->env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$
+| Comm 0x7fc2d0c07770$
+| Tokens 0	0x7fc2d0c07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7fc2d0c07800$
+| 	Before: 0x0$
+| Tokens 1	0x7fc2d0c07800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7fc2d0c07770$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [37]
+|  CMD: ->env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$
+| Comm 0x7fab99e05910$
+| Tokens 0	0x7fab99e05910$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7fab99e059a0$
+| 	Before: 0x0$
+| Tokens 1	0x7fab99e059a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7fab99e05910$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [38]
+|  CMD: ->env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=value$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=value$
+| Comm 0x7fed9dc07770$
+| Tokens 0	0x7fed9dc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7fed9dc07800$
+| 	Before: 0x0$
+| Tokens 1	0x7fed9dc07800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7fed9dc07770$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [39]
+|  CMD: ->export TESTVAR
+| env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8fedc076b0$
+| Tokens 0	0x7f8fedc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f8fedc07790$
+| Tokens 0	0x7f8fedc07790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7f8fedc07820$
+| 	Before: 0x0$
+| Tokens 1	0x7f8fedc07820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7f8fedc07790$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [40]
+|  CMD: ->export TESTVAR=
+| env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd83dc076b0$
+| Tokens 0	0x7fd83dc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TESTVAR=--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7fd83dc07790$
+| Tokens 0	0x7fd83dc07790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7fd83dc07820$
+| 	Before: 0x0$
+| Tokens 1	0x7fd83dc07820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7fd83dc07790$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [41]
+|  CMD: ->export TESTVAR=""
+| env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9511c076d0$
+| Tokens 0	0x7f9511c076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TESTVAR=--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f9511c077a0$
+| Tokens 0	0x7f9511c077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7f9511c07830$
+| 	Before: 0x0$
+| Tokens 1	0x7f9511c07830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7f9511c077a0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [42]
+|  CMD: ->export TESTVAR="value"
+| env | grep TESTVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->TESTVAR=value$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8f4bc076d0$
+| Tokens 0	0x7f8f4bc076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TESTVAR=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| TESTVAR=value$
+| Comm 0x7f8f4bc077a0$
+| Tokens 0	0x7f8f4bc077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: env$
+| 	Arg 0:-->env--$
+| 	Next: 0x7f8f4bc07830$
+| 	Before: 0x0$
+| Tokens 1	0x7f8f4bc07830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TESTVAR--$
+| 	Next: 0x0$
+| 	Before: 0x7f8f4bc077a0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

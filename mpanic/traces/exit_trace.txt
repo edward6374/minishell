@@ -1,0 +1,1968 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [43]
+|  CMD: ->exit<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8302407680$
+| Tokens 0	0x7f8302407680$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [44]
+|  CMD: ->exit ""<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: : numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: : numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fe0ce407680$
+| Tokens 0	0x7fe0ce407680$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [45]
+|  CMD: ->exit " "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit:  : numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit:  : numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f9d51c076b0$
+| Tokens 0	0x7f9d51c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:--> --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [46]
+|  CMD: ->exit " "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit:  : numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit:  : numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fcbb7c076b0$
+| Tokens 0	0x7fcbb7c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:--> --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [47]
+|  CMD: ->exit " "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit:  : numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit:  : numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fc8054076b0$
+| Tokens 0	0x7fc8054076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:--> --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [48]
+|  CMD: ->exit 42network<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: 42network: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: 42network: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f8ad2c076b0$
+| Tokens 0	0x7f8ad2c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->42network--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [49]
+|  CMD: ->exit +<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: +: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: +: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7ffe0cc076b0$
+| Tokens 0	0x7ffe0cc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->+--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [50]
+|  CMD: ->exit ++<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: ++: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: ++: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fee684076b0$
+| Tokens 0	0x7fee684076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->++--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [51]
+|  CMD: ->exit -<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: -: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: -: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f9ff64076b0$
+| Tokens 0	0x7f9ff64076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->---$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [52]
+|  CMD: ->exit ---<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: ---: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: ---: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f8b21c076b0$
+| Tokens 0	0x7f8b21c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-----$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [53]
+|  CMD: ->exit 0<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9634c076b0$
+| Tokens 0	0x7f9634c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->0--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [54]
+|  CMD: ->exit +0<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fd28ac076b0$
+| Tokens 0	0x7fd28ac076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->+0--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [55]
+|  CMD: ->exit ++0<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: ++0: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: ++0: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7ff3bdc076b0$
+| Tokens 0	0x7ff3bdc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->++0--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [56]
+|  CMD: ->exit -0<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7ff6454076b0$
+| Tokens 0	0x7ff6454076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-0--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [57]
+|  CMD: ->exit --0<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: --0: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: --0: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fad1c4076b0$
+| Tokens 0	0x7fad1c4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->--0--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [58]
+|  CMD: ->exit 1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fcd8fc076b0$
+| Tokens 0	0x7fcd8fc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [59]
+|  CMD: ->exit +1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fdfad4076b0$
+| Tokens 0	0x7fdfad4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->+1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [60]
+|  CMD: ->exit ++1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: ++1: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: ++1: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fcc7bc076b0$
+| Tokens 0	0x7fcc7bc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->++1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [61]
+|  CMD: ->exit -1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fab88c076b0$
+| Tokens 0	0x7fab88c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [62]
+|  CMD: ->exit --1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: --1: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: --1: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f8736c076b0$
+| Tokens 0	0x7f8736c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->--1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [63]
+|  CMD: ->exit ' 3'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (3)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fd39f4076b0$
+| Tokens 0	0x7fd39f4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:--> 3--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [64]
+|  CMD: ->exit '3 '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (3)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fa5234076b0$
+| Tokens 0	0x7fa5234076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->3 --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [65]
+|  CMD: ->exit 255<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7f82bfc076b0$
+| Tokens 0	0x7f82bfc076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->255--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [66]
+|  CMD: ->exit -255<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f84c3c076b0$
+| Tokens 0	0x7f84c3c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-255--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [67]
+|  CMD: ->exit 256<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f96ac4076b0$
+| Tokens 0	0x7f96ac4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->256--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [68]
+|  CMD: ->exit -256<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fef2f4076b0$
+| Tokens 0	0x7fef2f4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-256--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [69]
+|  CMD: ->exit 2147483647<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7fb5c94076b0$
+| Tokens 0	0x7fb5c94076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->2147483647--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [70]
+|  CMD: ->exit 2147483648<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdeb44076b0$
+| Tokens 0	0x7fdeb44076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->2147483648--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [71]
+|  CMD: ->exit -2147483648<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7ff5474076d0$
+| Tokens 0	0x7ff5474076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-2147483648--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [72]
+|  CMD: ->exit -2147483649<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fe0984076d0$
+| Tokens 0	0x7fe0984076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-2147483649--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [73]
+|  CMD: ->exit 4294967295<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7facd74076b0$
+| Tokens 0	0x7facd74076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->4294967295--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [74]
+|  CMD: ->exit 4294967296<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdf2d4076b0$
+| Tokens 0	0x7fdf2d4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->4294967296--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [75]
+|  CMD: ->exit -4294967296<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fa43cc076d0$
+| Tokens 0	0x7fa43cc076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-4294967296--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [76]
+|  CMD: ->exit -4294967297<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fcc37c076d0$
+| Tokens 0	0x7fcc37c076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-4294967297--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [77]
+|  CMD: ->exit 9223372036854775807<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7f99acc076e0$
+| Tokens 0	0x7f99acc076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->9223372036854775807--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [78]
+|  CMD: ->exit 9223372036854775808<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: 9223372036854775808: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: 9223372036854775808: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fda464076e0$
+| Tokens 0	0x7fda464076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->9223372036854775808--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [79]
+|  CMD: ->exit -9223372036854775808<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f8605c076e0$
+| Tokens 0	0x7f8605c076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-9223372036854775808--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [80]
+|  CMD: ->exit -9223372036854775809<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: -9223372036854775809: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: -9223372036854775809: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fc8414076e0$
+| Tokens 0	0x7fc8414076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-9223372036854775809--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [81]
+|  CMD: ->exit 18446744073709551615<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: 18446744073709551615: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: 18446744073709551615: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7fb9b04076e0$
+| Tokens 0	0x7fb9b04076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->18446744073709551615--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [82]
+|  CMD: ->exit 18446744073709551616<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: 18446744073709551616: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: 18446744073709551616: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f93084076e0$
+| Tokens 0	0x7f93084076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->18446744073709551616--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [83]
+|  CMD: ->exit -18446744073709551616<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: -18446744073709551616: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: -18446744073709551616: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f8fbe4076e0$
+| Tokens 0	0x7f8fbe4076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-18446744073709551616--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [84]
+|  CMD: ->exit -18446744073709551617<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: -18446744073709551617: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: -18446744073709551617: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f816f4076e0$
+| Tokens 0	0x7f816f4076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->-18446744073709551617--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [85]
+|  CMD: ->exit 9999999999999999999999<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: 9999999999999999999999: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: 9999999999999999999999: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| ->Comm 0x7fb0d1c076e0$
+| Tokens 0	0x7fb0d1c076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->9999999999999999999999--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [86]
+|  CMD: ->exit 0000000000000000000000<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ffbb9c076e0$
+| Tokens 0	0x7ffbb9c076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->0000000000000000000000--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [87]
+|  CMD: ->exit 0000000000000000000001<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f90cc4076e0$
+| Tokens 0	0x7f90cc4076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->0000000000000000000001--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [88]
+|  CMD: ->exit 1 2 3<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: too many arguments$<-
+|
+|--- COMPARED STR:
+| ->exit: too many arguments<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcc41c07710$
+| Tokens 0	0x7fcc41c07710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Arg 2:-->2--$
+| 	Arg 3:-->3--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$
+| minishell: exit: too many arguments$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [89]
+|  CMD: ->exit 1 2 3
+| echo should not exit<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->should not exit$<-
+|
+|--- STDERR:
+| ->bash: line 1: exit: too many arguments$<-
+|
+|--- COMPARED STR:
+| ->exit: too many arguments<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f7eee407710$
+| Tokens 0	0x7f7eee407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Arg 2:-->2--$
+| 	Arg 3:-->3--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$
+| minishell: exit: too many arguments$
+| Comm 0x7f7eee407790$
+| Tokens 0	0x7f7eee407790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->should--$
+| 	Arg 2:-->not--$
+| 	Arg 3:-->exit--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| should not exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [90]
+|  CMD: ->exit 1 not numeric bro<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: too many arguments$<-
+|
+|--- COMPARED STR:
+| ->exit: too many arguments<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f80dac07760$
+| Tokens 0	0x7f80dac07760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Arg 2:-->not--$
+| 	Arg 3:-->numeric--$
+| 	Arg 4:-->bro--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$
+| minishell: exit: too many arguments$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [91]
+|  CMD: ->exit not numeric bro 2<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (255)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: exit: not: numeric argument required$<-
+|
+|--- COMPARED STR:
+| ->exit: not: numeric argument required<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7ff758c07760$
+| Tokens 0	0x7ff758c07760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->not--$
+| 	Arg 2:-->numeric--$
+| 	Arg 3:-->bro--$
+| 	Arg 4:-->2--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [92]
+|  CMD: ->exit 42 | cat<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (42)
+|
+|--- STDOUT:
+| ->Comm 0x7f8c7fc07710$
+| Tokens 0	0x7f8c7fc07710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->42--$
+| 	Next: 0x7f8c7fc077b0$
+| 	Before: 0x0$
+| Tokens 1	0x7f8c7fc077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x0$
+| 	Before: 0x7f8c7fc07710$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [93]
+|  CMD: ->Exit 1
+| echo is not a buildin!<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->is not a buildin!$<-
+|
+|--- STDERR:
+| ->bash: line 1: Exit: command not found$<-
+|
+|--- COMPARED STR:
+| ->Exit: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb88f4076b0$
+| Tokens 0	0x7fb88f4076b0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: Exit$
+| 	Arg 0:-->Exit--$
+| 	Arg 1:-->1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: Exit: command not found$
+| Comm 0x7fb88f6042b0$
+| Tokens 0	0x7fb88f6042b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->is--$
+| 	Arg 2:-->not--$
+| 	Arg 3:-->a--$
+| 	Arg 4:-->buildin!--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| is not a buildin!$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [94]
+|  CMD: ->aaa
+| exit<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: aaa: command not found$<-
+|
+|--- COMPARED STR:
+| ->aaa: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd145407680$
+| Tokens 0	0x7fd145407680$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: aaa$
+| 	Arg 0:-->aaa--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: aaa: command not found$
+| Comm 0x7fd1454076e0$
+| Tokens 0	0x7fd1454076e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [95]
+|  CMD: ->aaa
+| exit 1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: aaa: command not found$<-
+|
+|--- COMPARED STR:
+| ->aaa: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f865ac07680$
+| Tokens 0	0x7f865ac07680$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: aaa$
+| 	Arg 0:-->aaa--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: aaa: command not found$
+| Comm 0x7f865ac07710$
+| Tokens 0	0x7f865ac07710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [96]
+|  CMD: ->cat file
+| exit<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->cat: file: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->mission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcee84076b0$
+| Tokens 0	0x7fcee84076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7fcee86041d0$
+| Tokens 0	0x7fcee86041d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->cat: file: Permission denied$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [97]
+|  CMD: ->cat file
+| exit 1<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->cat: file: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->mission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7f81344076b0$
+| Tokens 0	0x7f81344076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f8134604200$
+| Tokens 0	0x7f8134604200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->1--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->cat: file: Permission denied$<-
+|
+---------------------------------------------<
+

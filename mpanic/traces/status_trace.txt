@@ -1,0 +1,1307 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [341]
+|  CMD: ->" "
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1:  : command not found$<-
+|
+|--- COMPARED STR:
+| -> : command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc413407730$
+| Tokens 0	0x7fc413407730$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  $
+| 	Arg 0:--> --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  : command not found$
+| Comm 0x7fc4134077c0$
+| Tokens 0	0x7fc4134077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [342]
+|  CMD: ->" "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  : command not found$<-
+|
+|--- COMPARED STR:
+| -> : command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fbd6cc07730$
+| Tokens 0	0x7fbd6cc07730$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  $
+| 	Arg 0:--> --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  : command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [343]
+|  CMD: ->echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8ebec07760$
+| Tokens 0	0x7f8ebec07760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [344]
+|  CMD: ->cat < noexiste
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noexiste: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->noexiste: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7fc154c07790$
+| Tokens 0	0x7fc154c07790$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:--><--$
+| 	Arg 2:-->/Users/nmota-bu/Desktop/valerio/mpanic/noexiste--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: noexiste: no such file or directory$
+| Comm 0x7fc154c077f0$
+| Tokens 0	0x7fc154c077f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [345]
+|  CMD: ->cat < noexiste<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noexiste: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->noexiste: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7f95b4407790$
+| Tokens 0	0x7f95b4407790$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:--><--$
+| 	Arg 2:-->/Users/nmota-bu/Desktop/valerio/mpanic/noexiste--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: noexiste: no such file or directory$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [346]
+|  CMD: ->echo hola > noperm
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fbce54077e0$
+| Tokens 0	0x7fbce54077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: -1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hola$
+| Comm 0x7fbce5604200$
+| Tokens 0	0x7fbce5604200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [347]
+|  CMD: ->echo hola > noperm<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fecad4077e0$
+| Tokens 0	0x7fecad4077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: -1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hola$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [348]
+|  CMD: ->echo hola < noperm
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| Comm 0x7fbb2e4077e0$
+| Tokens 0	0x7fbb2e4077e0$
+| 	Ok: 9$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/noperm--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: noperm: file not readable$
+| Comm 0x7fbb2e4077b0$
+| Tokens 0	0x7fbb2e4077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [349]
+|  CMD: ->echo hola < noperm<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| Comm 0x7ff8574077e0$
+| Tokens 0	0x7ff8574077e0$
+| 	Ok: 9$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/noperm--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: noperm: file not readable$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [350]
+|  CMD: ->sleep 1 | ls | cat -n
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	traces$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	traces$
+| Comm 0x7f8014c07870$
+| Tokens 0	0x7f8014c07870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/sleep$
+| 	Arg 0:-->sleep--$
+| 	Arg 1:-->1--$
+| 	Next: 0x7f8014c078d0$
+| 	Before: 0x0$
+| Tokens 1	0x7f8014c078d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7f8014c07b80$
+| 	Before: 0x7f8014c07870$
+| Tokens 2	0x7f8014c07b80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-n--$
+| 	Next: 0x0$
+| 	Before: 0x7f8014c078d0$
+| Comm 0x7f8014e04200$
+| Tokens 0	0x7f8014e04200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [351]
+|  CMD: ->sleep 1 | ls | cat -n<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	traces$
+| Comm 0x7fb4b9c07870$
+| Tokens 0	0x7fb4b9c07870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/sleep$
+| 	Arg 0:-->sleep--$
+| 	Arg 1:-->1--$
+| 	Next: 0x7fb4b9c078d0$
+| 	Before: 0x0$
+| Tokens 1	0x7fb4b9c078d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fb4b9c07b80$
+| 	Before: 0x7fb4b9c07870$
+| Tokens 2	0x7fb4b9c07b80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-n--$
+| 	Next: 0x0$
+| 	Before: 0x7fb4b9c078d0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [352]
+|  CMD: ->sleep 1 | dddd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: dddd: command not found$<-
+|
+|--- COMPARED STR:
+| ->dddd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcb4d4077c0$
+| Tokens 0	0x7fcb4d4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/sleep$
+| 	Arg 0:-->sleep--$
+| 	Arg 1:-->1--$
+| 	Next: 0x7fcb4d407820$
+| 	Before: 0x0$
+| Tokens 1	0x7fcb4d407820$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: dddd$
+| 	Arg 0:-->dddd--$
+| 	Next: 0x0$
+| 	Before: 0x7fcb4d4077c0$
+| minishell: dddd: command not found$
+| Comm 0x7fcb4d407a80$
+| Tokens 0	0x7fcb4d407a80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [353]
+|  CMD: ->sleep 1 | dddd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: dddd: command not found$<-
+|
+|--- COMPARED STR:
+| ->dddd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f998e4077c0$
+| Tokens 0	0x7f998e4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/sleep$
+| 	Arg 0:-->sleep--$
+| 	Arg 1:-->1--$
+| 	Next: 0x7f998e407820$
+| 	Before: 0x0$
+| Tokens 1	0x7f998e407820$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: dddd$
+| 	Arg 0:-->dddd--$
+| 	Next: 0x0$
+| 	Before: 0x7f998e4077c0$
+| minishell: dddd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [354]
+|  CMD: ->nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdfd6c07730$
+| Tokens 0	0x7fdfd6c07730$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: nonexistcmd: command not found$
+| Comm 0x7fdfd6c077c0$
+| Tokens 0	0x7fdfd6c077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [355]
+|  CMD: ->nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc9b4407730$
+| Tokens 0	0x7fc9b4407730$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [356]
+|  CMD: ->nonexistcmd | echo hi
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| 0$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fe3fc4077e0$
+| Tokens 0	0x7fe3fc4077e0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x7fe3fc407850$
+| 	Before: 0x0$
+| Tokens 1	0x7fe3fc407850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x7fe3fc4077e0$
+| minishell: nonexistcmd: command not found$
+| hi$
+| Comm 0x7fe3fc604200$
+| Tokens 0	0x7fe3fc604200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [357]
+|  CMD: ->nonexistcmd | echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fecd6c077e0$
+| Tokens 0	0x7fecd6c077e0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x7fecd6c07850$
+| 	Before: 0x0$
+| Tokens 1	0x7fecd6c07850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x7fecd6c077e0$
+| minishell: nonexistcmd: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [358]
+|  CMD: ->echo hi | nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd04bc077e0$
+| Tokens 0	0x7fd04bc077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x7fd04bc07880$
+| 	Before: 0x0$
+| Tokens 1	0x7fd04bc07880$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x7fd04bc077e0$
+| minishell: nonexistcmd: command not found$
+| Comm 0x7fd04bc07840$
+| Tokens 0	0x7fd04bc07840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [359]
+|  CMD: ->echo hi | nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f87274077e0$
+| Tokens 0	0x7f87274077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x7f8727407880$
+| 	Before: 0x0$
+| Tokens 1	0x7f8727407880$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x7f87274077e0$
+| minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [360]
+|  CMD: ->echo hi < nofile | nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$
+| bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7fb57a407840$
+| Tokens 0	0x7fb57a407840$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/nofile--$
+| 	Next: 0x7fb57a407770$
+| 	Before: 0x0$
+| Tokens 1	0x7fb57a407770$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x7fb57a407840$
+| minishell: nofile: no such file or directory$
+| minishell: nonexistcmd: command not found$
+| Comm 0x7fb57a407830$
+| Tokens 0	0x7fb57a407830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [361]
+|  CMD: ->echo hi < nofile | nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$
+| bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7fbbe7407840$
+| Tokens 0	0x7fbbe7407840$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/nofile--$
+| 	Next: 0x7fbbe7407770$
+| 	Before: 0x0$
+| Tokens 1	0x7fbbe7407770$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: nonexistcmd$
+| 	Arg 0:-->nonexistcmd--$
+| 	Next: 0x0$
+| 	Before: 0x7fbbe7407840$
+| minishell: nofile: no such file or directory$
+| minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [362]
+|  CMD: ->echo hi < nofile | echo hii
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hii$
+| 0$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7fcacc407870$
+| Tokens 0	0x7fcacc407870$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/nofile--$
+| 	Next: 0x7fcacc407770$
+| 	Before: 0x0$
+| Tokens 1	0x7fcacc407770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hii--$
+| 	Next: 0x0$
+| 	Before: 0x7fcacc407870$
+| minishell: nofile: no such file or directory$
+| hii$
+| Comm 0x7fcacc407810$
+| Tokens 0	0x7fcacc407810$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [363]
+|  CMD: ->echo hi < nofile | echo hii<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hii$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7f8ffcc07870$
+| Tokens 0	0x7f8ffcc07870$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/nofile--$
+| 	Next: 0x7f8ffcc07770$
+| 	Before: 0x0$
+| Tokens 1	0x7f8ffcc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hii--$
+| 	Next: 0x0$
+| 	Before: 0x7f8ffcc07870$
+| minishell: nofile: no such file or directory$
+| hii$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [364]
+|  CMD: ->/Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->/Users/nonexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa4cfc07770$
+| Tokens 0	0x7fa4cfc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /Users/nonexist/directory$
+| 	Arg 0:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7fa4cfe043a0$
+| Tokens 0	0x7fa4cfe043a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 0$
+| Comm 0x7fa4cfc07770$
+| Tokens 0	0x7fa4cfc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /Users/nonexist/directory$
+| 	Arg 0:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [365]
+|  CMD: ->/Users/nonexist/directory<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->/Users/nonexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff3fbc07770$
+| Tokens 0	0x7ff3fbc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /Users/nonexist/directory$
+| 	Arg 0:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7ff3fbc07770$
+| Tokens 0	0x7ff3fbc07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /Users/nonexist/directory$
+| 	Arg 0:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [366]
+|  CMD: ->cat /Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f881d407790$
+| Tokens 0	0x7f881d407790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f881d604200$
+| Tokens 0	0x7f881d604200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$?--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [367]
+|  CMD: ->cat /Users/nonexist/directory<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa81bc07790$
+| Tokens 0	0x7fa81bc07790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->/Users/nonexist/directory--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+---------------------------------------------<
+

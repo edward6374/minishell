@@ -1,0 +1,1801 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [154]
+|  CMD: ->echo "~"ups<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->~ups$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fed954076f0$
+| Tokens 0	0x7fed954076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->~up--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| ~up$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [155]
+|  CMD: ->echo '~'ups<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->~ups$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9dedc076f0$
+| Tokens 0	0x7f9dedc076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->~up--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| ~up$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [156]
+|  CMD: ->echo "'$'"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->'$'$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd363c07710$
+| Tokens 0	0x7fd363c07710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->'-n -n"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| '-n -n"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [157]
+|  CMD: ->echo '"$"'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->"$"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb5924076f0$
+| Tokens 0	0x7fb5924076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->"$"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| "$"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [158]
+|  CMD: ->echo "|$USER|"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->|nmota-bu|$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8ac7407710$
+| Tokens 0	0x7f8ac7407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|nmota-bu|"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |nmota-bu|"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [159]
+|  CMD: ->echo "|$USE|"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->||$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fda53407710$
+| Tokens 0	0x7fda53407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|nmota-bu|"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |nmota-bu|"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [160]
+|  CMD: ->echo "|$USER_|"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->||$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb142407710$
+| Tokens 0	0x7fb142407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|nmota-bu_|"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |nmota-bu_|"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [161]
+|  CMD: ->echo '|$USER|'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->|$USER|$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcbbac076f0$
+| Tokens 0	0x7fcbbac076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|$USER|--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |$USER|$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [162]
+|  CMD: ->echo '|$USE|'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->|$USE|$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb50fc076f0$
+| Tokens 0	0x7fb50fc076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|$USE|--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |$USE|$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [163]
+|  CMD: ->echo '|$USER_|'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->|$USER_|$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa4a54076f0$
+| Tokens 0	0x7fa4a54076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->|$USER_|--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| |$USER_|$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [164]
+|  CMD: ->'echo' hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd5d4c076f0$
+| Tokens 0	0x7fd5d4c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [165]
+|  CMD: ->'''echo' hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f97e74076f0$
+| Tokens 0	0x7f97e74076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [166]
+|  CMD: ->'echo' 'hi'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb4d8c076f0$
+| Tokens 0	0x7fb4d8c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [167]
+|  CMD: ->'echo' 'hi'''<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb8424076f0$
+| Tokens 0	0x7fb8424076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [168]
+|  CMD: ->'echo' 'hi' ''<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa4e44076f0$
+| Tokens 0	0x7fa4e44076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [169]
+|  CMD: ->"echo" hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f97ce4076f0$
+| Tokens 0	0x7f97ce4076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [170]
+|  CMD: ->"""echo" hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa12e4076f0$
+| Tokens 0	0x7fa12e4076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [171]
+|  CMD: ->"echo" "hi"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9facc076f0$
+| Tokens 0	0x7f9facc076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [172]
+|  CMD: ->"echo" "hi"""<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ffbdcc076f0$
+| Tokens 0	0x7ffbdcc076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [173]
+|  CMD: ->"echo" "hi" ""<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb3dbc076f0$
+| Tokens 0	0x7fb3dbc076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [174]
+|  CMD: ->echo '""""""""""""'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->""""""""""""$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcf28407710$
+| Tokens 0	0x7fcf28407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->""""""""""""--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| """"""""""""$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [175]
+|  CMD: ->'echo' "hi"'' " ' "' "' "" ''''''""<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi  '  "  $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8c5cc077c0$
+| Tokens 0	0x7f8c5cc077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--> '  "--$
+| 	Arg 3:-->--$
+| 	Arg 4:-->--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi  '  "  $<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [176]
+|  CMD: ->echo hi"hi" hi'h"i'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hihi hih"i$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fe66f407740$
+| Tokens 0	0x7fe66f407740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hihi--$
+| 	Arg 2:-->hih"i--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hihi hih"i$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [177]
+|  CMD: ->echo "hi" "hi"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcf8b407720$
+| Tokens 0	0x7fcf8b407720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [178]
+|  CMD: ->echo "hi" "hi"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8b1d407720$
+| Tokens 0	0x7f8b1d407720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [179]
+|  CMD: ->echo "hi"t"hi"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hithi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fafe3c076f0$
+| Tokens 0	0x7fafe3c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hithi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hithi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [180]
+|  CMD: ->" echo"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  echo: command not found$<-
+|
+|--- COMPARED STR:
+| -> echo: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc39b4076c0$
+| Tokens 0	0x7fc39b4076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  echo$
+| 	Arg 0:--> echo--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  echo: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [181]
+|  CMD: ->' echo'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  echo: command not found$<-
+|
+|--- COMPARED STR:
+| -> echo: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fbc79c076c0$
+| Tokens 0	0x7fbc79c076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  echo$
+| 	Arg 0:--> echo--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  echo: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [182]
+|  CMD: ->""echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fda8b4076c0$
+| Tokens 0	0x7fda8b4076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: ech$
+| 	Arg 0:-->ech--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: ech: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [183]
+|  CMD: ->" "echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  echo: command not found$<-
+|
+|--- COMPARED STR:
+| -> echo: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc7f04076c0$
+| Tokens 0	0x7fc7f04076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  ech$
+| 	Arg 0:--> ech--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  ech: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [184]
+|  CMD: ->''echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8942c076c0$
+| Tokens 0	0x7f8942c076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: ech$
+| 	Arg 0:-->ech--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: ech: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [185]
+|  CMD: ->' 'echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  echo: command not found$<-
+|
+|--- COMPARED STR:
+| -> echo: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f7ff74076c0$
+| Tokens 0	0x7f7ff74076c0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd:  ech$
+| 	Arg 0:--> ech--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell:  ech: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [186]
+|  CMD: ->''''''''''echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff0abc07710$
+| Tokens 0	0x7ff0abc07710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [187]
+|  CMD: ->""""""""""echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fde27407710$
+| Tokens 0	0x7fde27407710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [188]
+|  CMD: ->"e"'c'h"o" hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f96ed4076f0$
+| Tokens 0	0x7f96ed4076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [189]
+|  CMD: ->ec""ho hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fe641c076f0$
+| Tokens 0	0x7fe641c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [190]
+|  CMD: ->ec""h''o hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f94024076f0$
+| Tokens 0	0x7f94024076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [191]
+|  CMD: ->EcHo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| Comm 0x7faab9c076f0$
+| Tokens 0	0x7faab9c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/EcHo$
+| 	Arg 0:-->EcHo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [192]
+|  CMD: ->ECHO hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| Comm 0x7fe9a44076f0$
+| Tokens 0	0x7fe9a44076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ECHO$
+| 	Arg 0:-->ECHO--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [193]
+|  CMD: ->"ECHO" hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| Comm 0x7fb575c076f0$
+| Tokens 0	0x7fb575c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ECHO$
+| 	Arg 0:-->ECHO--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [194]
+|  CMD: ->'ECHO' hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| Comm 0x7fad95c076f0$
+| Tokens 0	0x7fad95c076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ECHO$
+| 	Arg 0:-->ECHO--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [195]
+|  CMD: ->echo t hi t<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->t hi t$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f94e1e04190$
+| Tokens 0	0x7f94e1e04190$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->t--$
+| 	Arg 2:-->hi--$
+| 	Arg 3:-->t--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| t hi t$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [196]
+|  CMD: ->echo " t hi t "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa8815053e0$
+| Tokens 0	0x7fa8815053e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:--> t hi t --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+|  t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [197]
+|  CMD: ->echo ' t hi t '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7faae54076f0$
+| Tokens 0	0x7faae54076f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:--> t hi t --$
+| 	Next: 0x0$
+| 	Before: 0x0$
+|  t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [198]
+|  CMD: ->echo $" t hi t "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fde35c077a0$
+| Tokens 0	0x7fde35c077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->-n -n--$
+| 	Arg 2:-->t--$
+| 	Arg 3:-->hi--$
+| 	Arg 4:-->t--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| t hi t<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [199]
+|  CMD: ->echo $' t hi t '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc410407730$
+| Tokens 0	0x7fc410407730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->-n -n t hi t --$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [200]
+|  CMD: ->echo $' r hi t '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> r hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdb70407730$
+| Tokens 0	0x7fdb70407730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->-n -n r hi t --$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [201]
+|  CMD: ->echo hi > "fi le"
+| rm "fi le"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f82b9c07770$
+| Tokens 0	0x7f82b9c07770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 3$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$
+| Comm 0x7f82b9c07740$
+| Tokens 0	0x7f82b9c07740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/rm$
+| 	Arg 0:-->rm--$
+| 	Arg 1:-->fi le--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [202]
+|  CMD: ->echo hi > 'fi le'
+| rm 'fi le'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7feb5b407770$
+| Tokens 0	0x7feb5b407770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 3$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| hi$
+| Comm 0x7feb5b407740$
+| Tokens 0	0x7feb5b407740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/rm$
+| 	Arg 0:-->rm--$
+| 	Arg 1:-->fi le--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [203]
+|  CMD: ->echo $ANA_VAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->. hi, this is the hardest" Ana "test$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdfcc4077c0$
+| Tokens 0	0x7fdfcc4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->. hi, this is the hardest" Ana "test _VAR--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| . hi, this is the hardest" Ana "test _VAR$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [204]
+|  CMD: ->echo "$ANA_VAR"<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->. hi, this is the hardest" Ana "test $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ffc574077d0$
+| Tokens 0	0x7ffc574077d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->. hi, this is the hardest" Ana "test _VAR"--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| . hi, this is the hardest" Ana "test _VAR"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [205]
+|  CMD: ->echo '$ANA_VAR'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$ANA_VAR$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdb1bc07760$
+| Tokens 0	0x7fdb1bc07760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->$ANA_VAR--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| $ANA_VAR$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

@@ -1,0 +1,816 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [19]
+|  CMD: ->export 1A=value<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: `1A=value': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `1A=value': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff9a2c076b0$
+| Tokens 0	0x7ff9a2c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->1A=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [20]
+|  CMD: ->export /A=value<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: `/A=value': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `/A=value': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb486c076b0$
+| Tokens 0	0x7fb486c076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->/A=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [21]
+|  CMD: ->export A/=value<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: `A/=value': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `A/=value': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fcfdd4076b0$
+| Tokens 0	0x7fcfdd4076b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->A/=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [22]
+|  CMD: ->export 'A=value'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f98a5c076d0$
+| Tokens 0	0x7f98a5c076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->A=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [23]
+|  CMD: ->export ' A=value'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: ` A=value': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: ` A=value': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc8164076d0$
+| Tokens 0	0x7fc8164076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:--> A=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [24]
+|  CMD: ->export 'A =value'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: `A =value': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `A =value': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fdcc84076d0$
+| Tokens 0	0x7fdcc84076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->A =value--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [25]
+|  CMD: ->export TEST=test
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="test"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f98204076d0$
+| Tokens 0	0x7f98204076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=test--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x TEST="test"$
+| Comm 0x7f98204077a0$
+| Tokens 0	0x7f98204077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7f9820407830$
+| 	Before: 0x0$
+| Tokens 1	0x7f9820407830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Next: 0x0$
+| 	Before: 0x7f98204077a0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [26]
+|  CMD: ->export TEST=test TESTT=test2
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="test"$
+| declare -x TESTT="test2"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8be5c07700$
+| Tokens 0	0x7f8be5c07700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=test--$
+| 	Arg 2:-->TESTT=test2--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x TEST="test"$
+| declare -x TESTT="test2"$
+| Comm 0x7f8be5c077a0$
+| Tokens 0	0x7f8be5c077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7f8be5c07830$
+| 	Before: 0x0$
+| Tokens 1	0x7f8be5c07830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Next: 0x0$
+| 	Before: 0x7f8be5c077a0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [27]
+|  CMD: ->export TEST=test W:RON:G=wrong TESTT=test2
+| export | grep TEST wrong<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: export: `W:RON:G=wrong': not a valid identifier$
+| grep: wrong: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->export: `W:RON:G=wrong': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb8a1407750$
+| Tokens 0	0x7fb8a1407750$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=test--$
+| 	Arg 2:-->W:RON:G=wrong--$
+| 	Arg 3:-->TESTT=test2--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7fb8a14077e0$
+| Tokens 0	0x7fb8a14077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fb8a1407870$
+| 	Before: 0x0$
+| Tokens 1	0x7fb8a1407870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Arg 2:-->wrong--$
+| 	Next: 0x0$
+| 	Before: 0x7fb8a14077e0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| ->grep: wrong: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [28]
+|  CMD: ->export EMPTY EMPTY_TOO= NOT_EMPTY=contnent
+| export | grep EMPTY<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x EMPTY$
+| declare -x EMPTY_TOO=""$
+| declare -x NOT_EMPTY="contnent"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa64c407760$
+| Tokens 0	0x7fa64c407760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->EMPTY--$
+| 	Arg 2:-->EMPTY_TOO=--$
+| 	Arg 3:-->NOT_EMPTY=contnent--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x EMPTY=""$
+| declare -x EMPTY_TOO=""$
+| declare -x NOT_EMPTY="contnent"$
+| Comm 0x7fa64c4077c0$
+| Tokens 0	0x7fa64c4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fa64c407840$
+| 	Before: 0x0$
+| Tokens 1	0x7fa64c407840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->EMPTY--$
+| 	Next: 0x0$
+| 	Before: 0x7fa64c4077c0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [29]
+|  CMD: ->export TEST=value TEST=value2
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="value2"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fed5f407700$
+| Tokens 0	0x7fed5f407700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=value--$
+| 	Arg 2:-->TEST=value2--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x TEST="value2"$
+| Comm 0x7fed5f4077a0$
+| Tokens 0	0x7fed5f4077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fed5f407830$
+| 	Before: 0x0$
+| Tokens 1	0x7fed5f407830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Next: 0x0$
+| 	Before: 0x7fed5f4077a0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [30]
+|  CMD: ->export TEST=value
+| export TEST+=" added value"
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="value added value"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f8ecd4076d0$
+| Tokens 0	0x7f8ecd4076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f8ecd407750$
+| Tokens 0	0x7f8ecd407750$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST+= added value--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x TEST+=" added value"$
+| declare -x TEST="value"$
+| Comm 0x7f8ecd4083a0$
+| Tokens 0	0x7f8ecd4083a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7f8ecd407800$
+| 	Before: 0x0$
+| Tokens 1	0x7f8ecd407800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Next: 0x0$
+| 	Before: 0x7f8ecd4083a0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [31]
+|  CMD: ->export TEST=value
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="value"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb9e4c076d0$
+| Tokens 0	0x7fb9e4c076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->TEST=value--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x TEST="value"$
+| Comm 0x7fb9e4c077a0$
+| Tokens 0	0x7fb9e4c077a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fb9e4c07830$
+| 	Before: 0x0$
+| Tokens 1	0x7fb9e4c07830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->TEST--$
+| 	Next: 0x0$
+| 	Before: 0x7fb9e4c077a0$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [32]
+|  CMD: ->export correct=correct wrong%=wrong
+| export | grep correct
+| export | grep wrong<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->declare -x correct="correct"$<-
+|
+|--- STDERR:
+| ->bash: line 1: export: `wrong%=wrong': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `wrong%=wrong': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fca99407720$
+| Tokens 0	0x7fca99407720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->correct=correct--$
+| 	Arg 2:-->wrong%=wrong--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x correct="correct"$
+| Comm 0x7fca994077b0$
+| Tokens 0	0x7fca994077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fca99407840$
+| 	Before: 0x0$
+| Tokens 1	0x7fca99407840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->correct--$
+| 	Next: 0x0$
+| 	Before: 0x7fca994077b0$
+| 	p: 4$
+| 	out_fd: 1$
+| declare -x wrong%="wrong"$
+| Comm 0x7fca99604280$
+| Tokens 0	0x7fca99604280$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fca99604310$
+| 	Before: 0x0$
+| Tokens 1	0x7fca99604310$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->wrong--$
+| 	Next: 0x0$
+| 	Before: 0x7fca99604280$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [33]
+|  CMD: ->export wrong%=wrong correct=correct
+| export | grep correct
+| export | grep wrong<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->declare -x correct="correct"$<-
+|
+|--- STDERR:
+| ->bash: line 1: export: `wrong%=wrong': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `wrong%=wrong': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fadb9407720$
+| Tokens 0	0x7fadb9407720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->wrong%=wrong--$
+| 	Arg 2:-->correct=correct--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| declare -x correct="correct"$
+| Comm 0x7fadb94077b0$
+| Tokens 0	0x7fadb94077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fadb9407840$
+| 	Before: 0x0$
+| Tokens 1	0x7fadb9407840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->correct--$
+| 	Next: 0x0$
+| 	Before: 0x7fadb94077b0$
+| 	p: 4$
+| 	out_fd: 1$
+| declare -x wrong%="wrong"$
+| Comm 0x7fadb9407870$
+| Tokens 0	0x7fadb9407870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Next: 0x7fadb9407900$
+| 	Before: 0x0$
+| Tokens 1	0x7fadb9407900$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/grep$
+| 	Arg 0:-->grep--$
+| 	Arg 1:-->wrong--$
+| 	Next: 0x0$
+| 	Before: 0x7fadb9407870$
+| 	p: 4$
+| 	out_fd: 1$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [34]
+|  CMD: ->export PATH='/usr/bin'
+| whoami<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->nmota-bu$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f80724076d0$
+| Tokens 0	0x7f80724076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: export$
+| 	Arg 0:-->export--$
+| 	Arg 1:-->PATH=/usr/bin--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| nmota-bu$
+| Comm 0x7f80724076d0$
+| Tokens 0	0x7f80724076d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/whoami$
+| 	Arg 0:-->whoami--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

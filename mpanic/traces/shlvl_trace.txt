@@ -1,0 +1,321 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [368]
+|  CMD: ->echo $SHLVL 'entry value 20'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->21 entry value 20$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fbb95c077b0$
+| Tokens 0	0x7fbb95c077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->21--$
+| 	Arg 2:-->entry value 20--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 21 entry value 20$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [369]
+|  CMD: ->echo $SHLVL 'entry value 50'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->51 entry value 50$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa7b5c077b0$
+| Tokens 0	0x7fa7b5c077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->51--$
+| 	Arg 2:-->entry value 50--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 51 entry value 50$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [370]
+|  CMD: ->echo $SHLVL 'entry value 99'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->100 entry value 99$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb7944077b0$
+| Tokens 0	0x7fb7944077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->100--$
+| 	Arg 2:-->entry value 99--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 100 entry value 99$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [371]
+|  CMD: ->echo $SHLVL 'entry value -20'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->0 entry value -20$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff8b24077b0$
+| Tokens 0	0x7ff8b24077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->-19--$
+| 	Arg 2:-->entry value -20--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| -19 entry value -20$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [372]
+|  CMD: ->echo $SHLVL 'entry value 800'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->801 entry value 800$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff06b4077b0$
+| Tokens 0	0x7ff06b4077b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->801--$
+| 	Arg 2:-->entry value 800--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 801 entry value 800$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [373]
+|  CMD: ->echo $SHLVL 'entry value 1000'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1 entry value 1000$<-
+|
+|--- STDERR:
+| ->bash: warning: shell level (1001) too high, resetting to 1$<-
+|
+|--- COMPARED STR:
+| -> shell level (1001) too high, resetting to 1<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb4ae4077c0$
+| Tokens 0	0x7fb4ae4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->1001--$
+| 	Arg 2:-->entry value 1000--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 1001 entry value 1000$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [374]
+|  CMD: ->echo $SHLVL 'entry value 5000000'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1 entry value 5000000$<-
+|
+|--- STDERR:
+| ->bash: warning: shell level (5000001) too high, resetting to 1$<-
+|
+|--- COMPARED STR:
+| -> shell level (5000001) too high, resetting to 1<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fa085c077e0$
+| Tokens 0	0x7fa085c077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->5000001--$
+| 	Arg 2:-->entry value 5000000--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| 5000001 entry value 5000000$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [375]
+|  CMD: ->echo $SHLVL 'unset SHLVL before ./minishell'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1 unset SHLVL before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fe0cdc07760$
+| Tokens 0	0x7fe0cdc07760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->unset SHLVL before ./minishell--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| unset SHLVL before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [376]
+|  CMD: ->echo $SLVL 'export SHLVL='' before ./minishell'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->export SHLVL= before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd9a4c077d0$
+| Tokens 0	0x7fd9a4c077d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->export SHLVL= before ./minishell--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| export SHLVL= before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

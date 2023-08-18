@@ -1,0 +1,572 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [377]
+|  CMD: ->mkdir testdirtest
+| cd testdirtest
+| bash
+| cd .. && rm -rf testdirtest && exit
+| pwd
+| cd .
+| pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| /Users/nmota-bu/Desktop/valerio/mpanic/testdirtest/.$<-
+|
+|--- STDERR:
+| ->mkdir: testdirtest: File exists$
+| cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->test: File exists<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| Comm 0x7fca26407780
+| Tokens 0	0x7fca26407780
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: /bin/mkdir
+| 	Arg 0:-->mkdir--
+| 	Arg 1:-->testdirtest--
+| 	Next: 0x0
+| 	Before: 0x0
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 26942 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [378]
+|  CMD: ->exit --<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->Comm 0x7fc373407760$
+| Tokens 0	0x7fc373407760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: exit$
+| 	Arg 0:-->exit--$
+| 	Arg 1:-->----$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [379]
+|  CMD: ->echo all &> testfile < non_exist_file
+| rm testfile<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7fc9bc407890$
+| Tokens 0	0x7fc9bc407890$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 3$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->all--$
+| 	Arg 2:-->&--$
+| 	Arg 3:--><--$
+| 	Arg 4:-->/Users/nmota-bu/Desktop/valerio/mpanic/non_exist_file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: non_exist_file: no such file or directory$
+| Comm 0x7fc9bc4077c0$
+| Tokens 0	0x7fc9bc4077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/rm$
+| 	Arg 0:-->rm--$
+| 	Arg 1:-->testfile--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [380]
+|  CMD: ->cd-<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: cd-: command not found$<-
+|
+|--- COMPARED STR:
+| ->cd-: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fed67506550$
+| Tokens 0	0x7fed67506550$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: cd-$
+| 	Arg 0:-->cd---$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: cd-: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [381]
+|  CMD: ->mkdir testdir
+| cd testdir
+| pwd
+| cd ..
+| pwd
+| rm -rf testdir
+| cd -<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdir$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| ->mkdir: testdir: File exists$
+| bash: line 7: cd: /Users/nmota-bu/Desktop/valerio/mpanic/testdir: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->: File exists<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| Comm 0x7fef3dc07760
+| Tokens 0	0x7fef3dc07760
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: /bin/mkdir
+| 	Arg 0:-->mkdir--
+| 	Arg 1:-->testdir--
+| 	Next: 0x0
+| 	Before: 0x0
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdir
+| ./mpanic.sh: line 164: 27143 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [382]
+|  CMD: ->cd
+| pwd
+| cd -
+| pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu$
+| /Users/nmota-bu/Desktop/valerio/mpanic$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| Comm 0x7fbfbb407730
+| Tokens 0	0x7fbfbb407730
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: cd
+| 	Arg 0:-->cd--
+| 	Next: 0x0
+| 	Before: 0x0
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mpwd
+| Comm 0x7fbfbb407790
+| Tokens 0	0x7fbfbb407790
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: pwd
+| 	Arg 0:-->pwd--
+| 	Next: 0x0
+| 	Before: 0x0
+| /Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd -
+| ./mpanic.sh: line 164: 27200 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [383]
+|  CMD: ->echo ~<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9ddd407fb0$
+| Tokens 0	0x7f9ddd407fb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->~--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| ~$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [384]
+|  CMD: ->env | grep PWD
+| cd testdirtest
+| env | grep PWD
+| unset PWD
+| cd ..
+| env | grep PWD<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| Comm 0x7fda9e4077c0
+| Tokens 0	0x7fda9e4077c0
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: env
+| 	Arg 0:-->env--
+| 	Next: 0x7fda9e407850
+| 	Before: 0x0
+| Tokens 1	0x7fda9e407850
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: /usr/bin/grep
+| 	Arg 0:-->grep--
+| 	Arg 1:-->PWD--
+| 	Next: 0x0
+| 	Before: 0x7fda9e4077c0
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 27319 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [385]
+|  CMD: ->env | grep PWD
+| cd testdirtest
+| env | grep PWD
+| export PWD=nosensedir
+| cd ..
+| env | grep PWD<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| OLDPWD=nosensedir$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| Comm 0x7f9463c077c0
+| Tokens 0	0x7f9463c077c0
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: env
+| 	Arg 0:-->env--
+| 	Next: 0x7f9463c07850
+| 	Before: 0x0
+| Tokens 1	0x7f9463c07850
+| 	Ok: 0
+| 	In: 0
+| 	Out: 1
+| 	Cmd: /usr/bin/grep
+| 	Arg 0:-->grep--
+| 	Arg 1:-->PWD--
+| 	Next: 0x0
+| 	Before: 0x7f9463c077c0
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 27386 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [386]
+|  CMD: ->echo hi <> file
+| ls
+| rm file<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| Comm 0x7f916d4077f0$
+| Tokens 0	0x7f916d4077f0$
+| 	Ok: 8$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Arg 2:--><--$
+| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/>--$
+| 	Arg 4:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| minishell: >: no such file or directory$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
+| test$
+| testdir$
+| traces$
+| Comm 0x7f916d407770$
+| Tokens 0	0x7f916d407770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| Comm 0x7f916d407850$
+| Tokens 0	0x7f916d407850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/rm$
+| 	Arg 0:-->rm--$
+| 	Arg 1:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| ->rm: file: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [387]
+|  CMD: ->echo this is the file > file
+| echo this is not the file > file2
+| cat < file 3< file2<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->this is the file$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7f9ce7c07870$
+| Tokens 0	0x7f9ce7c07870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 3$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->this--$
+| 	Arg 2:-->is--$
+| 	Arg 3:-->the--$
+| 	Arg 4:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| this is the file$
+| Comm 0x7f9ce7c07930$
+| Tokens 0	0x7f9ce7c07930$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 4$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->this--$
+| 	Arg 2:-->is--$
+| 	Arg 3:-->not--$
+| 	Arg 4:-->the--$
+| 	Arg 5:-->file--$
+| 	Next: 0x0$
+| 	Before: 0x0$
+| this is not the file$
+| Comm 0x7f9ce7c07850$
+| Tokens 0	0x7f9ce7c07850$
+| 	Ok: 0$
+| 	In: 5$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->3--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| ->cat: 3: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [388]
+|  CMD: ->./echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Thats the file bro gjn<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Thats the file bro gjnComm 0x7fab21407730$
+| Tokens 0	0x7fab21407730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: ./echo$
+| 	Arg 0:-->./echo--$
+| 	Next: 0x0$
+| 	Before: 0x0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

@@ -1,0 +1,7211 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [252]
+|  CMD: ->echo | /bin/cat<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$
+| Comm 0x7fdb4c407790$
+| Tokens 0	0x7fdb4c407790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Next: 0x7fdb4c407820$
+| 	Before: 0x0$
+| Tokens 1	0x7fdb4c407820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->/bin/cat--$
+| 	Next: 0x0$
+| 	Before: 0x7fdb4c407790$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [253]
+|  CMD: ->echo hi | /bin/cat<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| Comm 0x7fa249c077e0$
+| Tokens 0	0x7fa249c077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hi--$
+| 	Next: 0x7fa249c07880$
+| 	Before: 0x0$
+| Tokens 1	0x7fa249c07880$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->/bin/cat--$
+| 	Next: 0x0$
+| 	Before: 0x7fa249c077e0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [254]
+|  CMD: ->cat /etc/shells | head -c 10<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of <-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of Comm 0x7f9dd5c07840$
+| Tokens 0	0x7f9dd5c07840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->/etc/shells--$
+| 	Next: 0x7f9dd5c078a0$
+| 	Before: 0x0$
+| Tokens 1	0x7f9dd5c078a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/head$
+| 	Arg 0:-->head--$
+| 	Arg 1:-->-c--$
+| 	Arg 2:-->10--$
+| 	Next: 0x0$
+| 	Before: 0x7f9dd5c07840$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [255]
+|  CMD: ->cat -e /etc/shells | head -c 10<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of <-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of Comm 0x7f98f3407870$
+| Tokens 0	0x7f98f3407870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Arg 2:-->/etc/shells--$
+| 	Next: 0x7f98f3407740$
+| 	Before: 0x0$
+| Tokens 1	0x7f98f3407740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/head$
+| 	Arg 0:-->head--$
+| 	Arg 1:-->-c--$
+| 	Arg 2:-->10--$
+| 	Next: 0x0$
+| 	Before: 0x7f98f3407870$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [256]
+|  CMD: ->cat -e /etc/shells | cat -e | head -c 10<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of <-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of Comm 0x7fba75604310$
+| Tokens 0	0x7fba75604310$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Arg 2:-->/etc/shells--$
+| 	Next: 0x7fba75604150$
+| 	Before: 0x0$
+| Tokens 1	0x7fba75604150$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fba75604370$
+| 	Before: 0x7fba75604310$
+| Tokens 2	0x7fba75604370$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/head$
+| 	Arg 0:-->head--$
+| 	Arg 1:-->-c--$
+| 	Arg 2:-->10--$
+| 	Next: 0x0$
+| 	Before: 0x7fba75604150$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [257]
+|  CMD: ->cat -e /etc/shells | cat -e | cat -e | head -c 10<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of <-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -># List of Comm 0x7ff9564079d0$
+| Tokens 0	0x7ff9564079d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Arg 2:-->/etc/shells--$
+| 	Next: 0x7ff956407a30$
+| 	Before: 0x0$
+| Tokens 1	0x7ff956407a30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7ff956407ce0$
+| 	Before: 0x7ff9564079d0$
+| Tokens 2	0x7ff956407ce0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7ff956407a70$
+| 	Before: 0x7ff956407a30$
+| Tokens 3	0x7ff956407a70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /usr/bin/head$
+| 	Arg 0:-->head--$
+| 	Arg 1:-->-c--$
+| 	Arg 2:-->10--$
+| 	Next: 0x0$
+| 	Before: 0x7ff956407ce0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [258]
+|  CMD: ->echo hola | cat<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$
+| Comm 0x7f8043c077c0$
+| Tokens 0	0x7f8043c077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x7f8043c07860$
+| 	Before: 0x0$
+| Tokens 1	0x7f8043c07860$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x0$
+| 	Before: 0x7f8043c077c0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [259]
+|  CMD: ->echo hola | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$$
+| Comm 0x7fe845407810$
+| Tokens 0	0x7fe845407810$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x7fe8454078b0$
+| 	Before: 0x0$
+| Tokens 1	0x7fe8454078b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x0$
+| 	Before: 0x7fe845407810$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [260]
+|  CMD: ->echo hola | cat -e | cat -n<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	hola$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	hola$$
+| Comm 0x7fb6d9c078a0$
+| Tokens 0	0x7fb6d9c078a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x7fb6d9c07940$
+| 	Before: 0x0$
+| Tokens 1	0x7fb6d9c07940$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fb6d9c07b70$
+| 	Before: 0x7fb6d9c078a0$
+| Tokens 2	0x7fb6d9c07b70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-n--$
+| 	Next: 0x0$
+| 	Before: 0x7fb6d9c07940$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [261]
+|  CMD: ->echo hola | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$$$$$$$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$$$$$$$$
+| Comm 0x7fbf60407bd0$
+| Tokens 0	0x7fbf60407bd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x7fbf60407c70$
+| 	Before: 0x0$
+| Tokens 1	0x7fbf60407c70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60407ea0$
+| 	Before: 0x7fbf60407bd0$
+| Tokens 2	0x7fbf60407ea0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60407ee0$
+| 	Before: 0x7fbf60407c70$
+| Tokens 3	0x7fbf60407ee0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60407f50$
+| 	Before: 0x7fbf60407ea0$
+| Tokens 4	0x7fbf60407f50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60407f90$
+| 	Before: 0x7fbf60407ee0$
+| Tokens 5	0x7fbf60407f90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60407ff0$
+| 	Before: 0x7fbf60407f50$
+| Tokens 6	0x7fbf60407ff0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fbf60408030$
+| 	Before: 0x7fbf60407f90$
+| Tokens 7	0x7fbf60408030$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x0$
+| 	Before: 0x7fbf60407ff0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [262]
+|  CMD: ->ls | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$$
+| README.md$$
+| cleaner$$
+| cleaner.c$$
+| echo$$
+| minishell$$
+| mpanic.sh$$
+| test$$
+| traces$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$$
+| README.md$$
+| cleaner$$
+| cleaner.c$$
+| echo$$
+| minishell$$
+| mpanic.sh$$
+| test$$
+| traces$$
+| Comm 0x7fe003c077c0$
+| Tokens 0	0x7fe003c077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fe003c07820$
+| 	Before: 0x0$
+| Tokens 1	0x7fe003c07820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x0$
+| 	Before: 0x7fe003c077c0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [263]
+|  CMD: ->ls -l | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$
+| Comm 0x7f87524077f0$
+| Tokens 0	0x7f87524077f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Arg 1:-->-l--$
+| 	Next: 0x7f8752407850$
+| 	Before: 0x0$
+| Tokens 1	0x7f8752407850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x0$
+| 	Before: 0x7f87524077f0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [264]
+|  CMD: ->ls -l | cat -e | cat | cat | cat<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$
+| Comm 0x7fdf49407950$
+| Tokens 0	0x7fdf49407950$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Arg 1:-->-l--$
+| 	Next: 0x7fdf494079b0$
+| 	Before: 0x0$
+| Tokens 1	0x7fdf494079b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fdf49407c60$
+| 	Before: 0x7fdf49407950$
+| Tokens 2	0x7fdf49407c60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x7fdf494079f0$
+| 	Before: 0x7fdf494079b0$
+| Tokens 3	0x7fdf494079f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x7fdf49407cd0$
+| 	Before: 0x7fdf49407c60$
+| Tokens 4	0x7fdf49407cd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x0$
+| 	Before: 0x7fdf494079f0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [265]
+|  CMD: ->ls -l | cat -e | cat -e | cat -e | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$$$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$$$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$$$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$$$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->total 1088$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona       0 Aug 18 11:56 <$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 11:56 README.md$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 11:56 cleaner$$$$$
+| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 11:56 cleaner.c$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 11:56 echo$$$$$
+| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407416 Aug 18 11:56 minishell$$$$$
+| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 11:56 mpanic.sh$$$$$
+| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 11:56 test$$$$$
+| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 11:56 traces$$$$$
+| Comm 0x7fd8954079e0$
+| Tokens 0	0x7fd8954079e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Arg 1:-->-l--$
+| 	Next: 0x7fd895407a40$
+| 	Before: 0x0$
+| Tokens 1	0x7fd895407a40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fd895407cf0$
+| 	Before: 0x7fd8954079e0$
+| Tokens 2	0x7fd895407cf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fd895407a80$
+| 	Before: 0x7fd895407a40$
+| Tokens 3	0x7fd895407a80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x7fd895407d60$
+| 	Before: 0x7fd895407cf0$
+| Tokens 4	0x7fd895407d60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-e--$
+| 	Next: 0x0$
+| 	Before: 0x7fd895407a80$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [266]
+|  CMD: ->echo hola | asdf<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: asdf: command not found$<-
+|
+|--- COMPARED STR:
+| ->asdf: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fb2e74077e0$
+| Tokens 0	0x7fb2e74077e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x7fb2e7704160$
+| 	Before: 0x0$
+| Tokens 1	0x7fb2e7704160$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: asdf$
+| 	Arg 0:-->asdf--$
+| 	Next: 0x0$
+| 	Before: 0x7fb2e74077e0$
+| minishell: asdf: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [267]
+|  CMD: ->asdf | echo hola<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hola$<-
+|
+|--- STDERR:
+| ->bash: line 1: asdf: command not found$<-
+|
+|--- COMPARED STR:
+| ->asdf: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fc40ac077e0$
+| Tokens 0	0x7fc40ac077e0$
+| 	Ok: 6$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: asdf$
+| 	Arg 0:-->asdf--$
+| 	Next: 0x7fc40ac07850$
+| 	Before: 0x0$
+| Tokens 1	0x7fc40ac07850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: echo$
+| 	Arg 0:-->echo--$
+| 	Arg 1:-->hola--$
+| 	Next: 0x0$
+| 	Before: 0x7fc40ac077e0$
+| minishell: asdf: command not found$
+| hola$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [268]
+|  CMD: ->cat | cat | cat | ls<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$
+| Comm 0x7fd4dc407870$
+| Tokens 0	0x7fd4dc407870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x7fd4dc4078d0$
+| 	Before: 0x0$
+| Tokens 1	0x7fd4dc4078d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x7fd4dc407b70$
+| 	Before: 0x7fd4dc407870$
+| Tokens 2	0x7fd4dc407b70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Next: 0x7fd4dc407be0$
+| 	Before: 0x7fd4dc4078d0$
+| Tokens 3	0x7fd4dc407be0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x0$
+| 	Before: 0x7fd4dc407b70$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [269]
+|  CMD: ->sleep 1 | ls | cat -n<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	<$
+|      2	README.md$
+|      3	cleaner$
+|      4	cleaner.c$
+|      5	echo$
+|      6	minishell$
+|      7	mpanic.sh$
+|      8	test$
+|      9	traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	<$
+|      2	README.md$
+|      3	cleaner$
+|      4	cleaner.c$
+|      5	echo$
+|      6	minishell$
+|      7	mpanic.sh$
+|      8	test$
+|      9	traces$
+| Comm 0x7fafe34059f0$
+| Tokens 0	0x7fafe34059f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/sleep$
+| 	Arg 0:-->sleep--$
+| 	Arg 1:-->1--$
+| 	Next: 0x7fafe3405a50$
+| 	Before: 0x0$
+| Tokens 1	0x7fafe3405a50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fafe3405d00$
+| 	Before: 0x7fafe34059f0$
+| Tokens 2	0x7fafe3405d00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/cat$
+| 	Arg 0:-->cat--$
+| 	Arg 1:-->-n--$
+| 	Next: 0x0$
+| 	Before: 0x7fafe3405a50$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [270]
+|  CMD: ->cd folder | pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 20028 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [271]
+|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ff305e043e0$
+| Tokens 0	0x7ff305e043e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04440$
+| 	Before: 0x0$
+| Tokens 1	0x7ff305e04440$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e044c0$
+| 	Before: 0x7ff305e043e0$
+| Tokens 2	0x7ff305e044c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e046e0$
+| 	Before: 0x7ff305e04440$
+| Tokens 3	0x7ff305e046e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04760$
+| 	Before: 0x7ff305e044c0$
+| Tokens 4	0x7ff305e04760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04800$
+| 	Before: 0x7ff305e046e0$
+| Tokens 5	0x7ff305e04800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04880$
+| 	Before: 0x7ff305e04760$
+| Tokens 6	0x7ff305e04880$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04920$
+| 	Before: 0x7ff305e04800$
+| Tokens 7	0x7ff305e04920$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e049a0$
+| 	Before: 0x7ff305e04880$
+| Tokens 8	0x7ff305e049a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04a40$
+| 	Before: 0x7ff305e04920$
+| Tokens 9	0x7ff305e04a40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04ac0$
+| 	Before: 0x7ff305e049a0$
+| Tokens 10	0x7ff305e04ac0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04b60$
+| 	Before: 0x7ff305e04a40$
+| Tokens 11	0x7ff305e04b60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04be0$
+| 	Before: 0x7ff305e04ac0$
+| Tokens 12	0x7ff305e04be0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04c80$
+| 	Before: 0x7ff305e04b60$
+| Tokens 13	0x7ff305e04c80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04d00$
+| 	Before: 0x7ff305e04be0$
+| Tokens 14	0x7ff305e04d00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04da0$
+| 	Before: 0x7ff305e04c80$
+| Tokens 15	0x7ff305e04da0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04e20$
+| 	Before: 0x7ff305e04d00$
+| Tokens 16	0x7ff305e04e20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04ec0$
+| 	Before: 0x7ff305e04da0$
+| Tokens 17	0x7ff305e04ec0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04f40$
+| 	Before: 0x7ff305e04e20$
+| Tokens 18	0x7ff305e04f40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e04fe0$
+| 	Before: 0x7ff305e04ec0$
+| Tokens 19	0x7ff305e04fe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05060$
+| 	Before: 0x7ff305e04f40$
+| Tokens 20	0x7ff305e05060$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05100$
+| 	Before: 0x7ff305e04fe0$
+| Tokens 21	0x7ff305e05100$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05180$
+| 	Before: 0x7ff305e05060$
+| Tokens 22	0x7ff305e05180$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05220$
+| 	Before: 0x7ff305e05100$
+| Tokens 23	0x7ff305e05220$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e052a0$
+| 	Before: 0x7ff305e05180$
+| Tokens 24	0x7ff305e052a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05340$
+| 	Before: 0x7ff305e05220$
+| Tokens 25	0x7ff305e05340$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e053c0$
+| 	Before: 0x7ff305e052a0$
+| Tokens 26	0x7ff305e053c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05460$
+| 	Before: 0x7ff305e05340$
+| Tokens 27	0x7ff305e05460$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e054e0$
+| 	Before: 0x7ff305e053c0$
+| Tokens 28	0x7ff305e054e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05580$
+| 	Before: 0x7ff305e05460$
+| Tokens 29	0x7ff305e05580$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05600$
+| 	Before: 0x7ff305e054e0$
+| Tokens 30	0x7ff305e05600$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e056a0$
+| 	Before: 0x7ff305e05580$
+| Tokens 31	0x7ff305e056a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05720$
+| 	Before: 0x7ff305e05600$
+| Tokens 32	0x7ff305e05720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e057c0$
+| 	Before: 0x7ff305e056a0$
+| Tokens 33	0x7ff305e057c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05840$
+| 	Before: 0x7ff305e05720$
+| Tokens 34	0x7ff305e05840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e058e0$
+| 	Before: 0x7ff305e057c0$
+| Tokens 35	0x7ff305e058e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05960$
+| 	Before: 0x7ff305e05840$
+| Tokens 36	0x7ff305e05960$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05a00$
+| 	Before: 0x7ff305e058e0$
+| Tokens 37	0x7ff305e05a00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05a80$
+| 	Before: 0x7ff305e05960$
+| Tokens 38	0x7ff305e05a80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05b20$
+| 	Before: 0x7ff305e05a00$
+| Tokens 39	0x7ff305e05b20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05ba0$
+| 	Before: 0x7ff305e05a80$
+| Tokens 40	0x7ff305e05ba0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05c40$
+| 	Before: 0x7ff305e05b20$
+| Tokens 41	0x7ff305e05c40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05cc0$
+| 	Before: 0x7ff305e05ba0$
+| Tokens 42	0x7ff305e05cc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05d60$
+| 	Before: 0x7ff305e05c40$
+| Tokens 43	0x7ff305e05d60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05de0$
+| 	Before: 0x7ff305e05cc0$
+| Tokens 44	0x7ff305e05de0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05e80$
+| 	Before: 0x7ff305e05d60$
+| Tokens 45	0x7ff305e05e80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05f00$
+| 	Before: 0x7ff305e05de0$
+| Tokens 46	0x7ff305e05f00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e05fa0$
+| 	Before: 0x7ff305e05e80$
+| Tokens 47	0x7ff305e05fa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06020$
+| 	Before: 0x7ff305e05f00$
+| Tokens 48	0x7ff305e06020$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e060c0$
+| 	Before: 0x7ff305e05fa0$
+| Tokens 49	0x7ff305e060c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06140$
+| 	Before: 0x7ff305e06020$
+| Tokens 50	0x7ff305e06140$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e061e0$
+| 	Before: 0x7ff305e060c0$
+| Tokens 51	0x7ff305e061e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06260$
+| 	Before: 0x7ff305e06140$
+| Tokens 52	0x7ff305e06260$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06300$
+| 	Before: 0x7ff305e061e0$
+| Tokens 53	0x7ff305e06300$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06380$
+| 	Before: 0x7ff305e06260$
+| Tokens 54	0x7ff305e06380$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06420$
+| 	Before: 0x7ff305e06300$
+| Tokens 55	0x7ff305e06420$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e064a0$
+| 	Before: 0x7ff305e06380$
+| Tokens 56	0x7ff305e064a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06540$
+| 	Before: 0x7ff305e06420$
+| Tokens 57	0x7ff305e06540$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e065c0$
+| 	Before: 0x7ff305e064a0$
+| Tokens 58	0x7ff305e065c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06660$
+| 	Before: 0x7ff305e06540$
+| Tokens 59	0x7ff305e06660$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e066e0$
+| 	Before: 0x7ff305e065c0$
+| Tokens 60	0x7ff305e066e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06780$
+| 	Before: 0x7ff305e06660$
+| Tokens 61	0x7ff305e06780$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06800$
+| 	Before: 0x7ff305e066e0$
+| Tokens 62	0x7ff305e06800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e068a0$
+| 	Before: 0x7ff305e06780$
+| Tokens 63	0x7ff305e068a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06920$
+| 	Before: 0x7ff305e06800$
+| Tokens 64	0x7ff305e06920$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e069c0$
+| 	Before: 0x7ff305e068a0$
+| Tokens 65	0x7ff305e069c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06a40$
+| 	Before: 0x7ff305e06920$
+| Tokens 66	0x7ff305e06a40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06ae0$
+| 	Before: 0x7ff305e069c0$
+| Tokens 67	0x7ff305e06ae0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06b60$
+| 	Before: 0x7ff305e06a40$
+| Tokens 68	0x7ff305e06b60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06c00$
+| 	Before: 0x7ff305e06ae0$
+| Tokens 69	0x7ff305e06c00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06c80$
+| 	Before: 0x7ff305e06b60$
+| Tokens 70	0x7ff305e06c80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06d20$
+| 	Before: 0x7ff305e06c00$
+| Tokens 71	0x7ff305e06d20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06da0$
+| 	Before: 0x7ff305e06c80$
+| Tokens 72	0x7ff305e06da0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06e40$
+| 	Before: 0x7ff305e06d20$
+| Tokens 73	0x7ff305e06e40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06ec0$
+| 	Before: 0x7ff305e06da0$
+| Tokens 74	0x7ff305e06ec0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06f60$
+| 	Before: 0x7ff305e06e40$
+| Tokens 75	0x7ff305e06f60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e06fe0$
+| 	Before: 0x7ff305e06ec0$
+| Tokens 76	0x7ff305e06fe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07080$
+| 	Before: 0x7ff305e06f60$
+| Tokens 77	0x7ff305e07080$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07100$
+| 	Before: 0x7ff305e06fe0$
+| Tokens 78	0x7ff305e07100$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e071a0$
+| 	Before: 0x7ff305e07080$
+| Tokens 79	0x7ff305e071a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07220$
+| 	Before: 0x7ff305e07100$
+| Tokens 80	0x7ff305e07220$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e072c0$
+| 	Before: 0x7ff305e071a0$
+| Tokens 81	0x7ff305e072c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07340$
+| 	Before: 0x7ff305e07220$
+| Tokens 82	0x7ff305e07340$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e073e0$
+| 	Before: 0x7ff305e072c0$
+| Tokens 83	0x7ff305e073e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07460$
+| 	Before: 0x7ff305e07340$
+| Tokens 84	0x7ff305e07460$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07500$
+| 	Before: 0x7ff305e073e0$
+| Tokens 85	0x7ff305e07500$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07580$
+| 	Before: 0x7ff305e07460$
+| Tokens 86	0x7ff305e07580$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07620$
+| 	Before: 0x7ff305e07500$
+| Tokens 87	0x7ff305e07620$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e076a0$
+| 	Before: 0x7ff305e07580$
+| Tokens 88	0x7ff305e076a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07740$
+| 	Before: 0x7ff305e07620$
+| Tokens 89	0x7ff305e07740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e077c0$
+| 	Before: 0x7ff305e076a0$
+| Tokens 90	0x7ff305e077c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07860$
+| 	Before: 0x7ff305e07740$
+| Tokens 91	0x7ff305e07860$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e078e0$
+| 	Before: 0x7ff305e077c0$
+| Tokens 92	0x7ff305e078e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07980$
+| 	Before: 0x7ff305e07860$
+| Tokens 93	0x7ff305e07980$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07a00$
+| 	Before: 0x7ff305e078e0$
+| Tokens 94	0x7ff305e07a00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07aa0$
+| 	Before: 0x7ff305e07980$
+| Tokens 95	0x7ff305e07aa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07b20$
+| 	Before: 0x7ff305e07a00$
+| Tokens 96	0x7ff305e07b20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07bc0$
+| 	Before: 0x7ff305e07aa0$
+| Tokens 97	0x7ff305e07bc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07c40$
+| 	Before: 0x7ff305e07b20$
+| Tokens 98	0x7ff305e07c40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07ce0$
+| 	Before: 0x7ff305e07bc0$
+| Tokens 99	0x7ff305e07ce0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07d60$
+| 	Before: 0x7ff305e07c40$
+| Tokens 100	0x7ff305e07d60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07e00$
+| 	Before: 0x7ff305e07ce0$
+| Tokens 101	0x7ff305e07e00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07e80$
+| 	Before: 0x7ff305e07d60$
+| Tokens 102	0x7ff305e07e80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07f20$
+| 	Before: 0x7ff305e07e00$
+| Tokens 103	0x7ff305e07f20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e07fa0$
+| 	Before: 0x7ff305e07e80$
+| Tokens 104	0x7ff305e07fa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08040$
+| 	Before: 0x7ff305e07f20$
+| Tokens 105	0x7ff305e08040$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e080c0$
+| 	Before: 0x7ff305e07fa0$
+| Tokens 106	0x7ff305e080c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08160$
+| 	Before: 0x7ff305e08040$
+| Tokens 107	0x7ff305e08160$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e081e0$
+| 	Before: 0x7ff305e080c0$
+| Tokens 108	0x7ff305e081e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08280$
+| 	Before: 0x7ff305e08160$
+| Tokens 109	0x7ff305e08280$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08300$
+| 	Before: 0x7ff305e081e0$
+| Tokens 110	0x7ff305e08300$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e083a0$
+| 	Before: 0x7ff305e08280$
+| Tokens 111	0x7ff305e083a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08420$
+| 	Before: 0x7ff305e08300$
+| Tokens 112	0x7ff305e08420$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e084c0$
+| 	Before: 0x7ff305e083a0$
+| Tokens 113	0x7ff305e084c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08540$
+| 	Before: 0x7ff305e08420$
+| Tokens 114	0x7ff305e08540$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e085e0$
+| 	Before: 0x7ff305e084c0$
+| Tokens 115	0x7ff305e085e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08660$
+| 	Before: 0x7ff305e08540$
+| Tokens 116	0x7ff305e08660$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08700$
+| 	Before: 0x7ff305e085e0$
+| Tokens 117	0x7ff305e08700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08780$
+| 	Before: 0x7ff305e08660$
+| Tokens 118	0x7ff305e08780$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08820$
+| 	Before: 0x7ff305e08700$
+| Tokens 119	0x7ff305e08820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e088a0$
+| 	Before: 0x7ff305e08780$
+| Tokens 120	0x7ff305e088a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08940$
+| 	Before: 0x7ff305e08820$
+| Tokens 121	0x7ff305e08940$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e089c0$
+| 	Before: 0x7ff305e088a0$
+| Tokens 122	0x7ff305e089c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08a60$
+| 	Before: 0x7ff305e08940$
+| Tokens 123	0x7ff305e08a60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08ae0$
+| 	Before: 0x7ff305e089c0$
+| Tokens 124	0x7ff305e08ae0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08b80$
+| 	Before: 0x7ff305e08a60$
+| Tokens 125	0x7ff305e08b80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08c00$
+| 	Before: 0x7ff305e08ae0$
+| Tokens 126	0x7ff305e08c00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08ca0$
+| 	Before: 0x7ff305e08b80$
+| Tokens 127	0x7ff305e08ca0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08d20$
+| 	Before: 0x7ff305e08c00$
+| Tokens 128	0x7ff305e08d20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08dc0$
+| 	Before: 0x7ff305e08ca0$
+| Tokens 129	0x7ff305e08dc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08e40$
+| 	Before: 0x7ff305e08d20$
+| Tokens 130	0x7ff305e08e40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08ee0$
+| 	Before: 0x7ff305e08dc0$
+| Tokens 131	0x7ff305e08ee0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e08f60$
+| 	Before: 0x7ff305e08e40$
+| Tokens 132	0x7ff305e08f60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09000$
+| 	Before: 0x7ff305e08ee0$
+| Tokens 133	0x7ff305e09000$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09080$
+| 	Before: 0x7ff305e08f60$
+| Tokens 134	0x7ff305e09080$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09120$
+| 	Before: 0x7ff305e09000$
+| Tokens 135	0x7ff305e09120$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e091a0$
+| 	Before: 0x7ff305e09080$
+| Tokens 136	0x7ff305e091a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09240$
+| 	Before: 0x7ff305e09120$
+| Tokens 137	0x7ff305e09240$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e092c0$
+| 	Before: 0x7ff305e091a0$
+| Tokens 138	0x7ff305e092c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09360$
+| 	Before: 0x7ff305e09240$
+| Tokens 139	0x7ff305e09360$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e093e0$
+| 	Before: 0x7ff305e092c0$
+| Tokens 140	0x7ff305e093e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09480$
+| 	Before: 0x7ff305e09360$
+| Tokens 141	0x7ff305e09480$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09500$
+| 	Before: 0x7ff305e093e0$
+| Tokens 142	0x7ff305e09500$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e095a0$
+| 	Before: 0x7ff305e09480$
+| Tokens 143	0x7ff305e095a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09620$
+| 	Before: 0x7ff305e09500$
+| Tokens 144	0x7ff305e09620$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e096c0$
+| 	Before: 0x7ff305e095a0$
+| Tokens 145	0x7ff305e096c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09740$
+| 	Before: 0x7ff305e09620$
+| Tokens 146	0x7ff305e09740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e097e0$
+| 	Before: 0x7ff305e096c0$
+| Tokens 147	0x7ff305e097e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09860$
+| 	Before: 0x7ff305e09740$
+| Tokens 148	0x7ff305e09860$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09900$
+| 	Before: 0x7ff305e097e0$
+| Tokens 149	0x7ff305e09900$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09980$
+| 	Before: 0x7ff305e09860$
+| Tokens 150	0x7ff305e09980$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09a20$
+| 	Before: 0x7ff305e09900$
+| Tokens 151	0x7ff305e09a20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09aa0$
+| 	Before: 0x7ff305e09980$
+| Tokens 152	0x7ff305e09aa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09b40$
+| 	Before: 0x7ff305e09a20$
+| Tokens 153	0x7ff305e09b40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09bc0$
+| 	Before: 0x7ff305e09aa0$
+| Tokens 154	0x7ff305e09bc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09c60$
+| 	Before: 0x7ff305e09b40$
+| Tokens 155	0x7ff305e09c60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09ce0$
+| 	Before: 0x7ff305e09bc0$
+| Tokens 156	0x7ff305e09ce0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09d80$
+| 	Before: 0x7ff305e09c60$
+| Tokens 157	0x7ff305e09d80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09e00$
+| 	Before: 0x7ff305e09ce0$
+| Tokens 158	0x7ff305e09e00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09ea0$
+| 	Before: 0x7ff305e09d80$
+| Tokens 159	0x7ff305e09ea0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09f20$
+| 	Before: 0x7ff305e09e00$
+| Tokens 160	0x7ff305e09f20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e09fc0$
+| 	Before: 0x7ff305e09ea0$
+| Tokens 161	0x7ff305e09fc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a040$
+| 	Before: 0x7ff305e09f20$
+| Tokens 162	0x7ff305e0a040$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a0e0$
+| 	Before: 0x7ff305e09fc0$
+| Tokens 163	0x7ff305e0a0e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a160$
+| 	Before: 0x7ff305e0a040$
+| Tokens 164	0x7ff305e0a160$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a200$
+| 	Before: 0x7ff305e0a0e0$
+| Tokens 165	0x7ff305e0a200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a280$
+| 	Before: 0x7ff305e0a160$
+| Tokens 166	0x7ff305e0a280$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a320$
+| 	Before: 0x7ff305e0a200$
+| Tokens 167	0x7ff305e0a320$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a3a0$
+| 	Before: 0x7ff305e0a280$
+| Tokens 168	0x7ff305e0a3a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a440$
+| 	Before: 0x7ff305e0a320$
+| Tokens 169	0x7ff305e0a440$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a4c0$
+| 	Before: 0x7ff305e0a3a0$
+| Tokens 170	0x7ff305e0a4c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a560$
+| 	Before: 0x7ff305e0a440$
+| Tokens 171	0x7ff305e0a560$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a5e0$
+| 	Before: 0x7ff305e0a4c0$
+| Tokens 172	0x7ff305e0a5e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a680$
+| 	Before: 0x7ff305e0a560$
+| Tokens 173	0x7ff305e0a680$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a700$
+| 	Before: 0x7ff305e0a5e0$
+| Tokens 174	0x7ff305e0a700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a7a0$
+| 	Before: 0x7ff305e0a680$
+| Tokens 175	0x7ff305e0a7a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a820$
+| 	Before: 0x7ff305e0a700$
+| Tokens 176	0x7ff305e0a820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a8c0$
+| 	Before: 0x7ff305e0a7a0$
+| Tokens 177	0x7ff305e0a8c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a940$
+| 	Before: 0x7ff305e0a820$
+| Tokens 178	0x7ff305e0a940$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0a9e0$
+| 	Before: 0x7ff305e0a8c0$
+| Tokens 179	0x7ff305e0a9e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0aa60$
+| 	Before: 0x7ff305e0a940$
+| Tokens 180	0x7ff305e0aa60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ab00$
+| 	Before: 0x7ff305e0a9e0$
+| Tokens 181	0x7ff305e0ab00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ab80$
+| 	Before: 0x7ff305e0aa60$
+| Tokens 182	0x7ff305e0ab80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ac20$
+| 	Before: 0x7ff305e0ab00$
+| Tokens 183	0x7ff305e0ac20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0aca0$
+| 	Before: 0x7ff305e0ab80$
+| Tokens 184	0x7ff305e0aca0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ad40$
+| 	Before: 0x7ff305e0ac20$
+| Tokens 185	0x7ff305e0ad40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0adc0$
+| 	Before: 0x7ff305e0aca0$
+| Tokens 186	0x7ff305e0adc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ae60$
+| 	Before: 0x7ff305e0ad40$
+| Tokens 187	0x7ff305e0ae60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0aee0$
+| 	Before: 0x7ff305e0adc0$
+| Tokens 188	0x7ff305e0aee0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0af80$
+| 	Before: 0x7ff305e0ae60$
+| Tokens 189	0x7ff305e0af80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b000$
+| 	Before: 0x7ff305e0aee0$
+| Tokens 190	0x7ff305e0b000$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b0a0$
+| 	Before: 0x7ff305e0af80$
+| Tokens 191	0x7ff305e0b0a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b120$
+| 	Before: 0x7ff305e0b000$
+| Tokens 192	0x7ff305e0b120$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b1c0$
+| 	Before: 0x7ff305e0b0a0$
+| Tokens 193	0x7ff305e0b1c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b240$
+| 	Before: 0x7ff305e0b120$
+| Tokens 194	0x7ff305e0b240$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b2e0$
+| 	Before: 0x7ff305e0b1c0$
+| Tokens 195	0x7ff305e0b2e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b360$
+| 	Before: 0x7ff305e0b240$
+| Tokens 196	0x7ff305e0b360$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b400$
+| 	Before: 0x7ff305e0b2e0$
+| Tokens 197	0x7ff305e0b400$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b480$
+| 	Before: 0x7ff305e0b360$
+| Tokens 198	0x7ff305e0b480$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b520$
+| 	Before: 0x7ff305e0b400$
+| Tokens 199	0x7ff305e0b520$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b5a0$
+| 	Before: 0x7ff305e0b480$
+| Tokens 200	0x7ff305e0b5a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b640$
+| 	Before: 0x7ff305e0b520$
+| Tokens 201	0x7ff305e0b640$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b6c0$
+| 	Before: 0x7ff305e0b5a0$
+| Tokens 202	0x7ff305e0b6c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b760$
+| 	Before: 0x7ff305e0b640$
+| Tokens 203	0x7ff305e0b760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b7e0$
+| 	Before: 0x7ff305e0b6c0$
+| Tokens 204	0x7ff305e0b7e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b880$
+| 	Before: 0x7ff305e0b760$
+| Tokens 205	0x7ff305e0b880$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b900$
+| 	Before: 0x7ff305e0b7e0$
+| Tokens 206	0x7ff305e0b900$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0b9a0$
+| 	Before: 0x7ff305e0b880$
+| Tokens 207	0x7ff305e0b9a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ba20$
+| 	Before: 0x7ff305e0b900$
+| Tokens 208	0x7ff305e0ba20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bac0$
+| 	Before: 0x7ff305e0b9a0$
+| Tokens 209	0x7ff305e0bac0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bb40$
+| 	Before: 0x7ff305e0ba20$
+| Tokens 210	0x7ff305e0bb40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bbe0$
+| 	Before: 0x7ff305e0bac0$
+| Tokens 211	0x7ff305e0bbe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bc60$
+| 	Before: 0x7ff305e0bb40$
+| Tokens 212	0x7ff305e0bc60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bd00$
+| 	Before: 0x7ff305e0bbe0$
+| Tokens 213	0x7ff305e0bd00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bd80$
+| 	Before: 0x7ff305e0bc60$
+| Tokens 214	0x7ff305e0bd80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0be20$
+| 	Before: 0x7ff305e0bd00$
+| Tokens 215	0x7ff305e0be20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bea0$
+| 	Before: 0x7ff305e0bd80$
+| Tokens 216	0x7ff305e0bea0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bf40$
+| 	Before: 0x7ff305e0be20$
+| Tokens 217	0x7ff305e0bf40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0bfc0$
+| 	Before: 0x7ff305e0bea0$
+| Tokens 218	0x7ff305e0bfc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c060$
+| 	Before: 0x7ff305e0bf40$
+| Tokens 219	0x7ff305e0c060$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c0e0$
+| 	Before: 0x7ff305e0bfc0$
+| Tokens 220	0x7ff305e0c0e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c180$
+| 	Before: 0x7ff305e0c060$
+| Tokens 221	0x7ff305e0c180$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c200$
+| 	Before: 0x7ff305e0c0e0$
+| Tokens 222	0x7ff305e0c200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c2a0$
+| 	Before: 0x7ff305e0c180$
+| Tokens 223	0x7ff305e0c2a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c320$
+| 	Before: 0x7ff305e0c200$
+| Tokens 224	0x7ff305e0c320$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c3c0$
+| 	Before: 0x7ff305e0c2a0$
+| Tokens 225	0x7ff305e0c3c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c440$
+| 	Before: 0x7ff305e0c320$
+| Tokens 226	0x7ff305e0c440$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c4e0$
+| 	Before: 0x7ff305e0c3c0$
+| Tokens 227	0x7ff305e0c4e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c560$
+| 	Before: 0x7ff305e0c440$
+| Tokens 228	0x7ff305e0c560$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c600$
+| 	Before: 0x7ff305e0c4e0$
+| Tokens 229	0x7ff305e0c600$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c680$
+| 	Before: 0x7ff305e0c560$
+| Tokens 230	0x7ff305e0c680$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c720$
+| 	Before: 0x7ff305e0c600$
+| Tokens 231	0x7ff305e0c720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c7a0$
+| 	Before: 0x7ff305e0c680$
+| Tokens 232	0x7ff305e0c7a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c840$
+| 	Before: 0x7ff305e0c720$
+| Tokens 233	0x7ff305e0c840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c8c0$
+| 	Before: 0x7ff3<$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$
+| 05e0c7a0$
+| Tokens 234	0x7ff305e0c8c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c960$
+| 	Before: 0x7ff305e0c840$
+| Tokens 235	0x7ff305e0c960$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0c9e0$
+| 	Before: 0x7ff305e0c8c0$
+| Tokens 236	0x7ff305e0c9e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ca80$
+| 	Before: 0x7ff305e0c960$
+| Tokens 237	0x7ff305e0ca80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cb00$
+| 	Before: 0x7ff305e0c9e0$
+| Tokens 238	0x7ff305e0cb00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cba0$
+| 	Before: 0x7ff305e0ca80$
+| Tokens 239	0x7ff305e0cba0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cc20$
+| 	Before: 0x7ff305e0cb00$
+| Tokens 240	0x7ff305e0cc20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0ccc0$
+| 	Before: 0x7ff305e0cba0$
+| Tokens 241	0x7ff305e0ccc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cd40$
+| 	Before: 0x7ff305e0cc20$
+| Tokens 242	0x7ff305e0cd40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cde0$
+| 	Before: 0x7ff305e0ccc0$
+| Tokens 243	0x7ff305e0cde0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cef0$
+| 	Before: 0x7ff305e0cd40$
+| Tokens 244	0x7ff305e0cef0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cf50$
+| 	Before: 0x7ff305e0cde0$
+| Tokens 245	0x7ff305e0cf50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0cfb0$
+| 	Before: 0x7ff305e0cef0$
+| Tokens 246	0x7ff305e0cfb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0d010$
+| 	Before: 0x7ff305e0cf50$
+| Tokens 247	0x7ff305e0d010$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0d070$
+| 	Before: 0x7ff305e0cfb0$
+| Tokens 248	0x7ff305e0d070$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ff305e0d0d0$
+| 	Before: 0x7ff305e0d010$
+| Tokens 249	0x7ff305e0d0d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x0$
+| 	Before: 0x7ff305e0d070$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [272]
+|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7ffbf540d3d0$
+| Tokens 0	0x7ffbf540d3d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d430$
+| 	Before: 0x0$
+| Tokens 1	0x7ffbf540d430$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d6d0$
+| 	Before: 0x7ffbf540d3d0$
+| Tokens 2	0x7ffbf540d6d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d740$
+| 	Before: 0x7ffbf540d430$
+| Tokens 3	0x7ffbf540d740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d790$
+| 	Before: 0x7ffbf540d6d0$
+| Tokens 4	0x7ffbf540d790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d800$
+| 	Before: 0x7ffbf540d740$
+| Tokens 5	0x7ffbf540d800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d850$
+| 	Before: 0x7ffbf540d790$
+| Tokens 6	0x7ffbf540d850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d8c0$
+| 	Before: 0x7ffbf540d800$
+| Tokens 7	0x7ffbf540d8c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d910$
+| 	Before: 0x7ffbf540d850$
+| Tokens 8	0x7ffbf540d910$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d980$
+| 	Before: 0x7ffbf540d8c0$
+| Tokens 9	0x7ffbf540d980$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540d9d0$
+| 	Before: 0x7ffbf540d910$
+| Tokens 10	0x7ffbf540d9d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540da40$
+| 	Before: 0x7ffbf540d980$
+| Tokens 11	0x7ffbf540da40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540da90$
+| 	Before: 0x7ffbf540d9d0$
+| Tokens 12	0x7ffbf540da90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540db00$
+| 	Before: 0x7ffbf540da40$
+| Tokens 13	0x7ffbf540db00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540db50$
+| 	Before: 0x7ffbf540da90$
+| Tokens 14	0x7ffbf540db50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dbc0$
+| 	Before: 0x7ffbf540db00$
+| Tokens 15	0x7ffbf540dbc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dc10$
+| 	Before: 0x7ffbf540db50$
+| Tokens 16	0x7ffbf540dc10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dc80$
+| 	Before: 0x7ffbf540dbc0$
+| Tokens 17	0x7ffbf540dc80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dcd0$
+| 	Before: 0x7ffbf540dc10$
+| Tokens 18	0x7ffbf540dcd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dd40$
+| 	Before: 0x7ffbf540dc80$
+| Tokens 19	0x7ffbf540dd40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dd90$
+| 	Before: 0x7ffbf540dcd0$
+| Tokens 20	0x7ffbf540dd90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540de00$
+| 	Before: 0x7ffbf540dd40$
+| Tokens 21	0x7ffbf540de00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540de50$
+| 	Before: 0x7ffbf540dd90$
+| Tokens 22	0x7ffbf540de50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dec0$
+| 	Before: 0x7ffbf540de00$
+| Tokens 23	0x7ffbf540dec0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540df10$
+| 	Before: 0x7ffbf540de50$
+| Tokens 24	0x7ffbf540df10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540df80$
+| 	Before: 0x7ffbf540dec0$
+| Tokens 25	0x7ffbf540df80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540dfd0$
+| 	Before: 0x7ffbf540df10$
+| Tokens 26	0x7ffbf540dfd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e040$
+| 	Before: 0x7ffbf540df80$
+| Tokens 27	0x7ffbf540e040$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e090$
+| 	Before: 0x7ffbf540dfd0$
+| Tokens 28	0x7ffbf540e090$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e100$
+| 	Before: 0x7ffbf540e040$
+| Tokens 29	0x7ffbf540e100$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e150$
+| 	Before: 0x7ffbf540e090$
+| Tokens 30	0x7ffbf540e150$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e1c0$
+| 	Before: 0x7ffbf540e100$
+| Tokens 31	0x7ffbf540e1c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e210$
+| 	Before: 0x7ffbf540e150$
+| Tokens 32	0x7ffbf540e210$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e280$
+| 	Before: 0x7ffbf540e1c0$
+| Tokens 33	0x7ffbf540e280$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e2d0$
+| 	Before: 0x7ffbf540e210$
+| Tokens 34	0x7ffbf540e2d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e340$
+| 	Before: 0x7ffbf540e280$
+| Tokens 35	0x7ffbf540e340$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e390$
+| 	Before: 0x7ffbf540e2d0$
+| Tokens 36	0x7ffbf540e390$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e400$
+| 	Before: 0x7ffbf540e340$
+| Tokens 37	0x7ffbf540e400$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e450$
+| 	Before: 0x7ffbf540e390$
+| Tokens 38	0x7ffbf540e450$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e4c0$
+| 	Before: 0x7ffbf540e400$
+| Tokens 39	0x7ffbf540e4c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e510$
+| 	Before: 0x7ffbf540e450$
+| Tokens 40	0x7ffbf540e510$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e580$
+| 	Before: 0x7ffbf540e4c0$
+| Tokens 41	0x7ffbf540e580$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e5d0$
+| 	Before: 0x7ffbf540e510$
+| Tokens 42	0x7ffbf540e5d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e640$
+| 	Before: 0x7ffbf540e580$
+| Tokens 43	0x7ffbf540e640$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e690$
+| 	Before: 0x7ffbf540e5d0$
+| Tokens 44	0x7ffbf540e690$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e700$
+| 	Before: 0x7ffbf540e640$
+| Tokens 45	0x7ffbf540e700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e750$
+| 	Before: 0x7ffbf540e690$
+| Tokens 46	0x7ffbf540e750$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e7c0$
+| 	Before: 0x7ffbf540e700$
+| Tokens 47	0x7ffbf540e7c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e810$
+| 	Before: 0x7ffbf540e750$
+| Tokens 48	0x7ffbf540e810$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e880$
+| 	Before: 0x7ffbf540e7c0$
+| Tokens 49	0x7ffbf540e880$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e8d0$
+| 	Before: 0x7ffbf540e810$
+| Tokens 50	0x7ffbf540e8d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e940$
+| 	Before: 0x7ffbf540e880$
+| Tokens 51	0x7ffbf540e940$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540e990$
+| 	Before: 0x7ffbf540e8d0$
+| Tokens 52	0x7ffbf540e990$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ea00$
+| 	Before: 0x7ffbf540e940$
+| Tokens 53	0x7ffbf540ea00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ea50$
+| 	Before: 0x7ffbf540e990$
+| Tokens 54	0x7ffbf540ea50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540eac0$
+| 	Before: 0x7ffbf540ea00$
+| Tokens 55	0x7ffbf540eac0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540eb10$
+| 	Before: 0x7ffbf540ea50$
+| Tokens 56	0x7ffbf540eb10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540eb80$
+| 	Before: 0x7ffbf540eac0$
+| Tokens 57	0x7ffbf540eb80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ebd0$
+| 	Before: 0x7ffbf540eb10$
+| Tokens 58	0x7ffbf540ebd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ec40$
+| 	Before: 0x7ffbf540eb80$
+| Tokens 59	0x7ffbf540ec40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ec90$
+| 	Before: 0x7ffbf540ebd0$
+| Tokens 60	0x7ffbf540ec90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ed00$
+| 	Before: 0x7ffbf540ec40$
+| Tokens 61	0x7ffbf540ed00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ed50$
+| 	Before: 0x7ffbf540ec90$
+| Tokens 62	0x7ffbf540ed50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540edc0$
+| 	Before: 0x7ffbf540ed00$
+| Tokens 63	0x7ffbf540edc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ee10$
+| 	Before: 0x7ffbf540ed50$
+| Tokens 64	0x7ffbf540ee10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ee80$
+| 	Before: 0x7ffbf540edc0$
+| Tokens 65	0x7ffbf540ee80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540eed0$
+| 	Before: 0x7ffbf540ee10$
+| Tokens 66	0x7ffbf540eed0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ef40$
+| 	Before: 0x7ffbf540ee80$
+| Tokens 67	0x7ffbf540ef40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ef90$
+| 	Before: 0x7ffbf540eed0$
+| Tokens 68	0x7ffbf540ef90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f000$
+| 	Before: 0x7ffbf540ef40$
+| Tokens 69	0x7ffbf540f000$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f050$
+| 	Before: 0x7ffbf540ef90$
+| Tokens 70	0x7ffbf540f050$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f0c0$
+| 	Before: 0x7ffbf540f000$
+| Tokens 71	0x7ffbf540f0c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f110$
+| 	Before: 0x7ffbf540f050$
+| Tokens 72	0x7ffbf540f110$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f180$
+| 	Before: 0x7ffbf540f0c0$
+| Tokens 73	0x7ffbf540f180$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f1d0$
+| 	Before: 0x7ffbf540f110$
+| Tokens 74	0x7ffbf540f1d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f240$
+| 	Before: 0x7ffbf540f180$
+| Tokens 75	0x7ffbf540f240$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f290$
+| 	Before: 0x7ffbf540f1d0$
+| Tokens 76	0x7ffbf540f290$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f300$
+| 	Before: 0x7ffbf540f240$
+| Tokens 77	0x7ffbf540f300$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f350$
+| 	Before: 0x7ffbf540f290$
+| Tokens 78	0x7ffbf540f350$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f3c0$
+| 	Before: 0x7ffbf540f300$
+| Tokens 79	0x7ffbf540f3c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f410$
+| 	Before: 0x7ffbf540f350$
+| Tokens 80	0x7ffbf540f410$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f480$
+| 	Before: 0x7ffbf540f3c0$
+| Tokens 81	0x7ffbf540f480$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f4d0$
+| 	Before: 0x7ffbf540f410$
+| Tokens 82	0x7ffbf540f4d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f540$
+| 	Before: 0x7ffbf540f480$
+| Tokens 83	0x7ffbf540f540$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f590$
+| 	Before: 0x7ffbf540f4d0$
+| Tokens 84	0x7ffbf540f590$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f600$
+| 	Before: 0x7ffbf540f540$
+| Tokens 85	0x7ffbf540f600$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f650$
+| 	Before: 0x7ffbf540f590$
+| Tokens 86	0x7ffbf540f650$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f6c0$
+| 	Before: 0x7ffbf540f600$
+| Tokens 87	0x7ffbf540f6c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f710$
+| 	Before: 0x7ffbf540f650$
+| Tokens 88	0x7ffbf540f710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f780$
+| 	Before: 0x7ffbf540f6c0$
+| Tokens 89	0x7ffbf540f780$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f7d0$
+| 	Before: 0x7ffbf540f710$
+| Tokens 90	0x7ffbf540f7d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f840$
+| 	Before: 0x7ffbf540f780$
+| Tokens 91	0x7ffbf540f840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f890$
+| 	Before: 0x7ffbf540f7d0$
+| Tokens 92	0x7ffbf540f890$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f900$
+| 	Before: 0x7ffbf540f840$
+| Tokens 93	0x7ffbf540f900$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f950$
+| 	Before: 0x7ffbf540f890$
+| Tokens 94	0x7ffbf540f950$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540f9c0$
+| 	Before: 0x7ffbf540f900$
+| Tokens 95	0x7ffbf540f9c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fa10$
+| 	Before: 0x7ffbf540f950$
+| Tokens 96	0x7ffbf540fa10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fa80$
+| 	Before: 0x7ffbf540f9c0$
+| Tokens 97	0x7ffbf540fa80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fad0$
+| 	Before: 0x7ffbf540fa10$
+| Tokens 98	0x7ffbf540fad0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fb40$
+| 	Before: 0x7ffbf540fa80$
+| Tokens 99	0x7ffbf540fb40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fb90$
+| 	Before: 0x7ffbf540fad0$
+| Tokens 100	0x7ffbf540fb90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fc00$
+| 	Before: 0x7ffbf540fb40$
+| Tokens 101	0x7ffbf540fc00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fc50$
+| 	Before: 0x7ffbf540fb90$
+| Tokens 102	0x7ffbf540fc50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fcc0$
+| 	Before: 0x7ffbf540fc00$
+| Tokens 103	0x7ffbf540fcc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fd10$
+| 	Before: 0x7ffbf540fc50$
+| Tokens 104	0x7ffbf540fd10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fd80$
+| 	Before: 0x7ffbf540fcc0$
+| Tokens 105	0x7ffbf540fd80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fdd0$
+| 	Before: 0x7ffbf540fd10$
+| Tokens 106	0x7ffbf540fdd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fe40$
+| 	Before: 0x7ffbf540fd80$
+| Tokens 107	0x7ffbf540fe40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540fe90$
+| 	Before: 0x7ffbf540fdd0$
+| Tokens 108	0x7ffbf540fe90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ff00$
+| 	Before: 0x7ffbf540fe40$
+| Tokens 109	0x7ffbf540ff00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ff50$
+| 	Before: 0x7ffbf540fe90$
+| Tokens 110	0x7ffbf540ff50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf540ffc0$
+| 	Before: 0x7ffbf540ff00$
+| Tokens 111	0x7ffbf540ffc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410010$
+| 	Before: 0x7ffbf540ff50$
+| Tokens 112	0x7ffbf5410010$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410080$
+| 	Before: 0x7ffbf540ffc0$
+| Tokens 113	0x7ffbf5410080$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54100d0$
+| 	Before: 0x7ffbf5410010$
+| Tokens 114	0x7ffbf54100d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410140$
+| 	Before: 0x7ffbf5410080$
+| Tokens 115	0x7ffbf5410140$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410190$
+| 	Before: 0x7ffbf54100d0$
+| Tokens 116	0x7ffbf5410190$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410200$
+| 	Before: 0x7ffbf5410140$
+| Tokens 117	0x7ffbf5410200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410250$
+| 	Before: 0x7ffbf5410190$
+| Tokens 118	0x7ffbf5410250$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54102c0$
+| 	Before: 0x7ffbf5410200$
+| Tokens 119	0x7ffbf54102c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410310$
+| 	Before: 0x7ffbf5410250$
+| Tokens 120	0x7ffbf5410310$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410380$
+| 	Before: 0x7ffbf54102c0$
+| Tokens 121	0x7ffbf5410380$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54103d0$
+| 	Before: 0x7ffbf5410310$
+| Tokens 122	0x7ffbf54103d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410440$
+| 	Before: 0x7ffbf5410380$
+| Tokens 123	0x7ffbf5410440$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410490$
+| 	Before: 0x7ffbf54103d0$
+| Tokens 124	0x7ffbf5410490$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410500$
+| 	Before: 0x7ffbf5410440$
+| Tokens 125	0x7ffbf5410500$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410550$
+| 	Before: 0x7ffbf5410490$
+| Tokens 126	0x7ffbf5410550$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54105c0$
+| 	Before: 0x7ffbf5410500$
+| Tokens 127	0x7ffbf54105c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410610$
+| 	Before: 0x7ffbf5410550$
+| Tokens 128	0x7ffbf5410610$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410680$
+| 	Before: 0x7ffbf54105c0$
+| Tokens 129	0x7ffbf5410680$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54106d0$
+| 	Before: 0x7ffbf5410610$
+| Tokens 130	0x7ffbf54106d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410740$
+| 	Before: 0x7ffbf5410680$
+| Tokens 131	0x7ffbf5410740$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410790$
+| 	Before: 0x7ffbf54106d0$
+| Tokens 132	0x7ffbf5410790$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410800$
+| 	Before: 0x7ffbf5410740$
+| Tokens 133	0x7ffbf5410800$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410850$
+| 	Before: 0x7ffbf5410790$
+| Tokens 134	0x7ffbf5410850$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54108c0$
+| 	Before: 0x7ffbf5410800$
+| Tokens 135	0x7ffbf54108c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410910$
+| 	Before: 0x7ffbf5410850$
+| Tokens 136	0x7ffbf5410910$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410980$
+| 	Before: 0x7ffbf54108c0$
+| Tokens 137	0x7ffbf5410980$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54109d0$
+| 	Before: 0x7ffbf5410910$
+| Tokens 138	0x7ffbf54109d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410a40$
+| 	Before: 0x7ffbf5410980$
+| Tokens 139	0x7ffbf5410a40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410a90$
+| 	Before: 0x7ffbf54109d0$
+| Tokens 140	0x7ffbf5410a90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410b00$
+| 	Before: 0x7ffbf5410a40$
+| Tokens 141	0x7ffbf5410b00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410b50$
+| 	Before: 0x7ffbf5410a90$
+| Tokens 142	0x7ffbf5410b50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410bc0$
+| 	Before: 0x7ffbf5410b00$
+| Tokens 143	0x7ffbf5410bc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410c10$
+| 	Before: 0x7ffbf5410b50$
+| Tokens 144	0x7ffbf5410c10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410c80$
+| 	Before: 0x7ffbf5410bc0$
+| Tokens 145	0x7ffbf5410c80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410cd0$
+| 	Before: 0x7ffbf5410c10$
+| Tokens 146	0x7ffbf5410cd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410d40$
+| 	Before: 0x7ffbf5410c80$
+| Tokens 147	0x7ffbf5410d40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410d90$
+| 	Before: 0x7ffbf5410cd0$
+| Tokens 148	0x7ffbf5410d90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410e00$
+| 	Before: 0x7ffbf5410d40$
+| Tokens 149	0x7ffbf5410e00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410e50$
+| 	Before: 0x7ffbf5410d90$
+| Tokens 150	0x7ffbf5410e50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410ec0$
+| 	Before: 0x7ffbf5410e00$
+| Tokens 151	0x7ffbf5410ec0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410f10$
+| 	Before: 0x7ffbf5410e50$
+| Tokens 152	0x7ffbf5410f10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410f80$
+| 	Before: 0x7ffbf5410ec0$
+| Tokens 153	0x7ffbf5410f80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5410fd0$
+| 	Before: 0x7ffbf5410f10$
+| Tokens 154	0x7ffbf5410fd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411040$
+| 	Before: 0x7ffbf5410f80$
+| Tokens 155	0x7ffbf5411040$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411090$
+| 	Before: 0x7ffbf5410fd0$
+| Tokens 156	0x7ffbf5411090$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411100$
+| 	Before: 0x7ffbf5411040$
+| Tokens 157	0x7ffbf5411100$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411150$
+| 	Before: 0x7ffbf5411090$
+| Tokens 158	0x7ffbf5411150$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54111c0$
+| 	Before: 0x7ffbf5411100$
+| Tokens 159	0x7ffbf54111c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411210$
+| 	Before: 0x7ffbf5411150$
+| Tokens 160	0x7ffbf5411210$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411280$
+| 	Before: 0x7ffbf54111c0$
+| Tokens 161	0x7ffbf5411280$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54112d0$
+| 	Before: 0x7ffbf5411210$
+| Tokens 162	0x7ffbf54112d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411340$
+| 	Before: 0x7ffbf5411280$
+| Tokens 163	0x7ffbf5411340$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411390$
+| 	Before: 0x7ffbf54112d0$
+| Tokens 164	0x7ffbf5411390$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411400$
+| 	Before: 0x7ffbf5411340$
+| Tokens 165	0x7ffbf5411400$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411450$
+| 	Before: 0x7ffbf5411390$
+| Tokens 166	0x7ffbf5411450$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54114c0$
+| 	Before: 0x7ffbf5411400$
+| Tokens 167	0x7ffbf54114c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411510$
+| 	Before: 0x7ffbf5411450$
+| Tokens 168	0x7ffbf5411510$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411580$
+| 	Before: 0x7ffbf54114c0$
+| Tokens 169	0x7ffbf5411580$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54115d0$
+| 	Before: 0x7ffbf5411510$
+| Tokens 170	0x7ffbf54115d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411640$
+| 	Before: 0x7ffbf5411580$
+| Tokens 171	0x7ffbf5411640$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411690$
+| 	Before: 0x7ffbf54115d0$
+| Tokens 172	0x7ffbf5411690$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411700$
+| 	Before: 0x7ffbf5411640$
+| Tokens 173	0x7ffbf5411700$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411750$
+| 	Before: 0x7ffbf5411690$
+| Tokens 174	0x7ffbf5411750$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54117c0$
+| 	Before: 0x7ffbf5411700$
+| Tokens 175	0x7ffbf54117c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411810$
+| 	Before: 0x7ffbf5411750$
+| Tokens 176	0x7ffbf5411810$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411880$
+| 	Before: 0x7ffbf54117c0$
+| Tokens 177	0x7ffbf5411880$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54118d0$
+| 	Before: 0x7ffbf5411810$
+| Tokens 178	0x7ffbf54118d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411940$
+| 	Before: 0x7ffbf5411880$
+| Tokens 179	0x7ffbf5411940$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411990$
+| 	Before: 0x7ffbf54118d0$
+| Tokens 180	0x7ffbf5411990$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411a00$
+| 	Before: 0x7ffbf5411940$
+| Tokens 181	0x7ffbf5411a00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411a50$
+| 	Before: 0x7ffbf5411990$
+| Tokens 182	0x7ffbf5411a50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411ac0$
+| 	Before: 0x7ffbf5411a00$
+| Tokens 183	0x7ffbf5411ac0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411b10$
+| 	Before: 0x7ffbf5411a50$
+| Tokens 184	0x7ffbf5411b10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411b80$
+| 	Before: 0x7ffbf5411ac0$
+| Tokens 185	0x7ffbf5411b80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411bd0$
+| 	Before: 0x7ffbf5411b10$
+| Tokens 186	0x7ffbf5411bd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411c40$
+| 	Before: 0x7ffbf5411b80$
+| Tokens 187	0x7ffbf5411c40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411c90$
+| 	Before: 0x7ffbf5411bd0$
+| Tokens 188	0x7ffbf5411c90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411d00$
+| 	Before: 0x7ffbf5411c40$
+| Tokens 189	0x7ffbf5411d00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411d50$
+| 	Before: 0x7ffbf5411c90$
+| Tokens 190	0x7ffbf5411d50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411dc0$
+| 	Before: 0x7ffbf5411d00$
+| Tokens 191	0x7ffbf5411dc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411e10$
+| 	Before: 0x7ffbf5411d50$
+| Tokens 192	0x7ffbf5411e10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411e80$
+| 	Before: 0x7ffbf5411dc0$
+| Tokens 193	0x7ffbf5411e80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411ed0$
+| 	Before: 0x7ffbf5411e10$
+| Tokens 194	0x7ffbf5411ed0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411f40$
+| 	Before: 0x7ffbf5411e80$
+| Tokens 195	0x7ffbf5411f40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5411f90$
+| 	Before: 0x7ffbf5411ed0$
+| Tokens 196	0x7ffbf5411f90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412000$
+| 	Before: 0x7ffbf5411f40$
+| Tokens 197	0x7ffbf5412000$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412050$
+| 	Before: 0x7ffbf5411f90$
+| Tokens 198	0x7ffbf5412050$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54120c0$
+| 	Before: 0x7ffbf5412000$
+| Tokens 199	0x7ffbf54120c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412110$
+| 	Before: 0x7ffbf5412050$
+| Tokens 200	0x7ffbf5412110$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412180$
+| 	Before: 0x7ffbf54120c0$
+| Tokens 201	0x7ffbf5412180$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54121d0$
+| 	Before: 0x7ffbf5412110$
+| Tokens 202	0x7ffbf54121d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412240$
+| 	Before: 0x7ffbf5412180$
+| Tokens 203	0x7ffbf5412240$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412290$
+| 	Before: 0x7ffbf54121d0$
+| Tokens 204	0x7ffbf5412290$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412300$
+| 	Before: 0x7ffbf5412240$
+| Tokens 205	0x7ffbf5412300$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412350$
+| 	Before: 0x7ffbf5412290$
+| Tokens 206	0x7ffbf5412350$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54123c0$
+| 	Before: 0x7ffbf5412300$
+| Tokens 207	0x7ffbf54123c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412410$
+| 	Before: 0x7ffbf5412350$
+| Tokens 208	0x7ffbf5412410$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412480$
+| 	Before: 0x7ffbf54123c0$
+| Tokens 209	0x7ffbf5412480$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54124d0$
+| 	Before: 0x7ffbf5412410$
+| Tokens 210	0x7ffbf54124d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412540$
+| 	Before: 0x7ffbf5412480$
+| Tokens 211	0x7ffbf5412540$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412590$
+| 	Before: 0x7ffbf54124d0$
+| Tokens 212	0x7ffbf5412590$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412600$
+| 	Before: 0x7ffbf5412540$
+| Tokens 213	0x7ffbf5412600$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412650$
+| 	Before: 0x7ffbf5412590$
+| Tokens 214	0x7ffbf5412650$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54126c0$
+| 	Before: 0x7ffbf5412600$
+| Tokens 215	0x7ffbf54126c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412710$
+| 	Before: 0x7ffbf5412650$
+| Tokens 216	0x7ffbf5412710$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412780$
+| 	Before: 0x7ffbf54126c0$
+| Tokens 217	0x7ffbf5412780$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54127d0$
+| 	Before: 0x7ffbf5412710$
+| Tokens 218	0x7ffbf54127d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412840$
+| 	Before: 0x7ffbf5412780$
+| Tokens 219	0x7ffbf5412840$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412890$
+| 	Before: 0x7ffbf54127d0$
+| Tokens 220	0x7ffbf5412890$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412900$
+| 	Before: 0x7ffbf5412840$
+| Tokens 221	0x7ffbf5412900$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412950$
+| 	Before: 0x7ffbf5412890$
+| Tokens 222	0x7ffbf5412950$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54129c0$
+| 	Before: 0x7ffbf5412900$
+| Tokens 223	0x7ffbf54129c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412a10$
+| 	Before: 0x7ffbf5412950$
+| Tokens 224	0x7ffbf5412a10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412a80$
+| 	Before: 0x7ffbf54129c0$
+| Tokens 225	0x7ffbf5412a80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412ad0$
+| 	Before: 0x7ffbf5412a10$
+| Tokens 226	0x7ffbf5412ad0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412b40$
+| 	Before: 0x7ffbf5412a80$
+| Tokens 227	0x7ffbf5412b40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412b90$
+| 	Before: 0x7ffbf5412ad0$
+| Tokens 228	0x7ffbf5412b90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412c00$
+| 	Before: 0x7ffbf5412b40$
+| Tokens 229	0x7ffbf5412c00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412c50$
+| 	Before: 0x7ffbf5412b90$
+| Tokens 230	0x7ffbf5412c50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412cc0$
+| 	Before: 0x7ffbf5412c00$
+| Tokens 231	0x7ffbf5412cc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412d10$
+| 	Before: 0x7ffbf5412c50$
+| Tokens 232	0x7ffbf5412d10$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412d80$
+| 	Before: 0x7ffbf5412cc0$
+| Tokens 233	0x7ffbf5412d80$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412dd0$
+| 	Before: 0x7ffb<$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$
+| f5412d10$
+| Tokens 234	0x7ffbf5412dd0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412e40$
+| 	Before: 0x7ffbf5412d80$
+| Tokens 235	0x7ffbf5412e40$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412e90$
+| 	Before: 0x7ffbf5412dd0$
+| Tokens 236	0x7ffbf5412e90$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412f00$
+| 	Before: 0x7ffbf5412e40$
+| Tokens 237	0x7ffbf5412f00$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412f50$
+| 	Before: 0x7ffbf5412e90$
+| Tokens 238	0x7ffbf5412f50$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5412fc0$
+| 	Before: 0x7ffbf5412f00$
+| Tokens 239	0x7ffbf5412fc0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413010$
+| 	Before: 0x7ffbf5412f50$
+| Tokens 240	0x7ffbf5413010$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413080$
+| 	Before: 0x7ffbf5412fc0$
+| Tokens 241	0x7ffbf5413080$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54130d0$
+| 	Before: 0x7ffbf5413010$
+| Tokens 242	0x7ffbf54130d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413140$
+| 	Before: 0x7ffbf5413080$
+| Tokens 243	0x7ffbf5413140$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413190$
+| 	Before: 0x7ffbf54130d0$
+| Tokens 244	0x7ffbf5413190$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413200$
+| 	Before: 0x7ffbf5413140$
+| Tokens 245	0x7ffbf5413200$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413250$
+| 	Before: 0x7ffbf5413190$
+| Tokens 246	0x7ffbf5413250$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54132c0$
+| 	Before: 0x7ffbf5413200$
+| Tokens 247	0x7ffbf54132c0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413310$
+| 	Before: 0x7ffbf5413250$
+| Tokens 248	0x7ffbf5413310$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf5413380$
+| 	Before: 0x7ffbf54132c0$
+| Tokens 249	0x7ffbf5413380$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7ffbf54133d0$
+| 	Before: 0x7ffbf5413310$
+| Tokens 250	0x7ffbf54133d0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x0$
+| 	Before: 0x7ffbf5413380$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [273]
+|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Comm 0x7fd3b1c0d430$
+| Tokens 0	0x7fd3b1c0d430$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d490$
+| 	Before: 0x0$
+| Tokens 1	0x7fd3b1c0d490$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d730$
+| 	Before: 0x7fd3b1c0d430$
+| Tokens 2	0x7fd3b1c0d730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d7a0$
+| 	Before: 0x7fd3b1c0d490$
+| Tokens 3	0x7fd3b1c0d7a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d7f0$
+| 	Before: 0x7fd3b1c0d730$
+| Tokens 4	0x7fd3b1c0d7f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d860$
+| 	Before: 0x7fd3b1c0d7a0$
+| Tokens 5	0x7fd3b1c0d860$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d8b0$
+| 	Before: 0x7fd3b1c0d7f0$
+| Tokens 6	0x7fd3b1c0d8b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d920$
+| 	Before: 0x7fd3b1c0d860$
+| Tokens 7	0x7fd3b1c0d920$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d970$
+| 	Before: 0x7fd3b1c0d8b0$
+| Tokens 8	0x7fd3b1c0d970$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0d9e0$
+| 	Before: 0x7fd3b1c0d920$
+| Tokens 9	0x7fd3b1c0d9e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0da30$
+| 	Before: 0x7fd3b1c0d970$
+| Tokens 10	0x7fd3b1c0da30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0daa0$
+| 	Before: 0x7fd3b1c0d9e0$
+| Tokens 11	0x7fd3b1c0daa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0daf0$
+| 	Before: 0x7fd3b1c0da30$
+| Tokens 12	0x7fd3b1c0daf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0db60$
+| 	Before: 0x7fd3b1c0daa0$
+| Tokens 13	0x7fd3b1c0db60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dbb0$
+| 	Before: 0x7fd3b1c0daf0$
+| Tokens 14	0x7fd3b1c0dbb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dc20$
+| 	Before: 0x7fd3b1c0db60$
+| Tokens 15	0x7fd3b1c0dc20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dc70$
+| 	Before: 0x7fd3b1c0dbb0$
+| Tokens 16	0x7fd3b1c0dc70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dce0$
+| 	Before: 0x7fd3b1c0dc20$
+| Tokens 17	0x7fd3b1c0dce0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dd30$
+| 	Before: 0x7fd3b1c0dc70$
+| Tokens 18	0x7fd3b1c0dd30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dda0$
+| 	Before: 0x7fd3b1c0dce0$
+| Tokens 19	0x7fd3b1c0dda0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ddf0$
+| 	Before: 0x7fd3b1c0dd30$
+| Tokens 20	0x7fd3b1c0ddf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0de60$
+| 	Before: 0x7fd3b1c0dda0$
+| Tokens 21	0x7fd3b1c0de60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0deb0$
+| 	Before: 0x7fd3b1c0ddf0$
+| Tokens 22	0x7fd3b1c0deb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0df20$
+| 	Before: 0x7fd3b1c0de60$
+| Tokens 23	0x7fd3b1c0df20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0df70$
+| 	Before: 0x7fd3b1c0deb0$
+| Tokens 24	0x7fd3b1c0df70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0dfe0$
+| 	Before: 0x7fd3b1c0df20$
+| Tokens 25	0x7fd3b1c0dfe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e030$
+| 	Before: 0x7fd3b1c0df70$
+| Tokens 26	0x7fd3b1c0e030$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e0a0$
+| 	Before: 0x7fd3b1c0dfe0$
+| Tokens 27	0x7fd3b1c0e0a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e0f0$
+| 	Before: 0x7fd3b1c0e030$
+| Tokens 28	0x7fd3b1c0e0f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e160$
+| 	Before: 0x7fd3b1c0e0a0$
+| Tokens 29	0x7fd3b1c0e160$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e1b0$
+| 	Before: 0x7fd3b1c0e0f0$
+| Tokens 30	0x7fd3b1c0e1b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e220$
+| 	Before: 0x7fd3b1c0e160$
+| Tokens 31	0x7fd3b1c0e220$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e270$
+| 	Before: 0x7fd3b1c0e1b0$
+| Tokens 32	0x7fd3b1c0e270$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e2e0$
+| 	Before: 0x7fd3b1c0e220$
+| Tokens 33	0x7fd3b1c0e2e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e330$
+| 	Before: 0x7fd3b1c0e270$
+| Tokens 34	0x7fd3b1c0e330$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e3a0$
+| 	Before: 0x7fd3b1c0e2e0$
+| Tokens 35	0x7fd3b1c0e3a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e3f0$
+| 	Before: 0x7fd3b1c0e330$
+| Tokens 36	0x7fd3b1c0e3f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e460$
+| 	Before: 0x7fd3b1c0e3a0$
+| Tokens 37	0x7fd3b1c0e460$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e4b0$
+| 	Before: 0x7fd3b1c0e3f0$
+| Tokens 38	0x7fd3b1c0e4b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e520$
+| 	Before: 0x7fd3b1c0e460$
+| Tokens 39	0x7fd3b1c0e520$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e570$
+| 	Before: 0x7fd3b1c0e4b0$
+| Tokens 40	0x7fd3b1c0e570$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e5e0$
+| 	Before: 0x7fd3b1c0e520$
+| Tokens 41	0x7fd3b1c0e5e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e630$
+| 	Before: 0x7fd3b1c0e570$
+| Tokens 42	0x7fd3b1c0e630$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e6a0$
+| 	Before: 0x7fd3b1c0e5e0$
+| Tokens 43	0x7fd3b1c0e6a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e6f0$
+| 	Before: 0x7fd3b1c0e630$
+| Tokens 44	0x7fd3b1c0e6f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e760$
+| 	Before: 0x7fd3b1c0e6a0$
+| Tokens 45	0x7fd3b1c0e760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e7b0$
+| 	Before: 0x7fd3b1c0e6f0$
+| Tokens 46	0x7fd3b1c0e7b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e820$
+| 	Before: 0x7fd3b1c0e760$
+| Tokens 47	0x7fd3b1c0e820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e870$
+| 	Before: 0x7fd3b1c0e7b0$
+| Tokens 48	0x7fd3b1c0e870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e8e0$
+| 	Before: 0x7fd3b1c0e820$
+| Tokens 49	0x7fd3b1c0e8e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e930$
+| 	Before: 0x7fd3b1c0e870$
+| Tokens 50	0x7fd3b1c0e930$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e9a0$
+| 	Before: 0x7fd3b1c0e8e0$
+| Tokens 51	0x7fd3b1c0e9a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0e9f0$
+| 	Before: 0x7fd3b1c0e930$
+| Tokens 52	0x7fd3b1c0e9f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ea60$
+| 	Before: 0x7fd3b1c0e9a0$
+| Tokens 53	0x7fd3b1c0ea60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eab0$
+| 	Before: 0x7fd3b1c0e9f0$
+| Tokens 54	0x7fd3b1c0eab0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eb20$
+| 	Before: 0x7fd3b1c0ea60$
+| Tokens 55	0x7fd3b1c0eb20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eb70$
+| 	Before: 0x7fd3b1c0eab0$
+| Tokens 56	0x7fd3b1c0eb70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ebe0$
+| 	Before: 0x7fd3b1c0eb20$
+| Tokens 57	0x7fd3b1c0ebe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ec30$
+| 	Before: 0x7fd3b1c0eb70$
+| Tokens 58	0x7fd3b1c0ec30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eca0$
+| 	Before: 0x7fd3b1c0ebe0$
+| Tokens 59	0x7fd3b1c0eca0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ecf0$
+| 	Before: 0x7fd3b1c0ec30$
+| Tokens 60	0x7fd3b1c0ecf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ed60$
+| 	Before: 0x7fd3b1c0eca0$
+| Tokens 61	0x7fd3b1c0ed60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0edb0$
+| 	Before: 0x7fd3b1c0ecf0$
+| Tokens 62	0x7fd3b1c0edb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ee20$
+| 	Before: 0x7fd3b1c0ed60$
+| Tokens 63	0x7fd3b1c0ee20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ee70$
+| 	Before: 0x7fd3b1c0edb0$
+| Tokens 64	0x7fd3b1c0ee70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eee0$
+| 	Before: 0x7fd3b1c0ee20$
+| Tokens 65	0x7fd3b1c0eee0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ef30$
+| 	Before: 0x7fd3b1c0ee70$
+| Tokens 66	0x7fd3b1c0ef30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0efa0$
+| 	Before: 0x7fd3b1c0eee0$
+| Tokens 67	0x7fd3b1c0efa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0eff0$
+| 	Before: 0x7fd3b1c0ef30$
+| Tokens 68	0x7fd3b1c0eff0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f060$
+| 	Before: 0x7fd3b1c0efa0$
+| Tokens 69	0x7fd3b1c0f060$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f0b0$
+| 	Before: 0x7fd3b1c0eff0$
+| Tokens 70	0x7fd3b1c0f0b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f120$
+| 	Before: 0x7fd3b1c0f060$
+| Tokens 71	0x7fd3b1c0f120$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f170$
+| 	Before: 0x7fd3b1c0f0b0$
+| Tokens 72	0x7fd3b1c0f170$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f1e0$
+| 	Before: 0x7fd3b1c0f120$
+| Tokens 73	0x7fd3b1c0f1e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f230$
+| 	Before: 0x7fd3b1c0f170$
+| Tokens 74	0x7fd3b1c0f230$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f2a0$
+| 	Before: 0x7fd3b1c0f1e0$
+| Tokens 75	0x7fd3b1c0f2a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f2f0$
+| 	Before: 0x7fd3b1c0f230$
+| Tokens 76	0x7fd3b1c0f2f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f360$
+| 	Before: 0x7fd3b1c0f2a0$
+| Tokens 77	0x7fd3b1c0f360$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f3b0$
+| 	Before: 0x7fd3b1c0f2f0$
+| Tokens 78	0x7fd3b1c0f3b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f420$
+| 	Before: 0x7fd3b1c0f360$
+| Tokens 79	0x7fd3b1c0f420$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f470$
+| 	Before: 0x7fd3b1c0f3b0$
+| Tokens 80	0x7fd3b1c0f470$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f4e0$
+| 	Before: 0x7fd3b1c0f420$
+| Tokens 81	0x7fd3b1c0f4e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f530$
+| 	Before: 0x7fd3b1c0f470$
+| Tokens 82	0x7fd3b1c0f530$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f5a0$
+| 	Before: 0x7fd3b1c0f4e0$
+| Tokens 83	0x7fd3b1c0f5a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f5f0$
+| 	Before: 0x7fd3b1c0f530$
+| Tokens 84	0x7fd3b1c0f5f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f660$
+| 	Before: 0x7fd3b1c0f5a0$
+| Tokens 85	0x7fd3b1c0f660$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f6b0$
+| 	Before: 0x7fd3b1c0f5f0$
+| Tokens 86	0x7fd3b1c0f6b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f720$
+| 	Before: 0x7fd3b1c0f660$
+| Tokens 87	0x7fd3b1c0f720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f770$
+| 	Before: 0x7fd3b1c0f6b0$
+| Tokens 88	0x7fd3b1c0f770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f7e0$
+| 	Before: 0x7fd3b1c0f720$
+| Tokens 89	0x7fd3b1c0f7e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f830$
+| 	Before: 0x7fd3b1c0f770$
+| Tokens 90	0x7fd3b1c0f830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f8a0$
+| 	Before: 0x7fd3b1c0f7e0$
+| Tokens 91	0x7fd3b1c0f8a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f8f0$
+| 	Before: 0x7fd3b1c0f830$
+| Tokens 92	0x7fd3b1c0f8f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f960$
+| 	Before: 0x7fd3b1c0f8a0$
+| Tokens 93	0x7fd3b1c0f960$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0f9b0$
+| 	Before: 0x7fd3b1c0f8f0$
+| Tokens 94	0x7fd3b1c0f9b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fa20$
+| 	Before: 0x7fd3b1c0f960$
+| Tokens 95	0x7fd3b1c0fa20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fa70$
+| 	Before: 0x7fd3b1c0f9b0$
+| Tokens 96	0x7fd3b1c0fa70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fae0$
+| 	Before: 0x7fd3b1c0fa20$
+| Tokens 97	0x7fd3b1c0fae0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fb30$
+| 	Before: 0x7fd3b1c0fa70$
+| Tokens 98	0x7fd3b1c0fb30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fba0$
+| 	Before: 0x7fd3b1c0fae0$
+| Tokens 99	0x7fd3b1c0fba0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fbf0$
+| 	Before: 0x7fd3b1c0fb30$
+| Tokens 100	0x7fd3b1c0fbf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fc60$
+| 	Before: 0x7fd3b1c0fba0$
+| Tokens 101	0x7fd3b1c0fc60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fcb0$
+| 	Before: 0x7fd3b1c0fbf0$
+| Tokens 102	0x7fd3b1c0fcb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fd20$
+| 	Before: 0x7fd3b1c0fc60$
+| Tokens 103	0x7fd3b1c0fd20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fd70$
+| 	Before: 0x7fd3b1c0fcb0$
+| Tokens 104	0x7fd3b1c0fd70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fde0$
+| 	Before: 0x7fd3b1c0fd20$
+| Tokens 105	0x7fd3b1c0fde0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fe30$
+| 	Before: 0x7fd3b1c0fd70$
+| Tokens 106	0x7fd3b1c0fe30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fea0$
+| 	Before: 0x7fd3b1c0fde0$
+| Tokens 107	0x7fd3b1c0fea0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0fef0$
+| 	Before: 0x7fd3b1c0fe30$
+| Tokens 108	0x7fd3b1c0fef0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ff60$
+| 	Before: 0x7fd3b1c0fea0$
+| Tokens 109	0x7fd3b1c0ff60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c0ffb0$
+| 	Before: 0x7fd3b1c0fef0$
+| Tokens 110	0x7fd3b1c0ffb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10020$
+| 	Before: 0x7fd3b1c0ff60$
+| Tokens 111	0x7fd3b1c10020$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10070$
+| 	Before: 0x7fd3b1c0ffb0$
+| Tokens 112	0x7fd3b1c10070$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c100e0$
+| 	Before: 0x7fd3b1c10020$
+| Tokens 113	0x7fd3b1c100e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10130$
+| 	Before: 0x7fd3b1c10070$
+| Tokens 114	0x7fd3b1c10130$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c101a0$
+| 	Before: 0x7fd3b1c100e0$
+| Tokens 115	0x7fd3b1c101a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c101f0$
+| 	Before: 0x7fd3b1c10130$
+| Tokens 116	0x7fd3b1c101f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10260$
+| 	Before: 0x7fd3b1c101a0$
+| Tokens 117	0x7fd3b1c10260$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c102b0$
+| 	Before: 0x7fd3b1c101f0$
+| Tokens 118	0x7fd3b1c102b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10320$
+| 	Before: 0x7fd3b1c10260$
+| Tokens 119	0x7fd3b1c10320$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10370$
+| 	Before: 0x7fd3b1c102b0$
+| Tokens 120	0x7fd3b1c10370$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c103e0$
+| 	Before: 0x7fd3b1c10320$
+| Tokens 121	0x7fd3b1c103e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10430$
+| 	Before: 0x7fd3b1c10370$
+| Tokens 122	0x7fd3b1c10430$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c104a0$
+| 	Before: 0x7fd3b1c103e0$
+| Tokens 123	0x7fd3b1c104a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c104f0$
+| 	Before: 0x7fd3b1c10430$
+| Tokens 124	0x7fd3b1c104f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10560$
+| 	Before: 0x7fd3b1c104a0$
+| Tokens 125	0x7fd3b1c10560$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c105b0$
+| 	Before: 0x7fd3b1c104f0$
+| Tokens 126	0x7fd3b1c105b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10620$
+| 	Before: 0x7fd3b1c10560$
+| Tokens 127	0x7fd3b1c10620$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10670$
+| 	Before: 0x7fd3b1c105b0$
+| Tokens 128	0x7fd3b1c10670$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c106e0$
+| 	Before: 0x7fd3b1c10620$
+| Tokens 129	0x7fd3b1c106e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10730$
+| 	Before: 0x7fd3b1c10670$
+| Tokens 130	0x7fd3b1c10730$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c107a0$
+| 	Before: 0x7fd3b1c106e0$
+| Tokens 131	0x7fd3b1c107a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c107f0$
+| 	Before: 0x7fd3b1c10730$
+| Tokens 132	0x7fd3b1c107f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10860$
+| 	Before: 0x7fd3b1c107a0$
+| Tokens 133	0x7fd3b1c10860$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c108b0$
+| 	Before: 0x7fd3b1c107f0$
+| Tokens 134	0x7fd3b1c108b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10920$
+| 	Before: 0x7fd3b1c10860$
+| Tokens 135	0x7fd3b1c10920$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10970$
+| 	Before: 0x7fd3b1c108b0$
+| Tokens 136	0x7fd3b1c10970$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c109e0$
+| 	Before: 0x7fd3b1c10920$
+| Tokens 137	0x7fd3b1c109e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10a30$
+| 	Before: 0x7fd3b1c10970$
+| Tokens 138	0x7fd3b1c10a30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10aa0$
+| 	Before: 0x7fd3b1c109e0$
+| Tokens 139	0x7fd3b1c10aa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10af0$
+| 	Before: 0x7fd3b1c10a30$
+| Tokens 140	0x7fd3b1c10af0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10b60$
+| 	Before: 0x7fd3b1c10aa0$
+| Tokens 141	0x7fd3b1c10b60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10bb0$
+| 	Before: 0x7fd3b1c10af0$
+| Tokens 142	0x7fd3b1c10bb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10c20$
+| 	Before: 0x7fd3b1c10b60$
+| Tokens 143	0x7fd3b1c10c20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10c70$
+| 	Before: 0x7fd3b1c10bb0$
+| Tokens 144	0x7fd3b1c10c70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10ce0$
+| 	Before: 0x7fd3b1c10c20$
+| Tokens 145	0x7fd3b1c10ce0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10d30$
+| 	Before: 0x7fd3b1c10c70$
+| Tokens 146	0x7fd3b1c10d30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10da0$
+| 	Before: 0x7fd3b1c10ce0$
+| Tokens 147	0x7fd3b1c10da0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10df0$
+| 	Before: 0x7fd3b1c10d30$
+| Tokens 148	0x7fd3b1c10df0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10e60$
+| 	Before: 0x7fd3b1c10da0$
+| Tokens 149	0x7fd3b1c10e60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10eb0$
+| 	Before: 0x7fd3b1c10df0$
+| Tokens 150	0x7fd3b1c10eb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10f20$
+| 	Before: 0x7fd3b1c10e60$
+| Tokens 151	0x7fd3b1c10f20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10f70$
+| 	Before: 0x7fd3b1c10eb0$
+| Tokens 152	0x7fd3b1c10f70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c10fe0$
+| 	Before: 0x7fd3b1c10f20$
+| Tokens 153	0x7fd3b1c10fe0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11030$
+| 	Before: 0x7fd3b1c10f70$
+| Tokens 154	0x7fd3b1c11030$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c110a0$
+| 	Before: 0x7fd3b1c10fe0$
+| Tokens 155	0x7fd3b1c110a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c110f0$
+| 	Before: 0x7fd3b1c11030$
+| Tokens 156	0x7fd3b1c110f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11160$
+| 	Before: 0x7fd3b1c110a0$
+| Tokens 157	0x7fd3b1c11160$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c111b0$
+| 	Before: 0x7fd3b1c110f0$
+| Tokens 158	0x7fd3b1c111b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11220$
+| 	Before: 0x7fd3b1c11160$
+| Tokens 159	0x7fd3b1c11220$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11270$
+| 	Before: 0x7fd3b1c111b0$
+| Tokens 160	0x7fd3b1c11270$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c112e0$
+| 	Before: 0x7fd3b1c11220$
+| Tokens 161	0x7fd3b1c112e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11330$
+| 	Before: 0x7fd3b1c11270$
+| Tokens 162	0x7fd3b1c11330$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c113a0$
+| 	Before: 0x7fd3b1c112e0$
+| Tokens 163	0x7fd3b1c113a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c113f0$
+| 	Before: 0x7fd3b1c11330$
+| Tokens 164	0x7fd3b1c113f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11460$
+| 	Before: 0x7fd3b1c113a0$
+| Tokens 165	0x7fd3b1c11460$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c114b0$
+| 	Before: 0x7fd3b1c113f0$
+| Tokens 166	0x7fd3b1c114b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11520$
+| 	Before: 0x7fd3b1c11460$
+| Tokens 167	0x7fd3b1c11520$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11570$
+| 	Before: 0x7fd3b1c114b0$
+| Tokens 168	0x7fd3b1c11570$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c115e0$
+| 	Before: 0x7fd3b1c11520$
+| Tokens 169	0x7fd3b1c115e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11630$
+| 	Before: 0x7fd3b1c11570$
+| Tokens 170	0x7fd3b1c11630$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c116a0$
+| 	Before: 0x7fd3b1c115e0$
+| Tokens 171	0x7fd3b1c116a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c116f0$
+| 	Before: 0x7fd3b1c11630$
+| Tokens 172	0x7fd3b1c116f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11760$
+| 	Before: 0x7fd3b1c116a0$
+| Tokens 173	0x7fd3b1c11760$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c117b0$
+| 	Before: 0x7fd3b1c116f0$
+| Tokens 174	0x7fd3b1c117b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11820$
+| 	Before: 0x7fd3b1c11760$
+| Tokens 175	0x7fd3b1c11820$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11870$
+| 	Before: 0x7fd3b1c117b0$
+| Tokens 176	0x7fd3b1c11870$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c118e0$
+| 	Before: 0x7fd3b1c11820$
+| Tokens 177	0x7fd3b1c118e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11930$
+| 	Before: 0x7fd3b1c11870$
+| Tokens 178	0x7fd3b1c11930$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c119a0$
+| 	Before: 0x7fd3b1c118e0$
+| Tokens 179	0x7fd3b1c119a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c119f0$
+| 	Before: 0x7fd3b1c11930$
+| Tokens 180	0x7fd3b1c119f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11a60$
+| 	Before: 0x7fd3b1c119a0$
+| Tokens 181	0x7fd3b1c11a60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11ab0$
+| 	Before: 0x7fd3b1c119f0$
+| Tokens 182	0x7fd3b1c11ab0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11b20$
+| 	Before: 0x7fd3b1c11a60$
+| Tokens 183	0x7fd3b1c11b20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11b70$
+| 	Before: 0x7fd3b1c11ab0$
+| Tokens 184	0x7fd3b1c11b70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11be0$
+| 	Before: 0x7fd3b1c11b20$
+| Tokens 185	0x7fd3b1c11be0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11c30$
+| 	Before: 0x7fd3b1c11b70$
+| Tokens 186	0x7fd3b1c11c30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11ca0$
+| 	Before: 0x7fd3b1c11be0$
+| Tokens 187	0x7fd3b1c11ca0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11cf0$
+| 	Before: 0x7fd3b1c11c30$
+| Tokens 188	0x7fd3b1c11cf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11d60$
+| 	Before: 0x7fd3b1c11ca0$
+| Tokens 189	0x7fd3b1c11d60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11db0$
+| 	Before: 0x7fd3b1c11cf0$
+| Tokens 190	0x7fd3b1c11db0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11e20$
+| 	Before: 0x7fd3b1c11d60$
+| Tokens 191	0x7fd3b1c11e20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11e70$
+| 	Before: 0x7fd3b1c11db0$
+| Tokens 192	0x7fd3b1c11e70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11ee0$
+| 	Before: 0x7fd3b1c11e20$
+| Tokens 193	0x7fd3b1c11ee0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11f30$
+| 	Before: 0x7fd3b1c11e70$
+| Tokens 194	0x7fd3b1c11f30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11fa0$
+| 	Before: 0x7fd3b1c11ee0$
+| Tokens 195	0x7fd3b1c11fa0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c11ff0$
+| 	Before: 0x7fd3b1c11f30$
+| Tokens 196	0x7fd3b1c11ff0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12060$
+| 	Before: 0x7fd3b1c11fa0$
+| Tokens 197	0x7fd3b1c12060$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c120b0$
+| 	Before: 0x7fd3b1c11ff0$
+| Tokens 198	0x7fd3b1c120b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12120$
+| 	Before: 0x7fd3b1c12060$
+| Tokens 199	0x7fd3b1c12120$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12170$
+| 	Before: 0x7fd3b1c120b0$
+| Tokens 200	0x7fd3b1c12170$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c121e0$
+| 	Before: 0x7fd3b1c12120$
+| Tokens 201	0x7fd3b1c121e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12230$
+| 	Before: 0x7fd3b1c12170$
+| Tokens 202	0x7fd3b1c12230$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c122a0$
+| 	Before: 0x7fd3b1c121e0$
+| Tokens 203	0x7fd3b1c122a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c122f0$
+| 	Before: 0x7fd3b1c12230$
+| Tokens 204	0x7fd3b1c122f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12360$
+| 	Before: 0x7fd3b1c122a0$
+| Tokens 205	0x7fd3b1c12360$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c123b0$
+| 	Before: 0x7fd3b1c122f0$
+| Tokens 206	0x7fd3b1c123b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12420$
+| 	Before: 0x7fd3b1c12360$
+| Tokens 207	0x7fd3b1c12420$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12470$
+| 	Before: 0x7fd3b1c123b0$
+| Tokens 208	0x7fd3b1c12470$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c124e0$
+| 	Before: 0x7fd3b1c12420$
+| Tokens 209	0x7fd3b1c124e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12530$
+| 	Before: 0x7fd3b1c12470$
+| Tokens 210	0x7fd3b1c12530$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c125a0$
+| 	Before: 0x7fd3b1c124e0$
+| Tokens 211	0x7fd3b1c125a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c125f0$
+| 	Before: 0x7fd3b1c12530$
+| Tokens 212	0x7fd3b1c125f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12660$
+| 	Before: 0x7fd3b1c125a0$
+| Tokens 213	0x7fd3b1c12660$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c126b0$
+| 	Before: 0x7fd3b1c125f0$
+| Tokens 214	0x7fd3b1c126b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12720$
+| 	Before: 0x7fd3b1c12660$
+| Tokens 215	0x7fd3b1c12720$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12770$
+| 	Before: 0x7fd3b1c126b0$
+| Tokens 216	0x7fd3b1c12770$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c127e0$
+| 	Before: 0x7fd3b1c12720$
+| Tokens 217	0x7fd3b1c127e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12830$
+| 	Before: 0x7fd3b1c12770$
+| Tokens 218	0x7fd3b1c12830$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c128a0$
+| 	Before: 0x7fd3b1c127e0$
+| Tokens 219	0x7fd3b1c128a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c128f0$
+| 	Before: 0x7fd3b1c12830$
+| Tokens 220	0x7fd3b1c128f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12960$
+| 	Before: 0x7fd3b1c128a0$
+| Tokens 221	0x7fd3b1c12960$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c129b0$
+| 	Before: 0x7fd3b1c128f0$
+| Tokens 222	0x7fd3b1c129b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12a20$
+| 	Before: 0x7fd3b1c12960$
+| Tokens 223	0x7fd3b1c12a20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12a70$
+| 	Before: 0x7fd3b1c129b0$
+| Tokens 224	0x7fd3b1c12a70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12ae0$
+| 	Before: 0x7fd3b1c12a20$
+| Tokens 225	0x7fd3b1c12ae0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12b30$
+| 	Before: 0x7fd3b1c12a70$
+| Tokens 226	0x7fd3b1c12b30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12ba0$
+| 	Before: 0x7fd3b1c12ae0$
+| Tokens 227	0x7fd3b1c12ba0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12bf0$
+| 	Before: 0x7fd3b1c12b30$
+| Tokens 228	0x7fd3b1c12bf0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12c60$
+| 	Before: 0x7fd3b1c12ba0$
+| Tokens 229	0x7fd3b1c12c60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12cb0$
+| 	Before: 0x7fd3b1c12bf0$
+| Tokens 230	0x7fd3b1c12cb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12d20$
+| 	Before: 0x7fd3b1c12c60$
+| Tokens 231	0x7fd3b1c12d20$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12d70$
+| 	Before: 0x7fd3b1c12cb0$
+| Tokens 232	0x7fd3b1c12d70$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12de0$
+| 	Before: 0x7fd3b1c12d20$
+| Tokens 233	0x7fd3b1c12de0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12e30$
+| 	Before: 0x7fd3<$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| traces$
+| b1c12d70$
+| Tokens 234	0x7fd3b1c12e30$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12ea0$
+| 	Before: 0x7fd3b1c12de0$
+| Tokens 235	0x7fd3b1c12ea0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12ef0$
+| 	Before: 0x7fd3b1c12e30$
+| Tokens 236	0x7fd3b1c12ef0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12f60$
+| 	Before: 0x7fd3b1c12ea0$
+| Tokens 237	0x7fd3b1c12f60$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c12fb0$
+| 	Before: 0x7fd3b1c12ef0$
+| Tokens 238	0x7fd3b1c12fb0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13020$
+| 	Before: 0x7fd3b1c12f60$
+| Tokens 239	0x7fd3b1c13020$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13070$
+| 	Before: 0x7fd3b1c12fb0$
+| Tokens 240	0x7fd3b1c13070$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c130e0$
+| 	Before: 0x7fd3b1c13020$
+| Tokens 241	0x7fd3b1c130e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13130$
+| 	Before: 0x7fd3b1c13070$
+| Tokens 242	0x7fd3b1c13130$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c131a0$
+| 	Before: 0x7fd3b1c130e0$
+| Tokens 243	0x7fd3b1c131a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c131f0$
+| 	Before: 0x7fd3b1c13130$
+| Tokens 244	0x7fd3b1c131f0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13260$
+| 	Before: 0x7fd3b1c131a0$
+| Tokens 245	0x7fd3b1c13260$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c132b0$
+| 	Before: 0x7fd3b1c131f0$
+| Tokens 246	0x7fd3b1c132b0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13320$
+| 	Before: 0x7fd3b1c13260$
+| Tokens 247	0x7fd3b1c13320$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13370$
+| 	Before: 0x7fd3b1c132b0$
+| Tokens 248	0x7fd3b1c13370$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c133e0$
+| 	Before: 0x7fd3b1c13320$
+| Tokens 249	0x7fd3b1c133e0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c13430$
+| 	Before: 0x7fd3b1c13370$
+| Tokens 250	0x7fd3b1c13430$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x7fd3b1c134a0$
+| 	Before: 0x7fd3b1c133e0$
+| Tokens 251	0x7fd3b1c134a0$
+| 	Ok: 0$
+| 	In: 0$
+| 	Out: 1$
+| 	Cmd: /bin/ls$
+| 	Arg 0:-->ls--$
+| 	Next: 0x0$
+| 	Before: 0x7fd3b1c13430$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
