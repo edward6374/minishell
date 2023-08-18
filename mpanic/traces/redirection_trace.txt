@@ -24,7 +24,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 60149 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45005 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -46,7 +46,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 60201 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45057 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -66,9 +66,9 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
 |
-| ./mpanic.sh: line 164: 60255 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45113 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -92,7 +92,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 60317 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45175 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -114,7 +114,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 60640 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45499 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -138,7 +138,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 60695 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45554 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -170,7 +170,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -203,7 +202,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -240,7 +238,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -274,7 +271,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -311,7 +307,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -346,7 +341,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -383,7 +377,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -417,7 +410,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -454,7 +446,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -489,7 +480,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -525,7 +515,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -558,7 +547,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -594,7 +582,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -627,7 +614,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -665,7 +651,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hii hii$<-
 |
@@ -700,7 +685,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -738,7 +722,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hii hii$<-
 |
@@ -773,7 +756,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -811,7 +793,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hii hii$<-
@@ -847,7 +828,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -885,7 +865,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hii hii$<-
 |
@@ -920,7 +899,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -958,7 +936,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hii hii$<-
@@ -994,7 +971,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1032,7 +1008,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hii hii$<-
 |
@@ -1067,7 +1042,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1104,7 +1078,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1138,7 +1111,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1176,7 +1148,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1188,7 +1159,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 61596 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 46481 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -1222,7 +1193,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -1235,7 +1205,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 61655 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 46540 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -1269,7 +1239,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1281,7 +1250,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 61714 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 46599 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -1315,7 +1284,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1327,7 +1295,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 61773 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 46658 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -1361,7 +1329,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1373,7 +1340,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 61832 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 46717 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -1410,7 +1377,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1448,7 +1414,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1489,7 +1454,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1527,7 +1491,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1568,7 +1531,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -1607,7 +1569,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -1648,7 +1609,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1686,7 +1646,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2318,7 +2277,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 63389 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 48324 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -2356,16 +2315,16 @@
 | -><-
 |
 |--- STDERR:
-| ->bash: line 1: nmota-bu: No such file or directory$<-
+| ->bash: line 1: nacho: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->nmota-bu: No such file or directory<-
+| ->nacho: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
 | ->Take redir error: 8$
-| minishell: nmota-bu: no such file or directory$<-
+| minishell: nacho: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -2447,7 +2406,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2479,7 +2437,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2512,7 +2469,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2544,7 +2500,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2578,7 +2533,6 @@
 | no_cmd_test$
 | simplequot$
 | test$
-| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2589,7 +2543,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 63734 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 48669 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

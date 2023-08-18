@@ -71,7 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->'-n -n"$<-
+| ->'"$<-
 |
 |--- STDERR:
 | -><-
@@ -84,7 +84,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->|nmota-bu|$<-
+| ->|nacho|$<-
 |
 |--- STDERR:
 | -><-
@@ -95,7 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->|nmota-bu|"$<-
+| ->|nacho|"$<-
 |
 |--- STDERR:
 | -><-
@@ -119,7 +119,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->|nmota-bu|"$<-
+| ->|nacho|"$<-
 |
 |--- STDERR:
 | -><-
@@ -143,7 +143,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->|nmota-bu_|"$<-
+| ->|nacho_|"$<-
 |
 |--- STDERR:
 | -><-
@@ -359,55 +359,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->t hi t<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [199]
-|  CMD: ->echo $' t hi t '<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> t hi t $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [200]
-|  CMD: ->echo $' r hi t '<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> r hi t $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
+| -> t hi t$<-
 |
 |--- STDERR:
 | -><-

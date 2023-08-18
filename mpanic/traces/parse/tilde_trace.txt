@@ -15,10 +15,10 @@
 | -><-
 |
 |--- STDERR:
-| ->bash: line 1: /Users/nmota-bu: is a directory$<-
+| ->bash: line 1: /Users/nacho: is a directory$<-
 |
 |--- COMPARED STR:
-| ->/Users/nmota-bu: is a directory<-
+| ->/Users/nacho: is a directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
@@ -36,7 +36,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu$<-
+| ->/Users/nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -60,7 +60,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/path$<-
+| ->/Users/nacho/path$<-
 |
 |--- STDERR:
 | -><-
@@ -84,7 +84,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu$<-
+| ->/Users/nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -109,7 +109,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu$<-
+| ->/Users/nacho$<-
 |
 |--- STDERR:
 | -><-
