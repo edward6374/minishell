@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 10:11:50 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 11:01:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,15 @@ typedef struct s_min
 {
 	int		num_cmds;
 	int		exit_value;
-	char	**path;
 	t_env	*env;
 	t_cmd	*cmds;
 }	t_min;
 
-# include "history.h"
-# include "readline.h"
 # include "parser.h"
 # include "execute.h"
 # include "libft.h"
+# include "history.h"
+# include "readline.h"
 
 /* ---			Take_env.c			--- */
 int		take_env(t_min *tk, char *env[]);

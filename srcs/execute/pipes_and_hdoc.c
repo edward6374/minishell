@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_and_hdoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 13:03:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:24:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void close_here_doc(t_min *tk)
+void	close_here_doc(t_min *tk)
 {
-	t_cmd *tmp;
+	t_cmd	*tmp;
 
 	tmp = tk->cmds;
 	while (tmp)
@@ -28,7 +28,7 @@ void close_here_doc(t_min *tk)
 	}
 }
 
-void close_all_pipes(t_min *tk, int *p, int fd)
+void	close_all_pipes(t_min *tk, int *p, int fd)
 {
 	close_here_doc(tk);
 	close(p[0]);
@@ -37,18 +37,18 @@ void close_all_pipes(t_min *tk, int *p, int fd)
 		close(fd);
 }
 
-void run_here_doc(t_cmd *tmp)
+void	run_here_doc(t_cmd *tmp)
 {
-	char *line;
+	char	*line;
 
 	if (!tmp->hdoc->yes)
-		return;
+		return ;
 	pipe(tmp->hdoc->fd);
 	while (42)
 	{
 		line = readline("> ");
 		if (!ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line)))
-			break;
+			break ;
 		ft_putstr_fd(line, tmp->hdoc->fd[1]);
 		ft_putchar_fd('\n', tmp->hdoc->fd[1]);
 		free(line);
@@ -61,7 +61,7 @@ void run_here_doc(t_cmd *tmp)
 	}
 }
 
-void check_temp_fd(t_cmd *tmp, int *p, int *fd)
+void	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 {
 	if (tmp->n == 0 && tmp->next)
 		pipe(p);
@@ -74,7 +74,7 @@ void check_temp_fd(t_cmd *tmp, int *p, int *fd)
 	}
 }
 
-void redirect_pipes(t_cmd *tmp, int *p, int fd)
+void	redirect_pipes(t_cmd *tmp, int *p, int fd)
 {
 	if (tmp->in_fd != 0 && !tmp->hdoc->first)
 		((dup2(tmp->in_fd, 0)) && (close(tmp->in_fd)));
@@ -92,7 +92,7 @@ void redirect_pipes(t_cmd *tmp, int *p, int fd)
 	}
 	close(p[0]);
 	if (tmp->out_fd != 1)
-		((dup2(tmp->out_fd, 1)) && (close(tmp->out_fd)));
+		((dup2(tmp->out_fd, 0)) && (close(tmp->out_fd)));
 	else if (tmp->out_fd == 1 && tmp->next)
 		dup2(p[1], 1);
 	close(p[1]);

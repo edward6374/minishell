@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 22:54:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:55:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,15 @@ t_cmd	*set_new_command(int *number)
 
 void	set_vars(t_vars *v, char *s)
 {
-	v->i = -1;
-	v->count = -1;
+	v->s = s;
+//	v->i = -1;
+	v->i = 0;
 	v->sq = 0;
 	v->dq = 0;
 	v->oq = 1;
 	v->nq = 0;
 	v->stp = 0;
-	v->s = s;
+	v->count = 0;
 }
 
 t_cmd	*get_last_cmd(t_min **tk)
@@ -81,30 +82,31 @@ t_cmd	*get_last_cmd(t_min **tk)
 	return (tmp);
 }
 
-void	check_quotes(t_vars *vars, char c)
+void	check_quotes(t_vars *vars, char *c)
 {
-	if (c == '\'' && vars->sq == 0 && vars->dq == 0)
+	if (*c == '\'' && vars->sq == 0 && vars->dq == 0)
 	{
 		vars->sq = 1;
-		vars->nq++;
+//		vars->nq++;
 	}
-	else if (c == '\'' && vars->sq == 1)
+	else if (*c == '\'' && vars->sq == 1)
 	{
 		vars->sq = 0;
-		vars->nq++;
+//		vars->nq++;
 	}
-	else if (c == '\"' && vars->dq == 0 && vars->sq == 0)
+	else if (*c == '\"' && vars->dq == 0 && vars->sq == 0)
 	{
 		vars->dq = 1;
-		vars->nq++;
+//		vars->nq++;
 	}
-	else if (c == '\"' && vars->dq == 1)
+	else if (*c == '\"' && vars->dq == 1)
 	{
 		vars->dq = 0;
-		vars->nq++;
+//		vars->nq++;
 	}
-	if (vars->sq == 0 && vars->dq == 0 && c != '\'' && c != '\"')
+	if (vars->sq == 0 && vars->dq == 0 && (*c != '\'' || *c != '\"')) //&& *(c + 1) == ' ')
 		vars->oq = 1;
 	else
 		vars->oq = 0;
+	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\tNq: %d\n", *c, vars->sq, vars->dq, vars->oq, vars->nq);
 }

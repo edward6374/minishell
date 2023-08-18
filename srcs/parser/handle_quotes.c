@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:22:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 03:22:24 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	quotes_loop(char c, int *sq, int *dq)
 		(*sq)--;
 }
 
-int	last_word_quotes(t_parser **temp, t_vars *v, int count)
+int	last_word_quotes(t_parser **word_lst, t_vars *v, int count)
 {
 	t_word	data;
 
@@ -49,12 +49,12 @@ int	last_word_quotes(t_parser **temp, t_vars *v, int count)
 	data.word[++data.l] = '\0';
 	v->stp = data.k;
 //	printf("Word: --%s--\n", data.word);
-	if (add_word(temp, data.word))
+	if (add_word(word_lst, data.word))
 		return (MALLOC);
 	return (0);
 }
 
-int	add_word_quotes(t_parser **temp, t_vars *v, char *word, int i)
+int	add_word_quotes(t_parser **word_lst, t_vars *v, char *word, int i)
 {
 	t_word	data;
 
@@ -75,13 +75,13 @@ int	add_word_quotes(t_parser **temp, t_vars *v, char *word, int i)
 	word[++data.l] = '\0';
 	v->stp = data.k;
 //	printf("Word: %s\n", word);
-	if (add_word(temp, word) || ((v->s[i] == '<' || v->s[i] == '>'
-				|| v->s[i] == '|') && create_word(temp, v, &i, 0)))
+	if (add_word(word_lst, word) || ((v->s[i] == '<' || v->s[i] == '>'
+				|| v->s[i] == '|') && create_word(word_lst, v, &i, 0)))
 		return (MALLOC);
 	return (0);
 }
 
-int	take_words_with_quotes(t_parser **temp, t_vars *v)
+int	take_words_with_quotes(t_parser **word_lst, t_vars *v)
 {
 	int		i;
 	int		sq;
@@ -100,7 +100,7 @@ int	take_words_with_quotes(t_parser **temp, t_vars *v)
 		if ((v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|') && !dq && !sq)
 		{
 			word = (char *)malloc(sizeof(char) * (count + 1));
-			if (!word || add_word_quotes(temp, v, word, i))
+			if (!word || add_word_quotes(word_lst, v, word, i))
 				return (MALLOC);
 			count = 0;
 		}
@@ -108,7 +108,7 @@ int	take_words_with_quotes(t_parser **temp, t_vars *v)
 			count++;
 	}
 //	printf("Count: %d\n", count);
-	return (last_word_quotes(temp, v, count));
+	return (last_word_quotes(word_lst, v, count));
 }
 
 int	count_quotes(char *string)

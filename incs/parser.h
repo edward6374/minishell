@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 22:37:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:53:52 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 typedef struct s_vars
 {
-	int i;	   // variable used to loop through str
-	int count; // variable to used to checkk if a env variable is after another one
-	int sq;	   // single_quotes -> variable used to check if you are in a single quote
-	int dq;	   // double_quotes -> variable used to check if you are in a double quote
-	int oq;	   // out_quotes -> variable used to check if you are in any quotes
-	int nq;	   // number_quotes -> variable that is the number of quotes in a word
-	int stp;   // starting_point -> variable that is the starting point of a word
-	char *s;   // string -> variable that represent the string came fom readline
-} t_vars;
+	int		i;	   // variable used to loop through str
+	int		sq;	   // single_quotes -> variable used to check if you are in a single quote
+	int		dq;	   // double_quotes -> variable used to check if you are in a double quote
+	int		oq;	   // out_quotes -> variable used to check if you are in any quotes
+	int		nq;	   // number_quotes -> variable that is the number of quotes in a word
+	int		stp;   // starting_point -> variable that is the starting point of a word
+	int		count; // variable to used to checkk if a env variable is after another one
+	char	*s;   // string -> variable that represent the string came fom readline
+}	t_vars;
 
 typedef struct s_lastword
 {
@@ -38,19 +38,19 @@ typedef struct s_lastword
 
 typedef struct s_check
 {
-	int len;
-	char *new;
+	int		len;
+	char	*new;
 }	t_check;
 
 typedef struct s_path_env
 {
-	char *res;
-	char **paths;
-	int num_paths;
-	char *path_copy;
-	char *token;
-	int i;
-} t_path_env;
+	int		i;
+	int		num_paths;
+	char	*res;
+	char	*token;
+	char	**paths;
+	char	*path_copy;
+}	t_path_env;
 
 /* ---			Cmd_and_args.c			--- */
 int		add_arguments(t_parser **list, t_cmd *new);
@@ -68,7 +68,8 @@ int		count_quotes(char *string);
 int		take_words_with_quotes(t_parser **temp, t_vars *v);
 
 /* ---			Handle_words.c			--- */
-int 	find_word(t_parser **temp, t_vars *v);
+int 	find_words(t_env *env_vars, t_parser **temp, t_vars *v);
+//int 	find_words(t_parser **temp, t_vars *v);
 int		create_word(t_parser **temp, t_vars *v, int *k, int mode);
 
 /* ---			Parser.c			--- */
@@ -81,9 +82,9 @@ int 	take_redir(t_parser **tmp, t_cmd *new);
 /* ---			Utils.c			--- */
 int		check_access(char *str, int mode);
 void	set_vars(t_vars *v, char *s);
-void	check_quotes(t_vars *vars, char c);
+void	check_quotes(t_vars *vars, char *c);
 t_cmd	*get_last_cmd(t_min **tk);
 t_cmd	*set_new_command(int *number);
-char **path_env(t_env *env);
+char	**path_env(t_env *env);
 
 #endif

@@ -6,12 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 12:22:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:01:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include <signal.h>
+#include "minishell.h"
 
 char	*get_curr_path(void)
 {
@@ -33,52 +33,41 @@ t_min	*init_struct(char *env[])
 	tk = ft_calloc(1, sizeof(t_min));
 	if (!tk)
 		return (NULL);
-	if (!ft_find_path(env))
-		tk->path = NULL;
-	else
-	{
-		tk->path = ft_split(ft_find_path(env), ':');
-		if (!tk->path)
-		{
-			free(tk);
-			return (NULL);
-		}
-	}
 	if (take_env(tk, env))
 	{
-		free_double_void(tk->path);
 		free(tk);
 		return (NULL);
 	}
 	return (tk);
 }
 
-int	program(t_min *tk, char *line)
+void	program(t_min *tk, char *line)
 {
 	int	err;
 
 	add_history(line);
-	// printf("TOKEMO\n");
 	err = parser(tk, line);
-	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
-	if (err)
+	if (err == MALLOC)
+		exit_error(g_error_array[err - 1], err);
+	else if (err)
 	{
-		printf("Parser error:\t");
-		return (end_program(&line, err));
+		printf("Parser error:\n");
+		end_program(&line, err);
+		return ;
 	}
-	//	printf("Number of commands: %d\n", tk->num_cmds);
-	err = execute_commands(tk);
-	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
-	if (err)
-	{
-		printf("Execute error:\t");
-		return (end_program(&line, err));
-	}
-	if (tk->cmds)
-		free_commands(&tk->cmds, 0);
-	tk->num_cmds = 0;
+//	err = execute_commands(tk);
+//	if (err == MALLOC)
+//		exit_error(g_error_array[err - 1], err);
+//	else if (err)
+//	{
+//		printf("Execute error:\t");
+//		end_program(&line, err);
+//		return ;
+//	}
+//	if (tk->cmds)
+//		free_commands(&tk->cmds, 0);
+//	tk->num_cmds = 0;
 	free(line);
-	return (0);
 }
 
 int	loop_main(t_min *tk)

@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 17:13:31 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/17 22:30:59 by nmota-bu         ###   ########.fr        #
+#    Updated: 2023/08/18 02:19:27 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,9 @@ DEPS_BONUS	=	$(SRCS_BONUS:.c=.d)
 	@$(CC) $(CFLAGS) $(DEP_FLAGS) -c $< -o $@
 
 all		:	$(NAME)
+
+bonus	::
+	@echo "$(MAGENTA)\nChecking libft bonus...$(DEF_COLOR)"
 
 bonus	::	$(OBJS) $(OBJS_BONUS) 
 	@ar -rsc $(NAME) $(OBJS) $(OBJS_BONUS)

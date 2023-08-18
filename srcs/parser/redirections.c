@@ -6,17 +6,17 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 13:21:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:16:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parser.h"
 #include <fcntl.h>
 
-void change_tmp(t_parser **tmp)
+void	change_tmp(t_parser **tmp)
 {
-	t_parser *next_tmp;
-	t_parser *before_tmp;
+	t_parser	*next_tmp;
+	t_parser	*before_tmp;
 
 	before_tmp = (*tmp)->before;
 	next_tmp = (*tmp)->next;
@@ -39,9 +39,9 @@ void change_tmp(t_parser **tmp)
 		(*tmp)->before = NULL;
 }
 
-int minor_redir(t_parser **tmp, t_cmd *new, int mode)
+int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 {
-	int err;
+	int	err;
 
 	if (!mode)
 	{
@@ -68,29 +68,29 @@ int minor_redir(t_parser **tmp, t_cmd *new, int mode)
 	return (0);
 }
 
-int major_redir(t_parser **tmp, t_cmd *new, int mode)
+int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	if (new->out_fd != 1)
 		close(new->out_fd);
-	if (check_access((*tmp)->next->word, 0) == FILE_NOT_WRITE)
-		return (FILE_NOT_WRITE);
+	if (check_access((*tmp)->next->word, 0))
+		return (FILE_NOT_READ);
 	if (mode)
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
-						   0644);
+				0644);
 	else
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
-						   0644);
+				0644);
 	if (new->err_f)
 		free_err_f(&new->err_f);
 	change_tmp(tmp);
 	return (0);
 }
 
-int rel_path_file(t_parser **tmp, t_cmd *new)
+int	rel_path_file(t_parser **tmp, t_cmd *new)
 {
-	char *t1;
-	char *t2;
-	char *here;
+	char	*t1;
+	char	*t2;
+	char	*here;
 
 	here = getcwd(NULL, 0);
 	new->err_f = ft_strdup((*tmp)->next->word);
@@ -108,9 +108,11 @@ int rel_path_file(t_parser **tmp, t_cmd *new)
 	return (0);
 }
 
-int take_redir(t_parser **tmp, t_cmd *new)
+int	take_redir(t_parser **tmp, t_cmd *new)
 {
-	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2) || !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
+
+	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
+		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
 	{
 		if (rel_path_file(tmp, new))
 			return (free_commands(&new, MALLOC));

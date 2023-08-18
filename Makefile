@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/18 10:12:25 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/18 02:18:48 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,13 +86,13 @@ $(OBJ_DIR_TESTER)/%.o	:	$(SRC_DIR_TESTER)/%.c
 	@echo "$(YELLOW)$(patsubst $(SRC_DIR_TESTER)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
 all				:	directories
-	@$(MAKE) -C libft
+	@$(MAKE) -C libft bonus
 	@$(MAKE) $(NAME)
 
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(RD_PATH) $(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER)
+$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER)
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 

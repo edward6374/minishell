@@ -6,42 +6,39 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 13:03:40 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:24:48 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "execute.h"
 
-void end_exec(t_min *tk, pid_t *child_pid, char **env)
+void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 {
-	int final;
-	int status;
-	int finished;
-	pid_t last_pid;
+	int	final;
+	int	status;
+	int	finished;
 
 	final = 0;
 	status = 0;
 	finished = 0;
 	while (finished < tk->num_cmds)
 	{
-		last_pid = waitpid(-1, &status, 0);
-		if (last_pid == child_pid[tk->num_cmds - 1])
+		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
 		{
 			final = status;
-			//			printf("Final: %d\n", final);
+//			printf("Final: %d\n", final);
 		}
-		tk->exit_value = WEXITSTATUS(final);
 		finished++;
 	}
-	//	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
+	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
 	tk->exit_value = WEXITSTATUS(final);
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);
 }
 
-int is_builtin(t_min *tk, t_cmd *tmp, int p)
+int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 {
 	if (!ft_strncmp("echo", tmp->args[0], 5))
 		return (ft_echo(tmp, tmp->args, p));
@@ -60,11 +57,11 @@ int is_builtin(t_min *tk, t_cmd *tmp, int p)
 	return (-1);
 }
 
-char **take_double(t_env *first)
+char	**take_double(t_env *first)
 {
-	int i;
-	t_env *tmp;
-	char **env;
+	int		i;
+	t_env	*tmp;
+	char	**env;
 
 	i = 0;
 	env = NULL;
