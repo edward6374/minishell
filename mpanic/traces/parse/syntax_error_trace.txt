@@ -49,10 +49,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41402,0x7fffa2f31380) malloc: *** error for object 0x600007fc2aae00ad: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23231,0x7fffa2f31380) malloc: *** error for object 0x7fe1a54000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41402 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23231 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -75,10 +75,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41443,0x7fffa2f31380) malloc: *** error for object 0x7f7f7a4000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23272,0x7fffa2f31380) malloc: *** error for object 0x40000000000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41443 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23272 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -101,10 +101,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41484,0x7fffa2f31380) malloc: *** error for object 0x7fa78bc000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23314,0x7fffa2f31380) malloc: *** error for object 0x7f90c3c000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41484 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23314 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -127,10 +127,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41526,0x7fffa2f31380) malloc: *** error for object 0x7fc606c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23355,0x7fffa2f31380) malloc: *** error for object 0x7f87ce4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41526 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23355 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -153,10 +153,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41567,0x7fffa2f31380) malloc: *** error for object 0x7fcc964000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23396,0x7fffa2f31380) malloc: *** error for object 0x7ff893c000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41567 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23396 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -179,10 +179,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41609,0x7fffa2f31380) malloc: *** error for object 0xd000000000000000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23438,0x7fffa2f31380) malloc: *** error for object 0x7fd673c000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41609 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23438 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -205,10 +205,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41650,0x7fffa2f31380) malloc: *** error for object 0x7fdb40c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23479,0x7fffa2f31380) malloc: *** error for object 0x7f981d4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41650 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23479 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -231,10 +231,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41691,0x7fffa2f31380) malloc: *** error for object 0x79502f736b726f77: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23520,0x7fffa2f31380) malloc: *** error for object 0x7f9e2b4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41691 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23520 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -257,10 +257,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41733,0x7fffa2f31380) malloc: *** error for object 0x7f8464c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23561,0x7fffa2f31380) malloc: *** error for object 0x7fbfea4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41733 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23561 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -283,10 +283,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41774,0x7fffa2f31380) malloc: *** error for object 0x7ffe9b4000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23602,0x7fffa2f31380) malloc: *** error for object 0x7fffa2efa3d80000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41774 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23602 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -309,10 +309,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41815,0x7fffa2f31380) malloc: *** error for object 0x7ff7a8c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23643,0x7fffa2f31380) malloc: *** error for object 0x7fb24e4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41815 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23643 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -331,14 +331,14 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected token <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41856,0x7fffa2f31380) malloc: *** error for object 0x7fce7fc000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23684,0x7fffa2f31380) malloc: *** error for object 0x7faa5e4000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41856 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23684 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -359,7 +359,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 41897 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 23727 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -378,14 +378,14 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected token <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(41938,0x7fffa2f31380) malloc: *** error for object 0x7fefecc000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(23769,0x7fffa2f31380) malloc: *** error for object 0x3000000000000000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 41938 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 23769 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -404,14 +404,9 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-|--- STDOUT:
-| ->minishell: |: command not found$
-| hi$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 23976 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -432,7 +427,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 42185 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 24018 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -455,10 +450,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(42226,0x7fffa2f31380) malloc: *** error for object 0x7fdaa4c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(24059,0x7fffa2f31380) malloc: *** error for object 0x79502f736b726f77: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 42226 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 24059 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -479,7 +474,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 42267 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 24100 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -502,10 +497,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(42308,0x7fffa2f31380) malloc: *** error for object 0x7fc379c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(24142,0x7fffa2f31380) malloc: *** error for object 0x79502f736b726f77: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 42308 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 24142 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -528,10 +523,10 @@
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(42349,0x7fffa2f31380) malloc: *** error for object 0x7f9989c000d00000: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(24183,0x7fffa2f31380) malloc: *** error for object 0x7fa751c000d00000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 42349 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 24183 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -550,14 +545,14 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected token <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
 |
 | Parser error:	[0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(42390,0x7fffa2f31380) malloc: *** error for object 0x79502f736b726f77: pointer being freed was not allocated
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mminishell(24224,0x7fffa2f31380) malloc: *** error for object 0x9000000000000000: pointer being freed was not allocated
 | *** set a breakpoint in malloc_error_break to debug
 | NULL
-| ./mpanic.sh: line 164: 42390 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 24224 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 

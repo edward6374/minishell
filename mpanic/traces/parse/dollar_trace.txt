@@ -191,7 +191,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 37443 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 19224 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -213,7 +213,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m$TMPENVVAR
-| ./mpanic.sh: line 164: 37813 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 19596 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -233,7 +233,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 37860 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 19643 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/15 22:40:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:36:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,23 @@ void	env_add_back(t_env **env, t_env *new_node)
 	tmp->next = new_node;
 }
 
-void	export_add(t_env *env, char **args)
+int	is_name(char *name)
+{
+	int	i;
+
+	if (!name || (!ft_isalpha(name[0]) && name[0] != '_'))
+		return (0);
+	i = 1;
+	while (name[i] != '\0')
+	{
+		if (!ft_isalnum(name[i]) && name[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	export_add(t_env *env, char **args)
 {
 	int		i;
 	t_env	*find;
@@ -55,19 +71,27 @@ void	export_add(t_env *env, char **args)
 
 	find = NULL;
 	i = 1;
-	while (args[i] != NULL)
-	{
-		name = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
-		value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
-		if (!env_find(env, name, find_env))
-			env_add_back(&env, new_env(name, value));
-		else
+	if (args[0])
+		while (args[i] != NULL)
 		{
-			find = env_find(env, name, find_env);
-			free(find->value);
-			find->value = value;
+			name = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
+			value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
+			if (!is_name(name))
+			{
+				printf("minishell: export: %s: not a valid identifier\n",
+						args[i]);
+				return (MALLOC);
+			}
+			if (!env_find(env, name, find_env))
+				env_add_back(&env, new_env(name, value));
+			else
+			{
+				find = env_find(env, name, find_env);
+				free(find->value);
+				find->value = value;
+			}
+			free(name);
+			i++;
 		}
-		free(name);
-		i++;
-	}
+	return (0);
 }

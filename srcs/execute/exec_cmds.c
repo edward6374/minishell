@@ -6,16 +6,17 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 13:15:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:38:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include "execute.h"
+#include <errno.h>
 
-int change_exit_status(t_min *tk, t_cmd *tmp)
+int	change_exit_status(t_min *tk, t_cmd *tmp)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (tmp->args[++i])
 	{
@@ -36,9 +37,11 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	if ((*tmp)->ok)
 	{
 		if ((*tmp)->err_f)
-			printf("minishell: %s: %s\n", (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->err_f,
+					g_error_array[(*tmp)->ok - 1]);
 		else
-			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
+					- 1]);
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 		return (-1);

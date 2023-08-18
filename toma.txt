@@ -1,5 +1,0 @@
-echo "-n -n -n" -n hi
--n -n -n -n hi
-
-echo -n -n hi
-hibash-3.2$

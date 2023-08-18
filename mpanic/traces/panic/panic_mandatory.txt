@@ -31,7 +31,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 50318 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 32098 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -134,7 +134,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdir
-| ./mpanic.sh: line 164: 50521 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 32299 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -162,7 +162,7 @@
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mpwd [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kd
 | /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd -
-| ./mpanic.sh: line 164: 50578 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 32358 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -215,7 +215,7 @@
 |
 | PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 50697 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 32477 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -246,7 +246,7 @@
 |
 | PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
 | [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 50765 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 32544 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

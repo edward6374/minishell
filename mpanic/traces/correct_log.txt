@@ -2383,6 +2383,7 @@
 | no_cmd_test$$
 | simplequot$$
 | test$$
+| testdir$$
 | traces$$<-
 |
 |--- STDERR:
@@ -2412,6 +2413,7 @@
 | no_cmd_test$$
 | simplequot$$
 | test$$
+| testdir$$
 | traces$$<-
 |
 |--- STDERR:
@@ -2426,25 +2428,26 @@
 |
 |--- STDOUT:
 | ->total 896$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2456,25 +2459,26 @@
 |
 |--- STDOUT:
 | ->total 896$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2488,25 +2492,26 @@
 |
 |--- STDOUT:
 | ->total 896$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2518,25 +2523,26 @@
 |
 |--- STDOUT:
 | ->total 896$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2550,25 +2556,26 @@
 |
 |--- STDOUT:
 | ->total 896$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$$$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$$$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$$$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$$$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$$$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$$$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$$$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$$$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$$$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$$$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$$$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$$$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$$$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$$$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$$$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$$$$<-
 |
 |--- STDERR:
 | -><-
@@ -2580,25 +2587,26 @@
 |
 |--- STDOUT:
 | ->total 896$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 &4$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 17:54 <$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$$$$
 | -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$$$$
-| -rwxr-xr-x   1 nacho  admin    9380 18 ago 17:53 cleaner$$$$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$$$$
 | -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 doblequot$$$$$
-| -rwxr-xr-x   1 nacho  admin    8432 18 ago 17:53 echo$$$$$
-| -rw-r--r--   1 nacho  admin      21 18 ago 15:20 file2$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_first$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 file_second$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 filepipe$$$$$
-| -rwxrwxrwx   1 nacho  admin  388876 18 ago 17:53 minishell$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 mixedfile nam$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$$$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$$$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$$$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$$$$
 | -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_file$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 no_cmd_test$$$$$
-| -rw-r--r--   1 nacho  admin       0 18 ago 15:21 simplequot$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$$$$
 | drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$$$$
-| drwxr-xr-x  10 nacho  admin     340 18 ago 17:54 traces$$$$$<-
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$$$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$$$$<-
 |
 |--- STDERR:
 | -><-
@@ -2629,6 +2637,7 @@
 | no_cmd_test$
 | simplequot$
 | test$
+| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2658,6 +2667,7 @@
 | no_cmd_test$
 | simplequot$
 | test$
+| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -2689,7 +2699,8 @@
 |     16	no_cmd_test$
 |     17	simplequot$
 |     18	test$
-|     19	traces$<-
+|     19	testdir$
+|     20	traces$<-
 |
 |--- STDERR:
 | -><-
@@ -2718,187 +2729,8 @@
 |     16	no_cmd_test$
 |     17	simplequot$
 |     18	test$
-|     19	traces$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [271]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [272]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [273]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
-| test$
-| traces$<-
+|     19	testdir$
+|     20	traces$<-
 |
 |--- STDERR:
 | -><-
@@ -3139,7 +2971,8 @@
 |     15	no_cmd_test$
 |     16	simplequot$
 |     17	test$
-|     18	traces$
+|     18	testdir$
+|     19	traces$
 | 0$<-
 |
 |--- STDERR:
@@ -3168,7 +3001,8 @@
 |     15	no_cmd_test$
 |     16	simplequot$
 |     17	test$
-|     18	traces$
+|     18	testdir$
+|     19	traces$
 | 0$<-
 |
 |--- STDERR:
@@ -3199,7 +3033,8 @@
 |     15	no_cmd_test$
 |     16	simplequot$
 |     17	test$
-|     18	traces$<-
+|     18	testdir$
+|     19	traces$<-
 |
 |--- STDERR:
 | -><-
@@ -3227,7 +3062,8 @@
 |     15	no_cmd_test$
 |     16	simplequot$
 |     17	test$
-|     18	traces$<-
+|     18	testdir$
+|     19	traces$<-
 |
 |--- STDERR:
 | -><-
