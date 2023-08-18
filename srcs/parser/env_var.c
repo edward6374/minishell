@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:41:43 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	put_word(t_parser **list, t_vars *v)
 	word = ft_substr(v->s, v->stp, v->i - v->stp);
 	if (!word || add_word(list, word))
 		return (MALLOC);
-	printf("Put word: --%s--\n", word);
+//	printf("Put word: --%s--\n", word);
 	v->count++;
 	return (0);
 }
@@ -34,7 +34,7 @@ static int	join_strings(t_parser **list, char *res)
 	if (!join)
 		return (free_pointer(res, MALLOC));
 //	printf("Res: --%s--\n", res);
-	printf("Join: --%s--\n", join);
+//	printf("Join: --%s--\n", join);
 	free(res);
 	free((*list)->word);
 	(*list)->word = join;
@@ -64,19 +64,19 @@ static int	other_chars(t_parser **list, t_vars *v)
 	char	*other;
 	int		counter;
 
-	printf("Double: %d\n", v->dq);
+//	printf("Double: %d\n", v->dq);
 	if (v->s[v->i] == '\'' || v->s[v->i] == '\"')
 		c = v->s[v->i++];
 	else
 		c = '\0';
 	end = v->i;
 	start = v->i;
-	printf("C: %c\tStart: %d\n", c, start);
+//	printf("C: %c\tStart: %d\n", c, start);
 	counter = 0;
 	while ((c != '\0' && v->s[end] != c)
 		|| (c == '\0' && v->s[end] != c && v->s[end] != ' '))
 	{
-		printf("Loop char: %c\tEnd: %d\n", v->s[end], end);
+//		printf("Loop char: %c\tEnd: %d\n", v->s[end], end);
 		if (v->s[end] == '\"' && v->s[end + 1] == '$')
 			break ;
 		if (counter > 15)
@@ -87,12 +87,12 @@ static int	other_chars(t_parser **list, t_vars *v)
 	other = ft_substr(v->s, start, end - start);
 	if (!other)
 		return (MALLOC);
-	printf("Other: --%s--\n", other);
+//	printf("Other: --%s--\n", other);
 	join_strings(list, other);
 	if ((v->s[end] == '\"' && v->s[end + 1] == '$')
 		|| v->s[end] == '\'')
 	{
-		printf("Here End: %d\tChar end: %c\n", end, v->s[end]);
+//		printf("Here End: %d\tChar end: %c\n", end, v->s[end]);
 		end++;
 		if (v->s[end] == '\"')
 			end++;
@@ -106,7 +106,7 @@ static int	other_chars(t_parser **list, t_vars *v)
 //		*i = end + 1;
 //	else
 //		*i = end;
-	printf("I symbols: %d\tChar i: %c\n", v->i, v->s[v->i]);
+//	printf("I symbols: %d\tChar i: %c\n", v->i, v->s[v->i]);
 	return (0);
 }
 
@@ -129,13 +129,13 @@ static int	take_value(t_min *tk, t_parser **list, t_vars *v, char *s)
 		}
 		if (!tmp)
 		{
-			printf("No correspondence\n");
+//			printf("No correspondence\n");
 			return (free_pointer(s, 127));
 		}
 		free(s);
 		s = ft_substr(tmp->value, 0, ft_strlen(tmp->value));
 	}
-	printf("S: %s\n", s);
+//	printf("S: %s\n", s);
 	if (!s || (!v->count && add_word(list, s)))
 		return (MALLOC);
 	else if (!s || (v->count && join_strings(list, s)))
@@ -156,11 +156,11 @@ static char	*take_name(t_vars *v)
 	while ((v->s[end] >= 'a' && v->s[end] <= 'z')
 		|| (v->s[end] >= 'A' && v->s[end] <= 'Z'))
 		end++;
-	printf("Start: %d\tChar start: %c\tEnd: %d\tChar end:%c\n", start, v->s[start], end, v->s[end]);
+//	printf("Start: %d\tChar start: %c\tEnd: %d\tChar end:%c\n", start, v->s[start], end, v->s[end]);
 	name = ft_substr(v->s, start, end - start);
 	if (!name)
 		return (NULL);
-	printf("Name: --%s--\n", name);
+//	printf("Name: --%s--\n", name);
 	if (v->s[end] == '\"')
 	{
 		v->dq = 0;
@@ -185,7 +185,7 @@ int	check_env_var(t_min *tk, t_parser **list, t_vars *v)
 		return (MALLOC);
 	while (v->s[v->i] != ' ' && v->s[v->i] != '\0')
 	{
-		printf("Car: --%c--\tI: %d\n", v->s[v->i], v->i);
+//		printf("Car: --%c--\tI: %d\n", v->s[v->i], v->i);
 		if (v->s[v->i] == '$')
 		{
 			name = take_name(v);

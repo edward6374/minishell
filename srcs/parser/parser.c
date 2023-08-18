@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 15:52:34 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:14:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 		}
 		p = p->next;
 	}
-	p = all_words;
-	while (p)    // This while is just for printing the resulted structure
-	{
-		printf("Temp:-->%p\n", p);
-		printf("Word:--%s--\n", p->word);
-		printf("Next:-->%p\n", p->next);
-		printf("Before:-->%p\n\n", p->before);
-		p = p->next;
-	}
-	printf("Temp: %p\n", p);
+//	p = all_words;
+//	while (p)    // This while is just for printing the resulted structure
+//	{
+//		printf("Temp:-->%p\n", p);
+//		printf("Word:--%s--\n", p->word);
+//		printf("Next:-->%p\n", p->next);
+//		printf("Before:-->%p\n\n", p->before);
+//		p = p->next;
+//	}
+//	printf("Temp: %p\n", p);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 16:04:56 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:14:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	add_word(t_parser **temp, char *word)
 {
 	t_parser	*new;
 
-	printf("Add word: --%s--\n", word);
+//	printf("Add word: --%s--\n", word);
 	if (!(*temp)->word)
 		(*temp)->word = word;
 	else

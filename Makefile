@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/16 18:45:58 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/18 10:12:25 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ all				:	directories
 $(NAME)			::
 	@echo "$(MAGENTA)\nChecking minishell...$(DEF_COLOR)"
 
-$(NAME)			::	$(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER)
+$(NAME)			::	$(RD_PATH) $(OBJS_MS) $(OBJS_EXEC) $(OBJS_BI) $(OBJS_PARSER)
 	@$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	@echo "$(ORANGE)Compiling minishell exec...$(DEF_COLOR)"
 
