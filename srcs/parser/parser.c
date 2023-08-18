@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 15:52:34 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:22:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 		{
 			dt.len = dt.len - ft_strlen(ft_strnstr(p->word, "$?", dt.len));
 			dt.new = ft_strjoin(ft_substr(p->word, 0, dt.len),
-					ft_itoa(tk->exit_value));
+								ft_itoa(tk->exit_value));
 			if (!dt.new)
 				return (free_parser(all_words, MALLOC));
 			dt.new = ft_strjoin(dt.new, ft_strnstr(p->word, "$?",
@@ -41,7 +41,7 @@ int	check_for_exit_status(t_min *tk, t_parser *all_words)
 		p = p->next;
 	}
 	p = all_words;
-	while (p)    // This while is just for printing the resulted structure
+	while (p) // This while is just for printing the resulted structure
 	{
 		printf("Temp:-->%p\n", p);
 		printf("Word:--%s--\n", p->word);

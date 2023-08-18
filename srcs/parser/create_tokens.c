@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:24:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:39:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static int	check_redir_syntax(t_parser *list)
 				|| !ft_strncmp(list->before->word, ">>", 3)))
 			return (PIPE_FIRST);
 		else if ((!ft_strncmp(list->word, "<", 2) || !ft_strncmp(list->word,
-					"<<", 3) || !ft_strncmp(list->word, ">", 2)
-				|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
+						"<<", 3) || !ft_strncmp(list->word, ">", 2)
+					|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
 			return (ONLY_REDIR);
 		list = list->next;
 	}
@@ -119,6 +119,6 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
-//	print_commands(tk);
+	//	print_commands(tk);
 	return (0);
 }
