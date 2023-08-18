@@ -6,17 +6,17 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 10:14:19 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:05:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	add_word(t_parser **temp, char *word)
+int add_word(t_parser **temp, char *word)
 {
-	t_parser	*new;
+	t_parser *new;
 
-//	printf("Add word: --%s--\n", word);
+	//	printf("Add word: --%s--\n", word);
 	if (!(*temp)->word)
 		(*temp)->word = word;
 	else
@@ -34,16 +34,15 @@ int	add_word(t_parser **temp, char *word)
 	return (0);
 }
 
-int	create_word(t_parser **temp, t_vars *v, int *k, int mode)
+int create_word(t_parser **temp, t_vars *v, int *k, int mode)
 {
-	int		len;
-	char	*word;
+	int len;
+	char *word;
 
 	if (!mode)
 	{
 		len = 1;
-		if ((v->s[*k] == '<' && v->s[*k + 1] == '<') || (v->s[*k] == '>'
-				&& v->s[*k + 1] == '>'))
+		if ((v->s[*k] == '<' && v->s[*k + 1] == '<') || (v->s[*k] == '>' && v->s[*k + 1] == '>'))
 		{
 			len++;
 			(*k)++;
@@ -62,9 +61,9 @@ int	create_word(t_parser **temp, t_vars *v, int *k, int mode)
 	return (0);
 }
 
-int	find_more_words(t_parser **temp, t_vars *v)
+int find_more_words(t_parser **temp, t_vars *v)
 {
-	int	k;
+	int k;
 
 	k = v->stp - 1;
 	while (++k < v->i)
@@ -84,11 +83,10 @@ int	find_more_words(t_parser **temp, t_vars *v)
 	return (0);
 }
 
-int	find_word(t_parser **temp, t_vars *v)
+int find_word(t_parser **temp, t_vars *v)
 {
 	check_quotes(v, v->s[v->i]);
-	if (((v->s[v->i] == ' ' && v->oq) || (v->s[v->i + 1] == '\0'
-				&& v->s[v->i] != ' ')))
+	if (((v->s[v->i] == ' ' && v->oq) || (v->s[v->i + 1] == '\0' && v->s[v->i] != ' ')))
 	{
 		if (v->nq && take_words_with_quotes(temp, v))
 			return (MALLOC);

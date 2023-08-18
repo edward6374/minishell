@@ -6,12 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:31:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:22:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
 #include "minishell.h"
+#include <signal.h>
 
 char	*get_curr_path(void)
 {
@@ -58,6 +58,7 @@ int	program(t_min *tk, char *line)
 	int	err;
 
 	add_history(line);
+	// printf("TOKEMO\n");
 	err = parser(tk, line);
 	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
 	if (err)
@@ -65,7 +66,7 @@ int	program(t_min *tk, char *line)
 		printf("Parser error:\t");
 		return (end_program(&line, err));
 	}
-//	printf("Number of commands: %d\n", tk->num_cmds);
+	//	printf("Number of commands: %d\n", tk->num_cmds);
 	err = execute_commands(tk);
 	((err == MALLOC) && (exit_error(g_error_array[err - 1], err)));
 	if (err)

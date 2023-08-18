@@ -1,0 +1,693 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [341]
+|  CMD: ->" "
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1:  : command not found$<-
+|
+|--- COMPARED STR:
+| -> : command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell:  : command not found$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [342]
+|  CMD: ->" "<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1:  : command not found$<-
+|
+|--- COMPARED STR:
+| -> : command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell:  : command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [343]
+|  CMD: ->echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [344]
+|  CMD: ->cat < noexiste
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noexiste: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->noexiste: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: noexiste: no such file or directory$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [345]
+|  CMD: ->cat < noexiste<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noexiste: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->noexiste: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: noexiste: no such file or directory$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [346]
+|  CMD: ->echo hola > noperm
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: noperm: file not readable$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [347]
+|  CMD: ->echo hola > noperm<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: noperm: file not readable$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [348]
+|  CMD: ->echo hola < noperm
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: noperm: file not readable$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [349]
+|  CMD: ->echo hola < noperm<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: noperm: Permission denied$<-
+|
+|--- COMPARED STR:
+| ->noperm: Permission denied<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: noperm: file not readable$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [350]
+|  CMD: ->sleep 1 | ls | cat -n
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	README.md$
+|      2	cleaner$
+|      3	cleaner.c$
+|      4	echo$
+|      5	minishell$
+|      6	mpanic.sh$
+|      7	test$
+|      8	testdir$
+|      9	traces$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	README.md$
+|      2	cleaner$
+|      3	cleaner.c$
+|      4	echo$
+|      5	minishell$
+|      6	mpanic.sh$
+|      7	test$
+|      8	testdir$
+|      9	traces$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [352]
+|  CMD: ->sleep 1 | dddd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: dddd: command not found$<-
+|
+|--- COMPARED STR:
+| ->dddd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: dddd: command not found$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [353]
+|  CMD: ->sleep 1 | dddd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: dddd: command not found$<-
+|
+|--- COMPARED STR:
+| ->dddd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: dddd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [354]
+|  CMD: ->nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [355]
+|  CMD: ->nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [356]
+|  CMD: ->nonexistcmd | echo hi
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| 0$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$
+| hi$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [357]
+|  CMD: ->nonexistcmd | echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [358]
+|  CMD: ->echo hi | nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [359]
+|  CMD: ->echo hi | nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nonexistcmd: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [360]
+|  CMD: ->echo hi < nofile | nonexistcmd
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$
+| bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: nofile: no such file or directory$
+| minishell: nonexistcmd: command not found$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [361]
+|  CMD: ->echo hi < nofile | nonexistcmd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$
+| bash: line 1: nonexistcmd: command not found$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: nofile: no such file or directory$
+| minishell: nonexistcmd: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [362]
+|  CMD: ->echo hi < nofile | echo hii
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hii$
+| 0$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: nofile: no such file or directory$
+| hii$
+| $?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [363]
+|  CMD: ->echo hi < nofile | echo hii<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hii$<-
+|
+|--- STDERR:
+| ->bash: line 1: nofile: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nofile: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: nofile: no such file or directory$
+| hii$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [364]
+|  CMD: ->/Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->127$<-
+|
+|--- STDERR:
+| ->bash: line 1: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->/Users/nonexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$?$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [365]
+|  CMD: ->/Users/nonexist/directory<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->/Users/nonexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [366]
+|  CMD: ->cat /Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$?$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [367]
+|  CMD: ->cat /Users/nonexist/directory<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+---------------------------------------------<
+

@@ -1,0 +1,329 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [377]
+|  CMD: ->mkdir testdirtest
+| cd testdirtest
+| bash
+| cd .. && rm -rf testdirtest && exit
+| pwd
+| cd .
+| pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| /Users/nmota-bu/Desktop/valerio/mpanic/testdirtest/.$<-
+|
+|--- STDERR:
+| ->mkdir: testdirtest: File exists$
+| cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->test: File exists<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164:  5808 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [378]
+|  CMD: ->exit --<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->exit$<-
+|
+|--- STDERR:
+| ->syntax error$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [379]
+|  CMD: ->echo all &> testfile < non_exist_file
+| rm testfile<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: testfile: file not readable$<-
+|
+|--- STDERR:
+| ->rm: testfile: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [380]
+|  CMD: ->cd-<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (127)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: cd-: command not found$<-
+|
+|--- COMPARED STR:
+| ->cd-: command not found<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: cd-: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [381]
+|  CMD: ->mkdir testdir
+| cd testdir
+| pwd
+| cd ..
+| pwd
+| rm -rf testdir
+| cd -<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdir$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| ->mkdir: testdir: File exists$
+| bash: line 7: cd: /Users/nmota-bu/Desktop/valerio/mpanic/testdir: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->: File exists<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdir
+| ./mpanic.sh: line 164:  6051 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [382]
+|  CMD: ->cd
+| pwd
+| cd -
+| pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu$
+| /Users/nmota-bu/Desktop/valerio/mpanic$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mpwd
+| /Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd -
+| ./mpanic.sh: line 164:  6116 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [383]
+|  CMD: ->echo ~<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->~$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [384]
+|  CMD: ->env | grep PWD
+| cd testdirtest
+| env | grep PWD
+| unset PWD
+| cd ..
+| env | grep PWD<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164:  6262 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [385]
+|  CMD: ->env | grep PWD
+| cd testdirtest
+| env | grep PWD
+| export PWD=nosensedir
+| cd ..
+| env | grep PWD<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| OLDPWD=nosensedir$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164:  6336 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [386]
+|  CMD: ->echo hi <> file
+| ls
+| rm file<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| file$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 8$
+| minishell: >: no such file or directory$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->rm: file: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [387]
+|  CMD: ->echo this is the file > file
+| echo this is not the file > file2
+| cat < file 3< file2<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->this is the file$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file: file not readable$
+| Take redir error: 9$
+| minishell: file2: file not readable$
+| Take redir error: 8$
+| minishell: file: no such file or directory$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

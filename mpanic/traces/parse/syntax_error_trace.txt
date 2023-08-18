@@ -1,0 +1,565 @@
+
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
+
+---------------------------------------------> test [225]
+|  CMD: ->test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [226]
+|  CMD: ->|test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `|test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96662 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [227]
+|  CMD: ->| test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96703 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [228]
+|  CMD: ->< | test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `< | test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96744 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [229]
+|  CMD: -><< | test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `<< | test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96785 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [230]
+|  CMD: ->> | test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `> | test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96826 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [231]
+|  CMD: ->>> | test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `>> | test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96867 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [232]
+|  CMD: ->| < test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| < test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96908 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [233]
+|  CMD: ->| << test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| << test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96949 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [234]
+|  CMD: ->| > test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| > test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 96990 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [235]
+|  CMD: ->| >> test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| >> test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97031 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [236]
+|  CMD: ->| test<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `| test'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97072 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [237]
+|  CMD: ->test | ><-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `test | >'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97113 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [238]
+|  CMD: ->test | >><-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `test | >>'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 97154 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [239]
+|  CMD: ->test | <<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `test | <'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97195 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [244]
+|  CMD: ->echo hi | | echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `echo hi | | echo hi'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: |: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [245]
+|  CMD: ->echo hi ||| echo hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `|'$
+| bash: line 1: `echo hi ||| echo hi'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: |: command not found$
+| minishell: |: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [246]
+|  CMD: ->echo ><-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `echo >'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97482 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [247]
+|  CMD: ->echo >><-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `echo >>'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [248]
+|  CMD: ->echo <<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `echo <'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97563 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [249]
+|  CMD: ->echo >>><-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `>'$
+| bash: line 1: `echo >>>'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97604 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [250]
+|  CMD: ->echo <<<<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `newline'$
+| bash: line 1: `echo <<<'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected token <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|
+| Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
+| ./mpanic.sh: line 164: 97645 Abort trap: 6           ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [251]
+|  CMD: ->echo hi >< file<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (2)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| ->bash: line 1: syntax error near unexpected token `<'$
+| bash: line 1: `echo hi >< file'$<-
+|
+|--- COMPARED STR:
+| ->syntax error near unexpected <-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: <: file not readable$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

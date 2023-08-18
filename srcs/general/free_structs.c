@@ -6,16 +6,16 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 10:38:10 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:04:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	free_parser(t_parser *words, int out)
+int free_parser(t_parser *words, int out)
 {
-	t_parser	*tmp;
-	t_parser	*next;
+	t_parser *tmp;
+	t_parser *next;
 
 	tmp = words;
 	next = words->next;
@@ -31,9 +31,9 @@ int	free_parser(t_parser *words, int out)
 	return (out);
 }
 
-int	free_env(t_env *first)
+int free_env(t_env *first)
 {
-	t_env	*next;
+	t_env *next;
 
 	next = first->next;
 	while (next)
@@ -52,10 +52,10 @@ int	free_env(t_env *first)
 	return (MALLOC);
 }
 
-int	free_commands(t_cmd **first, int out)
+int free_commands(t_cmd **first, int out)
 {
-	t_cmd	*tmp;
-	t_cmd	*next;
+	t_cmd *tmp;
+	t_cmd *next;
 
 	tmp = *first;
 	next = (*first)->next;
@@ -81,15 +81,15 @@ int	free_commands(t_cmd **first, int out)
 	return (free_pointer(tmp, out));
 }
 
-int	free_all(t_min *tk, int out)
+int free_all(t_min *tk, int out)
 {
-//	printf("Free all commands\n");
+	//	printf("Free all commands\n");
 	if (tk->cmds)
 		free_commands(&tk->cmds, 0);
-//	printf("Free all env\n");
+	//	printf("Free all env\n");
 	if (tk->env)
 		free_env(tk->env);
-//	printf("Free all path\n");
+	//	printf("Free all path\n");
 	free_double_void(tk->path);
 	tk->path = NULL;
 	free(tk);
