@@ -6,17 +6,16 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 10:31:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:20:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include "execute.h"
 
-int	change_exit_status(t_min *tk, t_cmd *tmp)
+int change_exit_status(t_min *tk, t_cmd *tmp)
 {
-	int		i;
-
+	int i;
 	i = 0;
 	while (tmp->args[++i])
 	{
@@ -29,9 +28,9 @@ int	change_exit_status(t_min *tk, t_cmd *tmp)
 	return (0);
 }
 
-int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
+int check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
-	int	res;
+	int res;
 
 	check_temp_fd(*tmp, p, fd);
 	if ((*tmp)->ok)
@@ -57,20 +56,20 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	return (-1);
 }
 
-void	print_command(t_cmd *tmp)
+void print_command(t_cmd *tmp)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (tmp->args[++i])
 		printf("Tmp arg %d: %s\n", i + 1, tmp->args[i]);
 }
 
-int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
+int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 {
-	pid_t	pid;
-	t_cmd	*tmp;
-	char	**env;
+	pid_t pid;
+	t_cmd *tmp;
+	char **env;
 
 	env = take_double(tk->env);
 	if (!env)
@@ -79,9 +78,8 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	while (tmp)
 	{
 		change_exit_status(tk, tmp);
-//		print_command(tmp);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
-			continue ;
+			continue;
 		pid = fork();
 		if (pid == 0)
 		{
@@ -98,13 +96,13 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	return (0);
 }
 
-int	execute_commands(t_min *tk)
+int execute_commands(t_min *tk)
 {
-	int		fd;
-	int		p[2];
-	int		err;
-	t_cmd	*tmp;
-	pid_t	*child_pid;
+	int fd;
+	int p[2];
+	int err;
+	t_cmd *tmp;
+	pid_t *child_pid;
 
 	fd = -1;
 	p[0] = -1;
