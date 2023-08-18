@@ -22,7 +22,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 95831 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 55731 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

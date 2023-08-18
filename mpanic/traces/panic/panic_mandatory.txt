@@ -31,7 +31,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164:  5808 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 65371 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -77,11 +77,11 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: testfile: file not readable$<-
+| ->Take redir error: 8$
+| minishell: non_exist_file: no such file or directory$<-
 |
 |--- STDERR:
-| ->rm: testfile: No such file or directory$<-
+| -><-
 |
 ---------------------------------------------<
 
@@ -134,7 +134,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdir
-| ./mpanic.sh: line 164:  6051 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 65572 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -162,7 +162,7 @@
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mpwd
 | /Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd -
-| ./mpanic.sh: line 164:  6116 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 65629 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -215,7 +215,7 @@
 |
 | PWD=/Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164:  6262 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 65748 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -246,7 +246,7 @@
 |
 | PWD=/Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164:  6336 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 65815 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -259,13 +259,23 @@
 |
 |--- STDOUT:
 | ->hi$
+| &4$
+| <$
 | README.md$
 | cleaner$
 | cleaner.c$
+| doblequot$
 | echo$
 | file$
+| file_first$
+| file_second$
+| filepipe$
 | minishell$
+| mixedfile nam$
 | mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
 | test$
 | testdir$
 | traces$<-
@@ -281,12 +291,22 @@
 |--- STDOUT:
 | ->Take redir error: 8$
 | minishell: >: no such file or directory$
+| &4$
+| <$
 | README.md$
 | cleaner$
 | cleaner.c$
+| doblequot$
 | echo$
+| file_first$
+| file_second$
+| filepipe$
 | minishell$
+| mixedfile nam$
 | mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
 | test$
 | testdir$
 | traces$<-
@@ -315,15 +335,11 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: file: file not readable$
-| Take redir error: 9$
-| minishell: file2: file not readable$
-| Take redir error: 8$
-| minishell: file: no such file or directory$<-
+| ->this is the file$
+| this is not the file$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: 3: No such file or directory$<-
 |
 ---------------------------------------------<
 

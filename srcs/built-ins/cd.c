@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:25:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 17:28:34 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:31:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	ft_cd(char **args, t_env *env)
 		upgrade_env(env, 0);
 		change_directory(path);
 		upgrade_env(env, 1);
-		printf("CD: %s\n", path);
 	}
 	return (0);
 }

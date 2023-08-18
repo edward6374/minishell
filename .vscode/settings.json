@@ -1,10 +1,23 @@
 {
+	"makefile.extensionOutputFolder": "./.vscode",
 	"files.associations": {
 		"*.js": "javascriptreact",
 		"*.hbs": "handlebars",
 		"*.c": "c",
-		"execute.h": "c",
-		"built-ins.h": "c",
-		"errno.h": "c"
-	}
+		"sstream": "c",
+		"libft.h": "c",
+		"algorithm": "c",
+		"*.tcc": "c",
+		"bitset": "c",
+		"istream": "c",
+		"hashtable": "c",
+		"locale": "c",
+		"cstdlib": "c",
+		"path_env.h": "c",
+		"builtins.h": "c"
+	},
+	"editor.fontLigatures": false,
+	"lldb.dbgconfig": {},
+	"todo-tree.tree.showBadges": true,
+	"todo-tree.tree.disableCompactFolders": true
 }

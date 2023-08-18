@@ -6,33 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [121]
-|  CMD: ->echo hi
-| echo $?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| 0$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| $?$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [122]
 |  CMD: ->echo $<-
 |--------------------------------
@@ -220,7 +193,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m$TMPENVVAR
-| ./mpanic.sh: line 164: 93109 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 53009 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

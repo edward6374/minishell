@@ -432,11 +432,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: fi le: file not readable$<-
+| ->hi$<-
 |
 |--- STDERR:
-| ->rm: fi le: No such file or directory$<-
+| -><-
 |
 ---------------------------------------------<
 
@@ -458,11 +457,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: fi le: file not readable$<-
+| ->hi$<-
 |
 |--- STDERR:
-| ->rm: fi le: No such file or directory$<-
+| -><-
 |
 ---------------------------------------------<
 

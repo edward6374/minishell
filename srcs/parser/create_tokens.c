@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 13:11:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:43:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,27 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 	return (0);
 }
 
-// void	print_commands(t_min *tk)
-// {
-// 	int		i;
-// 	int		k;
-// 	t_cmd	*cmd;
-//
-// 	i = 0;
-// 	cmd = tk->cmds;
-// 	printf("Comm %p\n", cmd);
-// 	while (cmd)
-// 	{
-// 		k = -1;
-// 		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
-// 				cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
-// 		while (cmd->args[++k])
-// 			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
-// 		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
-// 		cmd = cmd->next;
-// 		i++;
-// 	}
-// }
+void print_commands(t_min *tk)
+{
+	int i;
+	int k;
+	t_cmd *cmd;
+
+	i = 0;
+	cmd = tk->cmds;
+	printf("Comm %p\n", cmd);
+	while (cmd)
+	{
+		k = -1;
+		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
+			   cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
+		while (cmd->args[++k])
+			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
+		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
+		cmd = cmd->next;
+		i++;
+	}
+}
 
 static int	check_redir_syntax(t_parser *list)
 {
@@ -119,6 +119,6 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
-	//	print_commands(tk);
+	print_commands(tk);
 	return (0);
 }

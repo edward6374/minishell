@@ -6,30 +6,30 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 13:52:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:57:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-char	*take_dollar(char *env)
-{
-	if (*env == '$')
-		env++;
-	return (env);
-}
+// char	*take_dollar(char *env)
+// {
+// 	if (*env == '$')
+// 		env++;
+// 	return (env);
+// }
 
-void	print_echo(t_env *env, char *args)
-{
-	t_env	*find;
+// void	print_echo(t_env *env, char *args)
+// {
+// 	t_env	*find;
 
-	find = env_find(env, take_dollar(args), find_env);
-	printf("%s", find->value);
-}
+// 	find = env_find(env, take_dollar(args), find_env);
+// 	printf("%s", find->value);
+// }
 
 int	is_n(char *args, int *i)
 {
-	if (args != NULL && ft_strncmp(args, "-n", 2) == 0)
+	if (ft_strlen(args) == 2 && (args != NULL && ft_strncmp(args, "-n", 2) == 0))
 	{
 		(*i)++;
 		return (TRUE);
