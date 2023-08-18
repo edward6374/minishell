@@ -6,12 +6,27 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:32:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:15:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include "execute.h"
+
+int change_exit_status(t_min *tk, t_cmd *tmp)
+{
+	int i;
+	i = 0;
+	while (tmp->args[++i])
+	{
+		if (!ft_strncmp(tmp->args[i], "$?", 3))
+		{
+			free(tmp->args[i]);
+			tmp->args[i] = ft_strdup(ft_itoa(tk->exit_value));
+		}
+	}
+	return (0);
+}
 
 int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
@@ -53,6 +68,7 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		change_exit_status(tk, tmp);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
 			continue ;
 		pid = fork();
