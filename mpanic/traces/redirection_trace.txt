@@ -22,9 +22,15 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 21719 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: no_cmd_file: file not readable$<-
+|
+|--- STDERR:
+| ->cat: no_cmd_file: No such file or directory$
+| rm: no_cmd_file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -44,9 +50,15 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 21771 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: no_cmd_test: file not readable$<-
+|
+|--- STDERR:
+| ->cat: no_cmd_test: No such file or directory$
+| rm: no_cmd_test: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -66,9 +78,15 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 21825 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: filepipe: file not readable$<-
+|
+|--- STDERR:
+| ->cat: filepipe: No such file or directory$
+| rm: filepipe: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -90,9 +108,19 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 21887 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| Take redir error: 9$
+| minishell: file_first: file not readable$
+| minishell: file_second: file not readable$<-
+|
+|--- STDERR:
+| ->cat: file_first: No such file or directory$
+| cat: file_second: No such file or directory$
+| rm: file_first: No such file or directory$
+| rm: file_second: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -115,40 +143,12 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa5004077c0$
-| Tokens 0	0x7fa5004077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fa5004077a0$
-| Tokens 0	0x7fa5004077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa500604200$
-| Tokens 0	0x7fa500604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -173,51 +173,14 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd5c84077c0$
-| Tokens 0	0x7fd5c84077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fd5c8407820$
-| Tokens 0	0x7fd5c8407820$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fd5c84077a0$
-| Tokens 0	0x7fd5c84077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd5c8604200$
-| Tokens 0	0x7fd5c8604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file: file not readable$
+| Take redir error: 9$
+| minishell: file: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -240,40 +203,12 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f902f4077c0$
-| Tokens 0	0x7f902f4077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7f902f4077a0$
-| Tokens 0	0x7f902f4077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->*.txt--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f902f604200$
-| Tokens 0	0x7f902f604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->*.txt--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: *.txt: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: *.txt: No such file or directory$
+| rm: *.txt: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -296,40 +231,12 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fdd304077c0$
-| Tokens 0	0x7fdd304077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fdd304077a0$
-| Tokens 0	0x7fdd304077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fdd30604200$
-| Tokens 0	0x7fdd30604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -354,51 +261,14 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd28fc077c0$
-| Tokens 0	0x7fd28fc077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fd28fc07820$
-| Tokens 0	0x7fd28fc07820$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fd28fc077a0$
-| Tokens 0	0x7fd28fc077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd28fe04200$
-| Tokens 0	0x7fd28fe04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file: file not readable$
+| Take redir error: 9$
+| minishell: file: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -418,9 +288,15 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 22210 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file: file not readable$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -442,9 +318,17 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 22265 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file: file not readable$
+| Take redir error: 9$
+| minishell: file: file not readable$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -457,21 +341,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -484,67 +363,22 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff4f1c07870$
-| Tokens 0	0x7ff4f1c07870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7ff4f1c07780$
-| Tokens 0	0x7ff4f1c07780$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff4f1e04200$
-| Tokens 0	0x7ff4f1e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff4f1f04230$
-| Tokens 0	0x7ff4f1f04230$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -558,21 +392,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -585,79 +414,24 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8c1cc07870$
-| Tokens 0	0x7f8c1cc07870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7f8c1cc078f0$
-| Tokens 0	0x7f8c1cc078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
+| Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7f8c1cc07770$
-| Tokens 0	0x7f8c1cc07770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8c1ce04200$
-| Tokens 0	0x7f8c1ce04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8c1cc07830$
-| Tokens 0	0x7f8c1cc07830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -671,21 +445,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -699,79 +468,24 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa7ee407870$
-| Tokens 0	0x7fa7ee407870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fa7ee4078f0$
-| Tokens 0	0x7fa7ee4078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
+| Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fa7ee407770$
-| Tokens 0	0x7fa7ee407770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa7ee604200$
-| Tokens 0	0x7fa7ee604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa7ee704230$
-| Tokens 0	0x7fa7ee704230$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -785,21 +499,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -812,79 +521,24 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd696407870$
-| Tokens 0	0x7fd696407870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fd6964078f0$
-| Tokens 0	0x7fd6964078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
+| Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fd696407770$
-| Tokens 0	0x7fd696407770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd696604200$
-| Tokens 0	0x7fd696604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd696407830$
-| Tokens 0	0x7fd696407830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -898,21 +552,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -926,79 +575,24 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8270407870$
-| Tokens 0	0x7f8270407870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7f82704078f0$
-| Tokens 0	0x7f82704078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
+| Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7f8270407770$
-| Tokens 0	0x7f8270407770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8270604200$
-| Tokens 0	0x7f8270604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8270704230$
-| Tokens 0	0x7f8270704230$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1011,21 +605,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1038,67 +627,22 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fe19a407870$
-| Tokens 0	0x7fe19a407870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fe19a407780$
-| Tokens 0	0x7fe19a407780$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fe19a604200$
-| Tokens 0	0x7fe19a604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fe19a704230$
-| Tokens 0	0x7fe19a704230$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1111,21 +655,16 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1138,67 +677,22 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8269c07870$
-| Tokens 0	0x7f8269c07870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file2: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7f8269c07780$
-| Tokens 0	0x7f8269c07780$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8269e04200$
-| Tokens 0	0x7f8269e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8269f04230$
-| Tokens 0	0x7f8269f04230$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1212,22 +706,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hii hii$<-
 |
@@ -1240,81 +729,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa8e44078f0$
-| Tokens 0	0x7fa8e44078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fa8e4407970$
-| Tokens 0	0x7fa8e4407970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fa8e44077b0$
-| Tokens 0	0x7fa8e44077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa8e4604200$
-| Tokens 0	0x7fa8e4604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa8e46042e0$
-| Tokens 0	0x7fa8e46042e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1328,22 +761,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hii hii$<-
 |
@@ -1356,81 +784,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa428c078f0$
-| Tokens 0	0x7fa428c078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fa428c07970$
-| Tokens 0	0x7fa428c07970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fa428c077b0$
-| Tokens 0	0x7fa428c077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa428e04200$
-| Tokens 0	0x7fa428e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa428e042e0$
-| Tokens 0	0x7fa428e042e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1444,22 +816,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hii hii$<-
@@ -1473,81 +840,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff9e84078f0$
-| Tokens 0	0x7ff9e84078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7ff9e8407970$
-| Tokens 0	0x7ff9e8407970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7ff9e84077b0$
-| Tokens 0	0x7ff9e84077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff9e8604200$
-| Tokens 0	0x7ff9e8604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff9e8704280$
-| Tokens 0	0x7ff9e8704280$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1561,22 +872,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hii hii$<-
 |
@@ -1589,81 +895,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ffb014078f0$
-| Tokens 0	0x7ffb014078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7ffb01407970$
-| Tokens 0	0x7ffb01407970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7ffb014077b0$
-| Tokens 0	0x7ffb014077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ffb01604200$
-| Tokens 0	0x7ffb01604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ffb014078a0$
-| Tokens 0	0x7ffb014078a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1677,22 +927,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hii hii$<-
@@ -1706,81 +951,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8b59c078f0$
-| Tokens 0	0x7f8b59c078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7f8b59c07970$
-| Tokens 0	0x7f8b59c07970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7f8b59c077b0$
-| Tokens 0	0x7f8b59c077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8b59e04200$
-| Tokens 0	0x7f8b59e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8b59e042e0$
-| Tokens 0	0x7f8b59e042e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1794,22 +983,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hii hii$<-
 |
@@ -1822,81 +1006,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd89cc078f0$
-| Tokens 0	0x7fd89cc078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fd89cc07970$
-| Tokens 0	0x7fd89cc07970$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hii--$
-| 	Arg 2:-->hii--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hii hii$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fd89cc077b0$
-| Tokens 0	0x7fd89cc077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd89ce04200$
-| Tokens 0	0x7fd89ce04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd89ce042e0$
-| Tokens 0	0x7fd89ce042e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1909,22 +1037,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -1937,69 +1060,23 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f91fcc078d0$
-| Tokens 0	0x7f91fcc078d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7f91fcc07780$
-| Tokens 0	0x7f91fcc07780$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f91fce04200$
-| Tokens 0	0x7f91fce04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f91fce042e0$
-| Tokens 0	0x7f91fce042e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Arg 2:-->file2--$
-| 	Arg 3:-->file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2013,22 +1090,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2038,9 +1110,28 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 23167 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2054,22 +1145,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -2080,9 +1166,28 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 23226 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2096,22 +1201,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2121,9 +1221,28 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 23285 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2137,22 +1256,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2162,9 +1276,28 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 23344 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2178,22 +1311,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
 | file$
 | file2$
 | file3$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2203,9 +1331,28 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 23403 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file3: file not readable$
+| Take redir error: 9$
+| minishell: file3: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2219,25 +1366,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
 | filea$
 | fileb$
 | filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2250,84 +1389,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd9d6c078d0$
-| Tokens 0	0x7fd9d6c078d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fd9d6c07950$
-| Tokens 0	0x7fd9d6c07950$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: filea: file not readable$
+| Take redir error: 9$
+| minishell: filea: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filea$
-| fileb$
-| filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fd9d6c07770$
-| Tokens 0	0x7fd9d6c07770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd9d6e04200$
-| Tokens 0	0x7fd9d6e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd9d6f04280$
-| Tokens 0	0x7fd9d6f04280$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->filea--$
-| 	Arg 2:-->fileb--$
-| 	Arg 3:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2341,25 +1421,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
 | filea$
 | fileb$
 | filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2372,84 +1444,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff4924078d0$
-| Tokens 0	0x7ff4924078d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7ff492407950$
-| Tokens 0	0x7ff492407950$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: filea: file not readable$
+| Take redir error: 9$
+| minishell: filea: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filea$
-| fileb$
-| filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7ff492407770$
-| Tokens 0	0x7ff492407770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff492604200$
-| Tokens 0	0x7ff492604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff492407880$
-| Tokens 0	0x7ff492407880$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->filea--$
-| 	Arg 2:-->fileb--$
-| 	Arg 3:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2463,25 +1476,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
 | filea$
 | fileb$
 | filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$
 | hi hi$<-
@@ -2495,84 +1500,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7faa204078d0$
-| Tokens 0	0x7faa204078d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7faa20407950$
-| Tokens 0	0x7faa20407950$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: filea: file not readable$
+| Take redir error: 9$
+| minishell: filea: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filea$
-| fileb$
-| filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7faa20407770$
-| Tokens 0	0x7faa20407770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7faa20604200$
-| Tokens 0	0x7faa20604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7faa20407880$
-| Tokens 0	0x7faa20407880$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->filea--$
-| 	Arg 2:-->fileb--$
-| 	Arg 3:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2586,25 +1532,17 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
 | filea$
 | fileb$
 | filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
+| testdir$
 | traces$
 | hi hi$<-
 |
@@ -2617,84 +1555,25 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd7a3c078d0$
-| Tokens 0	0x7fd7a3c078d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| Comm 0x7fd7a3c07950$
-| Tokens 0	0x7fd7a3c07950$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi hi$
-| <$
+| ->Take redir error: 9$
+| minishell: filea: file not readable$
+| Take redir error: 9$
+| minishell: filea: file not readable$
 | README.md$
 | cleaner$
 | cleaner.c$
 | echo$
-| file$
-| file2$
-| file3$
-| file_first$
-| file_second$
-| filea$
-| fileb$
-| filec$
-| filepipe$
 | minishell$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | test$
-| traces$
-| Comm 0x7fd7a3c07770$
-| Tokens 0	0x7fd7a3c07770$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd7a3e04200$
-| Tokens 0	0x7fd7a3e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fd7a3c07880$
-| Tokens 0	0x7fd7a3c07880$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->filea--$
-| 	Arg 2:-->fileb--$
-| 	Arg 3:-->filec--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -2717,37 +1596,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fc1424077e0$
-| Tokens 0	0x7fc1424077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fc142604200$
-| Tokens 0	0x7fc142604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fc142604260$
-| Tokens 0	0x7fc142604260$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: doblequot: file not readable$<-
 |
 |--- STDERR:
 | ->cat: doblequote: No such file or directory$
@@ -2774,38 +1624,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb9bfc07810$
-| Tokens 0	0x7fb9bfc07810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi $
-| Comm 0x7fb9bfc077b0$
-| Tokens 0	0x7fb9bfc077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fb9bfe04200$
-| Tokens 0	0x7fb9bfe04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: doblequot: file not readable$<-
 |
 |--- STDERR:
 | ->cat: doblequote: No such file or directory$
@@ -2833,54 +1653,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f88fec078a0$
-| Tokens 0	0x7f88fec078a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n--$
-| 	Arg 2:-->hi--$
-| 	Arg 3:-->--$
-| 	Arg 4:-->"--$
-| 	Arg 5:-->doblequot--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  " doblequotComm 0x7f88fec07920$
-| Tokens 0	0x7f88fec07920$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n--$
-| 	Arg 2:-->hi--$
-| 	Arg 3:-->--$
-| 	Arg 4:-->"--$
-| 	Arg 5:-->doblequot--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  " doblequotComm 0x7f88fec077a0$
-| Tokens 0	0x7f88fec077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f88fee04200$
-| Tokens 0	0x7f88fee04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->doblequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->hi  " doblequothi  " doblequot<-
 |
 |--- STDERR:
 | ->cat: doblequote: No such file or directory$
@@ -2907,37 +1680,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7feb0dc077e0$
-| Tokens 0	0x7feb0dc077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7feb0dc077b0$
-| Tokens 0	0x7feb0dc077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7feb0dc07840$
-| Tokens 0	0x7feb0dc07840$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: simplequot: file not readable$<-
 |
 |--- STDERR:
 | ->cat: simplequote: No such file or directory$
@@ -2964,38 +1708,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f969dc07810$
-| Tokens 0	0x7f969dc07810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi $
-| Comm 0x7f969dc077b0$
-| Tokens 0	0x7f969dc077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f969de04200$
-| Tokens 0	0x7f969de04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: simplequot: file not readable$<-
 |
 |--- STDERR:
 | ->cat: simplequote: No such file or directory$
@@ -3023,54 +1737,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa1244078a0$
-| Tokens 0	0x7fa1244078a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n--$
-| 	Arg 2:-->hi--$
-| 	Arg 3:-->--$
-| 	Arg 4:-->'--$
-| 	Arg 5:-->simplequot--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  ' simplequotComm 0x7fa124407920$
-| Tokens 0	0x7fa124407920$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n--$
-| 	Arg 2:-->hi--$
-| 	Arg 3:-->--$
-| 	Arg 4:-->'--$
-| 	Arg 5:-->simplequot--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  ' simplequotComm 0x7fa1244077a0$
-| Tokens 0	0x7fa1244077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa124604200$
-| Tokens 0	0x7fa124604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->simplequote--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->hi  ' simplequothi  ' simplequot<-
 |
 |--- STDERR:
 | ->cat: simplequote: No such file or directory$
@@ -3097,40 +1764,12 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f9f46c077e0$
-| Tokens 0	0x7f9f46c077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7f9f46c077d0$
-| Tokens 0	0x7f9f46c077d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f9f46e04220$
-| Tokens 0	0x7f9f46e04220$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: with spaces: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: with spaces: No such file or directory$
+| rm: with spaces: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -3155,54 +1794,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa0ef407870$
-| Tokens 0	0x7fa0ef407870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->--$
-| 	Arg 3:-->'--$
-| 	Arg 4:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  ' with spaces$
-| Comm 0x7fa0ef4078f0$
-| Tokens 0	0x7fa0ef4078f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->--$
-| 	Arg 3:-->'--$
-| 	Arg 4:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi  ' with spaces$
-| Comm 0x7fa0ef4077c0$
-| Tokens 0	0x7fa0ef4077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa0ef604220$
-| Tokens 0	0x7fa0ef604220$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->with spaces--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->hi  ' with spaces$
+| hi  ' with spaces$<-
 |
 |--- STDERR:
 | ->cat: with spaces: No such file or directory$
@@ -3229,37 +1822,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fe6254077f0$
-| Tokens 0	0x7fe6254077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fe6254077d0$
-| Tokens 0	0x7fe6254077d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->mixedfile name--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fe625604220$
-| Tokens 0	0x7fe625604220$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->mixedfile name--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: mixedfile nam: file not readable$<-
 |
 |--- STDERR:
 | ->cat: mixedfile name: No such file or directory$
@@ -3288,48 +1852,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff0ebc077f0$
-| Tokens 0	0x7ff0ebc077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7ff0ebc07870$
-| Tokens 0	0x7ff0ebc07870$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7ff0ebc077c0$
-| Tokens 0	0x7ff0ebc077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->mixedfile name--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff0ebe04220$
-| Tokens 0	0x7ff0ebe04220$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->mixedfile name--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: mixedfile nam: file not readable$
+| Take redir error: 9$
+| minishell: mixedfile nam: file not readable$<-
 |
 |--- STDERR:
 | ->cat: mixedfile name: No such file or directory$
@@ -3356,31 +1882,11 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb59e4077f0$
-| Tokens 0	0x7fb59e4077f0$
-| 	Ok: 0$
-| 	In: 3$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi 0$
-| Comm 0x7fb59e4077a0$
-| Tokens 0	0x7fb59e4077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 8$
+| minishell: file: no such file or directory$<-
 |
 |--- STDERR:
-| -><-
+| ->rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -3404,50 +1910,14 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb15ec077e0$
-| Tokens 0	0x7fb15ec077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: /bin/bash$
-| 	Arg 0:-->bash--$
-| 	Arg 1:-->4--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fb15ee04260$
-| Tokens 0	0x7fb15ee04260$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 4$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hola--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hola$
-| Comm 0x7fb15ef04200$
-| Tokens 0	0x7fb15ef04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->outpfile--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fb15ec077b0$
-| Tokens 0	0x7fb15ec077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->outpfile--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: outpfile: file not readable$
+| Take redir error: 9$
+| minishell: &4: file not readable$<-
 |
 |--- STDERR:
-| ->bash: 4: No such file or directory$<-
+| ->cat: outpfile: No such file or directory$
+| rm: outpfile: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -3468,17 +1938,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb7344077e0$
-| Tokens 0	0x7fb7344077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -3502,17 +1962,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f85164077e0$
-| Tokens 0	0x7f85164077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -3536,18 +1986,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff76ac07810$
-| Tokens 0	0x7ff76ac07810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi 2$<-
+| ->hi 2$<-
 |
 |--- STDERR:
 | -><-
@@ -3571,18 +2010,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fc856c07810$
-| Tokens 0	0x7fc856c07810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi 2$<-
+| ->hi 2$<-
 |
 |--- STDERR:
 | -><-
@@ -3606,17 +2034,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8651c077e0$
-| Tokens 0	0x7f8651c077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$<-
+| ->Take redir error: 9$
+| minishell: testfolder: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -3640,17 +2059,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb2534077e0$
-| Tokens 0	0x7fb2534077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$<-
+| ->Take redir error: 9$
+| minishell: testfolder: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -3674,18 +2084,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fe158407810$
-| Tokens 0	0x7fe158407810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi 2$<-
+| ->Take redir error: 9$
+| minishell: testfolder: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -3709,18 +2109,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ffbc2407810$
-| Tokens 0	0x7ffbc2407810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi 2$<-
+| ->Take redir error: 9$
+| minishell: testfolder: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -3746,27 +2136,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ff938c077c0$
-| Tokens 0	0x7ff938c077c0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7ff938c077a0$
-| Tokens 0	0x7ff938c077a0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file: file not readable$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
@@ -3792,27 +2163,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f9a414077e0$
-| Tokens 0	0x7f9a414077e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7f9a414077b0$
-| Tokens 0	0x7f9a414077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file2--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file2: file not readable$<-
 |
 |--- STDERR:
 | ->cat: file2: Permission denied$<-
@@ -3835,9 +2187,14 @@
 |--- COMPARED STR:
 | ->file: Permission denied<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 24798 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: file: file not readable$<-
+|
+|--- STDERR:
+| ->cat: file: Permission denied$<-
 |
 ---------------------------------------------<
 
@@ -3857,42 +2214,14 @@
 |--- COMPARED STR:
 | ->file3: Permission denied<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 24849 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [332]
-|  CMD: ->cat < file<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi, I am the file$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi, I am the file$
-| Comm 0x7fc29bc07790$
-| Tokens 0	0x7fc29bc07790$
-| 	Ok: 0$
-| 	In: 3$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->Take redir error: 9$
+| minishell: file3: file not readable$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file3: Permission denied$<-
 |
 ---------------------------------------------<
 
@@ -3912,7 +2241,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 24962 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164:  3736 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -3934,17 +2263,6 @@
 |
 |--- STDOUT:
 | ->Take redir error: 8$
-| Comm 0x7fd76e407790$
-| Tokens 0	0x7fd76e407790$
-| 	Ok: 8$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:--><--$
-| 	Arg 2:-->/Users/nmota-bu/Desktop/valerio/mpanic/nonexist--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | minishell: nonexist: no such file or directory$<-
 |
 |--- STDERR:
@@ -3970,17 +2288,6 @@
 |
 |--- STDOUT:
 | ->Take redir error: 8$
-| Comm 0x7f7edcc07790$
-| Tokens 0	0x7f7edcc07790$
-| 	Ok: 8$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:--><--$
-| 	Arg 2:-->/Users/nmota-bu/Desktop/valerio/mpanic/nmota-bu--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | minishell: nmota-bu: no such file or directory$<-
 |
 |--- STDERR:
@@ -4006,17 +2313,6 @@
 |
 |--- STDOUT:
 | ->Take redir error: 9$
-| Comm 0x7fa4d0c07790$
-| Tokens 0	0x7fa4d0c07790$
-| 	Ok: 9$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:--><--$
-| 	Arg 2:-->/Users/nmota-bu/Desktop/valerio/mpanic/file3--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | minishell: file3: file not readable$<-
 |
 |--- STDERR:
@@ -4041,21 +2337,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| Comm 0x7fbfcac07890$
-| Tokens 0	0x7fbfcac07890$
-| 	Ok: 8$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->2--$
-| 	Arg 3:--><--$
-| 	Arg 4:-->/Users/nmota-bu/Desktop/valerio/mpanic/non_exist--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell: non_exist: no such file or directory$<-
+| ->Take redir error: 9$
+| minishell: error_outp: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -4070,23 +2353,14 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
-| doblequot$
 | echo$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
-| mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
 | test$
+| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -4100,58 +2374,16 @@
 |
 |--- STDOUT:
 | ->Take redir error: 8$
-| Comm 0x7fe285c07840$
-| Tokens 0	0x7fe285c07840$
-| 	Ok: 8$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:--><--$
-| 	Arg 3:-->/Users/nmota-bu/Desktop/valerio/mpanic/non_exist--$
-| 	Arg 4:-->>--$
-| 	Arg 5:-->wrong--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | minishell: non_exist: no such file or directory$
-| &4$
-| <$
 | README.md$
 | cleaner$
 | cleaner.c$
-| doblequot$
 | echo$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
-| mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
 | test$
-| traces$
-| Comm 0x7fe285c07780$
-| Tokens 0	0x7fe285c07780$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fe285e04200$
-| Tokens 0	0x7fe285e04200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->wrong--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
 | ->rm: wrong: No such file or directory$<-
@@ -4166,23 +2398,14 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
-| doblequot$
 | echo$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
-| mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
 | test$
+| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -4196,58 +2419,16 @@
 |
 |--- STDOUT:
 | ->Take redir error: 8$
-| Comm 0x7ff5d7c07840$
-| Tokens 0	0x7ff5d7c07840$
-| 	Ok: 8$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: <$
-| 	Arg 0:--><--$
-| 	Arg 1:-->/Users/nmota-bu/Desktop/valerio/mpanic/non_exist--$
-| 	Arg 2:-->echo--$
-| 	Arg 3:-->hi--$
-| 	Arg 4:-->>--$
-| 	Arg 5:-->wrong--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | minishell: non_exist: no such file or directory$
-| &4$
-| <$
 | README.md$
 | cleaner$
 | cleaner.c$
-| doblequot$
 | echo$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
-| mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
 | test$
-| traces$
-| Comm 0x7ff5d7c07920$
-| Tokens 0	0x7ff5d7c07920$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/ls$
-| 	Arg 0:-->ls--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7ff5d7c079b0$
-| Tokens 0	0x7ff5d7c079b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/rm$
-| 	Arg 0:-->rm--$
-| 	Arg 1:-->wrong--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| testdir$
+| traces$<-
 |
 |--- STDERR:
 | ->rm: wrong: No such file or directory$<-
@@ -4262,24 +2443,15 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
+| ->README.md$
 | cleaner$
 | cleaner.c$
 | correct$
-| doblequot$
 | echo$
-| file_first$
-| file_second$
-| filepipe$
 | minishell$
-| mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
-| simplequot$
 | test$
+| testdir$
 | traces$<-
 |
 |--- STDERR:
@@ -4288,9 +2460,23 @@
 |--- COMPARED STR:
 | ->non_exist: No such file or directory<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 25308 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->Take redir error: 9$
+| minishell: correct: file not readable$
+| README.md$
+| cleaner$
+| cleaner.c$
+| echo$
+| minishell$
+| mpanic.sh$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| ->rm: correct: No such file or directory$<-
 |
 ---------------------------------------------<
 

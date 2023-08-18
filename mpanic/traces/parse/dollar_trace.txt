@@ -25,28 +25,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd10ed04ff0$
-| Tokens 0	0x7fd10ed04ff0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi$
-| Comm 0x7fd10ed05110$
-| Tokens 0	0x7fd10ed05110$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->$?--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| 0$<-
+| ->hi$
+| $?$<-
 |
 |--- STDERR:
 | -><-
@@ -70,17 +50,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb621e04130$
-| Tokens 0	0x7fb621e04130$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->iTerm.app--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| iTerm.app$<-
+| ->iTerm.app$<-
 |
 |--- STDERR:
 | -><-
@@ -104,51 +74,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f9fd44076d0$
-| Tokens 0	0x7f9fd44076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hiiTerm.app--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hiiTerm.app$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [124]
-|  CMD: ->echo '$ '<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$ $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fc89ac076b0$
-| Tokens 0	0x7fc89ac076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->$ --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $ $<-
+| ->hiiTerm.app$<-
 |
 |--- STDERR:
 | -><-
@@ -172,17 +98,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb841c076d0$
-| Tokens 0	0x7fb841c076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->iTerm.app/--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| iTerm.app/$<-
+| ->iTerm.app/$<-
 |
 |--- STDERR:
 | -><-
@@ -206,17 +122,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fcef0c076d0$
-| Tokens 0	0x7fcef0c076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->'iTerm.app"--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| 'iTerm.app"$<-
+| ->'iTerm.app"$<-
 |
 |--- STDERR:
 | -><-
@@ -241,26 +147,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\n$$
-| Comm 0x7fb890407760$
-| Tokens 0	0x7fb890407760$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->iTerm.app\n--$
-| 	Next: 0x7fb890407800$
-| 	Before: 0x0$
-| Tokens 1	0x7fb890407800$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->-e--$
-| 	Next: 0x0$
-| 	Before: 0x7fb890407760$<-
+| ->iTerm.app\n$$<-
 |
 |--- STDERR:
 | -><-
@@ -284,26 +171,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\r$$
-| Comm 0x7f8de2407760$
-| Tokens 0	0x7f8de2407760$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->iTerm.app\r--$
-| 	Next: 0x7f8de2407800$
-| 	Before: 0x0$
-| Tokens 1	0x7f8de2407800$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->-e--$
-| 	Next: 0x0$
-| 	Before: 0x7f8de2407760$<-
+| ->iTerm.app\r$$<-
 |
 |--- STDERR:
 | -><-
@@ -327,379 +195,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\t$$
-| Comm 0x7f851f407760$
-| Tokens 0	0x7f851f407760$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->iTerm.app\t--$
-| 	Next: 0x7f851f407800$
-| 	Before: 0x0$
-| Tokens 1	0x7f851f407800$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->-e--$
-| 	Next: 0x0$
-| 	Before: 0x7f851f407760$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [130]
-|  CMD: ->echo $USER<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fe2b3c076b0$
-| Tokens 0	0x7fe2b3c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->nmota-bu--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| nmota-bu$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [131]
-|  CMD: ->echo $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7ffb9cc07690$
-| Tokens 0	0x7ffb9cc07690$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [132]
-|  CMD: ->echo $USER$PATH$PWD<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fb42b4076d0$
-| Tokens 0	0x7fb42b4076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [133]
-|  CMD: ->echo "$USER$PATH$PWD"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fa9764076d0$
-| Tokens 0	0x7fa9764076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [134]
-|  CMD: ->echo '$USER$PATH$PWD'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$USER$PATH$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7f80a34076d0$
-| Tokens 0	0x7f80a34076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->$USER$PATH$PWD--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $USER$PATH$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [135]
-|  CMD: ->echo '$USER",$PATH,$PWD'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$USER",$PATH,$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7f9b2f4076e0$
-| Tokens 0	0x7f9b2f4076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->$USER",$PATH,$PWD--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $USER",$PATH,$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [136]
-|  CMD: ->echo $USER"$PATH"$PWD"USER"$PATH"$PWD"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fb72c407720$
-| Tokens 0	0x7fb72c407720$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [137]
-|  CMD: ->echo $USER'$PATH'$PWD'USER'$PATH'$PWD'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fca6c4076f0$
-| Tokens 0	0x7fca6c4076f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [138]
-|  CMD: ->$NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fa277c07690$
-| Tokens 0	0x7fa277c07690$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /Users/nmota-bu/$
-| 	Arg 0:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fa277c07690$
-| Tokens 0	0x7fa277c07690$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /Users/nmota-bu/$
-| 	Arg 0:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [139]
-|  CMD: ->$NONEXIST $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7f9aa5c076b0$
-| Tokens 0	0x7f9aa5c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /Users/nmota-bu/$
-| 	Arg 0:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f9aa5c076b0$
-| Tokens 0	0x7f9aa5c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /Users/nmota-bu/$
-| 	Arg 0:-->--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| ->iTerm.app\t$$<-
 |
 |--- STDERR:
 | -><-
@@ -723,51 +219,8 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| Comm 0x7fa6f54076d0
-| Tokens 0	0x7fa6f54076d0
-| 	Ok: 0
-| 	In: 0
-| 	Out: 1
-| 	Cmd: export
-| 	Arg 0:-->export--
-| 	Arg 1:-->TMPENVVAR--
-| 	Next: 0x0
-| 	Before: 0x0
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m$TMPENVVAR
-| ./mpanic.sh: line 164: 14575 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [141]
-|  CMD: ->$TMPENVVAR<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fbc6c4076e0$
-| Tokens 0	0x7fbc6c4076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 93109 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -788,16 +241,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa08d505aa0$
-| Tokens 0	0x7fa08d505aa0$
-| 	Ok: 6$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd:  echo$
-| 	Arg 0:--> echo--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell:  echo: command not found$<-
+| ->minishell:  echo: command not found$<-
 |
 |--- STDERR:
 | -><-
@@ -821,222 +265,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fc8ee4076e0$
-| Tokens 0	0x7fc8ee4076e0$
-| 	Ok: 6$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd:  EcHO hi$
-| 	Arg 0:--> EcHO hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell:  EcHO hi: command not found$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [144]
-|  CMD: ->echo $TMPENVVAR hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fbf99c07740$
-| Tokens 0	0x7fbf99c07740$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [145]
-|  CMD: ->echo $TMPENVVAR hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fedb8c07740$
-| Tokens 0	0x7fedb8c07740$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->-n -n--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [146]
-|  CMD: ->echo $A"$B"$C"A"$B"$C"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7ffe1dc07830$
-| Tokens 0	0x7ffe1dc07830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo bar baz Abar baz --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [147]
-|  CMD: ->echo $A'$B'$C'A'$B'$C'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo $Bbaz Abar $C$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7f8b7cc07830$
-| Tokens 0	0x7f8b7cc07830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo $Bbaz Abar $C--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo $Bbaz Abar $C$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [148]
-|  CMD: ->echo $A"$B"$C"A"$B"$C"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7ff3e1c07830$
-| Tokens 0	0x7ff3e1c07830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo bar baz Abar baz --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [149]
-|  CMD: ->echo $A'$B'$C'A'$B'$C'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo $Bbaz Abar $C$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fdf88407830$
-| Tokens 0	0x7fdf88407830$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo $Bbaz Abar $C--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo $Bbaz Abar $C$<-
+| ->minishell:  EcHO hi: command not found$<-
 |
 |--- STDERR:
 | -><-
@@ -1060,17 +289,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ffbf2604150$
-| Tokens 0	0x7ffbf2604150$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo $<-
+| ->foo $<-
 |
 |--- STDERR:
 | -><-
@@ -1094,17 +313,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb1bac077f0$
-| Tokens 0	0x7fb1bac077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo bar --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo bar $<-
+| ->foo bar $<-
 |
 |--- STDERR:
 | -><-
@@ -1128,17 +337,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fee29c077f0$
-| Tokens 0	0x7fee29c077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo bar baz --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo bar baz $<-
+| ->foo bar baz $<-
 |
 |--- STDERR:
 | -><-
@@ -1162,17 +361,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fbc08c077f0$
-| Tokens 0	0x7fbc08c077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->foo bar baz --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| foo bar baz $<-
+| ->foo bar baz $<-
 |
 |--- STDERR:
 | -><-

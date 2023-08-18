@@ -23,16 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f8302407680$
-| Tokens 0	0x7f8302407680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -56,16 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fe0ce407680$
-| Tokens 0	0x7fe0ce407680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -89,17 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f9d51c076b0$
-| Tokens 0	0x7f9d51c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:--> --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -123,17 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fcbb7c076b0$
-| Tokens 0	0x7fcbb7c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:--> --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -157,17 +119,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fc8054076b0$
-| Tokens 0	0x7fc8054076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:--> --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -191,17 +143,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f8ad2c076b0$
-| Tokens 0	0x7f8ad2c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->42network--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -225,17 +167,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7ffe0cc076b0$
-| Tokens 0	0x7ffe0cc076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->+--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -259,17 +191,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fee684076b0$
-| Tokens 0	0x7fee684076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->++--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -293,17 +215,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f9ff64076b0$
-| Tokens 0	0x7f9ff64076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->---$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -327,17 +239,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f8b21c076b0$
-| Tokens 0	0x7f8b21c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-----$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -361,17 +263,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f9634c076b0$
-| Tokens 0	0x7f9634c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -395,17 +287,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fd28ac076b0$
-| Tokens 0	0x7fd28ac076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->+0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -429,17 +311,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7ff3bdc076b0$
-| Tokens 0	0x7ff3bdc076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->++0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -463,17 +335,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7ff6454076b0$
-| Tokens 0	0x7ff6454076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -497,17 +359,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fad1c4076b0$
-| Tokens 0	0x7fad1c4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->--0--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -531,17 +383,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fcd8fc076b0$
-| Tokens 0	0x7fcd8fc076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -565,17 +407,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fdfad4076b0$
-| Tokens 0	0x7fdfad4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->+1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -599,17 +431,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fcc7bc076b0$
-| Tokens 0	0x7fcc7bc076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->++1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -633,17 +455,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fab88c076b0$
-| Tokens 0	0x7fab88c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -667,17 +479,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f8736c076b0$
-| Tokens 0	0x7f8736c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->--1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -701,17 +503,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fd39f4076b0$
-| Tokens 0	0x7fd39f4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:--> 3--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -735,17 +527,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fa5234076b0$
-| Tokens 0	0x7fa5234076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->3 --$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -769,17 +551,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7f82bfc076b0$
-| Tokens 0	0x7f82bfc076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->255--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -803,17 +575,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f84c3c076b0$
-| Tokens 0	0x7f84c3c076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-255--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -837,17 +599,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f96ac4076b0$
-| Tokens 0	0x7f96ac4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->256--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -871,17 +623,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fef2f4076b0$
-| Tokens 0	0x7fef2f4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-256--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -905,17 +647,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7fb5c94076b0$
-| Tokens 0	0x7fb5c94076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->2147483647--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -939,17 +671,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fdeb44076b0$
-| Tokens 0	0x7fdeb44076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->2147483648--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -973,17 +695,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7ff5474076d0$
-| Tokens 0	0x7ff5474076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-2147483648--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1007,17 +719,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fe0984076d0$
-| Tokens 0	0x7fe0984076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-2147483649--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1041,17 +743,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7facd74076b0$
-| Tokens 0	0x7facd74076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->4294967295--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1075,17 +767,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fdf2d4076b0$
-| Tokens 0	0x7fdf2d4076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->4294967296--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1109,17 +791,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fa43cc076d0$
-| Tokens 0	0x7fa43cc076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-4294967296--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1143,17 +815,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fcc37c076d0$
-| Tokens 0	0x7fcc37c076d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-4294967297--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1177,17 +839,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7f99acc076e0$
-| Tokens 0	0x7f99acc076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->9223372036854775807--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1211,17 +863,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fda464076e0$
-| Tokens 0	0x7fda464076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->9223372036854775808--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1245,17 +887,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f8605c076e0$
-| Tokens 0	0x7f8605c076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-9223372036854775808--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1279,17 +911,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7fc8414076e0$
-| Tokens 0	0x7fc8414076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-9223372036854775809--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1313,17 +935,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7fb9b04076e0$
-| Tokens 0	0x7fb9b04076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->18446744073709551615--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1347,17 +959,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f93084076e0$
-| Tokens 0	0x7f93084076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->18446744073709551616--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1381,17 +983,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f8fbe4076e0$
-| Tokens 0	0x7f8fbe4076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-18446744073709551616--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1415,17 +1007,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f816f4076e0$
-| Tokens 0	0x7f816f4076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->-18446744073709551617--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1449,17 +1031,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->Comm 0x7fb0d1c076e0$
-| Tokens 0	0x7fb0d1c076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->9999999999999999999999--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1483,17 +1055,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7ffbb9c076e0$
-| Tokens 0	0x7ffbb9c076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->0000000000000000000000--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1517,17 +1079,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f90cc4076e0$
-| Tokens 0	0x7f90cc4076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->0000000000000000000001--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1551,19 +1103,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fcc41c07710$
-| Tokens 0	0x7fcc41c07710$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Arg 2:-->2--$
-| 	Arg 3:-->3--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$
+| ->exit$
 | minishell: exit: too many arguments$<-
 |
 |--- STDERR:
@@ -1589,32 +1129,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f7eee407710$
-| Tokens 0	0x7f7eee407710$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Arg 2:-->2--$
-| 	Arg 3:-->3--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$
+| ->exit$
 | minishell: exit: too many arguments$
-| Comm 0x7f7eee407790$
-| Tokens 0	0x7f7eee407790$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->should--$
-| 	Arg 2:-->not--$
-| 	Arg 3:-->exit--$
-| 	Next: 0x0$
-| 	Before: 0x0$
 | should not exit$<-
 |
 |--- STDERR:
@@ -1639,20 +1155,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7f80dac07760$
-| Tokens 0	0x7f80dac07760$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Arg 2:-->not--$
-| 	Arg 3:-->numeric--$
-| 	Arg 4:-->bro--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$
+| ->exit$
 | minishell: exit: too many arguments$<-
 |
 |--- STDERR:
@@ -1677,20 +1180,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7ff758c07760$
-| Tokens 0	0x7ff758c07760$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->not--$
-| 	Arg 2:-->numeric--$
-| 	Arg 3:-->bro--$
-| 	Arg 4:-->2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->syntax error$<-
@@ -1714,25 +1204,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (42)
 |
 |--- STDOUT:
-| ->Comm 0x7f8c7fc07710$
-| Tokens 0	0x7f8c7fc07710$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->42--$
-| 	Next: 0x7f8c7fc077b0$
-| 	Before: 0x0$
-| Tokens 1	0x7f8c7fc077b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Next: 0x0$
-| 	Before: 0x7f8c7fc07710$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1757,30 +1229,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fb88f4076b0$
-| Tokens 0	0x7fb88f4076b0$
-| 	Ok: 6$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: Exit$
-| 	Arg 0:-->Exit--$
-| 	Arg 1:-->1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell: Exit: command not found$
-| Comm 0x7fb88f6042b0$
-| Tokens 0	0x7fb88f6042b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->is--$
-| 	Arg 2:-->not--$
-| 	Arg 3:-->a--$
-| 	Arg 4:-->buildin!--$
-| 	Next: 0x0$
-| 	Before: 0x0$
+| ->minishell: Exit: command not found$
 | is not a buildin!$<-
 |
 |--- STDERR:
@@ -1806,25 +1255,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fd145407680$
-| Tokens 0	0x7fd145407680$
-| 	Ok: 6$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: aaa$
-| 	Arg 0:-->aaa--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell: aaa: command not found$
-| Comm 0x7fd1454076e0$
-| Tokens 0	0x7fd1454076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Next: 0x0$
-| 	Before: 0x0$
+| ->minishell: aaa: command not found$
 | exit$<-
 |
 |--- STDERR:
@@ -1850,26 +1281,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f865ac07680$
-| Tokens 0	0x7f865ac07680$
-| 	Ok: 6$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: aaa$
-| 	Arg 0:-->aaa--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| minishell: aaa: command not found$
-| Comm 0x7f865ac07710$
-| Tokens 0	0x7f865ac07710$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
+| ->minishell: aaa: command not found$
 | exit$<-
 |
 |--- STDERR:
@@ -1895,26 +1307,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fcee84076b0$
-| Tokens 0	0x7fcee84076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fcee86041d0$
-| Tokens 0	0x7fcee86041d0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
@@ -1939,27 +1332,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->Comm 0x7f81344076b0$
-| Tokens 0	0x7f81344076b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/cat$
-| 	Arg 0:-->cat--$
-| 	Arg 1:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7f8134604200$
-| Tokens 0	0x7f8134604200$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: exit$
-| 	Arg 0:-->exit--$
-| 	Arg 1:-->1--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| exit$<-
+| ->exit$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-

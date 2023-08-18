@@ -23,15 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fa966c07730$
-| Tokens 0	0x7fa966c07730$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: /bin/test$
-| 	Arg 0:-->test--$
-| 	Next: 0x0$
-| 	Before: 0x0$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -58,7 +50,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18132 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96662 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -82,7 +74,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18173 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96703 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -106,7 +98,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18214 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96744 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -130,7 +122,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18255 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96785 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -154,7 +146,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18296 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96826 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -178,7 +170,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18337 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96867 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -202,7 +194,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18378 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96908 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -226,7 +218,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18419 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96949 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -250,7 +242,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18460 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 96990 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -274,7 +266,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18501 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97031 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -298,7 +290,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18542 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97072 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -322,7 +314,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18583 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97113 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -343,7 +335,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18624 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 97154 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -367,171 +359,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18665 Abort trap: 6           ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [240]
-|  CMD: ->echo hiecho hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hiecho hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fa085407790$
-| Tokens 0	0x7fa085407790$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hiecho--$
-| 	Arg 2:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hiecho hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [241]
-|  CMD: ->echo hi|echo hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fd0f4c077f0$
-| Tokens 0	0x7fd0f4c077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x7fd0f4c07890$
-| 	Before: 0x0$
-| Tokens 1	0x7fd0f4c07890$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x7fd0f4c077f0$
-| hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [242]
-|  CMD: ->echo hi |echo hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fd71d407810$
-| Tokens 0	0x7fd71d407810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x7fd71d4078b0$
-| 	Before: 0x0$
-| Tokens 1	0x7fd71d4078b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x7fd71d407810$
-| hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [243]
-|  CMD: ->echo hi| echo hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fb3dd407810$
-| Tokens 0	0x7fb3dd407810$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x7fb3dd4078b0$
-| 	Before: 0x0$
-| Tokens 1	0x7fb3dd4078b0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Next: 0x0$
-| 	Before: 0x7fb3dd407810$
-| hi$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 97195 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -550,9 +378,14 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 18872 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->minishell: |: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -571,9 +404,15 @@
 |--- COMPARED STR:
 | ->syntax error near unexpected <-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 18913 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->minishell: |: command not found$
+| minishell: |: command not found$
+| hi$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -597,7 +436,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 18954 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97482 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -619,16 +458,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7faadb407790$
-| Tokens 0	0x7faadb407790$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: -1$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| $<-
+| ->$<-
 |
 |--- STDERR:
 | -><-
@@ -655,7 +485,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 19035 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97563 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -679,7 +509,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 19076 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97604 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -703,7 +533,7 @@
 | Parser error:	[0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mNULL
-| ./mpanic.sh: line 164: 19117 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 97645 Abort trap: 6           ./minishell
 |
 ---------------------------------------------<
 
@@ -725,18 +555,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fe02a4077f0$
-| Tokens 0	0x7fe02a4077f0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 3$
-| 	Cmd: echo$
-| 	Arg 0:-->echo--$
-| 	Arg 1:-->hi--$
-| 	Arg 2:-->file--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| hi file$<-
+| ->Take redir error: 9$
+| minishell: <: file not readable$<-
 |
 |--- STDERR:
 | -><-

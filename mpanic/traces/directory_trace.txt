@@ -6,39 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [98]
-|  CMD: ->pwd<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fedad407680$
-| Tokens 0	0x7fedad407680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [99]
 |  CMD: ->cd
 | pwd<-
@@ -57,80 +24,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Comm 0x7fc551c07680$
-| Tokens 0	0x7fc551c07680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: cd$
-| 	Arg 0:-->cd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7fc551c076e0$
-| Tokens 0	0x7fc551c076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [100]
-|  CMD: ->pwd
-| cd ""
-| pwd<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7feb30407680$
-| Tokens 0	0x7feb30407680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$
-| Comm 0x7feb304076e0$
-| Tokens 0	0x7feb304076e0$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: cd$
-| 	Arg 0:-->cd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| Comm 0x7feb30407740$
-| Tokens 0	0x7feb30407740$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -153,7 +47,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 12897 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91431 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -173,7 +67,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 12938 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91472 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -193,7 +87,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 12979 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91513 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -213,7 +107,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13020 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91554 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -233,7 +127,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13061 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91595 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -253,109 +147,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13102 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [107]
-|  CMD: ->pwd<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fc802407680$
-| Tokens 0	0x7fc802407680$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [108]
-|  CMD: ->pwd argument<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fe3a3e04150$
-| Tokens 0	0x7fe3a3e04150$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Arg 1:-->argument--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [109]
-|  CMD: ->pwd argument1 argument2<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->Comm 0x7fba6c407700$
-| Tokens 0	0x7fba6c407700$
-| 	Ok: 0$
-| 	In: 0$
-| 	Out: 1$
-| 	Cmd: pwd$
-| 	Arg 0:-->pwd--$
-| 	Arg 1:-->argument1--$
-| 	Arg 2:-->argument2--$
-| 	Next: 0x0$
-| 	Before: 0x0$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 91636 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -375,7 +167,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13267 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91801 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -395,7 +187,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13315 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91849 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -415,7 +207,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13356 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91890 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -436,7 +228,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13411 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91945 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -457,7 +249,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13458 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 91992 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -478,7 +270,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13505 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92039 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -500,7 +292,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13555 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92089 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -520,7 +312,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13596 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92130 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -540,7 +332,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13648 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92182 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -560,7 +352,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13697 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92231 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -580,7 +372,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 13741 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 92275 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
