@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/18 21:36:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/19 11:44:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	export_add(t_env *env, char **args)
 			value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
 			if (!is_name(name))
 			{
-				printf("minishell: export: %s: not a valid identifier\n",
+				printf("minishell: export: `%s\': not a valid identifier\n",
 						args[i]);
 				return (MALLOC);
 			}
