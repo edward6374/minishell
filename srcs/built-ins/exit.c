@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 16:59:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:27:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_exit(t_cmd *temp)
 		{
 			printf("minishell: exit: %s: number argument required\n",
 					temp->args[1]);
-			// tk->exit_value = 255;
 			g_exit = 255;
 			return (0);
 		}
@@ -36,12 +35,10 @@ int	ft_exit(t_cmd *temp)
 	if (temp->args[2])
 	{
 		printf("minishell: exit: too manyn arguments\n");
-		// tk->exit_value = 1;
 		g_exit = 1;
 		return (0);
 	}
 	value = ft_atoi(temp->args[1]);
-	// tk->exit_value = value;
 	g_exit = value;
 	exit(value);
 	return (0);

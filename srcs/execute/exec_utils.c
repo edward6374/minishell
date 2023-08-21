@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 16:59:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:12:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 		finished++;
 	}
 	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
+	printf(BLUE "Exit: %d\n", g_exit);
 	// tk->exit_value = WEXITSTATUS(final);
 	g_exit = WEXITSTATUS(final);
 	if (child_pid)

@@ -6,14 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 17:33:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:18:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "signalm.h"
 
-unsigned char	g_exit = -1;
+unsigned char	g_exit = 0;
 
 char	*get_curr_path(void)
 {
