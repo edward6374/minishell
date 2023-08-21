@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 11:01:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 11:34:33 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,18 @@ void	program(t_min *tk, char *line)
 		end_program(&line, err);
 		return ;
 	}
-//	err = execute_commands(tk);
-//	if (err == MALLOC)
-//		exit_error(g_error_array[err - 1], err);
-//	else if (err)
-//	{
-//		printf("Execute error:\t");
-//		end_program(&line, err);
-//		return ;
-//	}
-//	if (tk->cmds)
-//		free_commands(&tk->cmds, 0);
-//	tk->num_cmds = 0;
+	err = execute_commands(tk);
+	if (err == MALLOC)
+		exit_error(g_error_array[err - 1], err);
+	else if (err)
+	{
+		printf("Execute error:\t");
+		end_program(&line, err);
+		return ;
+	}
+	if (tk->cmds)
+		free_commands(&tk->cmds, 0);
+	tk->num_cmds = 0;
 	free(line);
 }
 

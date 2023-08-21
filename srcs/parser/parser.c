@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 10:21:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 11:34:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int	parser(t_min *tk, char *line)
 	all_words->before = NULL;
 	if (parse_line(tk, all_words, line))
 		return (free_all(tk, MALLOC));
-	return (0);
-//	return (load_commands(tk, all_words));
+//	return (0);
+	return (load_commands(tk, all_words));
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 10:22:07 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 11:32:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,22 +147,8 @@ int	multiple_words(t_parser **word_lst, t_vars *v, int end)
 	return (0);
 }
 
-int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, int mode)
+int	end_refill(t_parser **word_lst, t_vars *v, t_word *w, t_env *env_list)
 {
-	char	c;
-
-	if (mode)
-		c = '\"';
-	else
-		c = '\'';
-	w->word = (char *)malloc(sizeof(char) * (w->count + 1));
-	if (!w->word)
-		return (MALLOC);
-	w->i = *w->idx + 1;
-	while (v->s[w->i] != c)
-		w->word[++w->l] = v->s[w->i++];
-	w->word[++w->l] = '\0';
-	printf("Refill words: --%s--\n", w->word);
 	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
 		|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
 		&& add_word(word_lst, w->word))
@@ -173,9 +159,52 @@ int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, int mode)
 		return (MALLOC);
 	*w->idx = w->i;
 	v->stp = w->i + 1;
+	w->k = 0;
 	v->dq = 0;
 	v->sq = 0;
 	v->oq = 1;
+	free(w->word);
+	free_env(env_list);
+	return (0);
+}
+
+int	add_env_var(t_word *w , t_env **tmp)
+{
+	int	i;
+
+	i = -1;
+	while ((*tmp)->value[++i])
+		w->word[++w->l] = (*tmp)->value[i];
+	w->i += i;
+	return (0);
+}
+
+int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env *env_list)
+{
+	char	c;
+	t_env	*tmp;
+
+	tmp = env_list;
+	if (w->k)
+		c = '\"';
+	else
+		c = '\'';
+	w->word = (char *)malloc(sizeof(char) * (w->count + 1));
+	if (!w->word)
+		return (MALLOC);
+	w->i = *w->idx + 1;
+	while (v->s[w->i] != c)
+	{
+		if (w->k && v->s[w->i] == '$' && !ft_strncmp(&v->s[w->i], tmp->name,
+			ft_strlen(tmp->name)))
+			add_env_var(w, &tmp);
+		else
+			w->word[++w->l] = v->s[w->i++];
+	}
+	w->word[++w->l] = '\0';
+	printf("Refill words: --%s--\n", w->word);
+	if (end_refill(word_lst, v, w, env_list))
+		return (MALLOC);
 	return (0);
 }
 
@@ -184,6 +213,7 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env *env_list, int *idx)
 	t_word	w;
 	t_env	*tmp;
 
+	w.k = 1;
 	w.l = -1;
 	w.i = *idx;
 	w.idx = idx;
@@ -202,13 +232,14 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env *env_list, int *idx)
 		else
 			w.count++;
 	}
-	return (refill_word(word_lst, v, &w, 1));
+	return (refill_word(word_lst, v, &w, env_list));
 }
 
-int	words_sin_qts(t_parser **word_lst, t_vars *v, int *idx)
+int	words_sin_qts(t_parser **word_lst, t_vars *v, t_env *env_list, int *idx)
 {
 	t_word	w;
 
+	w.k = 0;
 	w.l = -1;
 	w.i = *idx;
 	w.idx = idx;
@@ -218,7 +249,7 @@ int	words_sin_qts(t_parser **word_lst, t_vars *v, int *idx)
 		return (0);
 	while (v->s[++w.i] != '\'')
 		w.count++;
-	return (refill_word(word_lst, v, &w, 0));
+	return (refill_word(word_lst, v, &w, env_list));
 }
 
 int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
@@ -236,7 +267,7 @@ int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 			|| (v->s[i + 1] == '\0' && v->s[i] != ' ') || v->s[i + 1] == ' ')
 			&& multiple_words(tmp, v, i + 1))
 			return (MALLOC);
-		else if (v->sq && words_sin_qts(tmp, v, &i))
+		else if (v->sq && words_sin_qts(tmp, v, env_list, &i))
 			return (MALLOC);
 		else if (v->dq && words_dbl_qts(tmp, v, env_list, &i))
 			return (MALLOC);

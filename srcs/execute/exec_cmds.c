@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:32:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 11:29:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 		return (-1);
 	}
 	res = is_builtin(tk, *tmp, p[1]);
-	if (res == 0)
+	if (res >= 0)
 	{
+		if (res)
+			printf("Built-in error\n");
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 	}
-	else if (res > 0)
-		exit_error((char *)g_error_array[res - 1], 1);
+//	else if (res > 0)
+//		exit_error((char *)g_error_array[res - 1], 1);
 	else if (res == -1 && !(*tmp)->ok)
 		return (0);
 	return (-1);
