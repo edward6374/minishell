@@ -6,12 +6,13 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:24:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 16:59:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "execute.h"
+#include "minishell.h"
 
 void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 {
@@ -27,12 +28,13 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
 		{
 			final = status;
-//			printf("Final: %d\n", final);
+			//			printf("Final: %d\n", final);
 		}
 		finished++;
 	}
 	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
-	tk->exit_value = WEXITSTATUS(final);
+	// tk->exit_value = WEXITSTATUS(final);
+	g_exit = WEXITSTATUS(final);
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);
@@ -53,7 +55,7 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 	else if (!ft_strncmp("env", tmp->args[0], 4))
 		return (ft_env(tk, tmp, p));
 	else if (!ft_strncmp("exit", tmp->args[0], 5))
-		return (ft_exit(tk, tmp));
+		return (ft_exit(tmp));
 	return (-1);
 }
 

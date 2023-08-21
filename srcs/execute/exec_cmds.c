@@ -6,12 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 13:05:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 16:57:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include "execute.h"
+#include "minishell.h"
+#include "signalm.h"
+#include <errno.h>
 
 int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
@@ -21,9 +23,11 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	if ((*tmp)->ok)
 	{
 		if ((*tmp)->err_f)
-			printf("minishell: %s: %s\n", (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->err_f,
+					g_error_array[(*tmp)->ok - 1]);
 		else
-			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
+					- 1]);
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 		return (-1);
@@ -56,8 +60,8 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		pid = fork();
 		if (pid == 0)
 		{
-			set_signals(tk, INTERACT);
-//			signal(SIGQUIT, siginthandler);
+			set_signals(INTERACT);
+			//			signal(SIGQUIT, siginthandler);
 			redirect_pipes(tmp, p, fd);
 			close_here_doc(tk);
 			execve(tmp->cmd, tmp->args, env);
