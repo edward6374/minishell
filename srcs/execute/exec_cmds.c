@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 11:29:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 13:05:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,10 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	res = is_builtin(tk, *tmp, p[1]);
 	if (res >= 0)
 	{
-		if (res)
-			printf("Built-in error\n");
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 	}
-//	else if (res > 0)
-//		exit_error((char *)g_error_array[res - 1], 1);
-	else if (res == -1 && !(*tmp)->ok)
+	else
 		return (0);
 	return (-1);
 }
@@ -60,9 +56,10 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		pid = fork();
 		if (pid == 0)
 		{
+			set_signals(tk, INTERACT);
+//			signal(SIGQUIT, siginthandler);
 			redirect_pipes(tmp, p, fd);
 			close_here_doc(tk);
-			signal(SIGQUIT, siginthandler);
 			execve(tmp->cmd, tmp->args, env);
 		}
 		*child_pid = pid;

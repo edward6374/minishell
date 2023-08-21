@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 11:34:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 13:04:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,14 @@ int	main(int argc, char *argv[], char *env[])
 	t_min	*tk;
 
 	(void)argv;
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, siginthandler);
+//	signal(SIGQUIT, SIG_IGN);
+//	signal(SIGINT, siginthandler);
 	if (argc == 1)
 	{
 		tk = init_struct(env);
 		if (!tk)
 			return (end_program(NULL, MALLOC));
+		set_signals(tk, NORMAL);
 		while (42)
 		{
 			result = loop_main(tk);

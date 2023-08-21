@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 11:33:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 13:07:41 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ enum
 	FILE_NOT_FOUND,
 	FILE_NOT_READ,
 	FILE_NOT_WRITE,
+};
+
+enum
+{
+	NORMAL,
+	INTERACT,
 };
 
 const static char *g_error_array[] = {
@@ -118,7 +124,8 @@ int		take_env(t_min *tk, char *env[]);
 int		d_key(t_min **tk);
 int		exit_error(const char *str, int i);
 int		end_program(char **line, int error);
-void	siginthandler(int sig);
+//void	siginthandler(int sig);
+void	set_signals(t_min *tk, int mode);
 char	*ft_find_path(char *env[]);
 
 /* ---			Free_funcs.c			--- */
