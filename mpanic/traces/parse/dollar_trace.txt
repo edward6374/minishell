@@ -6,33 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [121]
-|  CMD: ->echo hi
-| echo $?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| 0$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| $?$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [122]
 |  CMD: ->echo $<-
 |--------------------------------
@@ -50,7 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app$<-
+| ->$<-
 |
 |--- STDERR:
 | -><-
@@ -74,7 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hiiTerm.app$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -98,7 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app/$<-
+| ->/$<-
 |
 |--- STDERR:
 | -><-
@@ -122,7 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->'iTerm.app"$<-
+| ->'"$<-
 |
 |--- STDERR:
 | -><-
@@ -147,7 +120,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\n$$<-
+| ->\n$$<-
 |
 |--- STDERR:
 | -><-
@@ -171,7 +144,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\r$$<-
+| ->\r$$<-
 |
 |--- STDERR:
 | -><-
@@ -195,10 +168,30 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->iTerm.app\t$$<-
+| ->\t$$<-
 |
 |--- STDERR:
 | -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [131]
+|  CMD: ->echo $NONEXIST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 19224 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -219,8 +212,28 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m$TMPENVVAR
-| ./mpanic.sh: line 164: 93109 Segmentation fault: 11  ./minishell
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m$TMPENVVAR
+| ./mpanic.sh: line 164: 19596 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [141]
+|  CMD: ->$TMPENVVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 19643 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -266,6 +279,30 @@
 |
 |--- STDOUT:
 | ->minishell:  EcHO hi: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [145]
+|  CMD: ->echo $TMPENVVAR hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->-n -n hi$<-
 |
 |--- STDERR:
 | -><-

@@ -23,7 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell: export: 1A=value: not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -47,7 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell: export: /A=value: not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -71,7 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell: export: A/=value: not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -95,7 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell: export:  A=value: not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -119,7 +119,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell: export: A =value: not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -201,7 +201,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->	p: 4$
+| ->minishell: export: W:RON:G=wrong: not a valid identifier$
+| 	p: 4$
 | 	out_fd: 1$<-
 |
 |--- STDERR:
@@ -286,7 +287,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->declare -x TEST+=" added value"$
+| ->minishell: export: TEST+= added value: not a valid identifier$
 | declare -x TEST="value"$
 | 	p: 4$
 | 	out_fd: 1$<-
@@ -342,10 +343,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->declare -x correct="correct"$
+| ->minishell: export: wrong%=wrong: not a valid identifier$
+| declare -x correct="correct"$
 | 	p: 4$
 | 	out_fd: 1$
-| declare -x wrong%="wrong"$
 | 	p: 4$
 | 	out_fd: 1$<-
 |
@@ -373,10 +374,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->declare -x correct="correct"$
+| ->minishell: export: wrong%=wrong: not a valid identifier$
 | 	p: 4$
 | 	out_fd: 1$
-| declare -x wrong%="wrong"$
 | 	p: 4$
 | 	out_fd: 1$<-
 |

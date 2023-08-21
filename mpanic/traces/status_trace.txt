@@ -25,7 +25,7 @@
 |
 |--- STDOUT:
 | ->minishell:  : command not found$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -56,30 +56,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [343]
-|  CMD: ->echo $?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->0$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$?$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [344]
 |  CMD: ->cat < noexiste
 | echo $?<-
@@ -100,7 +76,7 @@
 |--- STDOUT:
 | ->Take redir error: 8$
 | minishell: noexiste: no such file or directory$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -150,9 +126,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: noperm: file not readable$
-| $?$<-
+| ->Take redir error: 10$
+| minishell: noperm: file not writeable$
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -176,8 +152,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: noperm: file not readable$<-
+| ->Take redir error: 10$
+| minishell: noperm: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -204,7 +180,7 @@
 |--- STDOUT:
 | ->Take redir error: 9$
 | minishell: noperm: file not readable$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -236,49 +212,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [350]
-|  CMD: ->sleep 1 | ls | cat -n
-| echo $?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	minishell$
-|      6	mpanic.sh$
-|      7	test$
-|      8	testdir$
-|      9	traces$
-| 0$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	minishell$
-|      6	mpanic.sh$
-|      7	test$
-|      8	testdir$
-|      9	traces$
-| $?$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [352]
 |  CMD: ->sleep 1 | dddd
 | echo $?<-
@@ -298,7 +231,7 @@
 |
 |--- STDOUT:
 | ->minishell: dddd: command not found$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -348,7 +281,7 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -400,7 +333,7 @@
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
 | hi$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -451,7 +384,7 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -504,7 +437,7 @@
 | ->Take redir error: 8$
 | minishell: nofile: no such file or directory$
 | minishell: nonexistcmd: command not found$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -560,7 +493,7 @@
 | ->Take redir error: 8$
 | minishell: nofile: no such file or directory$
 | hii$
-| $?$<-
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -611,7 +544,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->$?$<-
+| ->0$<-
 |
 |--- STDERR:
 | -><-
@@ -639,31 +572,6 @@
 |
 |--- STDERR:
 | -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [366]
-|  CMD: ->cat /Users/nonexist/directory
-| echo $?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->1$<-
-|
-|--- STDERR:
-| ->cat: /Users/nonexist/directory: No such file or directory$<-
-|
-|--- COMPARED STR:
-| ->nexist/directory: No such file or directory<-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$?$<-
-|
-|--- STDERR:
-| ->cat: /Users/nonexist/directory: No such file or directory$<-
 |
 ---------------------------------------------<
 

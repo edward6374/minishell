@@ -6,12 +6,28 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:32:49 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:30:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include "execute.h"
+#include <errno.h>
+
+int	change_exit_status(t_min *tk, t_cmd *tmp)
+{
+	int	i;
+
+	i = 0;
+	while (tmp->args[++i])
+	{
+		if (!ft_strncmp(tmp->args[i], "$?", 3))
+		{
+			free(tmp->args[i]);
+			tmp->args[i] = ft_strdup(ft_itoa(tk->exit_value));
+		}
+	}
+	return (0);
+}
 
 int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
@@ -21,21 +37,25 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	if ((*tmp)->ok)
 	{
 		if ((*tmp)->err_f)
-			printf("minishell: %s: %s\n", (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->err_f,
+					g_error_array[(*tmp)->ok - 1]);
 		else
-			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
+			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
+					- 1]);
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 		return (-1);
 	}
 	res = is_builtin(tk, *tmp, p[1]);
-	if (res == 0)
+	// TODO
+	// QUITAR res == 1
+	if (res == 0 || res == 1)
 	{
 		tk->num_cmds--;
 		*tmp = (*tmp)->next;
 	}
-	else if (res > 0)
-		exit_error((char *)g_error_array[res - 1], 1);
+	// else if (res > 0)
+	// 	exit_error((char *)g_error_array[res - 1], 1);
 	else if (res == -1 && !(*tmp)->ok)
 		return (0);
 	return (-1);

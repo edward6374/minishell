@@ -1,27 +1,3 @@
----------------------------------------------> test [1]
-|  CMD: ->echo<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [2]
 |  CMD: ->echo ñ<-
 |--------------------------------
@@ -100,7 +76,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$<-
+| ->/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$<-
 |
 |--- STDERR:
 | -><-
@@ -111,31 +87,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [6]
-|  CMD: ->echo $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
+| ->/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$<-
 |
 |--- STDERR:
 | -><-
@@ -238,6 +190,30 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [12]
+|  CMD: ->echo -n -n hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [13]
 |  CMD: ->echo hi -n<-
 |--------------------------------
@@ -256,6 +232,30 @@
 |
 |--- STDOUT:
 | ->hi -n$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [14]
+|  CMD: ->echo "-n -n -n" -n hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->-n -n -n -n hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->-n -n -n -n hi$<-
 |
 |--- STDERR:
 | -><-
@@ -341,7 +341,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$<-
+| ->nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -352,7 +352,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$<-
+| ->nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -462,7 +462,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -473,7 +473,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -488,8 +488,8 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
+| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -500,8 +500,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$
-| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
+| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -514,7 +514,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -525,7 +525,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -538,7 +538,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -549,7 +549,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -562,7 +562,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -573,7 +573,34 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [121]
+|  CMD: ->echo hi
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| 0$<-
 |
 |--- STDERR:
 | -><-
@@ -610,7 +637,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$<-
+| ->nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -621,31 +648,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [131]
-|  CMD: ->echo $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
+| ->nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -658,7 +661,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -669,7 +672,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -682,7 +685,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -693,7 +696,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -754,7 +757,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanicUSER/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -765,7 +768,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
+| ->nacho/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanicUSER/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -778,7 +781,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD$<-
+| ->nacho$PATH/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanicUSER/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$PWD$<-
 |
 |--- STDERR:
 | -><-
@@ -789,7 +792,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD$<-
+| ->nacho$PATH/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanicUSER/Users/nacho:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$PWD$<-
 |
 |--- STDERR:
 | -><-
@@ -844,55 +847,7 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [141]
-|  CMD: ->$TMPENVVAR<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [144]
-|  CMD: ->echo $TMPENVVAR hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [145]
 |  CMD: ->echo $TMPENVVAR hi<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
@@ -1732,6 +1687,54 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [199]
+|  CMD: ->echo $' t hi t '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> t hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [200]
+|  CMD: ->echo $' r hi t '<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> r hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -> r hi t $<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [205]
 |  CMD: ->echo '$ANA_VAR'<-
 |--------------------------------
@@ -1978,7 +1981,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->~nmota-bu$<-
+| ->~nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -1989,7 +1992,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->~nmota-bu$<-
+| ->~nacho$<-
 |
 |--- STDERR:
 | -><-
@@ -2026,7 +2029,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->~nmota-bu/sdfsfsfdsfs$<-
+| ->~nacho/sdfsfsfdsfs$<-
 |
 |--- STDERR:
 | -><-
@@ -2037,7 +2040,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->~nmota-bu/sdfsfsfdsfs$<-
+| ->~nacho/sdfsfsfdsfs$<-
 |
 |--- STDERR:
 | -><-
@@ -2134,30 +2137,6 @@
 |
 |--- STDOUT:
 | ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [252]
-|  CMD: ->echo | /bin/cat<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
 |
 |--- STDERR:
 | -><-
@@ -2386,13 +2365,23 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$$
+| ->&4$$
+| <$$
+| README.md$$
 | cleaner$$
 | cleaner.c$$
+| doblequot$$
 | echo$$
 | file2$$
+| file_first$$
+| file_second$$
+| filepipe$$
 | minishell$$
+| mixedfile nam$$
 | mpanic.sh$$
+| no_cmd_file$$
+| no_cmd_test$$
+| simplequot$$
 | test$$
 | testdir$$
 | traces$$<-
@@ -2406,13 +2395,23 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$$
+| ->&4$$
+| <$$
+| README.md$$
 | cleaner$$
 | cleaner.c$$
+| doblequot$$
 | echo$$
 | file2$$
+| file_first$$
+| file_second$$
+| filepipe$$
 | minishell$$
+| mixedfile nam$$
 | mpanic.sh$$
+| no_cmd_file$$
+| no_cmd_test$$
+| simplequot$$
 | test$$
 | testdir$$
 | traces$$<-
@@ -2428,17 +2427,27 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$<-
+| ->total 896$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2449,17 +2458,27 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$<-
+| ->total 896$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2472,17 +2491,27 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$<-
+| ->total 896$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2493,17 +2522,27 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$<-
+| ->total 896$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$<-
 |
 |--- STDERR:
 | -><-
@@ -2516,17 +2555,27 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$$$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$$$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$$$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$$$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$$$$<-
+| ->total 896$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$$$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$$$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$$$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$$$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$$$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$$$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$$$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$$$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$$$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$$$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$$$$<-
 |
 |--- STDERR:
 | -><-
@@ -2537,17 +2586,27 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->total 1096$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    4732 Aug 18 12:52 README.md$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   50352 Aug 18 13:00 cleaner$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona    2326 Aug 18 12:52 cleaner.c$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   49424 Aug 18 13:00 echo$$$$$
-| -rw-r--r--   1 nmota-bu  2022_barcelona      21 Aug 18 13:00 file2$$$$$
-| -rwxrwxrwx   1 nmota-bu  2022_barcelona  407016 Aug 18 13:00 minishell$$$$$
-| -rwxr-xr-x   1 nmota-bu  2022_barcelona   26106 Aug 18 12:52 mpanic.sh$$$$$
-| drwxr-xr-x   6 nmota-bu  2022_barcelona     204 Aug 18 12:52 test$$$$$
-| drwxr-xr-x   2 nmota-bu  2022_barcelona      68 Aug 18 13:00 testdir$$$$$
-| drwxr-xr-x  10 nmota-bu  2022_barcelona     340 Aug 18 13:01 traces$$$$$<-
+| ->total 896$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 &4$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:18 <$$$$$
+| -rw-r--r--   1 nacho  admin    4732 18 ago 15:20 README.md$$$$$
+| -rwxr-xr-x   1 nacho  admin    9380 18 ago 21:17 cleaner$$$$$
+| -rw-r--r--   1 nacho  admin    2326 18 ago 15:20 cleaner.c$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 doblequot$$$$$
+| -rwxr-xr-x   1 nacho  admin    8432 18 ago 21:17 echo$$$$$
+| -rw-r--r--   1 nacho  admin      21 18 ago 21:15 file2$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_first$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 file_second$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 filepipe$$$$$
+| -rwxrwxrwx   1 nacho  admin  389084 18 ago 21:17 minishell$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 mixedfile nam$$$$$
+| -rwxr-xr-x   1 nacho  admin   26106 18 ago 15:20 mpanic.sh$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_file$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 no_cmd_test$$$$$
+| -rw-r--r--   1 nacho  admin       0 18 ago 21:15 simplequot$$$$$
+| drwxr-xr-x   6 nacho  admin     204 18 ago 15:20 test$$$$$
+| drwxr-xr-x   2 nacho  admin      68 18 ago 21:15 testdir$$$$$
+| drwxr-xr-x  10 nacho  admin     340 18 ago 21:18 traces$$$$$<-
 |
 |--- STDERR:
 | -><-
@@ -2560,13 +2619,23 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
+| ->&4$
+| <$
+| README.md$
 | cleaner$
 | cleaner.c$
+| doblequot$
 | echo$
 | file2$
+| file_first$
+| file_second$
+| filepipe$
 | minishell$
+| mixedfile nam$
 | mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
 | test$
 | testdir$
 | traces$<-
@@ -2580,13 +2649,23 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
+| ->&4$
+| <$
+| README.md$
 | cleaner$
 | cleaner.c$
+| doblequot$
 | echo$
 | file2$
+| file_first$
+| file_second$
+| filepipe$
 | minishell$
+| mixedfile nam$
 | mpanic.sh$
+| no_cmd_file$
+| no_cmd_test$
+| simplequot$
 | test$
 | testdir$
 | traces$<-
@@ -2602,16 +2681,26 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	file2$
-|      6	minishell$
-|      7	mpanic.sh$
-|      8	test$
-|      9	testdir$
-|     10	traces$<-
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file2$
+|      9	file_first$
+|     10	file_second$
+|     11	filepipe$
+|     12	minishell$
+|     13	mixedfile nam$
+|     14	mpanic.sh$
+|     15	no_cmd_file$
+|     16	no_cmd_test$
+|     17	simplequot$
+|     18	test$
+|     19	testdir$
+|     20	traces$<-
 |
 |--- STDERR:
 | -><-
@@ -2622,38 +2711,41 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	file2$
-|      6	minishell$
-|      7	mpanic.sh$
-|      8	test$
-|      9	testdir$
-|     10	traces$<-
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file2$
+|      9	file_first$
+|     10	file_second$
+|     11	filepipe$
+|     12	minishell$
+|     13	mixedfile nam$
+|     14	mpanic.sh$
+|     15	no_cmd_file$
+|     16	no_cmd_test$
+|     17	simplequot$
+|     18	test$
+|     19	testdir$
+|     20	traces$<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [271]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+---------------------------------------------> test [278]
+|  CMD: ->echo hi > file
+| cat file
+| rm file<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -2664,38 +2756,24 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [272]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+---------------------------------------------> test [279]
+|  CMD: ->echo hi >> file
+| echo hi >> file
+| cat file
+| rm file<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$
+| hi$<-
 |
 |--- STDERR:
 | -><-
@@ -2706,38 +2784,23 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$
+| hi$<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [273]
-|  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
+---------------------------------------------> test [280]
+|  CMD: ->echo hi > *.txt
+| cat '*.txt'
+| rm '*.txt'<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -2748,16 +2811,88 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->README.md$
-| cleaner$
-| cleaner.c$
-| echo$
-| file2$
-| minishell$
-| mpanic.sh$
-| test$
-| testdir$
-| traces$<-
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [281]
+|  CMD: ->echo > file hi
+| cat file
+| rm file<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [282]
+|  CMD: ->echo >> file hi
+| echo >> file hi
+| cat file
+| rm file<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [314]
+|  CMD: ->echo hi > 'with spaces'
+| cat 'with spaces'
+| rm 'with spaces'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -2788,21 +2923,13 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [351]
-|  CMD: ->sleep 1 | ls | cat -n<-
+---------------------------------------------> test [343]
+|  CMD: ->echo $?<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	minishell$
-|      6	mpanic.sh$
-|      7	test$
-|      8	testdir$
-|      9	traces$<-
+| ->0$<-
 |
 |--- STDERR:
 | -><-
@@ -2813,18 +2940,158 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->     1	README.md$
-|      2	cleaner$
-|      3	cleaner.c$
-|      4	echo$
-|      5	minishell$
-|      6	mpanic.sh$
-|      7	test$
-|      8	testdir$
-|      9	traces$<-
+| ->0$<-
 |
 |--- STDERR:
 | -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [350]
+|  CMD: ->sleep 1 | ls | cat -n
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	testdir$
+|     19	traces$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	testdir$
+|     19	traces$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [351]
+|  CMD: ->sleep 1 | ls | cat -n<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	testdir$
+|     19	traces$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	no_cmd_file$
+|     15	no_cmd_test$
+|     16	simplequot$
+|     17	test$
+|     18	testdir$
+|     19	traces$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [366]
+|  CMD: ->cat /Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
 |
 ---------------------------------------------<
 

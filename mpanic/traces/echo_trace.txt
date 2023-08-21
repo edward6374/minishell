@@ -6,6 +6,46 @@
 *                                                            *
 **************************************************************
 
+---------------------------------------------> test [1]
+|  CMD: ->echo<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 13480 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [6]
+|  CMD: ->echo $NONEXIST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| ./mpanic.sh: line 164: 13690 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [7]
 |  CMD: ->echoecho<-
 |--------------------------------
@@ -30,54 +70,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [12]
-|  CMD: ->echo -n -n hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->-n hi<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [14]
-|  CMD: ->echo "-n -n -n" -n hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->-n -n -n -n hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->-n hi<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [16]
 |  CMD: ->eCho what u execute bro?
 | cat ~/echo<-
@@ -88,10 +80,10 @@
 | ->what u execute bro?$<-
 |
 |--- STDERR:
-| ->cat: /Users/nmota-bu/echo: No such file or directory$<-
+| ->cat: /Users/nacho/echo: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->ota-bu/echo: No such file or directory<-
+| ->cho/echo: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:24:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:29:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 // 	int		i;
 // 	int		k;
 // 	t_cmd	*cmd;
-//
+
 // 	i = 0;
 // 	cmd = tk->cmds;
 // 	printf("Comm %p\n", cmd);
