@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:59:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 21:42:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int	find_env(char *s1, char *s2)
 	i = 0;
 	while (s2[i])
 	{
+		// printf("C1: %c\tC2: %c\n", s1[i], s2[i]);
 		if (s1[i] == s2[i])
 			i++;
 		else
-			return (1);
+			break;
+			// return (1);
 	}
 	if (s1[i] == '=')
 		return (0);

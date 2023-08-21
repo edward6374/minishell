@@ -3,206 +3,133 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 01:13:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 21:59:48 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parser.h"
+#include "parser.h"
+#include "built-ins.h"
 
-static int	put_word(t_parser **list, t_vars *v)
+int	env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 {
 	char	*word;
+	t_env	*next;
 
-	if (v->s[v->stp] == '\"')
-		v->stp++;
-	word = ft_substr(v->s, v->stp, v->i - v->stp);
-	printf("Put word: --%s--\n", word);
-	if (!word || add_word(list, word))
+	printf("Env word: %s\tStart: %d\tChar: %c\n", (*env)->value, v->stp, v->s[v->stp]);
+	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
+	{
+		word = ft_substr(v->s, v->stp, *i - v->stp);
+		if (!word || create_word(word_lst, v, i, 1))
+			return (MALLOC);
+	}
+	word = ft_strdup((*env)->value);
+	if (!word || ((v->stp == 0 || v->s[v->stp - 1] == ' ')
+		&& add_word(word_lst, word)))
 		return (MALLOC);
-	v->count++;
-	return (0);
-}
-
-static int	join_strings(t_parser **list, char *res)
-{
-	char	*join;
-
-	join = ft_strjoin((*list)->word, res);
-	if (!join)
-		return (free_pointer(res, MALLOC));
-//	printf("Res: --%s--\n", res);
-	printf("Join: --%s--\n", join);
-	free(res);
-	free((*list)->word);
-	(*list)->word = join;
-	return (0);
-}
-
-static int	check_name(char *s, char *value)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && value[i] && s[i] == value[i])
-	{
-//		printf("First: %c\tSecond: %c\n", s[i], value[i]);
-		i++;
-	}
-	if (value[i] == '\0')
-		return (0);
-	return (1);
-}
-
-static int	other_chars(t_parser **list, t_vars *v)
-{
-	int		end;
-	int		start;
-	char	c;
-	char	*other;
-	int		counter;
-
-	printf("Double: %d\n", v->dq);
-	if (v->s[v->i] == '\'' || v->s[v->i] == '\"')
-		c = v->s[v->i++];
-	else
-		c = '\0';
-	end = v->i;
-	start = v->i;
-	printf("C: %c\tStart: %d\tChar start: %c\tEnd: %d\tChar end: %c\n", c, start, v->s[start], end, v->s[end]);
-	counter = 0;
-	while ((c != '\0' && v->s[end] != c)
-		|| (c == '\0' && v->s[end] != c && v->s[end] != ' '))
-	{
-		printf("Loop char: %c\tEnd: %d\n", v->s[end], end);
-		if (v->s[end] == '\"' && v->s[end + 1] == '$')
-			break ;
-		if (counter > 15)
-			break ;
-		counter++;
-		end++;
-	}
-	other = ft_substr(v->s, start, end - start);
-	if (!other)
+	else if (!word || (v->stp > 0 && v->s[v->stp - 1] != ' '
+		&& join_words(word_lst, word)))
 		return (MALLOC);
-	printf("Other: --%s--\n", other);
-	join_strings(list, other);
-	if ((v->s[end] == '\"' && v->s[end + 1] == '$')
-		|| v->s[end] == '\'')
-	{
-		printf("Here End: %d\tChar end: %c\n", end, v->s[end]);
-		end++;
-		if (v->s[end] == '\"')
-			end++;
-		v->i = end;
-	}
-	else if (v->s[end] == ' ' || v->s[end] == '\0')
-		v->i = end;
-//	if (s[end] == '\0' || s[end] == ' ')
-//		*i = end - 1;
-//	else if (s[end] == '\'' || s[end] == '\"')
-//		*i = end + 1;
-//	else
-//		*i = end;
-	printf("I symbols: %d\tChar i: %c\n", v->i, v->s[v->i]);
+	v->stp = *i + ft_strlen((*env)->name);
+	next = (*env)->next;
+	free((*env)->name);
+	free((*env)->value);
+	free(*env);
+	*env = next;
+	if (*env)
+		(*env)->before = NULL;
+	printf("End adding env\n");
 	return (0);
 }
 
-static int	take_value(t_min *tk, t_parser **list, t_vars *v, char *s)
+int	add_env_var(t_word *w , t_env **env)
 {
 	int		i;
-	int		len;
-	t_env	*tmp;
+	t_env	*next;
 
 	i = -1;
-	len = ft_strlen(s);
-	if (ft_strncmp(s, "$?", 2))
-	{
-		tmp = tk->env;
-		while (tmp)
-		{
-			if (!check_name(tmp->name, s))
-				break ;
-			tmp = tmp->next;
-		}
-		if (!tmp)
-		{
-			printf("No correspondence\n");
-			return (free_pointer(s, 127));
-		}
-		free(s);
-		s = ft_substr(tmp->value, 0, ft_strlen(tmp->value));
-	}
-	printf("S: %s\n", s);
-	if (!s || (!v->count && add_word(list, s)))
-		return (MALLOC);
-	else if (!s || (v->count && join_strings(list, s)))
-		return (MALLOC);
+	printf("Add env var\n");
+	while ((*env)->value[++i])
+		w->word[++w->l] = (*env)->value[i];
+	w->i += i;
+	next = (*env)->next;
+	free((*env)->name);
+	free((*env)->value);
+	free(*env);
+	*env = next;
+	(*env)->before = NULL;
 	return (0);
 }
 
-static char	*take_name(t_vars *v)
+static t_env	*new_list_elem(t_env *found, t_env **old_tmp,
+	t_vars *v, int *i)
 {
-	int		end;
-	int		start;
-	char	*name;
+	int		count;
+	t_env	*new;
 
-	start = v->i + 1;
-	if (v->s[v->i] == '$' && v->s[v->i + 1] == '?')
-		start = v->i++;
-	end = v->i + 1;
-	while ((v->s[end] >= 'a' && v->s[end] <= 'z')
-		|| (v->s[end] >= 'A' && v->s[end] <= 'Z'))
-		end++;
-	printf("Start: %d\tChar start: %c\tEnd: %d\tChar end:%c\n", start, v->s[start], end, v->s[end]);
-	name = ft_substr(v->s, start, end - start);
-	if (!name)
-		return (NULL);
-	printf("Name: --%s--\n", name);
-	if (v->s[end] == '\"')
+	count = *i + 1;
+	while ((v->s[count] >= 'a' && v->s[count] <= 'z')
+		|| (v->s[count] >= 'A' && v->s[count] <= 'Z')
+		|| (v->s[count] >= '0' && v->s[count] <= '9'))
+		count++;
+	*i = count - 1;
+	new = ft_calloc(1, sizeof(t_env));
+	new->name = ft_strdup(found->name);
+	new->value = ft_strdup(found->value);
+	printf("New elem name: %s\tValue: %s\n", new->name, new->value);
+	if (old_tmp)
 	{
-		v->dq = 0;
-		v->nq = 0;
-		v->i = end + 1;
+		(*old_tmp)->next = new;
+		new->before = *old_tmp;
 	}
-	else
-		v->i = end;
-	v->count++;
-	return (name);
+	return (new);
 }
 
-int	check_env_var(t_min *tk, t_parser **list, t_vars *v)
+static int	print_list(t_env *env_list)
 {
-//	int		c;
-	int		err;
-	char	*name;
+	t_env	*tmp;
 
-//	c = 0;
-	v->count = -1;
-	if (v->s[v->i - 1] != ' ' && put_word(list, v))
-		return (MALLOC);
-	while (v->s[v->i] != ' ' && v->s[v->i] != '\0')
+	tmp = env_list;
+	while (tmp)
 	{
-		printf("Car: --%c--\tI: %d\n", v->s[v->i], v->i);
-		if (v->s[v->i] == '$')
-		{
-			name = take_name(v);
-			if (!name)
-				return (MALLOC);
-			err = take_value(tk, list, v, name);
-			if (err == 127)
-				continue ;
-			else if (err == MALLOC)
-				return (MALLOC);
-		}
-		else if (other_chars(list, v))
-			return (MALLOC);
-//		if (c > 10)
-//			break ;
-//		c++;
+		printf("Env: %s\n", tmp->name);
+		tmp = tmp->next;
 	}
-	v->stp = v->i + 1;
 	return (0);
+}
+
+t_env	*find_env_vars(t_env *env, t_vars *v)
+{
+	int		i;
+	t_env	*tmp;
+	t_env	*found;
+	t_env	*env_list;
+
+	env_list = NULL;
+	i = v->stp - 1;
+	while (++i < v->i)
+	{
+		check_quotes(v, &v->s[i]);
+		if ((v->oq || v->dq) && v->s[i] == '$')
+		{
+			printf("Char: %c\tNext: %c\n", v->s[i], v->s[i + 1]);
+			found = env_find(env, &v->s[i + 1], find_env);
+			if (found && !env_list)
+			{
+				printf("Found one\n");
+				env_list = new_list_elem(found, NULL, v, &i);
+				tmp = env_list;
+			}
+			else if (found)
+			{
+				printf("Found another one\n");
+				tmp = new_list_elem(found, &tmp, v, &i);
+			}
+		}
+	}
+	print_list(env_list);
+	printf(RED "End finding env\n" NO_COLOR);
+	return (env_list);
 }

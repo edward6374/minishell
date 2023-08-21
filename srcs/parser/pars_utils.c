@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 10:24:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 21:59:46 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_cmd	*set_new_command(int *number)
 void	set_vars(t_vars *v, char *s)
 {
 	v->s = s;
-//	v->i = -1;
 	v->i = 0;
 	v->sq = 0;
 	v->dq = 0;
@@ -82,31 +81,22 @@ t_cmd	*get_last_cmd(t_min **tk)
 	return (tmp);
 }
 
-void	check_quotes(t_vars *vars, char *c)
+int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 {
-	if (*c == '\'' && vars->sq == 0 && vars->dq == 0)
-	{
-		vars->sq = 1;
-//		vars->nq++;
-	}
-	else if (*c == '\'' && vars->sq == 1)
-	{
-		vars->sq = 0;
-//		vars->nq++;
-	}
-	else if (*c == '\"' && vars->dq == 0 && vars->sq == 0)
-	{
-		vars->dq = 1;
-//		vars->nq++;
-	}
-	else if (*c == '\"' && vars->dq == 1)
-	{
-		vars->dq = 0;
-//		vars->nq++;
-	}
-	if (vars->sq == 0 && vars->dq == 0 && (*c != '\'' || *c != '\"')) //&& *(c + 1) == ' ')
-		vars->oq = 1;
-	else
-		vars->oq = 0;
-//	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\tNq: %d\n", *c, vars->sq, vars->dq, vars->oq, vars->nq);
+	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
+		|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
+		&& add_word(word_lst, w->word))
+		return (MALLOC);
+	else if (v->stp > 0 && v->s[*w->idx - 1] != ' ' && v->s[*w->idx - 1] != '<'
+		&& v->s[*w->idx - 1] != '>' && v->s[*w->idx - 1] != '|'
+		&& join_words(word_lst, w->word))
+		return (MALLOC);
+	*w->idx = w->i;
+	v->stp = w->i + 1;
+	free(w->word);
+	w->k = 0;
+	v->dq = 0;
+	v->sq = 0;
+	v->oq = 1;
+	return (0);
 }

@@ -64,30 +64,38 @@ t_cmd	*set_new_command(int *number);
 int		load_commands(t_min *tk, t_parser *list);
 
 /* ---			Env_var.c			--- */
-int		check_env_var(t_min *tk, t_parser **temp, t_vars *vars);
+int		add_env_var(t_word *w , t_env **env);
+int		env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
+t_env	*find_env_vars(t_env *env, t_vars *v);
 
 /* ---			Handle_quotes.c				--- */
 int		count_quotes(char *string);
-int		take_words_with_quotes(t_parser **temp, t_vars *v);
+int		words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx);
+int		words_sin_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx);
+void	check_quotes(t_vars *vars, char *c);
 
 /* ---			Handle_words.c			--- */
-int 	find_words(t_env *env_vars, t_parser **temp, t_vars *v);
-//int 	find_words(t_parser **temp, t_vars *v);
-int		create_word(t_parser **temp, t_vars *v, int *k, int mode);
+int		add_word(t_parser **word_lst, char *word);
+int		join_words(t_parser **word_lst, char *word);
+int		create_word(t_parser **word_lst, t_vars *v, int *i, int mode);
+int		refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env);
+int		multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end);
 
 /* ---			Parser.c			--- */
 int		parser(t_min *tk, char *line);
 int		add_word(t_parser **tmp, char *word);
+
+/* ---			Path_env.c			--- */
+char	**path_env(t_env *env);
 
 /* ---			Redirections.c			--- */
 int 	take_redir(t_parser **tmp, t_cmd *new);
 
 /* ---			Utils.c			--- */
 int		check_access(char *str, int mode);
+int		end_refill(t_parser **word_lst, t_vars *v, t_word *w);
 void	set_vars(t_vars *v, char *s);
-void	check_quotes(t_vars *vars, char *c);
 t_cmd	*get_last_cmd(t_min **tk);
 t_cmd	*set_new_command(int *number);
-char	**path_env(t_env *env);
 
 #endif

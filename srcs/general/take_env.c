@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   take_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:36:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 21:21:58 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ t_env	*save_node(t_min *tk, t_env *new, t_env *old_tmp)
 		tmp = old_tmp->next;
 	}
 	return (tmp);
+}
+
+void	print_env(t_env *env)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		printf("Name: %s\tValue: %s\n", tmp->name, tmp->value);
+		tmp = tmp->next;
+	}
 }
 
 int	take_env(t_min *tk, char *env[])
@@ -56,5 +68,6 @@ int	take_env(t_min *tk, char *env[])
 			return (free_env(new));
 		tmp = save_node(tk, new, tmp);
 	}
+	print_env(tk->env);
 	return (0);
 }

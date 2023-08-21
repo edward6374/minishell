@@ -3,112 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 03:22:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 21:59:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	quotes_loop(char c, int *sq, int *dq)
+int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 {
-	if (c == '\"' && !*dq && !*sq)
-		(*dq)++;
-	else if (c == '\'' && !*dq && !*sq)
-		(*sq)++;
-	else if (c == '\"' && *dq && !*sq)
-		(*dq)--;
-	else if (c == '\'' && !*dq && *sq)
-		(*sq)--;
-}
+	t_word	w;
+	t_env	*tmp;
 
-int	last_word_quotes(t_parser **word_lst, t_vars *v, int count)
-{
-	t_word	data;
-
-	data.l = -1;
-	data.sq = 0;
-	data.dq = 0;
-	data.k = v->stp - 1;
-	if (!count)
+	w.k = 1;
+	w.l = -1;
+	w.i = *idx;
+	w.idx = idx;
+	w.count = 0;
+	tmp = *env;
+	if (v->s[*idx] == '\"' && v->s[*idx + 1] == '\"' && v->oq++ && v->dq--)
 		return (0);
-	data.word = (char *)malloc(sizeof(char) * (count + 1));
-	if (!data.word)
-		return (MALLOC);
-	while (++data.k < v->i)
+	while (v->s[++w.i] != '\"')
 	{
-		quotes_loop(v->s[data.k], &data.sq, &data.dq);
-		if ((v->s[data.k] != '\'' && v->s[data.k] != '\"')
-			|| (v->s[data.k] == '\'' && data.dq && !data.sq)
-			|| (v->s[data.k] == '\"' && !data.dq && data.sq))
-			data.word[++data.l] = v->s[data.k];
-	}
-//	printf("Char k: %c\tK: %c\tChar l: %d\n", v->s[v->i - 1], v->s[data.k - 1], data.l);
-	data.word[++data.l] = '\0';
-	v->stp = data.k;
-//	printf("Word: --%s--\n", data.word);
-	if (add_word(word_lst, data.word))
-		return (MALLOC);
-	return (0);
-}
-
-int	add_word_quotes(t_parser **word_lst, t_vars *v, char *word, int i)
-{
-	t_word	data;
-
-	data.l = -1;
-	data.sq = 0;
-	data.dq = 0;
-	data.k = v->stp - 1;
-	while (++data.k < i)
-	{
-		quotes_loop(v->s[data.k], &data.sq, &data.dq);
-		if ((v->s[data.k] != '\'' && v->s[data.k] != '\"')
-			|| (v->s[data.k] == '\'' && data.dq && !data.sq)
-			|| (v->s[data.k] == '\"' && !data.dq && data.sq))
-			word[++data.l] = v->s[data.k];
-	}
-	if (v->s[i] != '<' && v->s[i] != '>' && v->s[i] != '|')
-		word[++data.l] = v->s[++data.k];
-	word[++data.l] = '\0';
-	v->stp = data.k;
-//	printf("Word: %s\n", word);
-	if (add_word(word_lst, word) || ((v->s[i] == '<' || v->s[i] == '>'
-				|| v->s[i] == '|') && create_word(word_lst, v, &i, 0)))
-		return (MALLOC);
-	return (0);
-}
-
-int	take_words_with_quotes(t_parser **word_lst, t_vars *v)
-{
-	int		i;
-	int		sq;
-	int		dq;
-	int		count;
-	char	*word;
-
-	sq = 0;
-	dq = 0;
-	count = 0;
-	i = v->stp - 1;
-//	printf("I: %d\tv->i: %d\n", i, v->i);
-	while (++i <= v->i)
-	{
-		quotes_loop(v->s[i], &sq, &dq);
-		if ((v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|') && !dq && !sq)
+		if (v->s[w.i] == '$' && !ft_strncmp(tmp->name, &v->s[w.i],
+			ft_strlen(tmp->name) - 1))
 		{
-			word = (char *)malloc(sizeof(char) * (count + 1));
-			if (!word || add_word_quotes(word_lst, v, word, i))
-				return (MALLOC);
-			count = 0;
+			w.count += ft_strlen(tmp->value);
+			tmp = tmp->next;
 		}
-		else if (i != v->stp && i != v->i)
-			count++;
+		else
+			w.count++;
 	}
-//	printf("Count: %d\n", count);
-	return (last_word_quotes(word_lst, v, count));
+	return (refill_word(word_lst, v, &w, env));
+}
+
+int	words_sin_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
+{
+	t_word	w;
+
+	w.k = 0;
+	w.l = -1;
+	w.i = *idx;
+	w.idx = idx;
+	w.count = 0;
+	printf("Single quotes\n");
+	if (v->s[*idx] == '\'' && v->s[*idx + 1] == '\"' && v->oq++ && v->sq--)
+		return (0);
+	while (v->s[++w.i] != '\'')
+		w.count++;
+	return (refill_word(word_lst, v, &w, env));
 }
 
 int	count_quotes(char *string)
@@ -134,4 +79,21 @@ int	count_quotes(char *string)
 	if (!dq && !sq)
 		return (0);
 	return (1);
+}
+
+void	check_quotes(t_vars *vars, char *c)
+{
+	if (*c == '\'' && vars->sq == 0 && vars->dq == 0)
+		vars->sq = 1;
+	else if (*c == '\'' && vars->sq == 1)
+		vars->sq = 0;
+	else if (*c == '\"' && vars->dq == 0 && vars->sq == 0)
+		vars->dq = 1;
+	else if (*c == '\"' && vars->dq == 1)
+		vars->dq = 0;
+	if (vars->sq == 0 && vars->dq == 0 && (*c != '\'' || *c != '\"')) //&& *(c + 1) == ' ')
+		vars->oq = 1;
+	else
+		vars->oq = 0;
+//	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\n", *c, vars->sq, vars->dq, vars->oq);
 }
