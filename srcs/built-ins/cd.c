@@ -6,20 +6,20 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:25:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 17:28:34 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/18 23:11:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-int	static change_directory(const char *path)
+int static	change_directory(const char *path)
 {
 	if (chdir(path) == 0)
 		return (0);
 	else
 	{
 		perror("cd");
-		return (-1);
+		return (MALLOC);
 	}
 }
 
@@ -64,7 +64,9 @@ char static	*oldpwd(t_env *env)
 int	ft_cd(char **args, t_env *env)
 {
 	char	*path;
+	int		res;
 
+	res = 0;
 	if (args[1] != NULL)
 	{
 		if (!ft_strncmp("~", args[1], 1))
@@ -74,9 +76,8 @@ int	ft_cd(char **args, t_env *env)
 		else
 			path = args[1];
 		upgrade_env(env, 0);
-		change_directory(path);
+		res = change_directory(path);
 		upgrade_env(env, 1);
-		printf("CD: %s\n", path);
 	}
-	return (0);
+	return (res);
 }
