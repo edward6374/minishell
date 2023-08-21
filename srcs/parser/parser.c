@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 10:28:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:21:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,15 @@ int	parse_line(t_min *tk, t_parser *all_words, char *s)
 	tmp = all_words;
 	while (s[v.i])
 	{
-//		printf("I = -%c-\tI - 1 = -%c-\n", s[v.i], s[v.i - 1]);
-//		printf("Sq: %d\tDq: %d\tOq: %d\n", v.sq, v.dq, v.oq);
 		if ((s[v.i] == ' ' && v.i == 0) || (s[v.i] == ' ' && v.oq))
 			while (s[v.i] == ' ')
 				v.i++;
 		if ((s[v.i - 1] == ' ' || v.i == 0) && s[v.i] != ' ' && v.oq)
 			v.stp = v.i;
 		while ((s[v.i] != ' ' || !v.oq) && s[v.i] != '\0')
-		{
-			check_quotes(&v, &s[v.i]);
-			v.i++;
-			printf("Char: --%c--\tI: %d\n", s[v.i], v.i);
-			printf(RED "C: %c\tSq: %d\tDq: %d\tOq: %d\tNq: %d\n" NO_COLOR, s[v.i], v.sq, v.dq, v.oq, v.nq);
-		}
-		printf("\n");
+			check_quotes(&v, &s[v.i++]);
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
-//		check_quotes(&v, v.s[v.i]);
-//		if (s[v.i] == '$' && (v.oq || (!v.oq && v.dq)))
-//			if (take_words_with_quotes(&tmp, &v) || check_env_var(tk, &tmp, &v))
-//				return (free_parser(all_words, MALLOC));
-//		if (s[v.i] == '\0')
-//			break ;
-//		if (find_words(&tmp, &v))
-//			return (free_parser(all_words, MALLOC));
 	}
 	return (check_for_exit_status(tk, all_words));
 }

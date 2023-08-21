@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 14:11:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:22:07 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ int	add_word(t_parser **word_lst, char *word)
 	return (0);
 }
 
-void	print_list(t_env *list)
-{
-	t_env	*tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		printf("Env: %s\n", tmp->name);
-		tmp = tmp->next;
-	}
-}
-
 t_env	*new_list_elem(t_env *found, t_env **old_tmp, t_vars *v, int *i)
 {
 	int		count;
@@ -80,12 +68,6 @@ t_env	*new_list_elem(t_env *found, t_env **old_tmp, t_vars *v, int *i)
 		new->before = *old_tmp;
 	}
 	return (new);
-//	printf("Count: %d\tChar: %c\tDiff: %d\n", count, v->s[count], count - *i);
-//	value = ft_substr(v->s, *i, count - *i);
-//	if (!value)
-//		return (NULL);
-//	printf("I end: %d\tChar: %c\n", *i, v->s[*i]);
-//	return (ft_lstnew(value));
 }
 
 t_env	*find_env_vars(t_env *env, t_vars *v)
@@ -97,7 +79,6 @@ t_env	*find_env_vars(t_env *env, t_vars *v)
 
 	env_list = NULL;
 	i = v->stp - 1;
-	printf("Start finding env var\n");
 	while (++i < v->i)
 	{
 		check_quotes(v, &v->s[i]);
@@ -113,8 +94,7 @@ t_env	*find_env_vars(t_env *env, t_vars *v)
 				tmp = new_list_elem(found, &tmp, v, &i);
 		}
 	}
-	print_list(env_list);
-	printf("End finding env var\n\n");
+//	print_list(env_list);
 	return (env_list);
 }
 
@@ -126,31 +106,23 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	if (!mode)
 	{
 		len = 1;
-		if ((v->s[*i] == '<' && v->s[*i + 1] == '<')
-			|| (v->s[*i] == '>' && v->s[*i + 1] == '>'))
-		{
+		if (((v->s[*i] == '<' && v->s[*i + 1] == '<')
+			|| (v->s[*i] == '>' && v->s[*i + 1] == '>')) && (*i)++)
 			len++;
-			(*i)++;
-		}
 	}
 	else
-//	{
 		len = *i - v->stp;
-//		if (!len)
-//			return (0);
-//	}
-//	printf("Len: %d\n", len);
 	printf("Mode: %d\tBefore start: %d\tchar: --%c--\n", mode, v->stp, v->s[v->stp]);
 	word = ft_substr(v->s, v->stp, len);
+	printf("Word: --%s--\n",  word);
 	if (!mode && add_word(word_lst, word))
 		return (MALLOC);
-	else if (mode)
-	{
-		if (v->stp > 0 && (v->s[v->stp - 1] == '\'' || v->s[v->stp - 1] == '\"') && join_words(word_lst, word))
-			return (MALLOC);
-		else if ((v->stp == 0 || (v->s[v->stp - 1] != '\'' && v->s[v->stp - 1] != '\"')) && add_word(word_lst, word))
-			return (MALLOC);
-	}
+	else if (mode && (v->stp > 0 && (v->s[v->stp - 1] == '\''
+		|| v->s[v->stp - 1] == '\"') && join_words(word_lst, word)))
+		return (MALLOC);
+	else if (mode && (v->stp == 0 || (v->s[v->stp - 1] != '\''
+		&& v->s[v->stp - 1] != '\"')) && add_word(word_lst, word))
+		return (MALLOC);
 	v->stp += len;
 	return (0);
 }
@@ -160,100 +132,93 @@ int	multiple_words(t_parser **word_lst, t_vars *v, int end)
 	int	i;
 
 	i = v->stp - 1;
-	printf("Single word: End: %d\tStart: %d\n", end, v->stp);
 	while (++i < end)
 	{
 		if (v->s[i] == '<' || v->s[i] == '>' || v->s[i] == '|')
 		{
-			printf("redirections: %d\n", i - v->stp);
 			if (i - v->stp > 0 && create_word(word_lst, v, &i, 1))
 				return (MALLOC);
 			if (create_word(word_lst, v, &i, 0))
 				return (MALLOC);
 		}
 	}
-	printf("End single word\n");
 	if (i - v->stp > 0 && create_word(word_lst, v, &i, 1))
 		return (MALLOC);
 	return (0);
 }
 
-int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env *env_list, int *idx)
+int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, int mode)
 {
-	int		i;
-	int		l;
-	int		count;
-	char	*word;
-	t_env	*tmp;
+	char	c;
 
-	l = -1;
-	count = 0;
-	i = *idx;
-	tmp = env_list;
-	printf("Double quotes: i: %d\tchar: %c\n", i + 1, v->s[i + 1]);
-	if (v->s[i + 1] == '\"' && v->s[i + 2] == '\"')
-	{
-		*idx = i + 2;
-		return (0);
-	}
-	while (v->s[++i] != '\"')
-	{
-		if (v->s[i] == '$' && !ft_strncmp(tmp->name, &v->s[i],
-			ft_strlen(tmp->name) - 1))
-			count += ft_strlen(tmp->value);
-		else
-			count++;
-	}
-	if (!count)
-		return (0);
-	word = (char *)malloc(sizeof(char) * (count + 1));
-	if (!word)
+	if (mode)
+		c = '\"';
+	else
+		c = '\'';
+	w->word = (char *)malloc(sizeof(char) * (w->count + 1));
+	if (!w->word)
 		return (MALLOC);
-	i = *idx + 1;
-	while (v->s[i] != '\"')
-		word[++l] = v->s[i++];
-	word[++l] = '\0';
-	printf("Double quotes word: --%s--\n", word);
-	if (((v->stp == 0 || v->s[*idx - 1] == ' ') && add_word(word_lst, word))
-		|| (v->stp > 0 && v->s[*idx - 1] != ' ' && join_words(word_lst, word)))
+	w->i = *w->idx + 1;
+	while (v->s[w->i] != c)
+		w->word[++w->l] = v->s[w->i++];
+	w->word[++w->l] = '\0';
+	printf("Refill words: --%s--\n", w->word);
+	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
+		|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
+		&& add_word(word_lst, w->word))
 		return (MALLOC);
-	*idx = i;
-	v->stp = i + 1;
+	else if (v->stp > 0 && v->s[*w->idx - 1] != ' ' && v->s[*w->idx - 1] != '<'
+		&& v->s[*w->idx - 1] != '>' && v->s[*w->idx - 1] != '|'
+		&& join_words(word_lst, w->word))
+		return (MALLOC);
+	*w->idx = w->i;
+	v->stp = w->i + 1;
 	v->dq = 0;
+	v->sq = 0;
 	v->oq = 1;
 	return (0);
 }
 
+int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env *env_list, int *idx)
+{
+	t_word	w;
+	t_env	*tmp;
+
+	w.l = -1;
+	w.i = *idx;
+	w.idx = idx;
+	w.count = 0;
+	tmp = env_list;
+	if (v->s[*idx] == '\"' && v->s[*idx + 1] == '\"' && v->oq++ && v->dq--)
+		return (0);
+	while (v->s[++w.i] != '\"')
+	{
+		if (v->s[w.i] == '$' && !ft_strncmp(tmp->name, &v->s[w.i],
+			ft_strlen(tmp->name) - 1))
+		{
+			w.count += ft_strlen(tmp->value);
+			tmp = tmp->next;
+		}
+		else
+			w.count++;
+	}
+	return (refill_word(word_lst, v, &w, 1));
+}
+
 int	words_sin_qts(t_parser **word_lst, t_vars *v, int *idx)
 {
-	int		i;
-	int		l;
-	char	*word;
+	t_word	w;
 
-	l = -1;
-	i = *idx + 1;
+	w.l = -1;
+	w.i = *idx;
+	w.idx = idx;
+	w.count = 0;
 	printf("Single quotes\n");
-	while (v->s[i] != '\'')
-		i++;
-	if (i == *idx + 2)
+	if (v->s[*idx] == '\'' && v->s[*idx + 1] == '\"' && v->oq++ && v->sq--)
 		return (0);
-	word = (char *)malloc(sizeof(char) * (i + 1));
-	if (!word)
-		return (MALLOC);
-	i = *idx + 1;
-	while (v->s[i] != '\'')
-		word[++l] = v->s[i++];
-	word[++l] = '\0';
-	printf("Single quotes word: %s\n", word);
-	if (((v->stp == 0 || v->s[*idx - 1] == ' ') && add_word(word_lst, word))
-		|| (v->stp > 0 && v->s[*idx - 1] != ' ' && join_words(word_lst, word)))
-		return (MALLOC);
-	*idx = i;
-	v->stp = i + 1;
-	v->sq = 0;
-	v->oq = 1;
-	printf("End single idx: %d\tChar: %c\n", *idx, v->s[*idx]);
-	return (0);
+	while (v->s[++w.i] != '\'')
+		w.count++;
+	return (refill_word(word_lst, v, &w, 0));
 }
 
 int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
@@ -276,7 +241,7 @@ int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 		else if (v->dq && words_dbl_qts(tmp, v, env_list, &i))
 			return (MALLOC);
 	}
-	printf("End loop: Char i: --%c--\tI: %d\tStart: %d\tChar idx: %c\n", v->s[i], i, v->stp, v->s[v->stp]);
+	printf("End loop: Char i: --%c--\tI: %d\tStart: %d\tChar idx: --%c--\n", v->s[i], i, v->stp, v->s[v->stp]);
 	if ((v->s[v->i] == ' ' && v->s[v->i - 1] != ' ')
 		|| (v->s[v->i] == '\0' && v->s[v->i - 1] != ' '))
 		if (i - v->stp > 0 && create_word(tmp, v, &i, 1))

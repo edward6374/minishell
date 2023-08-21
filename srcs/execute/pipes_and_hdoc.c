@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 18:24:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:26:58 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	redirect_pipes(t_cmd *tmp, int *p, int fd)
 	}
 	close(p[0]);
 	if (tmp->out_fd != 1)
-		((dup2(tmp->out_fd, 0)) && (close(tmp->out_fd)));
+		((dup2(tmp->out_fd, 1)) && (close(tmp->out_fd)));
 	else if (tmp->out_fd == 1 && tmp->next)
 		dup2(p[1], 1);
 	close(p[1]);

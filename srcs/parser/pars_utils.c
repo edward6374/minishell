@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 12:55:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:24:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	check_quotes(t_vars *vars, char *c)
 		vars->oq = 1;
 	else
 		vars->oq = 0;
-	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\tNq: %d\n", *c, vars->sq, vars->dq, vars->oq, vars->nq);
+//	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\tNq: %d\n", *c, vars->sq, vars->dq, vars->oq, vars->nq);
 }

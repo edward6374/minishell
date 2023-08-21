@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 03:54:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 10:26:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_env(char *s1, char *s2)
 	i = 0;
 	while (s2[i])
 	{
-		printf("S1 char: %c\tS2 char: %c\n", s1[i], s2[i]);
+//		printf("S1 char: %c\tS2 char: %c\n", s1[i], s2[i]);
 		if (s1[i] == s2[i])
 			i++;
 		else

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 12:53:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/19 17:41:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ typedef struct s_vars
 
 typedef struct s_lastword
 {
+	int		i;
 	int		l;
 	int		k;
 	int		sq;
 	int		dq;
+	int		*idx;
+	int		count;
 	char	*word;
 }	t_word;
 
