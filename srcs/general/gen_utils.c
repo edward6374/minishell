@@ -35,7 +35,7 @@ void	norm_handler(int sig, siginfo_t *data, void *tk)
 {
 	t_min	*tmp;
 
-	(void) data;
+	printf("Value: %p\n", data->si_value.sival_ptr);
 	tmp = (t_min *)tk;
 	if (sig == SIGINT)
 	{
@@ -51,7 +51,8 @@ void	interact_handler(int sig, siginfo_t *data, void *tk)
 {
 	t_min	*tmp;
 
-	(void) data;
+	printf("Value: %p\n", data->si_value.sival_ptr);
+	printf("Value: %p\n", tk);
 	tmp = (t_min *)tk;
 	if (sig == SIGINT)
 	{
@@ -61,21 +62,27 @@ void	interact_handler(int sig, siginfo_t *data, void *tk)
 	else if (sig == SIGQUIT)
 	{
 		ft_putstr_fd("Quit: 3\n", 1);
-		tmp->exit_value = 131;
+		// tmp->exit_value = 131;
 	}
 }
 
+// TODO
+// arreglar senales
 void	set_signals(t_min *tk, int mode)
 {
 	struct sigaction	signal;
 
+	(void)tk;
+	printf("Signals\n");
 	signal.sa_flags = SA_RESTART | SA_SIGINFO;
 	sigemptyset(&signal.sa_mask);
 	if (mode == NORMAL)
 		signal.sa_sigaction = norm_handler;
 	else if (mode == INTERACT)
 		signal.sa_sigaction = interact_handler;
-	signal.sa_userdata = tk;
+	signal.sa_flags |= (unsigned long)tk;
+	// signal.sa_sigaction(SIGINT, NULL, tk);
+	// signal.sa_sigaction(SIGQUIT, NULL, tk);
 	sigaction(SIGINT, &signal, NULL);
 	sigaction(SIGQUIT, &signal, NULL);
 }

@@ -103,6 +103,9 @@ typedef struct s_cmd
 	struct s_cmd	*before;
 }	t_cmd;
 
+// TODO
+// poner exit value global
+
 typedef struct s_min
 {
 	int		num_cmds;

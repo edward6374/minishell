@@ -22,15 +22,23 @@ int	ft_exit(t_min *tk, t_cmd *temp)
 	if (!temp->args[1])
 		exit(0);
 	while (temp->args[1][++i])
+	{
 		if (!ft_isdigit(temp->args[1][i]))
-			exit_error(g_error_array[1], 1);
-	value = ft_atoi(temp->args[1]);
-	tk->exit_value = value;
+		{
+			printf("minishell: exit: %s: number argument required\n",
+				temp->args[1]);
+			tk->exit_value = 255;
+			return (0);
+		}
+	}
 	if (temp->args[2])
 	{
-		printf("minishell: exit: too many arguments\n");
+		printf("minishell: exit: too manyn arguments\n");
+		tk->exit_value = 1;
 		return (0);
 	}
+	value = ft_atoi(temp->args[1]);
+	tk->exit_value = value;
 	exit(value);
 	return (0);
 }

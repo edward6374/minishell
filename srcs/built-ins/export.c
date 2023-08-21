@@ -12,8 +12,6 @@
 
 #include "built-ins.h"
 
-// TODO
-// NO realiza > ni >>
 void static	print_export(char **arr, t_cmd *tmp, int p)
 {
 	int	i;
