@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 13:15:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:57:15 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,13 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 
 int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
-	if (new->out_fd != 1)
+	int err;
+
+	if (new->out_fd != 1 && mode)
 		close(new->out_fd);
-	if (check_access(NULL, (*tmp)->next->word, 0))
-		return (FILE_NOT_WRITE);
+	err = check_access(NULL, (*tmp)->next->word, 2);
+	if (err)
+		return (err);
 	if (mode)
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
 				0644);

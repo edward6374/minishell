@@ -15,7 +15,8 @@
 		"cstdlib": "c",
 		"path_env.h": "c",
 		"builtins.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"built-ins.h": "c"
 	},
 	"editor.fontLigatures": false,
 	"lldb.dbgconfig": {},

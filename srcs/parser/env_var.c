@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:11:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:47:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,62 +40,47 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 	return (0);
 }
 
+int	before_word(t_parser **word_lst, t_vars *v, t_word *data, int *i)
+{
+	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
+	{
+		data->word = ft_substr(v->s, v->stp, *i - v->stp);
+		if (!data->word || create_word(word_lst, v, i, 1))
+			return (2);
+	}
+	if (!ft_strncmp(&v->s[*i], "$?", 3))
+	{
+		*i += 3;
+		data->l = 1;
+		data->word = ft_substr(v->s, v->stp, *i - v->stp);
+		return (0);
+	}
+	return (1);
+}
+
 int	check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 {
+	int		res;
 	t_word	data;
 
 	data.l = 0;
 	data.idx = i;
-	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
+	res = before_word(word_lst, v, &data, i);
+	if (res == 2)
+		return (MALLOC);
+	else if (res == 1 && (!(*env) || ft_strncmp(&v->s[*i + 1], (*env)->name,
+				ft_strlen((*env)->name) - 1)))
 	{
-		data.word = ft_substr(v->s, v->stp, *i - v->stp);
-		if (!data.word || create_word(word_lst, v, i, 1))
-			return (MALLOC);
-	}
-	printf("Diff: %d\n", ft_strncmp(&v->s[*i], "$?", 3));
-	if (!ft_strncmp(&v->s[*i], "$?", 3))
-	{
-		printf("Exit value var\n");
-		*i += 3;
-		data.l = 1;
-		data.word = ft_substr(v->s, v->stp, *i - v->stp);
-		// if (!data.word || create_word(word_lst, v, i, 1))
-		// return (MALLOC);
-	}
-	else if (!(*env) || ft_strncmp(&v->s[*i + 1], (*env)->name,
-			ft_strlen((*env)->name) - 1))
-	{
-		printf("No corrispondence var\n");
 		data.l = 1;
 		if (v->s[++(*i)] == '?')
 			(*i)++;
 		while (ft_isalnum(v->s[(*i)]))
 			(*i)++;
-		printf("I: %d\tChar %c\n", *i, v->s[*i]);
 		data.word = ft_strdup("");
 	}
-	else
+	else if (res == 1)
 		data.word = ft_strdup((*env)->value);
 	return (change_env_list(word_lst, env, v, data));
-}
-
-int	add_env_var(t_word *w, t_env **env)
-{
-	int		i;
-	t_env	*next;
-
-	i = -1;
-	while ((*env)->value[++i])
-		w->word[++w->l] = (*env)->value[i];
-	w->i += i;
-	next = (*env)->next;
-	free((*env)->name);
-	free((*env)->value);
-	free(*env);
-	*env = next;
-	if (*env)
-		(*env)->before = NULL;
-	return (0);
 }
 
 static t_env	*new_list_elem(t_env *found, t_env **old_tmp, t_vars *v, int *i)
@@ -149,7 +134,7 @@ t_env	*find_env_vars(t_env *env, t_vars *v)
 		check_quotes(v, &v->s[i]);
 		if ((v->oq || v->dq) && v->s[i] == '$')
 		{
-			found = env_find(env, &v->s[i + 1], find_env);
+			found = search_env(env, &v->s[i + 1], find_env);
 			if (found && !env_list)
 			{
 				env_list = new_list_elem(found, NULL, v, &i);
@@ -157,6 +142,7 @@ t_env	*find_env_vars(t_env *env, t_vars *v)
 			}
 			else if (found)
 				tmp = new_list_elem(found, &tmp, v, &i);
+			printf("Found: %p\n", found);
 		}
 	}
 	// print_list(env_list);
