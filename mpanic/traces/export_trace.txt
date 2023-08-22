@@ -23,7 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: 1A=value: not a valid identifier$<-
+| ->minishell: export: `1A=value': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -47,7 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: /A=value: not a valid identifier$<-
+| ->minishell: export: `/A=value': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -71,7 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: A/=value: not a valid identifier$<-
+| ->minishell: export: `A/=value': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -95,7 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export:  A=value: not a valid identifier$<-
+| ->minishell: export: ` A=value': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -119,34 +119,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: A =value: not a valid identifier$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [25]
-|  CMD: ->export TEST=test
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$
-| 	p: 4$
-| 	out_fd: 1$<-
+| ->minishell: export: `A =value': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-
@@ -172,10 +145,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->declare -x TEST="test"$
-| declare -x TESTT="test2"$
-| 	p: 4$
-| 	out_fd: 1$<-
+| ->declare -x TEST="test2"$<-
 |
 |--- STDERR:
 | -><-
@@ -201,9 +171,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: W:RON:G=wrong: not a valid identifier$
-| 	p: 4$
-| 	out_fd: 1$<-
+| ->minishell: export: `W:RON:G=wrong': not a valid identifier$<-
 |
 |--- STDERR:
 | ->grep: wrong: No such file or directory$<-
@@ -231,37 +199,7 @@
 |
 |--- STDOUT:
 | ->declare -x EMPTY=""$
-| declare -x EMPTY_TOO=""$
-| declare -x NOT_EMPTY="contnent"$
-| 	p: 4$
-| 	out_fd: 1$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [29]
-|  CMD: ->export TEST=value TEST=value2
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="value2"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="value2"$
-| 	p: 4$
-| 	out_fd: 1$<-
+| declare -x NOT_EMPTY="contnent"$<-
 |
 |--- STDERR:
 | -><-
@@ -287,37 +225,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: TEST+= added value: not a valid identifier$
-| declare -x TEST="value"$
-| 	p: 4$
-| 	out_fd: 1$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [31]
-|  CMD: ->export TEST=value
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="value"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="value"$
-| 	p: 4$
-| 	out_fd: 1$<-
+| ->minishell: export: `TEST+= added value': not a valid identifier$
+| declare -x TEST=" added value"$<-
 |
 |--- STDERR:
 | -><-
@@ -343,12 +252,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: wrong%=wrong: not a valid identifier$
+| ->minishell: export: `wrong%=wrong': not a valid identifier$
 | declare -x correct="correct"$
-| 	p: 4$
-| 	out_fd: 1$
-| 	p: 4$
-| 	out_fd: 1$<-
+| declare -x wrong%="wrong"$<-
 |
 |--- STDERR:
 | -><-
@@ -374,11 +280,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: wrong%=wrong: not a valid identifier$
-| 	p: 4$
-| 	out_fd: 1$
-| 	p: 4$
-| 	out_fd: 1$<-
+| ->minishell: export: `wrong%=wrong': not a valid identifier$
+| declare -x correct="correct"$
+| declare -x wrong%="wrong"$<-
 |
 |--- STDERR:
 | -><-

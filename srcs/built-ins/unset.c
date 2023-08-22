@@ -6,14 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:01 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 19:36:44 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:01:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-void static	env_find_rm(t_env **head, void *data_ref, int (*cmp)(char *,
-			char *))
+void static	env_find_rm(t_env **head, void *data_ref, int (*cmp)(char *, char *,
+			int))
 {
 	t_env	*current;
 	t_env	*prev;
@@ -22,7 +22,7 @@ void static	env_find_rm(t_env **head, void *data_ref, int (*cmp)(char *,
 	prev = NULL;
 	while (current != NULL)
 	{
-		if ((*cmp)(current->name, data_ref) == 0)
+		if ((*cmp)(current->name, data_ref, 1) == 0)
 		{
 			if (prev != NULL)
 				prev->next = current->next;

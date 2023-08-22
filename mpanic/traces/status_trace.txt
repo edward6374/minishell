@@ -74,8 +74,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: noexiste: no such file or directory$
+| ->minishell: noexiste: no such file or directory$
 | 0$<-
 |
 |--- STDERR:
@@ -100,8 +99,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: noexiste: no such file or directory$<-
+| ->minishell: noexiste: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -126,8 +124,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: noperm: file not writeable$
+| ->minishell: noperm: file not writeable$
 | 0$<-
 |
 |--- STDERR:
@@ -152,8 +149,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: noperm: file not writeable$<-
+| ->minishell: noperm: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -178,8 +174,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: noperm: file not readable$
+| ->minishell: noperm: file not readable$
 | 0$<-
 |
 |--- STDERR:
@@ -204,8 +199,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: noperm: file not readable$<-
+| ->minishell: noperm: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -434,8 +428,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nofile: no such file or directory$
+| ->minishell: nofile: no such file or directory$
 | minishell: nonexistcmd: command not found$
 | 0$<-
 |
@@ -462,8 +455,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nofile: no such file or directory$
+| ->minishell: nofile: no such file or directory$
 | minishell: nonexistcmd: command not found$<-
 |
 |--- STDERR:
@@ -490,8 +482,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nofile: no such file or directory$
+| ->minishell: nofile: no such file or directory$
 | hii$
 | 0$<-
 |
@@ -517,8 +508,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nofile: no such file or directory$
+| ->minishell: nofile: no such file or directory$
 | hii$<-
 |
 |--- STDERR:

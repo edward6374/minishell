@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 18:22:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:23:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,19 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 	int	no_newline;
 
 	i = 1;
-	no_newline = is_n(args[1], &i);
+	if (args[1])
+		no_newline = is_n(args[1], &i);
+	else
+	{
+		printf("\n");
+		return (0);
+	}
 	while (args[i] != NULL)
 	{
 		if (!ft_strncmp(args[i], "-n", 3) && no_newline)
 		{
 			i++;
-			continue ;
+			continue;
 		}
 		if (tmp->next)
 			print_echo(args, i, p, 0);
@@ -74,9 +80,9 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 			print_echo(args, i, p, 1);
 		i++;
 	}
-	if (!no_newline && tmp->next)
+		if (!no_newline && tmp->next)
 		ft_putchar_fd('\n', p);
-	else if (!no_newline && !tmp->next)
+		else if (!no_newline && !tmp->next)
 		printf("\n");
-	return (0);
+		return (0);
 }

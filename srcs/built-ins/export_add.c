@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/21 18:25:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:58:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	export_add(t_env *env, char **args)
 		{
 			name = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
 			value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
+			printf(RED "NAME: %s\n", name);
+			printf(RED "VALUE: %s\n", value);
 			if (!is_name(name))
 			{
 				printf("minishell: export: `%s\': not a valid identifier\n",
@@ -83,14 +85,17 @@ int	export_add(t_env *env, char **args)
 				g_exit = 1;
 			}
 			if (!env_find(env, name, find_env))
+			{
+				printf("toma\n");
 				env_add_back(&env, new_env(name, value));
+			}
 			else
 			{
 				find = env_find(env, name, find_env);
 				free(find->value);
 				find->value = value;
 			}
-			g_exit = 0;
+			// g_exit = 0;
 			free(name);
 			i++;
 		}

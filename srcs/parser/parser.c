@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:45:56 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:42:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 // TODO
 // arreglar esta funcion de exit_status y ponerla en la ejecucion de los hijos
 
-int	print_words(t_parser *all_words)
-{
-	t_parser	*p;
+// int	print_words(t_parser *all_words)
+// {
+// 	t_parser	*p;
 
-	p = all_words;
-	while (p)
-	{
-		printf("Temp:-->%p\n", p);
-		printf("Word:--%s--\n", p->word);
-		printf("Next:-->%p\n", p->next);
-		printf("Before:-->%p\n\n", p->before);
-		p = p->next;
-	}
-	printf("Temp: %p\n", p);
-	return (0);
-}
+// 	p = all_words;
+// 	while (p)
+// 	{
+// 		printf("Temp:-->%p\n", p);
+// 		printf("Word:--%s--\n", p->word);
+// 		printf("Next:-->%p\n", p->next);
+// 		printf("Before:-->%p\n\n", p->before);
+// 		p = p->next;
+// 	}
+// 	printf("Temp: %p\n", p);
+// 	return (0);
+// }
 
 static int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 {
@@ -78,8 +78,8 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
-	return (print_words(all_words));
-	// return (0);
+	// return (print_words(all_words));
+	return (0);
 }
 
 int	parser(t_min *tk, char *line)

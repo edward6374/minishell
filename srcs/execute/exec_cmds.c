@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 14:17:19 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:44:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	execute_commands(t_min *tk)
 		run_here_doc(tmp);
 		tmp = tmp->next;
 	}
-	printf("Out cmds\n");
 	err = loop_commands(tk, child_pid, p, fd);
 	if (err == MALLOC)
 		return (free_all(tk, MALLOC));

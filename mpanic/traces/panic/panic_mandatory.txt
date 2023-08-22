@@ -18,8 +18,8 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdirtest$
-| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdirtest/.$<-
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| /Users/nmota-bu/Desktop/valerio/mpanic/testdirtest/.$<-
 |
 |--- STDERR:
 | ->mkdir: testdirtest: File exists$
@@ -30,8 +30,8 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 32098 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 63502 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -49,13 +49,14 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$<-
+| ->exit$
+| minishell: exit: --: number argument required$<-
 |
 |--- STDERR:
-| ->syntax error$<-
+| -><-
 |
 ---------------------------------------------<
 
@@ -77,8 +78,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: non_exist_file: no such file or directory$<-
+| ->minishell: non_exist_file: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -121,20 +121,20 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdir$
-| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+| ->/Users/nmota-bu/Desktop/valerio/mpanic/testdir$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | ->mkdir: testdir: File exists$
-| bash: line 7: cd: /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdir: No such file or directory$<-
+| bash: line 7: cd: /Users/nmota-bu/Desktop/valerio/mpanic/testdir: No such file or directory$<-
 |
 |--- COMPARED STR:
 | ->: File exists<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdir
-| ./mpanic.sh: line 164: 32299 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdir
+| ./mpanic.sh: line 164: 63703 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -147,9 +147,9 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$
-| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
-| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+| ->/Users/nmota-bu$
+| /Users/nmota-bu/Desktop/valerio/mpanic$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -159,10 +159,10 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mpwd [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kd
-| /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd -
-| ./mpanic.sh: line 164: 32358 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mpwd
+| /Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd -
+| ./mpanic.sh: line 164: 63760 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -172,7 +172,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -201,9 +201,9 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
-| PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdirtest$
-| OLDPWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -213,9 +213,9 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 32477 Segmentation fault: 11  ./minishell
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 63879 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -230,11 +230,11 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
-| PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testdirtest$
-| OLDPWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$
+| ->PWD=/Users/nmota-bu/Desktop/valerio/mpanic$
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic/testdirtest$
+| OLDPWD=/Users/nmota-bu/Desktop/valerio/mpanic$
 | OLDPWD=nosensedir$
-| PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | -><-
@@ -244,9 +244,9 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| PWD=/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic
-| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 32544 Segmentation fault: 11  ./minishell
+| PWD=/Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
+| ./mpanic.sh: line 164: 63946 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -273,8 +273,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -289,8 +287,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: >: no such file or directory$
+| ->minishell: >: no such file or directory$
 | &4$
 | <$
 | README.md$
@@ -304,8 +301,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$

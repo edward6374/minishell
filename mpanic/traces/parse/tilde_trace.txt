@@ -15,10 +15,10 @@
 | -><-
 |
 |--- STDERR:
-| ->bash: line 1: /Users/nacho: is a directory$<-
+| ->bash: line 1: /Users/nmota-bu: is a directory$<-
 |
 |--- COMPARED STR:
-| ->/Users/nacho: is a directory<-
+| ->/Users/nmota-bu: is a directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
@@ -36,7 +36,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -60,7 +60,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho/path$<-
+| ->/Users/nmota-bu/path$<-
 |
 |--- STDERR:
 | -><-
@@ -78,13 +78,37 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [220]
+|  CMD: ->echo ~$USER<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->~nmota-bu$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->nmota-bu$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [222]
 |  CMD: ->echo ~<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -102,6 +126,30 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [223]
+|  CMD: ->echo ~$USER/sdfsfsfdsfs<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->~nmota-bu/sdfsfsfdsfs$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->nmota-bu/sdfsfsfdsfs$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [224]
 |  CMD: ->unset HOME
 | echo ~<-
@@ -109,7 +157,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-

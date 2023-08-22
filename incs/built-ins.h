@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 16:36:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:00:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ int			ft_export(t_min *tk, t_cmd *temp, int p);
 
 // Utils
 char		**take_double(t_env *first);
-int			find_env(char *s1, char *s2);
+int			find_env(char *s1, char *s2, int mode);
 int			export_add(t_env *env, char **args);
 void		env_add_back(t_env **env, t_env *new_node);
 t_env		*new_env(char *str, char *value);
-t_env		*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *));
+t_env		*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *,
+					int));
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 14:12:16 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:10:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 		g_exit = WEXITSTATUS(status);
 		finished++;
 	}
-	printf(BLUE "Exit: %d\n", g_exit);
-	g_exit = WEXITSTATUS(final);
+	// printf(BLUE "Exit: %d\n", g_exit);
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);
