@@ -75,7 +75,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54678 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54320 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -99,7 +99,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54719 Abort trap: 6           ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54361 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -123,7 +123,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54760 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54402 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -147,7 +147,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54801 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54443 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -171,7 +171,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54842 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54484 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -195,7 +195,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54883 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54525 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -219,7 +219,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54924 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54566 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -243,7 +243,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54965 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54607 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -267,7 +267,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55006 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54648 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -291,7 +291,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55047 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54689 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -315,7 +315,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55088 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54730 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -339,7 +339,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55129 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54771 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -363,7 +363,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55170 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 54812 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -432,7 +432,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 55377 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 55019 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -453,7 +453,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 55418 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 55060 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -477,7 +477,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55459 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55101 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -501,7 +501,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55500 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55142 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -525,7 +525,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55541 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55183 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -549,7 +549,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55582 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55224 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -573,7 +573,7 @@
 | Parser error:
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55623 Segmentation fault: 11  ./minishell
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m./mpanic.sh: line 164: 55265 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

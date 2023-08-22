@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:43:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:34:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "signalm.h"
 #include "minishell.h"
+#include "signalm.h"
 
 unsigned char	g_exit = 0;
 
@@ -81,7 +81,8 @@ int	loop_main(t_min *tk)
 	line = readline(path);
 	if (!line)
 	{
-		// printf("NULL\n");
+		if (isatty(STDIN_FILENO))
+			write(2, "exit\n", 6);
 		return (free_pointer(path, 1));
 	}
 	else if (line && line[0] == '\0')

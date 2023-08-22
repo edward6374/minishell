@@ -22,7 +22,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 51761 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 51400 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -40,13 +40,9 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-|--- STDOUT:
-| ->|nmota-bu$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 51481 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -66,7 +62,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 51882 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 51522 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -84,13 +80,9 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-|--- STDOUT:
-| ->|nmota-bu$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 51563 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -190,78 +182,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [198]
-|  CMD: ->echo $" t hi t "<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> t hi t $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$ t hi t $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [199]
-|  CMD: ->echo $' t hi t '<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> t hi t $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$ t hi t $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [200]
-|  CMD: ->echo $' r hi t '<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> r hi t $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$ r hi t $<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [201]
 |  CMD: ->echo hi > "fi le"
 | rm "fi le"<-
@@ -350,13 +270,9 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-|--- STDOUT:
-| ->. hi, this is th$<-
-|
-|--- STDERR:
-| -><-
+| ./mpanic.sh: line 164: 53364 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
