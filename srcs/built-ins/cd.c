@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:25:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/18 23:11:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:26:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int static	change_directory(const char *path)
 	else
 	{
 		perror("cd");
-		return (MALLOC);
+		g_exit = 1;
+		return (1);
 	}
 }
 

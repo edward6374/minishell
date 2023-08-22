@@ -6,12 +6,14 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 11:15:23 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:24:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
+#include "signalm.h"
 #include "minishell.h"
+
+unsigned char	g_exit = 0;
 
 char	*get_curr_path(void)
 {
@@ -98,14 +100,14 @@ int	main(int argc, char *argv[], char *env[])
 	t_min	*tk;
 
 	(void)argv;
-//	signal(SIGQUIT, SIG_IGN);
-//	signal(SIGINT, siginthandler);
+	//	signal(SIGQUIT, SIG_IGN);
+	//	signal(SIGINT, siginthandler);
 	if (argc == 1)
 	{
 		tk = init_struct(env);
 		if (!tk)
 			return (end_program(NULL, MALLOC));
-		set_signals(tk, NORMAL);
+		set_signals(NORMAL);
 		while (42)
 		{
 			result = loop_main(tk);

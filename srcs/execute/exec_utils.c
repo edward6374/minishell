@@ -6,12 +6,13 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 11:05:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:24:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "execute.h"
+#include "minishell.h"
 
 void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 {
@@ -29,7 +30,9 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 		finished++;
 	}
 	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
-	tk->exit_value = WEXITSTATUS(final);
+	printf(BLUE "Exit: %d\n", g_exit);
+	// tk->exit_value = WEXITSTATUS(final);
+	g_exit = WEXITSTATUS(final);
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);
@@ -50,7 +53,7 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 	else if (!ft_strncmp("env", tmp->cmd, 4))
 		return (ft_env(tk, tmp, p));
 	else if (!ft_strncmp("exit", tmp->cmd, 5))
-		return (ft_exit(tk, tmp));
+		return (ft_exit(tmp));
 	return (-1);
 }
 

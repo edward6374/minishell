@@ -6,13 +6,14 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 11:01:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/21 18:27:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
+#include "minishell.h"
 
-int	ft_exit(t_min *tk, t_cmd *temp)
+int	ft_exit(t_cmd *temp)
 {
 	int	i;
 	int	value;
@@ -26,19 +27,19 @@ int	ft_exit(t_min *tk, t_cmd *temp)
 		if (!ft_isdigit(temp->args[1][i]))
 		{
 			printf("minishell: exit: %s: number argument required\n",
-				temp->args[1]);
-			tk->exit_value = 255;
+					temp->args[1]);
+			g_exit = 255;
 			return (0);
 		}
 	}
 	if (temp->args[2])
 	{
 		printf("minishell: exit: too manyn arguments\n");
-		tk->exit_value = 1;
+		g_exit = 1;
 		return (0);
 	}
 	value = ft_atoi(temp->args[1]);
-	tk->exit_value = value;
+	g_exit = value;
 	exit(value);
 	return (0);
 }
