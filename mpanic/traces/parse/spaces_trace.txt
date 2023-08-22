@@ -20,9 +20,13 @@
 |--- COMPARED STR:
 | ->: command not found<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 22371 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 

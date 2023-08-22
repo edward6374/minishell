@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:47 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 21:42:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 16:00:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-int	find_env(char *s1, char *s2)
+int	find_env(char *s1, char *s2, int mode)
 {
 	int	i;
 
@@ -23,22 +23,26 @@ int	find_env(char *s1, char *s2)
 		if (s1[i] == s2[i])
 			i++;
 		else
-			break;
-			// return (1);
+		{
+			if (!mode)
+				break ;
+			else
+				return (1);
+		}
 	}
 	if (s1[i] == '=')
 		return (0);
 	return (1);
 }
 
-t_env	*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *))
+t_env	*env_find(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))
 {
 	t_env	*curr;
 
 	curr = env;
 	while (curr)
 	{
-		if ((*cmp)(curr->name, data_ref) == 0)
+		if ((*cmp)(curr->name, data_ref, 1) == 0)
 			return (curr);
 		curr = curr->next;
 	}

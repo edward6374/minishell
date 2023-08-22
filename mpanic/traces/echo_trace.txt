@@ -6,26 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [1]
-|  CMD: ->echo<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 13480 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
 ---------------------------------------------> test [6]
 |  CMD: ->echo $NONEXIST<-
 |--------------------------------
@@ -40,9 +20,13 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 13690 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->$NONEXIST$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -80,10 +64,10 @@
 | ->what u execute bro?$<-
 |
 |--- STDERR:
-| ->cat: /Users/nacho/echo: No such file or directory$<-
+| ->cat: /Users/nmota-bu/echo: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->cho/echo: No such file or directory<-
+| ->ota-bu/echo: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
@@ -110,13 +94,10 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-|--- STDOUT:
-| ->minishell: EcHo: command not found$<-
-|
-|--- STDERR:
-| -><-
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mEcHo how u launch this without PATH??
+| ./mpanic.sh: line 164: 45834 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

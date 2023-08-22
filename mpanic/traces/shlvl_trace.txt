@@ -95,7 +95,31 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->unset SHLVL before ./minishell$<-
+| ->$SHLVL unset SHLVL before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [376]
+|  CMD: ->echo $SLVL 'export SHLVL='' before ./minishell'<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->export SHLVL= before ./minishell$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$SLVL export SHLVL= before ./minishell$<-
 |
 |--- STDERR:
 | -><-

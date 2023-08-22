@@ -6,50 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [274]
-|  CMD: ->> no_cmd_file
-| cat no_cmd_file
-| rm no_cmd_file<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 26801 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [275]
-|  CMD: ->>> no_cmd_test
-| cat no_cmd_test
-| rm no_cmd_test<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 26855 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
 ---------------------------------------------> test [276]
 |  CMD: ->echo hola | > filepipe
 | cat filepipe
@@ -66,11 +22,9 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (134)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| minishell(26910,0x7fffa2f31380) malloc: *** error for object 0x7f9b52c00004: pointer being freed was not allocated
-| *** set a breakpoint in malloc_error_break to debug
-| ./mpanic.sh: line 164: 26910 Abort trap: 6           ./minishell
+| ./mpanic.sh: line 164: 58324 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -94,53 +48,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 26973 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [283]
-|  CMD: ->> file echo hi
-| cat file
-| rm file<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 27301 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [284]
-|  CMD: ->>> file echo hi
-| >> file echo hi
-| cat file
-| rm file<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 27357 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 58386 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -168,8 +76,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -201,8 +107,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -238,8 +142,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -272,8 +174,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -309,8 +209,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -344,8 +242,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -381,8 +277,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -415,8 +309,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -452,8 +344,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -487,8 +377,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -523,8 +411,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -540,7 +426,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
+| ->hi >file2 >file hi$
 | &4$
 | <$
 | README.md$
@@ -548,23 +434,21 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
 | file_first$
 | file_second$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -592,8 +476,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -609,7 +491,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
+| ->hi >>file2 >>file hi$
 | &4$
 | <$
 | README.md$
@@ -617,23 +499,21 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
 | file_first$
 | file_second$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -663,8 +543,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -698,8 +576,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -736,8 +612,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -771,8 +645,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -809,8 +681,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -845,8 +715,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -883,8 +751,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -918,8 +784,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -956,8 +820,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -992,8 +854,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1030,8 +890,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1065,8 +923,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1102,8 +958,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1119,7 +973,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
+| ->hi >file3 >file2 >file hi$
 | &4$
 | <$
 | README.md$
@@ -1127,24 +981,22 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: file: No such file or directory$
+| rm: file: No such file or directory$
+| rm: file2: No such file or directory$
+| rm: file3: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1174,8 +1026,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1188,9 +1038,34 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 28280 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->hi hi$
+| hi hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file2$
+| file3$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1220,8 +1095,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1235,9 +1108,34 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 28339 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->hi hi$
+| hi hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file2$
+| file3$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1267,8 +1165,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1281,9 +1177,34 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 28398 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->hi hi$
+| hi hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file2$
+| file3$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1313,8 +1234,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1327,9 +1246,34 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 28457 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->hi hi$
+| hi hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file2$
+| file3$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1359,8 +1303,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1373,9 +1315,34 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 28517 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->minishell: >file3: command not found$
+| hi hi$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| doblequot$
+| echo$
+| file$
+| file2$
+| file3$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1396,9 +1363,6 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
 | filea$
@@ -1408,8 +1372,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1425,8 +1387,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
-| hi hi$
+| ->hi >filea >fileb >filec hi$
+| hi >filea >fileb >filec hi$
 | &4$
 | <$
 | README.md$
@@ -1434,27 +1396,22 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
-| filea$
-| fileb$
-| filec$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1475,9 +1432,6 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
 | filea$
@@ -1487,8 +1441,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1504,8 +1456,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
-| hi hi$
+| ->hi >filea >>fileb >filec hi$
+| hi >filea >>fileb >filec hi$
 | &4$
 | <$
 | README.md$
@@ -1513,27 +1465,22 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
-| filea$
-| fileb$
-| filec$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1554,9 +1501,6 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
 | filea$
@@ -1566,8 +1510,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1584,8 +1526,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
-| hi hi$
+| ->hi >filea >fileb >>filec hi$
+| hi >filea >fileb >>filec hi$
 | &4$
 | <$
 | README.md$
@@ -1593,27 +1535,22 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
-| filea$
-| fileb$
-| filec$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1634,9 +1571,6 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
 | filea$
@@ -1646,8 +1580,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -1663,8 +1595,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi hi$
-| hi hi$
+| ->hi >>filea >fileb >filec hi$
+| hi >>filea >fileb >filec hi$
 | &4$
 | <$
 | README.md$
@@ -1672,278 +1604,22 @@
 | cleaner.c$
 | doblequot$
 | echo$
-| file$
-| file2$
-| file3$
 | file_first$
 | file_second$
-| filea$
-| fileb$
-| filec$
 | filepipe$
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
 | traces$<-
 |
 |--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [308]
-|  CMD: ->echo hi > "doble"quote
-| cat doblequote
-| rm doblequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| ->cat: doblequote: No such file or directory$
-| rm: doblequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [309]
-|  CMD: ->echo hi >"doble"quote
-| cat doblequote
-| rm doblequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi $<-
-|
-|--- STDERR:
-| ->cat: doblequote: No such file or directory$
-| rm: doblequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [310]
-|  CMD: ->echo -n hi >>"doble"quote
-| echo -n hi >>"doble"quote
-| cat doblequote
-| rm doblequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hihi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi  " doblequothi  " doblequot<-
-|
-|--- STDERR:
-| ->cat: doblequote: No such file or directory$
-| rm: doblequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [311]
-|  CMD: ->echo hi > 'simple'quote
-| cat simplequote
-| rm simplequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| ->cat: simplequote: No such file or directory$
-| rm: simplequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [312]
-|  CMD: ->echo hi >'simple'quote
-| cat simplequote
-| rm simplequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi $<-
-|
-|--- STDERR:
-| ->cat: simplequote: No such file or directory$
-| rm: simplequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [313]
-|  CMD: ->echo -n hi >>'simple'quote
-| echo -n hi >>'simple'quote
-| cat simplequote
-| rm simplequote<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hihi<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi  ' simplequothi  ' simplequot<-
-|
-|--- STDERR:
-| ->cat: simplequote: No such file or directory$
-| rm: simplequote: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [315]
-|  CMD: ->echo hi >>'with spaces'
-| echo hi >>'with spaces'
-| cat 'with spaces'
-| rm 'with spaces'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi  ' with spaces$
-| hi  ' with spaces$<-
-|
-|--- STDERR:
-| ->cat: with spaces: No such file or directory$
-| rm: with spaces: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [316]
-|  CMD: ->echo hi > "mixed"'file 'name
-| cat "mixedfile name"
-| rm "mixedfile name"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| ->cat: mixedfile name: No such file or directory$
-| rm: mixedfile name: No such file or directory$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [317]
-|  CMD: ->echo hi >> "mixed"'file 'name
-| echo hi >> "mixed"'file 'name
-| cat "mixedfile name"
-| rm "mixedfile name"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$
-| hi$<-
-|
-|--- STDERR:
-| ->cat: mixedfile name: No such file or directory$
-| rm: mixedfile name: No such file or directory$<-
+| ->cat: filec: No such file or directory$
+| rm: filea: No such file or directory$
+| rm: fileb: No such file or directory$
+| rm: filec: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1966,10 +1642,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi 0$<-
+| ->minishell: file: no such file or directory$<-
 |
 |--- STDERR:
-| -><-
+| ->rm: file: No such file or directory$<-
 |
 ---------------------------------------------<
 
@@ -1993,7 +1669,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hola$<-
+| ->hola >&4$<-
 |
 |--- STDERR:
 | ->bash: 4: No such file or directory$<-
@@ -2113,8 +1789,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: testfolder: file not writeable$<-
+| ->minishell: testfolder: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -2138,8 +1813,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: testfolder: file not writeable$<-
+| ->minishell: testfolder: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -2163,8 +1837,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: testfolder: file not writeable$<-
+| ->minishell: testfolder: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -2188,8 +1861,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: testfolder: file not writeable$<-
+| ->minishell: testfolder: file not writeable$<-
 |
 |--- STDERR:
 | -><-
@@ -2215,8 +1887,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: file: file not writeable$<-
+| ->minishell: file: file not writeable$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
@@ -2242,8 +1913,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: file2: file not writeable$<-
+| ->minishell: file2: file not writeable$<-
 |
 |--- STDERR:
 | ->cat: file2: Permission denied$<-
@@ -2269,8 +1939,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: file: file not writeable$<-
+| ->minishell: file: file not writeable$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
@@ -2296,31 +1965,10 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 10$
-| minishell: file3: file not writeable$<-
+| ->minishell: file3: file not writeable$<-
 |
 |--- STDERR:
 | ->cat: file3: Permission denied$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [333]
-|  CMD: ->< file cat < file2<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi, I am the file2$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 30092 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -2341,8 +1989,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nonexist: no such file or directory$<-
+| ->minishell: nonexist: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -2358,16 +2005,15 @@
 | -><-
 |
 |--- STDERR:
-| ->bash: line 1: nacho: No such file or directory$<-
+| ->bash: line 1: nmota-bu: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->nacho: No such file or directory<-
+| ->nmota-bu: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: nacho: no such file or directory$<-
+| ->minishell: nmota-bu: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -2391,8 +2037,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 9$
-| minishell: file3: file not readable$<-
+| ->minishell: file3: file not readable$<-
 |
 |--- STDERR:
 | -><-
@@ -2416,8 +2061,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: non_exist: no such file or directory$<-
+| ->minishell: non_exist: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -2445,8 +2089,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -2462,8 +2104,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: non_exist: no such file or directory$
+| ->minishell: non_exist: no such file or directory$
 | &4$
 | <$
 | README.md$
@@ -2477,8 +2118,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -2510,8 +2149,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -2527,8 +2164,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->Take redir error: 8$
-| minishell: non_exist: no such file or directory$
+| ->minishell: non_exist: no such file or directory$
 | &4$
 | <$
 | README.md$
@@ -2542,8 +2178,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -2576,8 +2210,6 @@
 | minishell$
 | mixedfile nam$
 | mpanic.sh$
-| no_cmd_file$
-| no_cmd_test$
 | simplequot$
 | test$
 | testdir$
@@ -2589,9 +2221,31 @@
 |--- COMPARED STR:
 | ->non_exist: No such file or directory<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 30442 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->minishell: non_exist: no such file or directory$
+| &4$
+| <$
+| README.md$
+| cleaner$
+| cleaner.c$
+| correct$
+| doblequot$
+| echo$
+| file_first$
+| file_second$
+| filepipe$
+| minishell$
+| mixedfile nam$
+| mpanic.sh$
+| simplequot$
+| test$
+| testdir$
+| traces$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 

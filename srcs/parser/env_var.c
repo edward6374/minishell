@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:09:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:11:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,18 +122,18 @@ static t_env	*new_list_elem(t_env *found, t_env **old_tmp, t_vars *v, int *i)
 
 // TODO
 // Borrar esta funcion al final
-static int	print_list(t_env *env_list)
-{
-	t_env	*tmp;
+// static int	print_list(t_env *env_list)
+// {
+// 	t_env	*tmp;
 
-	tmp = env_list;
-	while (tmp)
-	{
-		printf("Env: %s\n", tmp->name);
-		tmp = tmp->next;
-	}
-	return (0);
-}
+// 	tmp = env_list;
+// 	while (tmp)
+// 	{
+// 		printf("Env: %s\n", tmp->name);
+// 		tmp = tmp->next;
+// 	}
+// 	return (0);
+// }
 
 t_env	*find_env_vars(t_env *env, t_vars *v)
 {
@@ -159,6 +159,6 @@ t_env	*find_env_vars(t_env *env, t_vars *v)
 				tmp = new_list_elem(found, &tmp, v, &i);
 		}
 	}
-	print_list(env_list);
+	// print_list(env_list);
 	return (env_list);
 }

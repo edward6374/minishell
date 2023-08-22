@@ -13,7 +13,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -24,10 +24,35 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$<-
+| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
 |
 |--- STDERR:
 | -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [100]
+|  CMD: ->pwd
+| cd ""
+| pwd<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/Users/nmota-bu/Desktop/valerio/mpanic$
+| /Users/nmota-bu/Desktop/valerio/mpanic$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| /Users/nmota-bu/Desktop/valerio/mpanic
+| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd ""
+| ./mpanic.sh: line 164: 49364 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -47,7 +72,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 17898 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49405 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -67,7 +92,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 17939 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49446 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -87,7 +112,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 17980 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49487 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -107,7 +132,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18021 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49528 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -127,7 +152,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18062 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49569 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -147,7 +172,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18104 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49610 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -167,7 +192,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18269 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49775 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -187,7 +212,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18317 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49823 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -207,7 +232,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18358 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49864 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -228,7 +253,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18413 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49919 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -239,7 +264,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val$<-
+| ->/Users/nmota-bu/Desktop/valerio$<-
 |
 |--- STDERR:
 | -><-
@@ -249,7 +274,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18463 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 49966 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -260,7 +285,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -270,7 +295,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18510 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50013 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -282,7 +307,7 @@
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->/Users/nacho$<-
+| ->/Users/nmota-bu$<-
 |
 |--- STDERR:
 | -><-
@@ -292,7 +317,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18560 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50063 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -312,7 +337,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18601 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50104 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -332,7 +357,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18655 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50156 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -352,7 +377,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18704 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50205 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -372,7 +397,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 18748 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 50249 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:06:26 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/17 22:50:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:01:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 #include "parser.h"
 
 char	*ft_envfind_to_dptr(t_env *env, void *data_ref, int (*cmp)(char *,
-			char *))
+			char *, int))
 {
 	t_env	*curr;
 
 	curr = env;
 	while (curr)
 	{
-		if ((*cmp)(curr->name, data_ref) == 0)
+		if ((*cmp)(curr->name, data_ref, 1) == 0)
 			return (curr->value);
 		curr = curr->next;
 	}

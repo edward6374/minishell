@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:13:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:11:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int	add_command(t_min **tk, t_parser **list, t_cmd *new)
 	char	*tmp;
 
 	err = 0;
-	printf("Add command: %p\n", (*list));
 	tmp = ft_strdup((*list)->word);
 	if (!tmp)
 		return (MALLOC);
