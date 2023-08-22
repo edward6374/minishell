@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:44:25 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 16:53:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 20:17:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int add_env_var(t_word *w, t_env **env)
 	i = -1;
 	while ((*env)->value[++i])
 		w->word[++w->l] = (*env)->value[i];
-	w->i += i;
+	w->i += ft_strlen((*env)->name);
 	next = (*env)->next;
 	free((*env)->name);
 	free((*env)->value);

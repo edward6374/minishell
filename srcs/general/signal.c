@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:50:19 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 15:39:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:20:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	norm_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
+		write(1, "Norm INT\n", 9);
 		ft_putchar_fd('\n', 1);
 		rl_replace_line("", 1);
 		rl_on_new_line();
@@ -33,11 +34,13 @@ void	interact_handler(int sig)
 	if (sig == SIGINT)
 	{
 		ft_putchar_fd('\n', 1);
+		write(1, "Inter INT\n", 10);
 		g_exit = 130;
 	}
 	else if (sig == SIGQUIT)
 	{
 		ft_putstr_fd("Quit: 3\n", 1);
+		write(1, "Inter QUIT\n", 11);
 		g_exit = 131;
 	}
 	return ;
@@ -47,6 +50,7 @@ void	heredoc_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
+		write(1, "Heredoc INT\n", 12);
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();

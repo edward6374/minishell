@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:44:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:32:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 		else
 			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
 					- 1]);
-		tk->num_cmds--;
+		set_g(tk, (*tmp)->ok);
 		*tmp = (*tmp)->next;
 		return (-1);
 	}
@@ -52,6 +52,7 @@ void	take_exit_value(t_cmd *tmp)
 	{
 		if (!ft_strncmp(tmp->args[i], "$?", 3))
 		{
+			printf("Exit: %d\n", g_exit);
 			free(tmp->args[i]);
 			tmp->args[i] = ft_strdup(ft_itoa(g_exit));
 			g_exit = 0;

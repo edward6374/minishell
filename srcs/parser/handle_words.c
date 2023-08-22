@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_words.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:38:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:17:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ int	multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end)
 	return (0);
 }
 
+// TODO
+// Revisar loop
+
 int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 {
 	char	c;
@@ -106,7 +109,7 @@ int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 	if (!w->word)
 		return (MALLOC);
 	w->i = *w->idx + 1;
-	while (v->s[w->i] != c)
+	while (v->s[w->i] != c && v->s[w->i] != '\0')
 	{
 		if (w->k && v->s[w->i] == '$' && *env && !ft_strncmp(&v->s[w->i + 1],
 				(*env)->name, ft_strlen((*env)->name) - 1))

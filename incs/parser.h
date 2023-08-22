@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:52:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 20:17:36 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_cmd *set_new_command(int *number);
 int load_commands(t_min *tk, t_parser *list);
 
 /* ---			Env_var.c			--- */
-int add_env_var(t_word *w, t_env **env);
 int check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
 t_env *find_env_vars(t_env *env, t_vars *v);
 

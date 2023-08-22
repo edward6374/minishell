@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:10:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:32:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "execute.h"
 #include "minishell.h"
+
+void set_g(t_min *tk, int ok)
+{
+	printf("OK: %d\n", ok);
+	if (ok == 6)
+		g_exit = 127;
+	else if (ok == 7)
+		g_exit = 126;
+	else
+		g_exit = 1;
+	tk->num_cmds = tk->num_cmds - 1;
+}
 
 void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 {
@@ -27,10 +39,11 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	{
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
 			final = status;
-		g_exit = WEXITSTATUS(status);
+		g_exit = WEXITSTATUS(final);
 		finished++;
 	}
-	// printf(BLUE "Exit: %d\n", g_exit);
+	// g_exit = WEXITSTATUS(final);
+	printf(BLUE "Exit: %d\n", g_exit);
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);

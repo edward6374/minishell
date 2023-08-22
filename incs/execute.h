@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/16 18:26:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 20:32:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		execute_commands(t_min *tk);
 /* ---			Utils.c				--- */
 int		is_builtin(t_min *tk, t_cmd *tmp, int p);
 char	**take_double(t_env *first);
+void set_g(t_min *tk, int ok);
 void 	end_exec(t_min *tk, pid_t *child_pid, char **env);
 
 /* ---			Pipes_and_hdoc			--- */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 11:22:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 17:19:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ enum
 	SYNTAX,
 	PIPE_FIRST,
 	ONLY_REDIR,
-	OPEN_FAILED,
-	CMD_NOT_FOUND,
-	CMD_FOUND_NOT_EX,
-	FILE_NOT_FOUND,
-	FILE_NOT_READ,
-	FILE_NOT_WRITE,
+	OPEN_FAILED,	  // 1
+	CMD_NOT_FOUND,	  // 127
+	CMD_FOUND_NOT_EX, // 126
+	FILE_NOT_FOUND,	  // 1
+	FILE_NOT_READ,	  // 1
+	FILE_NOT_WRITE,	  // 1
 };
 
 const static char *g_error_array[] = {
@@ -56,7 +56,7 @@ const static char *g_error_array[] = {
 	"syntax error near unexpected token `newline\'",
 	"open error",
 	"command not found",
-	"permission error",
+	"permission denied",
 	"no such file or directory",
 	"file not readable",
 	"file not writeable",

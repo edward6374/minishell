@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 17:00:53 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 20:17:15 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ static t_env *new_list_elem(t_env *found, t_env **old_tmp, t_vars *v, int *i)
 
 // TODO
 // Borrar esta funcion al final
-// static int	print_list(t_env *env_list)
+// static int print_list(t_env *env_list)
 // {
-// 	t_env	*tmp;
+// 	t_env *tmp;
 
 // 	tmp = env_list;
 // 	while (tmp)
@@ -138,7 +138,6 @@ t_env *find_env_vars(t_env *env, t_vars *v)
 			}
 			else if (found)
 				tmp = new_list_elem(found, &tmp, v, &i);
-			printf("Found: %p\n", found);
 		}
 	}
 	// print_list(env_list);

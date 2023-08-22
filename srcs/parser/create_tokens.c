@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:14:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:20:53 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,6 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
-	// print_commands(tk);
+	print_commands(tk);
 	return (0);
 }
