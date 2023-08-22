@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 13:16:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 10:57:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parser.h"
 #include <fcntl.h>
+#include "parser.h"
 
 void	change_tmp(t_parser **tmp)
 {
@@ -49,7 +49,7 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 			new->hdoc->first = 0;
 		if (new->in_fd != 0)
 			close(new->in_fd);
-		err = check_access((*tmp)->next->word, 2);
+		err = check_access(NULL, (*tmp)->next->word, 2);
 		if (err)
 			return (err);
 		new->in_fd = open((*tmp)->next->word, O_RDWR);
@@ -72,8 +72,8 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	if (new->out_fd != 1)
 		close(new->out_fd);
-	if (check_access((*tmp)->next->word, 0))
-		return (FILE_NOT_READ);
+	if (check_access(NULL, (*tmp)->next->word, 0))
+		return (FILE_NOT_WRITE);
 	if (mode)
 		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
 				0644);
@@ -110,9 +110,9 @@ int	rel_path_file(t_parser **tmp, t_cmd *new)
 
 int	take_redir(t_parser **tmp, t_cmd *new)
 {
-
 	if ((!ft_strncmp((*tmp)->word, "<", 2) || !ft_strncmp((*tmp)->word, ">", 2)
-		|| !ft_strncmp((*tmp)->word, ">>", 3)) && (*tmp)->next->word[0] != '/')
+			|| !ft_strncmp((*tmp)->word, ">>", 3))
+		&& (*tmp)->next->word[0] != '/')
 	{
 		if (rel_path_file(tmp, new))
 			return (free_commands(&new, MALLOC));

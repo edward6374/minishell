@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 14:24:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:05:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	while (finished < tk->num_cmds)
 	{
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
-		{
 			final = status;
-//			printf("Final: %d\n", final);
-		}
 		finished++;
 	}
 	printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
@@ -40,19 +37,19 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 
 int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 {
-	if (!ft_strncmp("echo", tmp->args[0], 5))
+	if (!ft_strncmp("echo", tmp->cmd, 5))
 		return (ft_echo(tmp, tmp->args, p));
-	else if (!ft_strncmp("cd", tmp->args[0], 3))
+	else if (!ft_strncmp("cd", tmp->cmd, 3))
 		return (ft_cd(tmp->args, tk->env));
-	else if (!ft_strncmp("pwd", tmp->args[0], 4))
+	else if (!ft_strncmp("pwd", tmp->cmd, 4))
 		return (ft_pwd(tmp, p));
-	else if (!ft_strncmp("export", tmp->args[0], 7))
+	else if (!ft_strncmp("export", tmp->cmd, 7))
 		return (ft_export(tk, tmp, p));
-	else if (!ft_strncmp("unset", tmp->args[0], 6))
+	else if (!ft_strncmp("unset", tmp->cmd, 6))
 		return (ft_unset(tk, tmp));
-	else if (!ft_strncmp("env", tmp->args[0], 4))
+	else if (!ft_strncmp("env", tmp->cmd, 4))
 		return (ft_env(tk, tmp, p));
-	else if (!ft_strncmp("exit", tmp->args[0], 5))
+	else if (!ft_strncmp("exit", tmp->cmd, 5))
 		return (ft_exit(tk, tmp));
 	return (-1);
 }

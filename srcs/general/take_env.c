@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 21:21:58 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 10:41:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	take_env(t_min *tk, char *env[])
 			return (free_env(new));
 		tmp = save_node(tk, new, tmp);
 	}
-	print_env(tk->env);
+	// print_env(tk->env);
 	return (0);
 }

@@ -6,14 +6,16 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 21:59:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 10:57:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parser.h"
+#include "parser.h"
 
-int	check_access(char *str, int mode)
+int	check_access(char *to_free, char *str, int mode)
 {
+	if (to_free)
+		free(to_free);
 	if (mode == 1)
 	{
 		if (access(str, X_OK) == 0)
@@ -30,11 +32,11 @@ int	check_access(char *str, int mode)
 			return (FILE_NOT_READ);
 		return (FILE_NOT_FOUND);
 	}
-	if (access(str, W_OK) == 0)
-		return (0);
-	if (access(str, F_OK) == 0)
+	if (access(str, F_OK) == 0 && access(str, W_OK) != 0)
 		return (FILE_NOT_WRITE);
-	return (FILE_NOT_FOUND);
+	// if (access(str, F_OK) == 0)
+		// return (FILE_NOT_WRITE);
+	return (0);
 }
 
 t_cmd	*set_new_command(int *number)
@@ -84,7 +86,7 @@ t_cmd	*get_last_cmd(t_min **tk)
 int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 {
 	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
-		|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
+			|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
 		&& add_word(word_lst, w->word))
 		return (MALLOC);
 	else if (v->stp > 0 && v->s[*w->idx - 1] != ' ' && v->s[*w->idx - 1] != '<'
@@ -93,7 +95,7 @@ int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 		return (MALLOC);
 	*w->idx = w->i;
 	v->stp = w->i + 1;
-	free(w->word);
+	w->word = NULL;
 	w->k = 0;
 	v->dq = 0;
 	v->sq = 0;

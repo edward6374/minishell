@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 13:07:41 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:15:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ enum
 };
 
 const static char *g_error_array[] = {
-	"malloc error",
-	"syntax error",
+	"Malloc error",
+	"Syntax error",
 	"syntax error near unexpected token `|\'",
 	"syntax error near unexpected token `newline\'",
 	"open error",

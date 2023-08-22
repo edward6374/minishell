@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 21:59:50 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 10:49:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 	while (v->s[++w.i] != '\"')
 	{
 		if (v->s[w.i] == '$' && !ft_strncmp(tmp->name, &v->s[w.i],
-			ft_strlen(tmp->name) - 1))
+				ft_strlen(tmp->name) - 1))
 		{
 			w.count += ft_strlen(tmp->value);
 			tmp = tmp->next;
@@ -48,7 +48,6 @@ int	words_sin_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 	w.i = *idx;
 	w.idx = idx;
 	w.count = 0;
-	printf("Single quotes\n");
 	if (v->s[*idx] == '\'' && v->s[*idx + 1] == '\"' && v->oq++ && v->sq--)
 		return (0);
 	while (v->s[++w.i] != '\'')
@@ -91,9 +90,8 @@ void	check_quotes(t_vars *vars, char *c)
 		vars->dq = 1;
 	else if (*c == '\"' && vars->dq == 1)
 		vars->dq = 0;
-	if (vars->sq == 0 && vars->dq == 0 && (*c != '\'' || *c != '\"')) //&& *(c + 1) == ' ')
+	if (vars->sq == 0 && vars->dq == 0 && (*c != '\'' || *c != '\"'))
 		vars->oq = 1;
 	else
 		vars->oq = 0;
-//	printf("C: %c\tSq: %d\tDq: %d\tOq: %d\n", *c, vars->sq, vars->dq, vars->oq);
 }

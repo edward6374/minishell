@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 13:04:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:15:23 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	loop_main(t_min *tk)
 	line = readline(path);
 	if (!line)
 	{
-		printf("NULL\n");
+		// printf("NULL\n");
 		return (free_pointer(path, 1));
 	}
 	else if (line && line[0] == '\0')

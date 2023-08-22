@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 23:04:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 11:14:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parser.h"
+#include "parser.h"
 
 int	loop_arguments(t_parser **list, t_parser **next, t_cmd *new, int k)
 {
@@ -68,13 +68,11 @@ int	join_paths(char **tmp, char *env)
 	t2 = ft_strjoin(t1, *tmp);
 	if (!t2)
 		return (free_pointer(t1, MALLOC + 1));
-	free(t1);
-	err = check_access(t2, 1);
+	err = check_access(t1, t2, 1);
 	if (err)
 	{
 		free(t2);
-		if (err != CMD_NOT_FOUND)
-			err++;
+		((err != CMD_NOT_FOUND) && (err++));
 		return (err);
 	}
 	free(*tmp);
@@ -93,7 +91,7 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
 	{
 		ft_free_dptr(path);
-		return (check_access((*tmp), 1));
+		return (check_access(NULL, (*tmp), 1));
 	}
 	while (path[++i])
 	{

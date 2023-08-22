@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/19 17:41:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 10:51:56 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		load_commands(t_min *tk, t_parser *list);
 
 /* ---			Env_var.c			--- */
 int		add_env_var(t_word *w , t_env **env);
-int		env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
+int		check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
 t_env	*find_env_vars(t_env *env, t_vars *v);
 
 /* ---			Handle_quotes.c				--- */
@@ -92,7 +92,7 @@ char	**path_env(t_env *env);
 int 	take_redir(t_parser **tmp, t_cmd *new);
 
 /* ---			Utils.c			--- */
-int		check_access(char *str, int mode);
+int		check_access(char *to_free, char *str, int mode);
 int		end_refill(t_parser **word_lst, t_vars *v, t_word *w);
 void	set_vars(t_vars *v, char *s);
 t_cmd	*get_last_cmd(t_min **tk);
