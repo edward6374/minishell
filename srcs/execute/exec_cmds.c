@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:47:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:17:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,22 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	return (-1);
 }
 
+void	take_exit_value(t_cmd *tmp)
+{
+	int	i;
+
+	i = 0;
+	while (tmp->args[++i])
+	{
+		if (!ft_strncmp(tmp->args[i], "$?", 3))
+		{
+			free(tmp->args[i]);
+			tmp->args[i] = ft_strdup(ft_itoa(g_exit));
+			g_exit = 0;
+		}
+	}
+}
+
 int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 {
 	pid_t	pid;
@@ -55,6 +71,7 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		take_exit_value(tmp);
 		set_signals(INTERACT);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
 			continue ;

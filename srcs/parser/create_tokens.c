@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 13:25:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:27:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 		{
 			err = take_redir(list, new);
 			tmp = *list;
-			if (err == -1)
+			if (err == -1 && *list)
 				tmp = tmp->next;
 		}
 		else
@@ -51,7 +51,6 @@ void	print_commands(t_min *tk)
 
 	i = 0;
 	cmd = tk->cmds;
-	printf("Comm %p\n", cmd);
 	while (cmd)
 	{
 		k = -1;
@@ -120,9 +119,14 @@ int	load_commands(t_min *tk, t_parser *list)
 		new = set_new_command(&tk->num_cmds);
 		if (!new)
 			return (free_parser(list, free_all(tk, MALLOC)));
-		err = look_for_redir(&list, new);
-		if (err == MALLOC)
+		if (look_for_redir(&list, new) == MALLOC)
 			return (free_all(tk, MALLOC));
+		if (!list)
+		{
+			if (new->hdoc->yes)
+				run_here_doc(new);
+			break ;
+		}
 		err = create_token(&tk, &list, new);
 		if (err)
 			return (free_all(tk, err));

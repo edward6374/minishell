@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:43:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 14:12:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	{
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
 			final = status;
+		g_exit = WEXITSTATUS(status);
 		finished++;
 	}
-	// printf(RED "Status: %d\n" WHITE, WEXITSTATUS(final));
 	printf(BLUE "Exit: %d\n", g_exit);
-	// tk->exit_value = WEXITSTATUS(final);
 	g_exit = WEXITSTATUS(final);
 	if (child_pid)
 		free(child_pid);
