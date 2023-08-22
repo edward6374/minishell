@@ -126,32 +126,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [26]
-|  CMD: ->export TEST=test TESTT=test2
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$
-| declare -x TESTT="test2"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test2"$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [27]
 |  CMD: ->export TEST=test W:RON:G=wrong TESTT=test2
 | export | grep TEST wrong<-
@@ -199,6 +173,7 @@
 |
 |--- STDOUT:
 | ->declare -x EMPTY=""$
+| declare -x EMPTY_TOO=""$
 | declare -x NOT_EMPTY="contnent"$<-
 |
 |--- STDERR:
@@ -226,7 +201,8 @@
 |
 |--- STDOUT:
 | ->minishell: export: `TEST+= added value': not a valid identifier$
-| declare -x TEST=" added value"$<-
+| declare -x TEST+=" added value"$
+| declare -x TEST="value"$<-
 |
 |--- STDERR:
 | -><-

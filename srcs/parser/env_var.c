@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:11:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:17:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 			&& add_word(word_lst, data.word)))
 		return (MALLOC);
 	else if (!data.word || (v->stp > 0 && v->s[v->stp - 1] != ' '
-			&& join_words(word_lst, data.word)))
+				&& join_words(word_lst, data.word)))
 		return (MALLOC);
 	if (data.l)
 		v->stp = (*data.idx)--;
@@ -52,10 +52,8 @@ int	check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 		if (!data.word || create_word(word_lst, v, i, 1))
 			return (MALLOC);
 	}
-	printf("Diff: %d\n", ft_strncmp(&v->s[*i], "$?", 3));
 	if (!ft_strncmp(&v->s[*i], "$?", 3))
 	{
-		printf("Exit value var\n");
 		*i += 3;
 		data.l = 1;
 		data.word = ft_substr(v->s, v->stp, *i - v->stp);
@@ -63,15 +61,13 @@ int	check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 		// return (MALLOC);
 	}
 	else if (!(*env) || ft_strncmp(&v->s[*i + 1], (*env)->name,
-			ft_strlen((*env)->name) - 1))
+				ft_strlen((*env)->name) - 1))
 	{
-		printf("No corrispondence var\n");
 		data.l = 1;
 		if (v->s[++(*i)] == '?')
 			(*i)++;
 		while (ft_isalnum(v->s[(*i)]))
 			(*i)++;
-		printf("I: %d\tChar %c\n", *i, v->s[*i]);
 		data.word = ft_strdup("");
 	}
 	else

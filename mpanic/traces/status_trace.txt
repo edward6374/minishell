@@ -25,7 +25,7 @@
 |
 |--- STDOUT:
 | ->minishell:  : command not found$
-| 0$<-
+| 127$<-
 |
 |--- STDERR:
 | -><-
@@ -275,7 +275,7 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| 0$<-
+| 127$<-
 |
 |--- STDERR:
 | -><-
@@ -327,7 +327,7 @@
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
 | hi$
-| 0$<-
+| 127$<-
 |
 |--- STDERR:
 | -><-
@@ -378,7 +378,7 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| 0$<-
+| 127$<-
 |
 |--- STDERR:
 | -><-
@@ -430,7 +430,7 @@
 |--- STDOUT:
 | ->minishell: nofile: no such file or directory$
 | minishell: nonexistcmd: command not found$
-| 0$<-
+| 127$<-
 |
 |--- STDERR:
 | -><-

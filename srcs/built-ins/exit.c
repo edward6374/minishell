@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 18:27:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:34:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_exit(t_cmd *temp)
 	int	value;
 
 	i = -1;
-	printf("exit\n");
+	if (isatty(STDIN_FILENO))
+		write(2, "exit\n", 6);
 	if (!temp->args[1])
 		exit(0);
 	while (temp->args[1][++i])

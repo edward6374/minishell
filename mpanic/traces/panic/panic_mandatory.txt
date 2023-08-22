@@ -31,7 +31,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 63502 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 63091 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -52,8 +52,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: --: number argument required$<-
+| ->minishell: exit: --: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -134,7 +133,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdir
-| ./mpanic.sh: line 164: 63703 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 63292 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -162,7 +161,7 @@
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mpwd
 | /Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd -
-| ./mpanic.sh: line 164: 63760 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 63349 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -215,7 +214,7 @@
 |
 | PWD=/Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 63879 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 63468 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -246,7 +245,7 @@
 |
 | PWD=/Users/nmota-bu/Desktop/valerio/mpanic
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mcd testdirtest
-| ./mpanic.sh: line 164: 63946 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 63535 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

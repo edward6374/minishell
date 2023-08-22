@@ -6,30 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [6]
-|  CMD: ->echo $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$NONEXIST$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [7]
 |  CMD: ->echoecho<-
 |--------------------------------
@@ -97,7 +73,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
 | [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mEcHo how u launch this without PATH??
-| ./mpanic.sh: line 164: 45834 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 45468 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

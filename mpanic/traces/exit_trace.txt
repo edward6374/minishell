@@ -6,30 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [43]
-|  CMD: ->exit<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [44]
 |  CMD: ->exit ""<-
 |--------------------------------
@@ -47,7 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -71,8 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit:  : number argument required$<-
+| ->minishell: exit:  : number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -96,8 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit:  : number argument required$<-
+| ->minishell: exit:  : number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -121,8 +95,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit:  : number argument required$<-
+| ->minishell: exit:  : number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -146,8 +119,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: 42network: number argument required$<-
+| ->minishell: exit: 42network: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -171,8 +143,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: +: number argument required$<-
+| ->minishell: exit: +: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -196,8 +167,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: ++: number argument required$<-
+| ->minishell: exit: ++: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -221,8 +191,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -: number argument required$<-
+| ->minishell: exit: -: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -246,32 +215,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: ---: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [53]
-|  CMD: ->exit 0<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: ---: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -295,8 +239,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: +0: number argument required$<-
+| ->minishell: exit: +0: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -320,8 +263,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: ++0: number argument required$<-
+| ->minishell: exit: ++0: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -345,8 +287,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -0: number argument required$<-
+| ->minishell: exit: -0: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -370,32 +311,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: --0: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [58]
-|  CMD: ->exit 1<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: --0: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -419,8 +335,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: +1: number argument required$<-
+| ->minishell: exit: +1: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -444,8 +359,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: ++1: number argument required$<-
+| ->minishell: exit: ++1: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -469,8 +383,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -1: number argument required$<-
+| ->minishell: exit: -1: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -494,8 +407,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: --1: number argument required$<-
+| ->minishell: exit: --1: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -519,8 +431,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit:  3: number argument required$<-
+| ->minishell: exit:  3: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -544,32 +455,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: 3 : number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [65]
-|  CMD: ->exit 255<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: 3 : number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -593,32 +479,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -255: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [67]
-|  CMD: ->exit 256<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: -255: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -642,56 +503,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -256: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [69]
-|  CMD: ->exit 2147483647<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [70]
-|  CMD: ->exit 2147483648<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: -256: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -715,8 +527,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -2147483648: number argument required$<-
+| ->minishell: exit: -2147483648: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -740,56 +551,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -2147483649: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [73]
-|  CMD: ->exit 4294967295<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [74]
-|  CMD: ->exit 4294967296<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: -2147483649: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -813,8 +575,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -4294967296: number argument required$<-
+| ->minishell: exit: -4294967296: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -838,32 +599,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -4294967297: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [77]
-|  CMD: ->exit 9223372036854775807<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
-|
-|--- STDOUT:
-| ->exit$<-
+| ->minishell: exit: -4294967297: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -887,7 +623,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -911,8 +647,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -9223372036854775808: number argument required$<-
+| ->minishell: exit: -9223372036854775808: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -936,8 +671,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -9223372036854775809: number argument required$<-
+| ->minishell: exit: -9223372036854775809: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -961,7 +695,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->exit$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -985,7 +719,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -1009,8 +743,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -18446744073709551616: number argument required$<-
+| ->minishell: exit: -18446744073709551616: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -1034,8 +767,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: -18446744073709551617: number argument required$<-
+| ->minishell: exit: -18446744073709551617: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -1059,55 +791,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
 | -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [86]
-|  CMD: ->exit 0000000000000000000000<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [87]
-|  CMD: ->exit 0000000000000000000001<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
-| ->exit$<-
 |
 |--- STDERR:
 | -><-
@@ -1131,8 +815,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: too manyn arguments$<-
+| ->minishell: exit: too manyn arguments$<-
 |
 |--- STDERR:
 | -><-
@@ -1157,8 +840,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: too manyn arguments$
+| ->minishell: exit: too manyn arguments$
 | should not exit$<-
 |
 |--- STDERR:
@@ -1183,8 +865,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: too manyn arguments$<-
+| ->minishell: exit: too manyn arguments$<-
 |
 |--- STDERR:
 | -><-
@@ -1208,8 +889,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$
-| minishell: exit: not: number argument required$<-
+| ->minishell: exit: not: number argument required$<-
 |
 |--- STDERR:
 | -><-
@@ -1233,7 +913,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (42)
 |
 |--- STDOUT:
-| ->exit$<-
+| -><-
 |
 |--- STDERR:
 | -><-
@@ -1284,8 +964,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: aaa: command not found$
-| exit$<-
+| ->minishell: aaa: command not found$<-
 |
 |--- STDERR:
 | -><-
@@ -1310,8 +989,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (1)
 |
 |--- STDOUT:
-| ->minishell: aaa: command not found$
-| exit$<-
+| ->minishell: aaa: command not found$<-
 |
 |--- STDERR:
 | -><-
@@ -1336,32 +1014,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->exit$<-
-|
-|--- STDERR:
-| ->cat: file: Permission denied$<-
-|
----------------------------------------------<
-
----------------------------------------------> test [97]
-|  CMD: ->cat file
-| exit 1<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
 | -><-
-|
-|--- STDERR:
-| ->cat: file: Permission denied$<-
-|
-|--- COMPARED STR:
-| ->mission denied<-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (1)
-|
-|--- STDOUT:
-| ->exit$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
