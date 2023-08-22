@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:57:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 13:15:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	change_tmp(t_parser **tmp)
 		*tmp = before_tmp;
 		before_tmp = NULL;
 	}
-	else
+	else if (*tmp)
 		(*tmp)->before = NULL;
 }
 
@@ -125,5 +125,5 @@ int	take_redir(t_parser **tmp, t_cmd *new)
 		return (major_redir(tmp, new, 0));
 	else if (!ft_strncmp((*tmp)->word, ">>", 3))
 		return (major_redir(tmp, new, 1));
-	return (0);
+	return (-1);
 }

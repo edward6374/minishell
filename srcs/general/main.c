@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 11:24:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 12:43:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,14 @@ int	main(int argc, char *argv[], char *env[])
 	t_min	*tk;
 
 	(void)argv;
-	//	signal(SIGQUIT, SIG_IGN);
-	//	signal(SIGINT, siginthandler);
 	if (argc == 1)
 	{
 		tk = init_struct(env);
 		if (!tk)
 			return (end_program(NULL, MALLOC));
-		set_signals(NORMAL);
 		while (42)
 		{
+			set_signals(NORMAL);
 			result = loop_main(tk);
 			if (result == 1)
 				return (d_key(&tk));

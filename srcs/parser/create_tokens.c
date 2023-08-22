@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:51:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 13:25:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,28 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 	int			err;
 	t_parser	*tmp;
 
-	tmp = (*list);
+	tmp = *list;
 	while (tmp && ft_strncmp(tmp->word, "|", 2))
 	{
-		err = take_redir(&tmp, new);
-		if (err == MALLOC)
-			return (free_parser(*list, MALLOC));
-		else if (err)
+		if (!ft_strncmp((*list)->word, "<<", 3)
+			|| !ft_strncmp((*list)->word, "<", 2)
+			|| !ft_strncmp((*list)->word, ">>", 3)
+			|| !ft_strncmp((*list)->word, ">", 2))
 		{
-			printf("Take redir error: %d\n", err);
+			err = take_redir(list, new);
+			tmp = *list;
+			if (err == -1)
+				tmp = tmp->next;
+		}
+		else
+			err = take_redir(&tmp, new);
+		if (err > 1)
+		{
 			new->ok = err;
 			return (err);
 		}
-		tmp = tmp->next;
+		if (tmp)
+			tmp = tmp->next;
 	}
 	return (0);
 }

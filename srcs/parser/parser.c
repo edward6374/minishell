@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:59:19 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 12:45:56 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
-	// return (print_words(all_words));
-	return (0);
+	return (print_words(all_words));
+	// return (0);
 }
 
 int	parser(t_min *tk, char *line)

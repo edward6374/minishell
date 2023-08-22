@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signalm.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:54:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/21 16:56:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:39:05 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ enum
 {
 	NORMAL,
 	INTERACT,
+	HEREDOC,
 };
 
 void	set_signals(int mode);

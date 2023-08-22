@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 11:24:29 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 12:47:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		set_signals(INTERACT);
 		if (check_before_exec(tk, &tmp, p, &fd) == -1)
 			continue ;
 		pid = fork();
 		if (pid == 0)
 		{
-			set_signals(INTERACT);
-			//			signal(SIGQUIT, siginthandler);
 			redirect_pipes(tmp, p, fd);
 			close_here_doc(tk);
 			execve(tmp->cmd, tmp->args, env);
@@ -91,9 +90,11 @@ int	execute_commands(t_min *tk)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		set_signals(HEREDOC);
 		run_here_doc(tmp);
 		tmp = tmp->next;
 	}
+	printf("Out cmds\n");
 	err = loop_commands(tk, child_pid, p, fd);
 	if (err == MALLOC)
 		return (free_all(tk, MALLOC));
