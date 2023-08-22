@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 14:27:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:19:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 	tmp = *list;
 	while (tmp && ft_strncmp(tmp->word, "|", 2))
 	{
-		if (!ft_strncmp((*list)->word, "<<", 3)
-			|| !ft_strncmp((*list)->word, "<", 2)
-			|| !ft_strncmp((*list)->word, ">>", 3)
+		if (!ft_strncmp((*list)->word, "<<", 3) || !ft_strncmp((*list)->word,
+				"<", 2) || !ft_strncmp((*list)->word, ">>", 3)
 			|| !ft_strncmp((*list)->word, ">", 2))
 		{
 			err = take_redir(list, new);
@@ -93,7 +92,11 @@ static int	create_token(t_min **tk, t_parser **list, t_cmd *new)
 	if (err == MALLOC)
 		return (free_commands(&new, free_parser(*list, MALLOC)));
 	else if (err && !new->ok)
+	{
+		if (err == CMD_NOT_FOUND)
+			g_exit = 127;
 		new->ok = err;
+	}
 	if (add_arguments(list, new))
 		return (free_commands(&new, free_parser(*list, MALLOC)));
 	if (!(*tk)->cmds)

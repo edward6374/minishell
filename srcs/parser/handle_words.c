@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_words.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:49:16 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:38:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	if (!mode)
 	{
 		len = 1;
-		if (((v->s[*i] == '<' && v->s[*i + 1] == '<')
-				|| (v->s[*i] == '>' && v->s[*i + 1] == '>')) && (*i)++)
+		if (((v->s[*i] == '<' && v->s[*i + 1] == '<') || (v->s[*i] == '>'
+					&& v->s[*i + 1] == '>')) && (*i)++)
 			len++;
 	}
 	else
@@ -86,8 +86,7 @@ int	multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end)
 			if (create_word(word_lst, v, &i, 0))
 				return (MALLOC);
 		}
-		else if (v->s[i] == '$' && (*env)
-			&& check_env_word(word_lst, env, v, &i))
+		else if (v->s[i] == '$' && check_env_word(word_lst, env, v, &i))
 			return (MALLOC);
 	}
 	if (i - v->stp > 0 && create_word(word_lst, v, &i, 1))
@@ -109,9 +108,8 @@ int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 	w->i = *w->idx + 1;
 	while (v->s[w->i] != c)
 	{
-		if (w->k && v->s[w->i] == '$' && *env
-			&& !ft_strncmp(&v->s[w->i + 1], (*env)->name, \
-				ft_strlen((*env)->name) - 1))
+		if (w->k && v->s[w->i] == '$' && *env && !ft_strncmp(&v->s[w->i + 1],
+				(*env)->name, ft_strlen((*env)->name) - 1))
 			add_env_var(w, env);
 		else
 			w->word[++w->l] = v->s[w->i++];
@@ -119,5 +117,5 @@ int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 	w->word[++w->l] = '\0';
 	if (end_refill(word_lst, v, w))
 		return (MALLOC);
-	return (0); 
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 10:57:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:14:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	check_access(char *to_free, char *str, int mode)
 	}
 	if (access(str, F_OK) == 0 && access(str, W_OK) != 0)
 		return (FILE_NOT_WRITE);
-	// if (access(str, F_OK) == 0)
-		// return (FILE_NOT_WRITE);
 	return (0);
 }
 

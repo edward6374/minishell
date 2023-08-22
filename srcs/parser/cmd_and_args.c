@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:57:02 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/22 15:13:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	join_paths(char **tmp, char *env)
 	if (err)
 	{
 		free(t2);
-		((err != CMD_NOT_FOUND) && (err++));
+		((err != CMD_NOT_FOUND) && (++err));
 		return (err);
 	}
 	free(*tmp);
