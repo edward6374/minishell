@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:34:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 09:32:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	ft_exit(t_cmd *temp)
 		{
 			printf("minishell: exit: %s: number argument required\n",
 					temp->args[1]);
-			g_exit = 255;
-			return (0);
+			// g_exit = 255;
+			exit(255);
 		}
 	}
 	if (temp->args[2])
 	{
-		printf("minishell: exit: too manyn arguments\n");
-		g_exit = 1;
-		return (0);
+		printf("minishell: exit: too many arguments\n");
+		// g_exit = 1;
+		return (1);
 	}
 	value = ft_atoi(temp->args[1]);
 	g_exit = value;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:23:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 10:02:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 	int	i;
 	int	no_newline;
 
+	(void)p;
+	(void)tmp;
 	i = 1;
 	if (args[1])
 		no_newline = is_n(args[1], &i);
@@ -69,20 +71,20 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 	}
 	while (args[i] != NULL)
 	{
-		if (!ft_strncmp(args[i], "-n", 3) && no_newline)
-		{
-			i++;
+		if (!ft_strncmp(args[i], "-n", 3) && no_newline && i++)
+			// {
+			// i++;
 			continue;
-		}
-		if (tmp->next)
-			print_echo(args, i, p, 0);
-		else
-			print_echo(args, i, p, 1);
+		// }
+		// if (tmp->next)
+		// print_echo(args, i, p, 0);
+		// else
+		print_echo(args, i, p, 1);
 		i++;
 	}
-		if (!no_newline && tmp->next)
-		ft_putchar_fd('\n', p);
-		else if (!no_newline && !tmp->next)
-		printf("\n");
-		return (0);
+	// if (!no_newline && tmp->next)
+	// ft_putchar_fd('\n', p);
+	// else if (!no_newline && !tmp->next)
+	printf("\n");
+	return (0);
 }

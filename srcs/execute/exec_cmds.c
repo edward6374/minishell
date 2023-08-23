@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:32:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:29:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
-	int	res;
-
 	check_temp_fd(*tmp, p, fd);
 	if ((*tmp)->ok)
 	{
@@ -32,15 +30,7 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 		*tmp = (*tmp)->next;
 		return (-1);
 	}
-	res = is_builtin(tk, *tmp, p[1]);
-	if (res >= 0)
-	{
-		tk->num_cmds--;
-		*tmp = (*tmp)->next;
-	}
-	else
-		return (0);
-	return (-1);
+	return (0);
 }
 
 void	take_exit_value(t_cmd *tmp)
@@ -52,7 +42,7 @@ void	take_exit_value(t_cmd *tmp)
 	{
 		if (!ft_strncmp(tmp->args[i], "$?", 3))
 		{
-			printf("Exit: %d\n", g_exit);
+			printf(RED "Exit: %d\n" NO_COLOR, g_exit);
 			free(tmp->args[i]);
 			tmp->args[i] = ft_strdup(ft_itoa(g_exit));
 			g_exit = 0;
@@ -60,44 +50,60 @@ void	take_exit_value(t_cmd *tmp)
 	}
 }
 
-int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
+pid_t child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
-	pid_t	pid;
-	t_cmd	*tmp;
-	char	**env;
+	pid_t pid;
 
-	env = take_double(tk->env);
+	set_signals(INTERACT);
+	pid = fork();
+	if (pid == 0)
+	{
+		redirect_pipes(tmp, p, fd);
+		close_here_doc(tk);
+		if (is_builtin(tmp->cmd))
+		{
+			g_exit = run_builtin(tk, tmp, p[1]);
+			exit(g_exit);
+		}
+		else
+			execve(tmp->cmd, tmp->args, tk->pt_env);
+	}
+	return (pid);
+}
+
+int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
+{
+	t_cmd *tmp = NULL;
+	char **env = NULL;
+
+	env = take_double(tk, tk->env);
 	if (!env)
 		return (MALLOC);
 	tmp = tk->cmds;
-	while (tmp)
+	if (tk->num_cmds == 1 && is_builtin(tk->cmds->cmd))
+		g_exit = run_builtin(tk, tk->cmds, 1);
+	else
 	{
-		take_exit_value(tmp);
-		set_signals(INTERACT);
-		if (check_before_exec(tk, &tmp, p, &fd) == -1)
-			continue ;
-		pid = fork();
-		if (pid == 0)
+		while (tmp)
 		{
-			redirect_pipes(tmp, p, fd);
-			close_here_doc(tk);
-			execve(tmp->cmd, tmp->args, env);
+			take_exit_value(tmp);
+			if (check_before_exec(tk, &tmp, p, &fd) == -1)
+				continue;
+			*child_pid = child_exec(tk, tmp, p, fd);
+			tmp = tmp->next;
 		}
-		*child_pid = pid;
-		tmp = tmp->next;
+		close_all_pipes(tk, p, fd);
+		end_exec(tk, child_pid, env);
 	}
-	close_all_pipes(tk, p, fd);
-	end_exec(tk, child_pid, env);
 	return (0);
 }
 
-int	execute_commands(t_min *tk)
+int execute_commands(t_min *tk)
 {
-	int		fd;
-	int		p[2];
-	int		err;
+	int fd;
+	int p[2];
 	t_cmd	*tmp;
-	pid_t	*child_pid;
+	pid_t *child_pid;
 
 	fd = -1;
 	p[0] = -1;
@@ -106,14 +112,16 @@ int	execute_commands(t_min *tk)
 	if (!child_pid)
 		return (MALLOC);
 	tmp = tk->cmds;
+	ign_signal(SIGQUIT);
+	set_signals(HEREDOC);
 	while (tmp)
 	{
-		set_signals(HEREDOC);
 		run_here_doc(tmp);
 		tmp = tmp->next;
 	}
-	err = loop_commands(tk, child_pid, p, fd);
-	if (err == MALLOC)
+	set_signals(NORMAL);
+	ign_signal(SIGQUIT);
+	if (loop_commands(tk, child_pid, p, fd))
 		return (free_all(tk, MALLOC));
 	return (0);
 }

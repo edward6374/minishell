@@ -3,63 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   gen_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/21 16:56:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 11:22:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <termios.h>
 #include <signal.h>
 
-// void	norm_handler(int sig)
-// {
-// 	if (sig == SIGINT)
-// 	{
-// 		ft_putchar_fd('\n', 1);
-// 		rl_replace_line("", 1);
-// 		rl_on_new_line();
-// 		rl_redisplay();
-// 		// tmp->exit_value = 1;
-// 		g_exit = 1;
-// 	}
-// }
+void set_term(void)
+{
+	struct termios term;
 
-// void	interact_handler(int sig)
-// {
-// 	if (sig == SIGINT)
-// 	{
-// 		ft_putchar_fd('\n', 1);
-// 		// tmp->exit_value = 130;
-// 		g_exit = 130;
-// 	}
-// 	else if (sig == SIGQUIT)
-// 	{
-// 		ft_putstr_fd("Quit: 3\n", 1);
-// 		// tmp->exit_value = 131;
-// 		g_exit = 131;
-// 	}
-// }
-
-// TODO
-// arreglar senales
-// void	set_signals(int mode)
-// {
-// 	struct sigaction	signal;
-
-// 	printf("Signals\n");
-// 	signal.sa_flags = SA_RESTART | SA_SIGINFO;
-// 	sigemptyset(&signal.sa_mask);
-// 	if (mode == NORMAL)
-// 		signal.sa_handler = norm_handler;
-// 	else if (mode == INTERACT)
-// 		signal.sa_handler = interact_handler;
-// 	// signal.sa_sigaction(SIGINT, NULL, tk);
-// 	// signal.sa_sigaction(SIGQUIT, NULL, tk);
-// 	sigaction(SIGINT, &signal, NULL);
-// 	sigaction(SIGQUIT, &signal, NULL);
-// }
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+}
 
 int	exit_error(const char *str, int i)
 {

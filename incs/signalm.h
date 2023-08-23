@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signalm.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:54:55 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 12:39:05 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:39:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ enum
 };
 
 void	set_signals(int mode);
+void ign_signal(int signal);
 
 #endif

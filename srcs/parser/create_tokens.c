@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:20:53 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 09:41:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_commands(t_min *tk)
 
 static int	check_redir_syntax(t_parser *list)
 {
-	while (list)
+	while (list && list->word)
 	{
 		if (!ft_strncmp(list->word, "|", 2) && (list->before == NULL
 				|| !ft_strncmp(list->before->word, "<", 2)
@@ -117,7 +117,7 @@ int	load_commands(t_min *tk, t_parser *list)
 	err = check_redir_syntax(list);
 	if (err)
 		return (free_parser(list, free_all(tk, err)));
-	while (list)
+	while (list && list->word)
 	{
 		new = set_new_command(&tk->num_cmds);
 		if (!new)

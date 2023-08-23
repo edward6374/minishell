@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 16:18:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 09:25:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	export_add(t_env *env, char **args)
 			{
 				printf("minishell: export: `%s\': not a valid identifier\n",
 						args[i]);
-				g_exit = 1;
+				// g_exit = 1;
+				return (1);
 			}
 			if (!env_find(env, name, find_env))
 				env_add_back(&env, new_env(name, value));

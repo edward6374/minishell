@@ -6,18 +6,15 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:17:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 09:50:43 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-// TODO
-// arreglar esta funcion de exit_status y ponerla en la ejecucion de los hijos
-
-// int	print_words(t_parser *all_words)
+// int print_words(t_parser *all_words)
 // {
-// 	t_parser	*p;
+// 	t_parser *p;
 
 // 	p = all_words;
 // 	while (p)
@@ -69,7 +66,7 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 	while (s[v.i])
 	{
 		if ((s[v.i] == ' ' && v.i == 0) || (s[v.i] == ' ' && v.oq))
-			while (s[v.i] == ' ')
+			while (s[v.i] == ' ' && s[v.i] != '\0')
 				v.i++;
 		if ((s[v.i - 1] == ' ' || v.i == 0) && s[v.i] != ' ' && v.oq)
 			v.stp = v.i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:11:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 08:40:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ int	join_paths(char **tmp, char *env)
 	char	*t1;
 	char	*t2;
 
-	if (!ft_strncmp(*tmp, "cd", 3) || !ft_strncmp(*tmp, "echo", 5)
-		|| !ft_strncmp(*tmp, "env", 4) || !ft_strncmp(*tmp, "exit", 5)
-		|| !ft_strncmp(*tmp, "export", 7) || !ft_strncmp(*tmp, "pwd", 4)
-		|| !ft_strncmp(*tmp, "unset", 6))
+	if (is_builtin(*tmp))
 		return (0);
 	t1 = ft_strjoin(env, "/");
 	if (!t1)

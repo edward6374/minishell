@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 17:19:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:04:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ typedef struct s_cmd
 typedef struct s_min
 {
 	int					num_cmds;
-	// int					exit_value;
+	char **pt_env;
 	t_env				*env;
 	t_cmd				*cmds;
 }						t_min;
@@ -120,7 +120,8 @@ typedef struct s_min
 int						take_env(t_min *tk, char *env[]);
 
 /* ---			Utils.c				--- */
-int						d_key(t_min **tk);
+void set_term(void);
+int d_key(t_min **tk);
 int						exit_error(const char *str, int i);
 int						end_program(char **line, int error);
 //void	siginthandler(int sig);

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 16:57:15 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 09:04:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 
 	if (new->out_fd != 1 && mode)
 		close(new->out_fd);
-	err = check_access(NULL, (*tmp)->next->word, 2);
+	err = check_access(NULL, (*tmp)->next->word, 0);
 	if (err)
 		return (err);
 	if (mode)

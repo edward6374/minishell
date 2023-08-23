@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 15:43:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 10:02:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void static	print_export(char **arr, t_cmd *tmp, int p)
 {
 	int	i;
 
+	(void)p;
+	(void)tmp;
 	i = -1;
 	if (arr == NULL)
 		return ;
@@ -23,14 +25,14 @@ void static	print_export(char **arr, t_cmd *tmp, int p)
 	// printf("\tout_fd: %d\n", tmp->out_fd);
 	while (arr[++i] != NULL)
 	{
-		if (tmp->next)
-		{
-			ft_putstr_fd("declare -x ", p);
-			ft_putstr_fd(arr[i], p);
-			ft_putchar_fd('\n', p);
-		}
-		else
-			printf("declare -x %s\n", arr[i]);
+		// if (tmp->next)
+		// {
+		// 	ft_putstr_fd("declare -x ", p);
+		// 	ft_putstr_fd(arr[i], p);
+		// 	ft_putchar_fd('\n', p);
+		// }
+		// else
+		printf("declare -x %s\n", arr[i]);
 	}
 }
 
@@ -62,7 +64,7 @@ void static	custom_qsort(char **env, size_t size)
 
 char static	*insert_quotes(char *input)
 {
-	t_qoutes	data;
+	t_quotes data;
 
 	data.len = ft_strlen(input);
 	data.tmp = malloc((data.len + 3) * sizeof(char *));
@@ -94,7 +96,7 @@ int	ft_export(t_min *tk, t_cmd *tmp, int p)
 
 	if (tmp->args[1] == NULL)
 	{
-		env = take_double(tk->env);
+		env = take_double(tk, tk->env);
 		i = -1;
 		while (env[++i] != NULL)
 			env[i] = insert_quotes(env[i]);

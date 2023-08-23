@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:32:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:24:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	{
 		if (waitpid(-1, &status, 0) == child_pid[tk->num_cmds - 1])
 			final = status;
-		g_exit = WEXITSTATUS(final);
+		if (!WIFSIGNALED(status))
+			g_exit = WEXITSTATUS(status);
+		printf("Status: %d\n", g_exit);
 		finished++;
 	}
 	// g_exit = WEXITSTATUS(final);
@@ -49,8 +51,17 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	free_double_void(env);
 }
 
-int	is_builtin(t_min *tk, t_cmd *tmp, int p)
+int is_builtin(char *cmd)
 {
+	if (!ft_strncmp(cmd, "cd", 3) || !ft_strncmp(cmd, "echo", 5) || !ft_strncmp(cmd, "env", 4) || !ft_strncmp(cmd, "exit", 5) || !ft_strncmp(cmd, "export", 7) || !ft_strncmp(cmd, "pwd", 4) || !ft_strncmp(cmd, "unset", 6))
+		return (1);
+	return (0);
+}
+
+int run_builtin(t_min *tk, t_cmd *tmp, int p)
+{
+	if (tk->num_cmds == 1)
+		take_exit_value(tmp);
 	if (!ft_strncmp("echo", tmp->cmd, 5))
 		return (ft_echo(tmp, tmp->args, p));
 	else if (!ft_strncmp("cd", tmp->cmd, 3))
@@ -63,16 +74,14 @@ int	is_builtin(t_min *tk, t_cmd *tmp, int p)
 		return (ft_unset(tk, tmp));
 	else if (!ft_strncmp("env", tmp->cmd, 4))
 		return (ft_env(tk, tmp, p));
-	else if (!ft_strncmp("exit", tmp->cmd, 5))
-		return (ft_exit(tmp));
-	return (-1);
+	return (ft_exit(tmp));
 }
 
-char	**take_double(t_env *first)
+char **take_double(t_min *tk, t_env *first)
 {
-	int		i;
-	t_env	*tmp;
-	char	**env;
+	int i;
+	t_env *tmp;
+	char **env;
 
 	i = 0;
 	env = NULL;
@@ -87,12 +96,13 @@ char	**take_double(t_env *first)
 	while (tmp)
 	{
 		if (!tmp->value)
-			env[i] = ft_strjoin(tmp->name, "");
+			env[i++] = ft_strjoin(tmp->name, "");
 		else
-			env[i] = ft_strjoin(tmp->name, tmp->value);
-		i++;
+			env[i++] = ft_strjoin(tmp->name, tmp->value);
+		// i++;
 		tmp = tmp->next;
 	}
 	env[i] = NULL;
+	tk->pt_env = env;
 	return (env);
 }
