@@ -152,3 +152,112 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [28]
+|  CMD: ->export EMPTY EMPTY_TOO= NOT_EMPTY=contnent
+| export | grep EMPTY<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x EMPTY$
+| declare -x EMPTY_TOO=""$
+| declare -x NOT_EMPTY="contnent"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x EMPTY=""$
+| declare -x EMPTY_TOO=""$
+| declare -x NOT_EMPTY="contnent"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [30]
+|  CMD: ->export TEST=value
+| export TEST+=" added value"
+| export | grep TEST<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->declare -x TEST="value added value"$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: export: `TEST+= added value': not a valid identifier$
+| declare -x TEST="value"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [32]
+|  CMD: ->export correct=correct wrong%=wrong
+| export | grep correct
+| export | grep wrong<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->declare -x correct="correct"$<-
+|
+|--- STDERR:
+| ->bash: line 1: export: `wrong%=wrong': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `wrong%=wrong': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: export: `wrong%=wrong': not a valid identifier$
+| declare -x correct="correct"$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [33]
+|  CMD: ->export wrong%=wrong correct=correct
+| export | grep correct
+| export | grep wrong<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (1)
+|
+|--- STDOUT:
+| ->declare -x correct="correct"$<-
+|
+|--- STDERR:
+| ->bash: line 1: export: `wrong%=wrong': not a valid identifier$<-
+|
+|--- COMPARED STR:
+| ->export: `wrong%=wrong': not a valid identifier<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell: export: `wrong%=wrong': not a valid identifier$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+

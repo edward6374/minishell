@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 18:13:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:15:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,6 @@ int	is_n(char *args, int *i)
 	}
 	return (FALSE);
 }
-
-// int	ft_echo(char **args)
-// {
-// 	int	i;
-// 	int	no_newline;
-
-// 	i = 1;
-// 	if (args[1])
-// 		no_newline = is_n(args[1], &i);
-// 	else
-// 	{
-// 		printf("\n");
-// 		return (0);
-// 	}
-// 	while (args[i] != NULL)
-// 	{
-// 		if (!ft_strncmp(args[i], "-n", 3) && no_newline && i++)
-// 			continue ;
-// 		printf("%s", args[i]);
-// 		if (args[i + 1])
-// 			printf(" ");
-// 		i++;
-// 	}
-// 	printf("\n");
-// 	return (0);
-// }
 
 int	ft_echo(char **args, int i)
 {

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 18:12:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 21:46:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-int	run_builtin(t_min *tk, t_cmd *tmp, int p)
+int	run_builtin(t_min *tk, t_cmd *tmp)
 {
 	if (tk->num_cmds == 1)
 		take_exit_value(tmp);
@@ -66,13 +66,13 @@ int	run_builtin(t_min *tk, t_cmd *tmp, int p)
 	else if (!ft_strncmp("cd", tmp->cmd, 3))
 		return (ft_cd(tmp->args, tk->env));
 	else if (!ft_strncmp("pwd", tmp->cmd, 4))
-		return (ft_pwd(tmp, p));
+		return (ft_pwd());
 	else if (!ft_strncmp("export", tmp->cmd, 7))
-		return (ft_export(tk, tmp, p));
+		return (ft_export(tk, tmp));
 	else if (!ft_strncmp("unset", tmp->cmd, 6))
 		return (ft_unset(tk, tmp));
 	else if (!ft_strncmp("env", tmp->cmd, 4))
-		return (ft_env(tk, tmp, p));
+		return (ft_env(tk));
 	return (ft_exit(tmp));
 }
 

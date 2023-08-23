@@ -1,130 +1,18 @@
----------------------------------------------> test [1]
-|  CMD: ->echo<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
 
----------------------------------------------> test [2]
-|  CMD: ->echo ñ<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->ñ$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->ñ$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
+**************************************************************
+*                          CARE!                             *
+*                                                            * 
+* This tester doesnt work if ur readline prompt have '\n'    *
+*                                                            *
+**************************************************************
 
----------------------------------------------> test [3]
-|  CMD: ->echo hi<-
+---------------------------------------------> test [122]
+|  CMD: ->echo $<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [4]
-|  CMD: ->/bin/echo hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [5]
-|  CMD: ->echo $PATH<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Library/Frameworks/Python.framework/Versions/3.10/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/opt/X11/bin:/usr/local/mongodb/bin$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [6]
-|  CMD: ->echo $NONEXIST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$<-
+| ->$$<-
 |
 |--- STDERR:
 | -><-
@@ -142,8 +30,130 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [8]
-|  CMD: ->echo -n<-
+---------------------------------------------> test [123]
+|  CMD: ->echo hi$<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [125]
+|  CMD: ->echo $/<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$/$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->/$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [127]
+|  CMD: ->echo $'\n' | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$$
+| $$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->\n$$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [128]
+|  CMD: ->echo $'\r' | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->^M$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->\r$$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [129]
+|  CMD: ->echo $'\t' | cat -e<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->	$$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->\t$$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [140]
+|  CMD: ->export TMPENVVAR
+| $TMPENVVAR<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
@@ -156,18 +166,63 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m$TMPENVVAR
+| ./mpanic.sh: line 164: 12957 Segmentation fault: 11  ./minishell
+|
+---------------------------------------------<
+
+---------------------------------------------> test [142]
+|  CMD: ->$TMPENVVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -><-
+| ->minishell:  echo: command not found$<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [9]
-|  CMD: ->echo -n hi<-
+---------------------------------------------> test [143]
+|  CMD: ->$TMPENVVAR<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->minishell:  EcHO hi: command not found$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [145]
+|  CMD: ->echo $TMPENVVAR hi<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
@@ -183,20 +238,20 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi<-
+| ->-n -n hi$<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [10]
-|  CMD: ->echo --n hi<-
+---------------------------------------------> test [150]
+|  CMD: ->echo $A<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->--n hi$<-
+| ->foo$<-
 |
 |--- STDERR:
 | -><-
@@ -207,20 +262,20 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->--n hi$<-
+| ->foo $<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [11]
-|  CMD: ->echo -nn hi<-
+---------------------------------------------> test [151]
+|  CMD: ->echo $A$B<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi<-
+| ->foo bar$<-
 |
 |--- STDERR:
 | -><-
@@ -231,20 +286,20 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi<-
+| ->foo bar $<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [12]
-|  CMD: ->echo -n -n hi<-
+---------------------------------------------> test [152]
+|  CMD: ->echo $A$B$C<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi<-
+| ->foo bar baz$<-
 |
 |--- STDERR:
 | -><-
@@ -255,20 +310,20 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi<-
+| ->foo bar baz $<-
 |
 |--- STDERR:
 | -><-
 |
 ---------------------------------------------<
 
----------------------------------------------> test [13]
-|  CMD: ->echo hi -n<-
+---------------------------------------------> test [153]
+|  CMD: ->echo $A$B$C$AA<-
 |--------------------------------
 |  EXPECTED (BASH OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi -n$<-
+| ->foo bar baz$<-
 |
 |--- STDERR:
 | -><-
@@ -279,155 +334,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->hi -n$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [14]
-|  CMD: ->echo "-n -n -n" -n hi<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->-n -n -n -n hi$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->-n -n -n -n hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [15]
-|  CMD: ->echo this is the buildin gj<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->this is the buildin gj$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->this is the buildin gj$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [17]
-|  CMD: ->echo what u execute bro?<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->what u execute bro?$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->what u execute bro?$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [22]
-|  CMD: ->export 'A=value'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [25]
-|  CMD: ->export TEST=test
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [26]
-|  CMD: ->export TEST=test TESTT=test2
-| export | grep TEST<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$
-| declare -x TESTT="test2"$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->declare -x TEST="test"$
-| declare -x TESTT="test2"$<-
+| ->foo bar baz foo A$<-
 |
 |--- STDERR:
 | -><-

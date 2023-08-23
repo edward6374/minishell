@@ -3,37 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 10:02:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 21:44:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 
-void static	print_export(char **arr, t_cmd *tmp, int p)
+void static	print_export(char **arr)
 {
 	int	i;
 
-	(void)p;
-	(void)tmp;
 	i = -1;
 	if (arr == NULL)
 		return ;
-	// printf("\tp: %d\n", p);
-	// printf("\tout_fd: %d\n", tmp->out_fd);
 	while (arr[++i] != NULL)
-	{
-		// if (tmp->next)
-		// {
-		// 	ft_putstr_fd("declare -x ", p);
-		// 	ft_putstr_fd(arr[i], p);
-		// 	ft_putchar_fd('\n', p);
-		// }
-		// else
 		printf("declare -x %s\n", arr[i]);
-	}
 }
 
 void static	custom_qsort(char **env, size_t size)
@@ -64,7 +51,7 @@ void static	custom_qsort(char **env, size_t size)
 
 char static	*insert_quotes(char *input)
 {
-	t_quotes data;
+	t_quotes	data;
 
 	data.len = ft_strlen(input);
 	data.tmp = malloc((data.len + 3) * sizeof(char *));
@@ -89,7 +76,7 @@ char static	*insert_quotes(char *input)
 	return (data.tmp);
 }
 
-int	ft_export(t_min *tk, t_cmd *tmp, int p)
+int	ft_export(t_min *tk, t_cmd *tmp)
 {
 	char	**env;
 	int		i;
@@ -101,7 +88,7 @@ int	ft_export(t_min *tk, t_cmd *tmp, int p)
 		while (env[++i] != NULL)
 			env[i] = insert_quotes(env[i]);
 		custom_qsort(env, ft_len_dptr(env));
-		print_export(env, tmp, p);
+		print_export(env);
 		ft_free_dptr(env);
 		return (0);
 	}

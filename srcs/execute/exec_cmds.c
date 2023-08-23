@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 16:34:07 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 21:47:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	take_exit_value(t_cmd *tmp)
 	{
 		if (!ft_strncmp(tmp->args[i], "$?", 3))
 		{
-			printf(RED "Exit: %d\n" NO_COLOR, g_exit);
 			free(tmp->args[i]);
 			tmp->args[i] = ft_strdup(ft_itoa(g_exit));
 			g_exit = 0;
@@ -50,9 +49,9 @@ void	take_exit_value(t_cmd *tmp)
 	}
 }
 
-pid_t child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
+pid_t	child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	set_signals(1);
 	pid = fork();
@@ -62,7 +61,7 @@ pid_t child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 		close_here_doc(tk);
 		if (is_builtin(tmp->cmd))
 		{
-			g_exit = run_builtin(tk, tmp, p[1]);
+			g_exit = run_builtin(tk, tmp);
 			exit(g_exit);
 		}
 		else
@@ -71,11 +70,13 @@ pid_t child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 	return (pid);
 }
 
-int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
+int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 {
-	t_cmd *tmp = NULL;
-	char **env = NULL;
+	t_cmd	*tmp;
+	char	**env;
 
+	tmp = NULL;
+	env = NULL;
 	env = take_double(tk, tk->env);
 	if (!env)
 		return (MALLOC);
@@ -83,14 +84,14 @@ int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	if (!tmp)
 		return (0);
 	if (tk->num_cmds == 1 && is_builtin(tk->cmds->cmd))
-		g_exit = run_builtin(tk, tk->cmds, 1);
+		g_exit = run_builtin(tk, tk->cmds);
 	else
 	{
 		while (tmp)
 		{
 			take_exit_value(tmp);
 			if (check_before_exec(tk, &tmp, p, &fd) == -1)
-				continue;
+				continue ;
 			*child_pid = child_exec(tk, tmp, p, fd);
 			tmp = tmp->next;
 		}
@@ -100,12 +101,12 @@ int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	return (0);
 }
 
-int execute_commands(t_min *tk)
+int	execute_commands(t_min *tk)
 {
-	int fd;
-	int p[2];
+	int		fd;
+	int		p[2];
 	t_cmd	*tmp;
-	pid_t *child_pid;
+	pid_t	*child_pid;
 
 	fd = -1;
 	p[0] = -1;

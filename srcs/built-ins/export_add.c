@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 09:25:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:11:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,38 +62,37 @@ int	is_name(char *name)
 	return (1);
 }
 
+void static	change_value(t_env *env, t_export dt)
+{
+	dt.find = env_find(env, dt.name, find_env);
+	free(dt.find->value);
+	dt.find->value = dt.value;
+}
+
 int	export_add(t_env *env, char **args)
 {
-	int		i;
-	t_env	*find;
-	char	*name;
-	char	*value;
+	t_export	dt;
 
-	find = NULL;
-	i = 1;
+	dt.find = NULL;
+	dt.i = 1;
 	if (args[0])
-		while (args[i] != NULL)
+		while (args[dt.i] != NULL)
 		{
-			name = ft_substr(args[i], 0, ft_strcspn(args[i], "="));
-			value = ft_substr(args[i], (ft_strlen(name) + 1), 0xFFFFFFF);
-			if (!is_name(name))
+			dt.name = ft_substr(args[dt.i], 0, ft_strcspn(args[dt.i], "="));
+			dt.value = ft_substr(args[dt.i], (ft_strlen(dt.name) + 1),
+					0xFFFFFFF);
+			if (!is_name(dt.name))
 			{
 				printf("minishell: export: `%s\': not a valid identifier\n",
-						args[i]);
-				// g_exit = 1;
+						args[dt.i]);
 				return (1);
 			}
-			if (!env_find(env, name, find_env))
-				env_add_back(&env, new_env(name, value));
+			if (!env_find(env, dt.name, find_env))
+				env_add_back(&env, new_env(dt.name, dt.value));
 			else
-			{
-				find = env_find(env, name, find_env);
-				free(find->value);
-				find->value = value;
-			}
-			// g_exit = 0;
-			free(name);
-			i++;
+				change_value(env, dt);
+			free(dt.name);
+			dt.i++;
 		}
 	return (0);
 }
