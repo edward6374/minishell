@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 11:22:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 14:03:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	loop_main(t_min *tk)
 	}
 	else if (line && line[0] == '\0')
 	{
+
 		free(line);
 		return (0);
 	}
@@ -100,22 +101,17 @@ int	main(int argc, char *argv[], char *env[])
 	int		result;
 	t_min	*tk;
 
-	// char **args;
-	// args = malloc(2 * 4);
-	// args[0] = ft_strdup("/bin/cat");
-	// args[1] = NULL;
-	// execve("/bin/cat", args, NULL);
 	(void)argv;
 	if (argc == 1)
 	{
 		tk = init_struct(env);
-		// set_term();
+		set_term();
 		if (!tk)
 			return (end_program(NULL, MALLOC));
 		while (42)
 		{
-			set_signals(NORMAL);
-			ign_signal(SIGQUIT);
+			// ign_signal(SIGQUIT);
+			set_signals(0);
 			result = loop_main(tk);
 			if (result == 1)
 				return (d_key(&tk));

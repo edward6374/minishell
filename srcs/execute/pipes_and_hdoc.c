@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 11:44:07 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 17:26:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,47 @@ void	close_all_pipes(t_min *tk, int *p, int fd)
 
 void	run_here_doc(t_cmd *tmp)
 {
+	int status;
+	pid_t pid;
 	char	*line;
 
 	if (!tmp->hdoc->yes)
-		return ;
-	set_signals(HEREDOC);
+		return;
 	pipe(tmp->hdoc->fd);
-	while (42)
+	set_signals(3);
+	pid = fork();
+	if (pid == 0)
 	{
-		line = readline("> ");
-		if (!line || !ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line)))
-			break ;
-		ft_putstr_fd(line, tmp->hdoc->fd[1]);
-		ft_putchar_fd('\n', tmp->hdoc->fd[1]);
-		free(line);
-		line = NULL;
+		set_signals(2);
+		while (42)
+		{
+			line = readline("> ");
+			if (!line || (line[0] != '\0' && !ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line))))
+				break;
+			ft_putstr_fd(line, tmp->hdoc->fd[1]);
+			ft_putchar_fd('\n', tmp->hdoc->fd[1]);
+			free(line);
+			line = NULL;
+		}
+		if (line)
+		{
+			free(line);
+			line = NULL;
+		}
+		exit(0);
 	}
-	if (line)
-	{
-		free(line);
-		line = NULL;
-	}
+	waitpid(pid, &status, 0);
+	printf("");
+	g_exit = WEXITSTATUS(status);
 }
+
+// TODO
+// Arreglar exit con Ctrl c
 
 void	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 {
 	if (tmp->n == 0 && tmp->next)
-	{
-		// printf("First pipe\n");
 		pipe(p);
-	}
 	else if (tmp->before && tmp->in_fd == 0 && tmp->next && !tmp->hdoc->yes)
 	{
 		*fd = dup(p[0]);
@@ -82,40 +93,23 @@ void	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 void	redirect_pipes(t_cmd *tmp, int *p, int fd)
 {
 	if (tmp->in_fd != 0 && !tmp->hdoc->first)
-	{
-		// printf("In fd\n");
 		((dup2(tmp->in_fd, 0)) && (close(tmp->in_fd)));
-	}
 	else
 	{
-		// printf("In\n");
 		if (tmp->hdoc->yes)
 		{
-			// printf("In here_doc\n");
 			dup2(tmp->hdoc->fd[0], 0);
 			((close(tmp->hdoc->fd[0])) && (close(tmp->hdoc->fd[1])));
 		}
 		else if (tmp->before && tmp->next)
-		{
-			// printf("In fd\n");
 			((dup2(fd, 0)) && (close(fd)));
-		}
 		else if (tmp->before && !tmp->next)
-		{
-			// printf("In pipe\n");
 			dup2(p[0], 0);
-		}
 	}
 	close(p[0]);
 	if (tmp->out_fd != 1)
-	{
-		// printf("Out\n");
 		((dup2(tmp->out_fd, 1)) && (close(tmp->out_fd)));
-	}
 	else if (tmp->out_fd == 1 && tmp->next)
-	{
-		// printf("Out pipe\n");
 		dup2(p[1], 1);
-	}
 	close(p[1]);
 }

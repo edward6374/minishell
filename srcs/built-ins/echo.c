@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 10:02:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 13:56:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,10 @@ int	ft_echo(t_cmd *tmp, char **args, int p)
 	while (args[i] != NULL)
 	{
 		if (!ft_strncmp(args[i], "-n", 3) && no_newline && i++)
-			// {
-			// i++;
 			continue;
-		// }
-		// if (tmp->next)
-		// print_echo(args, i, p, 0);
-		// else
 		print_echo(args, i, p, 1);
 		i++;
 	}
-	// if (!no_newline && tmp->next)
-	// ft_putchar_fd('\n', p);
-	// else if (!no_newline && !tmp->next)
 	printf("\n");
 	return (0);
 }
