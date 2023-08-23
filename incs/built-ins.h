@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 17:53:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:12:29 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_quotes
 // int			ft_cd(t_cmd *temp);
 int			ft_cd(char **args, t_env *env);
 int			ft_pwd(t_cmd *temp, int p);
-int			ft_echo(char **args);
+int			ft_echo(char **args, int i);
 int			ft_exit(t_cmd *temp);
 int			ft_unset(t_min *tk, t_cmd *temp);
 int			ft_env(t_min *tk, t_cmd *temp, int p);
