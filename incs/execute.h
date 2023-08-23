@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:18:34 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 22:48:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 23:00:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_run
 {
 	int		status;
 	pid_t	pid;
-	char	*line;
+	char	*l;
 }			t_run;
 
 /* ---			Execute_commands.c			--- */

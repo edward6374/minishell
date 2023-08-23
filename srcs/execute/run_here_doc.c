@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:34:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 22:49:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 23:04:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,54 @@ void static	end_run(int *status, pid_t pid)
 	g_exit = WEXITSTATUS(status);
 }
 
+size_t static	l(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+int static	ncmp(const char *s1, const char *s2, size_t n)
+{
+	if (n == 0)
+		return (0);
+	while (*s1 != '\0' && *s1 == *s2 && n > 1)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return (((unsigned char)*s1) - ((unsigned char)*s2));
+}
+
 void	run_here_doc(t_cmd *tmp)
 {
-	t_run	run;
+	t_run	r;
 
-	// int		status;
-	// pid_t	pid;
-	// char	*line;
 	if (!tmp->hdoc->yes)
 		return ;
 	pipe(tmp->hdoc->fd);
 	set_signals(3);
-	run.pid = fork();
-	if (run.pid == 0)
+	r.pid = fork();
+	if (r.pid == 0)
 	{
 		set_signals(2);
 		while (42)
 		{
-			run.line = readline("> ");
-			if (!run.line || (run.line[0] != '\0' && !ft_strncmp(run.line,
-						tmp->hdoc->stop, ft_strlen(run.line))))
+			r.l = readline("> ");
+			if (!r.l || (r.l[0] != '\0' && !ncmp(r.l, tmp->hdoc->stop, l(r.l))))
 				break ;
-			print_line(run.line, tmp->hdoc->fd[1]);
-			// ft_putstr_fd(line, tmp->hdoc->fd[1]);
-			// ft_putchar_fd('\n', tmp->hdoc->fd[1]);
-			// free(line);
-			// line = NULL;
+			print_line(r.l, tmp->hdoc->fd[1]);
 		}
-		if (run.line)
+		if (r.l)
 		{
-			free(run.line);
-			run.line = NULL;
+			free(r.l);
+			r.l = NULL;
 		}
 		exit(0);
 	}
-	end_run(&run.status, run.pid);
-	// waitpid(pid, &status, 0);
-	// printf("");
-	// g_exit = WEXITSTATUS(status);
+	end_run(&r.status, r.pid);
 }
