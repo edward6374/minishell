@@ -6,11 +6,11 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:47:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/17 13:15:36 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:10:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/minishell.h"
+#include "minishell.h"
 
 int	free_double_int(char **old, int i)
 {

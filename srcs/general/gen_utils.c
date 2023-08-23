@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   gen_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 11:22:50 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:11:34 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <termios.h>
 #include <signal.h>
+#include <termios.h>
 
-void set_term(void)
+void	set_term(void)
 {
-	struct termios term;
+	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
 	term.c_lflag &= ~ECHOCTL;

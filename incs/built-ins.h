@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 21:50:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 23:08:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_export
 
 }			t_export;
 
-// int			ft_cd(t_cmd *temp);
 int			ft_cd(char **args, t_env *env);
 int			ft_pwd(void);
 int			ft_echo(char **args, int i);

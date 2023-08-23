@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 18:14:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 23:11:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int	main(int argc, char *argv[], char *env[])
 			return (end_program(NULL, MALLOC));
 		while (42)
 		{
-			// ign_signal(SIGQUIT);
 			set_signals(0);
 			result = loop_main(tk);
 			if (result == 1)

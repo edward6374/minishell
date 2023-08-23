@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 12:53:14 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:11:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,10 @@ int	free_commands(t_cmd **first, int out)
 
 int	free_all(t_min *tk, int out)
 {
-	// printf("Free all commands\n");
 	if (tk->cmds)
 		free_commands(&tk->cmds, 0);
-	// printf("Free all env\n");
 	if (tk->env)
 		free_env(tk->env);
-	// printf("Free all path\n");
 	free(tk);
 	return (out);
 }
