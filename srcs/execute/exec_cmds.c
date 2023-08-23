@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 21:47:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/23 22:30:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "signalm.h"
 #include <errno.h>
 
-int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
+int static	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 {
 	check_temp_fd(*tmp, p, fd);
 	if ((*tmp)->ok)
@@ -49,7 +49,7 @@ void	take_exit_value(t_cmd *tmp)
 	}
 }
 
-pid_t	child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
+pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
 	pid_t	pid;
 
@@ -87,6 +87,8 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		g_exit = run_builtin(tk, tk->cmds);
 	else
 	{
+		// TODO
+		// PONER EN OTRA FUNCION EL WHILE
 		while (tmp)
 		{
 			take_exit_value(tmp);

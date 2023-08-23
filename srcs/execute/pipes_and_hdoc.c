@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_and_hdoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 17:26:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 22:36:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
-#include "signalm.h"
 
 void	close_here_doc(t_min *tk)
 {
@@ -37,45 +36,6 @@ void	close_all_pipes(t_min *tk, int *p, int fd)
 	if (fd != -1)
 		close(fd);
 }
-
-void	run_here_doc(t_cmd *tmp)
-{
-	int status;
-	pid_t pid;
-	char	*line;
-
-	if (!tmp->hdoc->yes)
-		return;
-	pipe(tmp->hdoc->fd);
-	set_signals(3);
-	pid = fork();
-	if (pid == 0)
-	{
-		set_signals(2);
-		while (42)
-		{
-			line = readline("> ");
-			if (!line || (line[0] != '\0' && !ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line))))
-				break;
-			ft_putstr_fd(line, tmp->hdoc->fd[1]);
-			ft_putchar_fd('\n', tmp->hdoc->fd[1]);
-			free(line);
-			line = NULL;
-		}
-		if (line)
-		{
-			free(line);
-			line = NULL;
-		}
-		exit(0);
-	}
-	waitpid(pid, &status, 0);
-	printf("");
-	g_exit = WEXITSTATUS(status);
-}
-
-// TODO
-// Arreglar exit con Ctrl c
 
 void	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 {
