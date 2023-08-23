@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 09:04:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:19:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "parser.h"
+#include <fcntl.h>
 
 void	change_tmp(t_parser **tmp)
 {
@@ -70,7 +70,7 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 
 int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
-	int err;
+	int	err;
 
 	if (new->out_fd != 1 && mode)
 		close(new->out_fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:17:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:17:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 		return (0);
 	while (v->s[++w.i] != '\"')
 	{
-		if (v->s[w.i] == '$' && tmp && !ft_strncmp(tmp->name, &v->s[w.i + 1], ft_strlen(tmp->name) - 1))
+		if (v->s[w.i] == '$' && tmp && !ft_strncmp(tmp->name, &v->s[w.i + 1],
+				ft_strlen(tmp->name) - 1))
 		{
 			w.count += ft_strlen(tmp->value);
 			tmp = tmp->next;

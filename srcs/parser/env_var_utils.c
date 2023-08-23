@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:44:25 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 20:17:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:14:40 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built-ins.h"
 #include "parser.h"
 
-t_env *search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))
+t_env	*search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))
 {
-	t_env *curr;
+	t_env	*curr;
 
 	curr = env;
 	while (curr)
@@ -27,10 +27,10 @@ t_env *search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))
 	return (NULL);
 }
 
-int add_env_var(t_word *w, t_env **env)
+int	add_env_var(t_word *w, t_env **env)
 {
-	int i;
-	t_env *next;
+	int		i;
+	t_env	*next;
 
 	i = -1;
 	while ((*env)->value[++i])

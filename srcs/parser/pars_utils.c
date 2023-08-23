@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 09:04:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 23:18:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ void	set_vars(t_vars *v, char *s)
 	v->sq = 0;
 	v->dq = 0;
 	v->oq = 1;
-	// v->nq = 0;
 	v->stp = 0;
-	// v->count = 0;
 }
 
 t_cmd	*get_last_cmd(t_min **tk)
