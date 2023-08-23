@@ -201,7 +201,6 @@
 |
 |--- STDOUT:
 | ->minishell: export: `TEST+= added value': not a valid identifier$
-| declare -x TEST+=" added value"$
 | declare -x TEST="value"$<-
 |
 |--- STDERR:
@@ -229,8 +228,7 @@
 |
 |--- STDOUT:
 | ->minishell: export: `wrong%=wrong': not a valid identifier$
-| declare -x correct="correct"$
-| declare -x wrong%="wrong"$<-
+| declare -x correct="correct"$<-
 |
 |--- STDERR:
 | -><-
@@ -256,9 +254,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: export: `wrong%=wrong': not a valid identifier$
-| declare -x correct="correct"$
-| declare -x wrong%="wrong"$<-
+| ->minishell: export: `wrong%=wrong': not a valid identifier$<-
 |
 |--- STDERR:
 | -><-

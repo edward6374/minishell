@@ -24,7 +24,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 57959 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 19924 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -48,7 +48,7 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| ./mpanic.sh: line 164: 58021 Segmentation fault: 11  ./minishell
+| ./mpanic.sh: line 164: 19988 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -68,6 +68,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -99,6 +100,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -134,6 +136,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -166,6 +169,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -201,6 +205,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -234,6 +239,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -269,6 +275,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -301,6 +308,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -336,6 +344,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -369,6 +378,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -403,6 +413,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -434,6 +445,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -468,6 +480,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file_first$
@@ -499,6 +512,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -534,6 +548,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -567,6 +582,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -603,6 +619,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -636,6 +653,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -672,6 +690,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -706,6 +725,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -742,6 +762,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -775,6 +796,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -811,6 +833,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -845,6 +868,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -881,6 +905,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -914,6 +939,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -949,6 +975,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -981,6 +1008,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -1017,6 +1045,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1050,6 +1079,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1086,6 +1116,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1120,6 +1151,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1156,6 +1188,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1189,6 +1222,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1225,6 +1259,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1258,6 +1293,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1294,6 +1330,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1327,6 +1364,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file$
 | file2$
 | file3$
@@ -1363,6 +1401,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filea$
@@ -1396,6 +1435,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -1432,6 +1472,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filea$
@@ -1465,6 +1506,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -1501,6 +1543,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filea$
@@ -1535,6 +1578,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -1571,6 +1615,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filea$
@@ -1604,6 +1649,7 @@
 | cleaner.c$
 | doblequot$
 | echo$
+| error_outp$
 | file_first$
 | file_second$
 | filepipe$
@@ -1620,6 +1666,62 @@
 | rm: filea: No such file or directory$
 | rm: fileb: No such file or directory$
 | rm: filec: No such file or directory$<-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [310]
+|  CMD: ->echo -n hi >>"doble"quote
+| echo -n hi >>"doble"quote
+| cat doblequote
+| rm doblequote<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hihi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [313]
+|  CMD: ->echo -n hi >>'simple'quote
+| echo -n hi >>'simple'quote
+| cat simplequote
+| rm simplequote<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hihi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| hi$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -1642,7 +1744,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: file: no such file or directory$<-
+| ->hi 0 < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/file$<-
 |
 |--- STDERR:
 | ->rm: file: No such file or directory$<-
@@ -1789,7 +1891,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: testfolder: file not writeable$<-
+| ->hi > /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testfolder$<-
 |
 |--- STDERR:
 | -><-
@@ -1813,7 +1915,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: testfolder: file not writeable$<-
+| ->hi >> /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testfolder$<-
 |
 |--- STDERR:
 | -><-
@@ -1837,7 +1939,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: testfolder: file not writeable$<-
+| ->hi 2 > /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testfolder$<-
 |
 |--- STDERR:
 | -><-
@@ -1861,7 +1963,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: testfolder: file not writeable$<-
+| ->hi 2 >> /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/testfolder$<-
 |
 |--- STDERR:
 | -><-
@@ -1887,7 +1989,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: file: file not writeable$<-
+| ->> /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/file hi$<-
 |
 |--- STDERR:
 | ->cat: file: Permission denied$<-
@@ -1913,7 +2015,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: file2: file not writeable$<-
+| ->>> /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/file2 hi$<-
 |
 |--- STDERR:
 | ->cat: file2: Permission denied$<-
@@ -2005,15 +2107,15 @@
 | -><-
 |
 |--- STDERR:
-| ->bash: line 1: nmota-bu: No such file or directory$<-
+| ->bash: line 1: nacho: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->nmota-bu: No such file or directory<-
+| ->nacho: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: nmota-bu: no such file or directory$<-
+| ->minishell: nacho: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -2061,7 +2163,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: non_exist: no such file or directory$<-
+| ->hi 2 < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/non_exist$<-
 |
 |--- STDERR:
 | -><-
@@ -2104,7 +2206,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: non_exist: no such file or directory$
+| ->hi < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/non_exist > wrong$
 | &4$
 | <$
 | README.md$
@@ -2224,7 +2326,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: non_exist: no such file or directory$
+| ->hi < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/non_exist$
 | &4$
 | <$
 | README.md$

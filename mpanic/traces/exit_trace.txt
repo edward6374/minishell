@@ -44,7 +44,7 @@
 |--- COMPARED STR:
 | ->exit:  : numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit:  : number argument required$<-
@@ -68,7 +68,7 @@
 |--- COMPARED STR:
 | ->exit:  : numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit:  : number argument required$<-
@@ -92,7 +92,7 @@
 |--- COMPARED STR:
 | ->exit:  : numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit:  : number argument required$<-
@@ -116,7 +116,7 @@
 |--- COMPARED STR:
 | ->exit: 42network: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: 42network: number argument required$<-
@@ -140,7 +140,7 @@
 |--- COMPARED STR:
 | ->exit: +: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: +: number argument required$<-
@@ -164,7 +164,7 @@
 |--- COMPARED STR:
 | ->exit: ++: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: ++: number argument required$<-
@@ -188,7 +188,7 @@
 |--- COMPARED STR:
 | ->exit: -: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -: number argument required$<-
@@ -212,7 +212,7 @@
 |--- COMPARED STR:
 | ->exit: ---: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: ---: number argument required$<-
@@ -236,7 +236,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: +0: number argument required$<-
@@ -260,7 +260,7 @@
 |--- COMPARED STR:
 | ->exit: ++0: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: ++0: number argument required$<-
@@ -284,7 +284,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -0: number argument required$<-
@@ -308,7 +308,7 @@
 |--- COMPARED STR:
 | ->exit: --0: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: --0: number argument required$<-
@@ -332,7 +332,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: +1: number argument required$<-
@@ -356,7 +356,7 @@
 |--- COMPARED STR:
 | ->exit: ++1: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: ++1: number argument required$<-
@@ -380,7 +380,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -1: number argument required$<-
@@ -404,7 +404,7 @@
 |--- COMPARED STR:
 | ->exit: --1: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: --1: number argument required$<-
@@ -428,7 +428,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit:  3: number argument required$<-
@@ -452,7 +452,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: 3 : number argument required$<-
@@ -476,7 +476,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -255: number argument required$<-
@@ -500,7 +500,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -256: number argument required$<-
@@ -524,7 +524,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -2147483648: number argument required$<-
@@ -548,7 +548,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -2147483649: number argument required$<-
@@ -572,7 +572,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -4294967296: number argument required$<-
@@ -596,7 +596,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -4294967297: number argument required$<-
@@ -644,7 +644,7 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -9223372036854775808: number argument required$<-
@@ -668,7 +668,7 @@
 |--- COMPARED STR:
 | ->exit: -9223372036854775809: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -9223372036854775809: number argument required$<-
@@ -740,7 +740,7 @@
 |--- COMPARED STR:
 | ->exit: -18446744073709551616: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -18446744073709551616: number argument required$<-
@@ -764,7 +764,7 @@
 |--- COMPARED STR:
 | ->exit: -18446744073709551617: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: -18446744073709551617: number argument required$<-
@@ -815,7 +815,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: exit: too manyn arguments$<-
+| ->minishell: exit: too many arguments$<-
 |
 |--- STDERR:
 | -><-
@@ -840,7 +840,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: exit: too manyn arguments$
+| ->minishell: exit: too many arguments$
 | should not exit$<-
 |
 |--- STDERR:
@@ -865,7 +865,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: exit: too manyn arguments$<-
+| ->minishell: exit: too many arguments$<-
 |
 |--- STDERR:
 | -><-
@@ -886,34 +886,10 @@
 |--- COMPARED STR:
 | ->exit: not: numeric argument required<-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (255)
 |
 |--- STDOUT:
 | ->minishell: exit: not: number argument required$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [92]
-|  CMD: ->exit 42 | cat<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -><-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (42)
-|
-|--- STDOUT:
-| -><-
 |
 |--- STDERR:
 | -><-

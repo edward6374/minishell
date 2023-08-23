@@ -6,78 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [368]
-|  CMD: ->echo $SHLVL 'entry value 20'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->21 entry value 20$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> entry value 20$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [369]
-|  CMD: ->echo $SHLVL 'entry value 50'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->51 entry value 50$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> entry value 50$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [370]
-|  CMD: ->echo $SHLVL 'entry value 99'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->100 entry value 99$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> entry value 99$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [371]
 |  CMD: ->echo $SHLVL 'entry value -20'<-
 |--------------------------------
@@ -95,31 +23,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -> entry value -20$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [372]
-|  CMD: ->echo $SHLVL 'entry value 800'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->801 entry value 800$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| -> entry value 800$<-
+| ->-19 entry value -20$<-
 |
 |--- STDERR:
 | -><-
@@ -143,7 +47,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -> entry value 1000$<-
+| ->1001 entry value 1000$<-
 |
 |--- STDERR:
 | -><-
@@ -167,7 +71,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -> entry value 5000000$<-
+| ->5000001 entry value 5000000$<-
 |
 |--- STDERR:
 | -><-

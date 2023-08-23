@@ -6,46 +6,6 @@
 *                                                            *
 **************************************************************
 
----------------------------------------------> test [156]
-|  CMD: ->echo "'$'"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->'$'$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 51400 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [158]
-|  CMD: ->echo "|$USER|"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->|nmota-bu|$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 51481 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
 ---------------------------------------------> test [159]
 |  CMD: ->echo "|$USE|"<-
 |--------------------------------
@@ -60,9 +20,13 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 51522 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->|$USE|$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -80,9 +44,13 @@
 |--- COMPARED STR:
 | -><-
 |--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
-| ./mpanic.sh: line 164: 51563 Segmentation fault: 11  ./minishell
+|--- STDOUT:
+| ->|nacho_|$<-
+|
+|--- STDERR:
+| -><-
 |
 ---------------------------------------------<
 
@@ -253,26 +221,6 @@
 |
 |--- STDERR:
 | -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [204]
-|  CMD: ->echo "$ANA_VAR"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->. hi, this is the hardest" Ana "test $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 53364 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

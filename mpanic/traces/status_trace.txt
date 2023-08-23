@@ -25,7 +25,8 @@
 |
 |--- STDOUT:
 | ->minishell:  : command not found$
-| 127$<-
+| ^[[0;91mExit: 127$
+| ^[[0;0m127$<-
 |
 |--- STDERR:
 | -><-
@@ -56,6 +57,31 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [343]
+|  CMD: ->echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->^[[0;91mExit: 0$
+| ^[[0;0m0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [344]
 |  CMD: ->cat < noexiste
 | echo $?<-
@@ -75,7 +101,8 @@
 |
 |--- STDOUT:
 | ->minishell: noexiste: no such file or directory$
-| 0$<-
+| ^[[0;91mExit: 1$
+| ^[[0;0m1$<-
 |
 |--- STDERR:
 | -><-
@@ -124,8 +151,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: noperm: file not writeable$
-| 0$<-
+| ->hola > /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/noperm$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -149,7 +177,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: noperm: file not writeable$<-
+| ->hola > /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/noperm$<-
 |
 |--- STDERR:
 | -><-
@@ -174,8 +202,9 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: noperm: file not readable$
-| 0$<-
+| ->hola < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/noperm$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -199,7 +228,67 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->minishell: noperm: file not readable$<-
+| ->hola < /Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic/noperm$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [350]
+|  CMD: ->sleep 1 | ls | cat -n
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	simplequot$
+|     15	test$
+|     16	testdir$
+|     17	traces$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->     1	&4$
+|      2	<$
+|      3	README.md$
+|      4	cleaner$
+|      5	cleaner.c$
+|      6	doblequot$
+|      7	echo$
+|      8	file_first$
+|      9	file_second$
+|     10	filepipe$
+|     11	minishell$
+|     12	mixedfile nam$
+|     13	mpanic.sh$
+|     14	simplequot$
+|     15	test$
+|     16	testdir$
+|     17	traces$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -225,7 +314,8 @@
 |
 |--- STDOUT:
 | ->minishell: dddd: command not found$
-| 0$<-
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -275,7 +365,8 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| 127$<-
+| ^[[0;91mExit: 127$
+| ^[[0;0m127$<-
 |
 |--- STDERR:
 | -><-
@@ -327,7 +418,9 @@
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
 | hi$
-| 127$<-
+| minishell: nonexistcmd: command not found$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -352,7 +445,8 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| hi$<-
+| hi$
+| minishell: nonexistcmd: command not found$<-
 |
 |--- STDERR:
 | -><-
@@ -378,7 +472,8 @@
 |
 |--- STDOUT:
 | ->minishell: nonexistcmd: command not found$
-| 127$<-
+| ^[[0;91mExit: 127$
+| ^[[0;0m127$<-
 |
 |--- STDERR:
 | -><-
@@ -430,7 +525,8 @@
 |--- STDOUT:
 | ->minishell: nofile: no such file or directory$
 | minishell: nonexistcmd: command not found$
-| 127$<-
+| ^[[0;91mExit: 127$
+| ^[[0;0m127$<-
 |
 |--- STDERR:
 | -><-
@@ -484,7 +580,9 @@
 |--- STDOUT:
 | ->minishell: nofile: no such file or directory$
 | hii$
-| 0$<-
+| minishell: nofile: no such file or directory$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -509,7 +607,8 @@
 |
 |--- STDOUT:
 | ->minishell: nofile: no such file or directory$
-| hii$<-
+| hii$
+| minishell: nofile: no such file or directory$<-
 |
 |--- STDERR:
 | -><-
@@ -534,7 +633,8 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->0$<-
+| ->^[[0;91mExit: 0$
+| ^[[0;0m0$<-
 |
 |--- STDERR:
 | -><-
@@ -562,6 +662,32 @@
 |
 |--- STDERR:
 | -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [366]
+|  CMD: ->cat /Users/nonexist/directory
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
+|
+|--- COMPARED STR:
+| ->nexist/directory: No such file or directory<-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->^[[0;91mExit: 1$
+| ^[[0;0m1$<-
+|
+|--- STDERR:
+| ->cat: /Users/nonexist/directory: No such file or directory$<-
 |
 ---------------------------------------------<
 

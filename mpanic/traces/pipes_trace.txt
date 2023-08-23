@@ -48,89 +48,35 @@
 |
 |--- STDOUT:
 | ->minishell: asdf: command not found$
-| hola$<-
+| hola$
+| minishell: asdf: command not found$<-
 |
 |--- STDERR:
 | -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [270]
-|  CMD: ->cd folder | pwd<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 56175 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
 ---------------------------------------------> test [271]
 |  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
 |--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|  EXPECTED (BASH OUTP)  |  exit status: (128)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
-| -><-
+| ->bash: fork: Resource temporarily unavailable$<-
 |
 |--- COMPARED STR:
-| -><-
+| ->source temporarily unavailable<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
 | ->ls: |ls: No such file or directory$
-| ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$<-
@@ -140,59 +86,24 @@
 ---------------------------------------------> test [272]
 |  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
 |--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|  EXPECTED (BASH OUTP)  |  exit status: (128)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
-| -><-
+| ->bash: fork: Resource temporarily unavailable$<-
 |
 |--- COMPARED STR:
-| -><-
+| ->source temporarily unavailable<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
 | ->ls: |ls: No such file or directory$
-| ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$<-
@@ -202,59 +113,24 @@
 ---------------------------------------------> test [273]
 |  CMD: ->ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls |ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls<-
 |--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|  EXPECTED (BASH OUTP)  |  exit status: (128)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
-| -><-
+| ->bash: fork: Resource temporarily unavailable$<-
 |
 |--- COMPARED STR:
-| -><-
+| ->source temporarily unavailable<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->&4$
-| <$
-| README.md$
-| cleaner$
-| cleaner.c$
-| doblequot$
-| echo$
-| file2$
-| file_first$
-| file_second$
-| filepipe$
-| minishell$
-| mixedfile nam$
-| mpanic.sh$
-| simplequot$
-| test$
-| testdir$
-| traces$<-
+| -><-
 |
 |--- STDERR:
 | ->ls: |ls: No such file or directory$
-| ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$
 | ls: |ls: No such file or directory$<-

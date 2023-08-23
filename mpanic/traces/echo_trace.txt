@@ -30,6 +30,102 @@
 |
 ---------------------------------------------<
 
+---------------------------------------------> test [8]
+|  CMD: ->echo -n<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| -><-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [9]
+|  CMD: ->echo -n hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [11]
+|  CMD: ->echo -nn hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
+---------------------------------------------> test [12]
+|  CMD: ->echo -n -n hi<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [16]
 |  CMD: ->eCho what u execute bro?
 | cat ~/echo<-
@@ -40,10 +136,10 @@
 | ->what u execute bro?$<-
 |
 |--- STDERR:
-| ->cat: /Users/nmota-bu/echo: No such file or directory$<-
+| ->cat: /Users/nacho/echo: No such file or directory$<-
 |
 |--- COMPARED STR:
-| ->ota-bu/echo: No such file or directory<-
+| ->cho/echo: No such file or directory<-
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
@@ -72,8 +168,8 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37mEcHo how u launch this without PATH??
-| ./mpanic.sh: line 164: 45468 Segmentation fault: 11  ./minishell
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37mEcHo how u launch this without PATH??
+| ./mpanic.sh: line 164:  7796 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 

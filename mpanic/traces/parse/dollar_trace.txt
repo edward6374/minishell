@@ -6,6 +6,34 @@
 *                                                            *
 **************************************************************
 
+---------------------------------------------> test [121]
+|  CMD: ->echo hi
+| echo $?<-
+|--------------------------------
+|  EXPECTED (BASH OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| 0$<-
+|
+|--- STDERR:
+| -><-
+|
+|--- COMPARED STR:
+| -><-
+|--------------------------------
+|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
+|
+|--- STDOUT:
+| ->hi$
+| ^[[0;91mExit: 0$
+| ^[[0;0m0$<-
+|
+|--- STDERR:
+| -><-
+|
+---------------------------------------------<
+
 ---------------------------------------------> test [122]
 |  CMD: ->echo $<-
 |--------------------------------
@@ -75,26 +103,6 @@
 |
 |--- STDERR:
 | -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [126]
-|  CMD: ->echo "'$'"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->'$'$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 50131 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -171,94 +179,6 @@
 |
 ---------------------------------------------<
 
----------------------------------------------> test [132]
-|  CMD: ->echo $USER$PATH$PWD<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [133]
-|  CMD: ->echo "$USER$PATH$PWD"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 50430 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [136]
-|  CMD: ->echo $USER"$PATH"$PWD"USER"$PATH"$PWD"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin/Users/nmota-bu/Desktop/valerio/mpanic$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 50551 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [137]
-|  CMD: ->echo $USER'$PATH'$PWD'USER'$PATH'$PWD'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->nmota-bu$PATH/Users/nmota-bu/Desktop/valerio/mpanicUSER/Users/nmota-bu:/Users/nmota-bu/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/opt/anaconda3/condabin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$PATHUSER$PWD$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
 ---------------------------------------------> test [140]
 |  CMD: ->export TMPENVVAR
 | $TMPENVVAR<-
@@ -276,8 +196,8 @@
 |--------------------------------
 |--->FOUND (MINISHELL OUTP)  |  exit status: (139)
 |
-| [0;33m/Users/nmota-bu/Desktop/valerio/mpanic$ [0;37m$TMPENVVAR
-| ./mpanic.sh: line 164: 50720 Segmentation fault: 11  ./minishell
+| [0;33m/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C3/val/mpanic$ [0;37m$TMPENVVAR
+| ./mpanic.sh: line 164: 13099 Segmentation fault: 11  ./minishell
 |
 ---------------------------------------------<
 
@@ -346,7 +266,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -> hi$<-
+| ->hi$<-
 |
 |--- STDERR:
 | -><-
@@ -370,95 +290,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| -> hi$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [146]
-|  CMD: ->echo $A"$B"$C"A"$B"$C"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 50995 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [147]
-|  CMD: ->echo $A'$B'$C'A'$B'$C'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo $Bbaz Abar $C$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$BA$C$<-
-|
-|--- STDERR:
-| -><-
-|
----------------------------------------------<
-
----------------------------------------------> test [148]
-|  CMD: ->echo $A"$B"$C"A"$B"$C"<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo bar baz Abar baz $<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (139)
-|
-| ./mpanic.sh: line 164: 51076 Segmentation fault: 11  ./minishell
-|
----------------------------------------------<
-
----------------------------------------------> test [149]
-|  CMD: ->echo $A'$B'$C'A'$B'$C'<-
-|--------------------------------
-|  EXPECTED (BASH OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->foo $Bbaz Abar $C$<-
-|
-|--- STDERR:
-| -><-
-|
-|--- COMPARED STR:
-| -><-
-|--------------------------------
-|--->FOUND (MINISHELL OUTP)  |  exit status: (0)
-|
-|--- STDOUT:
-| ->$BA$C$<-
+| ->-n -n hi$<-
 |
 |--- STDERR:
 | -><-
@@ -506,7 +338,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->bar $<-
+| ->foo bar $<-
 |
 |--- STDERR:
 | -><-
@@ -530,7 +362,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->baz $<-
+| ->foo bar baz $<-
 |
 |--- STDERR:
 | -><-
@@ -554,7 +386,7 @@
 |--->FOUND (MINISHELL OUTP)  |  exit status: (0)
 |
 |--- STDOUT:
-| ->$<-
+| ->foo bar baz foo A$<-
 |
 |--- STDERR:
 | -><-
