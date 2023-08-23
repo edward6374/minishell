@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 11:22:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:44:07 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	run_here_doc(t_cmd *tmp)
 	while (42)
 	{
 		line = readline("> ");
-		if (!ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line)))
+		if (!line || !ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line)))
 			break ;
 		ft_putstr_fd(line, tmp->hdoc->fd[1]);
 		ft_putchar_fd('\n', tmp->hdoc->fd[1]);

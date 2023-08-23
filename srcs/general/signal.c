@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:50:19 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 11:05:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:40:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	heredoc_handler(int sig)
 	{
 		// write(1, "Heredoc INT\n", 12);
 		rl_replace_line("", 1);
-		rl_on_new_line();
-		rl_redisplay();
-		ft_putchar_fd('\n', 1);
+		// rl_on_new_line();
+		// rl_redisplay();
+		// ft_putchar_fd('\0', 1);
 		g_exit = 130;
 	}
 	return ;

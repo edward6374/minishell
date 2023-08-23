@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 11:29:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:38:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	if (!env)
 		return (MALLOC);
 	tmp = tk->cmds;
+	if (!tmp)
+		return (0);
 	if (tk->num_cmds == 1 && is_builtin(tk->cmds->cmd))
 		g_exit = run_builtin(tk, tk->cmds, 1);
 	else
@@ -121,6 +123,7 @@ int execute_commands(t_min *tk)
 	}
 	set_signals(NORMAL);
 	ign_signal(SIGQUIT);
+	printf("Before loop\n");
 	if (loop_commands(tk, child_pid, p, fd))
 		return (free_all(tk, MALLOC));
 	return (0);
