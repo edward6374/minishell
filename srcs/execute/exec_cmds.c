@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:47:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 12:54:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int static	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	if ((*tmp)->ok)
 	{
 		if ((*tmp)->err_f)
-			printf("minishell: %s: %s\n", (*tmp)->err_f,
-				g_error_array[(*tmp)->ok - 1]);
+			printf(":( %s: %s\n", (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
 		else
-			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
-				- 1]);
+			printf(":( %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
 		set_g(tk, (*tmp)->ok);
 		*tmp = (*tmp)->next;
 		return (-1);
