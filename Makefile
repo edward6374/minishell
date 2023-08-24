@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/24 13:38:24 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/24 15:50:07 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,8 +123,8 @@ clean			:
 
 fclean			:	clean
 	@$(MAKE) -C libft fclean
-	#@-cd readline; make distclean -sik;
-	#@$(RM) readline/library
+	@-cd readline; make distclean -sik;
+	@$(RM) readline/library
 	@echo "$(BLUE)\nMinishell cleaned!$(DEF_COLOR)"
 
 re				:	fclean all
