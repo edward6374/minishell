@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 23:11:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:11:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	program(t_min *tk, char *line)
 		exit_error(g_error_array[err - 1], err);
 	else if (err)
 	{
-		printf("Parser error:\n");
 		end_program(&line, err);
 		return ;
 	}
@@ -62,7 +61,6 @@ void	program(t_min *tk, char *line)
 		exit_error(g_error_array[err - 1], err);
 	else if (err)
 	{
-		printf("Execute error:\t");
 		end_program(&line, err);
 		return ;
 	}
