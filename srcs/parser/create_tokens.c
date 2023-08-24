@@ -6,11 +6,19 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 17:56:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:06:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+void	if_redir(int err, t_parser *tmp, t_parser **list, t_cmd *new)
+{
+	err = take_redir(list, new);
+	tmp = *list;
+	if (err == -1 && *list)
+		tmp = tmp->next;
+}
 
 static int	look_for_redir(t_parser **list, t_cmd *new)
 {
@@ -23,12 +31,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 		if (!ft_strncmp((*list)->word, "<<", 3) || !ft_strncmp((*list)->word,
 				"<", 2) || !ft_strncmp((*list)->word, ">>", 3)
 			|| !ft_strncmp((*list)->word, ">", 2))
-		{
-			err = take_redir(list, new);
-			tmp = *list;
-			if (err == -1 && *list)
-				tmp = tmp->next;
-		}
+			if_redir(err, tmp, list, new);
 		else
 			err = take_redir(&tmp, new);
 		if (err > 1)
@@ -42,27 +45,6 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 	return (0);
 }
 
-void	print_commands(t_min *tk)
-{
-	int		i;
-	int		k;
-	t_cmd	*cmd;
-
-	i = 0;
-	cmd = tk->cmds;
-	while (cmd)
-	{
-		k = -1;
-		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
-				cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
-		while (cmd->args[++k])
-			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
-		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
-		cmd = cmd->next;
-		i++;
-	}
-}
-
 static int	check_redir_syntax(t_parser *list)
 {
 	while (list && list->word)
@@ -74,8 +56,8 @@ static int	check_redir_syntax(t_parser *list)
 				|| !ft_strncmp(list->before->word, ">>", 3)))
 			return (PIPE_FIRST);
 		else if ((!ft_strncmp(list->word, "<", 2) || !ft_strncmp(list->word,
-						"<<", 3) || !ft_strncmp(list->word, ">", 2)
-					|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
+					"<<", 3) || !ft_strncmp(list->word, ">", 2)
+				|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
 			return (ONLY_REDIR);
 		list = list->next;
 	}
@@ -135,6 +117,5 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
-	// print_commands(tk);
 	return (0);
 }
