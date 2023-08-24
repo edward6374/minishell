@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_here_doc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:34:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 23:04:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:44:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,40 @@ void	run_here_doc(t_cmd *tmp)
 	}
 	end_run(&r.status, r.pid);
 }
+
+// void	run_here_doc(t_cmd *tmp)
+// {
+// 	int status;
+// 	pid_t pid;
+// 	char	*line;
+
+// 	if (!tmp->hdoc->yes)
+// 		return;
+// 	pipe(tmp->hdoc->fd);
+// 	set_signals(3);
+// 	pid = fork();
+// 	if (pid == 0)
+// 	{
+// 		child_
+// 		set_signals(2);
+// 		while (42)
+// 		{
+// 			line = readline("> ");
+// 			if (!line || (line[0] != '\0' && !ft_strncmp(line, tmp->hdoc->stop, ft_strlen(line))))
+// 				break;
+// 			ft_putstr_fd(line, tmp->hdoc->fd[1]);
+// 			ft_putchar_fd('\n', tmp->hdoc->fd[1]);
+// 			free(line);
+// 			line = NULL;
+// 		}
+// 		if (line)
+// 		{
+// 			free(line);
+// 			line = NULL;
+// 		}
+// 		exit(0);
+// 	}
+// 	waitpid(pid, &status, 0);
+// 	printf("");
+// 	g_exit = WEXITSTATUS(status);
+// }

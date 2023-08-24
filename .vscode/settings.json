@@ -16,7 +16,7 @@
 		"path_env.h": "c",
 		"builtins.h": "c",
 		"stdio.h": "c",
-		"built-ins.h": "c",
+		"built_ins.h": "c",
 		"typeinfo": "c",
 		"__bit_reference": "c",
 		"__functional_base": "c",

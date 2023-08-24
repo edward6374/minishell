@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:44:25 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 23:14:40 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built-ins.h"
+#include "built_ins.h"
 #include "parser.h"
 
 t_env	*search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))

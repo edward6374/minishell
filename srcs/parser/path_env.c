@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:06:26 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/22 16:01:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Buscar en la lista el nodo con nombre PATH y devuelve solo el valor
 
-#include "built-ins.h"
+#include "built_ins.h"
 #include "minishell.h"
 #include "parser.h"
 

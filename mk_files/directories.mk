@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    directories.mk                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
+#    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/14 10:59:49 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/24 11:55:02 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ DEP_DIR_MS			=	$(DEPS_DIR)/general
 SRC_DIR_EXEC		=	$(SRC_DIR)/execute
 OBJ_DIR_EXEC		=	$(OBJS_DIR)/execute
 DEP_DIR_EXEC		=	$(DEPS_DIR)/execute
-SRC_DIR_BI			=	$(SRC_DIR)/built-ins
-OBJ_DIR_BI			=	$(OBJS_DIR)/built-ins
-DEP_DIR_BI			=	$(DEPS_DIR)/built-ins
+SRC_DIR_BI			=	$(SRC_DIR)/built_ins
+OBJ_DIR_BI			=	$(OBJS_DIR)/built_ins
+DEP_DIR_BI			=	$(DEPS_DIR)/built_ins
 SRC_DIR_PARSER		=	$(SRC_DIR)/parser
 OBJ_DIR_PARSER		=	$(OBJS_DIR)/parser
 DEP_DIR_PARSER		=	$(DEPS_DIR)/parser

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/23 22:11:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:56:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built-ins.h"
+#include "built_ins.h"
 #include "libft.h"
 
 t_env	*new_env(char *str, char *value)
@@ -76,15 +76,16 @@ int	export_add(t_env *env, char **args)
 	dt.find = NULL;
 	dt.i = 1;
 	if (args[0])
+	{
 		while (args[dt.i] != NULL)
 		{
 			dt.name = ft_substr(args[dt.i], 0, ft_strcspn(args[dt.i], "="));
 			dt.value = ft_substr(args[dt.i], (ft_strlen(dt.name) + 1),
-					0xFFFFFFF);
+				0xFFFFFFF);
 			if (!is_name(dt.name))
 			{
 				printf("minishell: export: `%s\': not a valid identifier\n",
-						args[dt.i]);
+					args[dt.i]);
 				return (1);
 			}
 			if (!env_find(env, dt.name, find_env))
@@ -94,5 +95,6 @@ int	export_add(t_env *env, char **args)
 			free(dt.name);
 			dt.i++;
 		}
+	}
 	return (0);
 }
