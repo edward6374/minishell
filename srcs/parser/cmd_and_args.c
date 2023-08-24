@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 08:40:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 17:40:32 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	char	**path;
 
 	path = path_env((*tk)->env);
+	if (!path)
+		return (CMD_NOT_FOUND);
 	i = -1;
 	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
 	{
@@ -117,6 +119,8 @@ int	add_command(t_min **tk, t_parser **list, t_cmd *new)
 		return (MALLOC);
 	if (tmp[0] != '/')
 		err = rel_path_cmd(tk, &tmp);
+	else
+		err = check_access(NULL, tmp, 1);
 	new->cmd = tmp;
 	return (err);
 }

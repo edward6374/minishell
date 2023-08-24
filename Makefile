@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/24 15:52:39 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/24 17:45:36 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ $(OBJ_DIR_TESTER)/%.o	:	$(SRC_DIR_TESTER)/%.c
 	@echo "$(YELLOW)$(patsubst $(SRC_DIR_TESTER)/%,%, $<)   \tcompiled!$(DEF_COLOR)"
 
 all				:	directories
-	@$(MAKE) -C libft bonus
+	@$(MAKE) -C libft
 	@$(MAKE) $(NAME)
 
 $(NAME)			::

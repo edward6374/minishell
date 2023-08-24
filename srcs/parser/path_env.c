@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:06:26 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 17:40:41 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char	**path_env(t_env *env)
 	t_path_env	data;
 
 	data.res = find_env_to_ptr(env);
+	if (!data.res)
+		return (NULL);
 	data.path_copy = ft_strdup(data.res);
 	data.token = ft_strtok(data.path_copy, ":");
 	data.num_paths = ft_len_token(data.token, ":");
