@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 12:46:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,15 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-int	run_builtin(t_min *tk, t_cmd *tmp)
+int	run_builtin(t_min *tk, t_cmd *tmp, pid_t *child_pid)
 {
 	if (tk->num_cmds == 1)
+	{
 		take_exit_value(tmp);
+		free_double_void(tk->pt_env);
+		if (child_pid)
+			free(child_pid);
+	}
 	if (!ft_strncmp("echo", tmp->cmd, 5))
 		return (ft_echo(tmp->args, 1));
 	else if (!ft_strncmp("cd", tmp->cmd, 3))

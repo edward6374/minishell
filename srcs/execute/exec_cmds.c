@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:21:42 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 12:46:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 		close_here_doc(tk);
 		if (is_builtin(tmp->cmd))
 		{
-			g_exit = run_builtin(tk, tmp);
+			g_exit = run_builtin(tk, tmp, NULL);
 			exit(g_exit);
 		}
 		else
@@ -82,7 +82,7 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	if (!tmp)
 		return (0);
 	if (tk->num_cmds == 1 && is_builtin(tk->cmds->cmd))
-		g_exit = run_builtin(tk, tk->cmds);
+		g_exit = run_builtin(tk, tk->cmds, child_pid);
 	else
 	{
 		while (tmp)
