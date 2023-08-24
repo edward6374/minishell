@@ -6,34 +6,59 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:22:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:22:27 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_ins.h"
 #include "minishell.h"
 
-int	ft_exit(t_cmd *temp) {
-  int i;
-  int value;
+void	exit_err_arg(char *str, long long int *value, int mode)
+{
+	if (!mode)
+	{
+		printf(":( exit: %s: number argument required\n", str);
+		exit(255);
+	}
+	printf(":( exit: too many arguments\n");
+	g_exit = 0;
+	*value = 0;
+}
 
-  i = -1;
-  if (isatty(STDIN_FILENO))
-    write(2, "exit\n", 6);
-  if (!temp->args[1])
-    exit(0);
-  while (temp->args[1][++i]) {
-    if (!ft_isdigit(temp->args[1][i])) {
-      printf("minishell: exit: %s: number argument required\n", temp->args[1]);
-      exit(255);
-    }
-  }
-  if (temp->args[2]) {
-    printf("minishell: exit: too many arguments\n");
-    return (1);
-  }
-  value = ft_atoi(temp->args[1]);
-  g_exit = value;
-  exit(value);
-  return (0);
+int	check_only_numbers(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]))
+			break ;
+	if (str[i] != '\0')
+		return (1);
+	return (0);
+}
+
+int	ft_exit(t_cmd *cmd)
+{
+	long long int	value;
+
+	value = 0;
+	if (isatty(STDIN_FILENO))
+		write(2, "exit\n", 6);
+	if (!cmd->args[1])
+		exit(0);
+	else if ((!cmd->args[2] && !ft_strncmp(cmd->args[1], "", 1)))
+		exit_err_arg(cmd->args[1], &value, 0);
+	value = ft_atol(cmd->args[1]);
+	if (value == 0 && ft_strncmp(cmd->args[1], "0", 2)
+		&& ft_strncmp(cmd->args[1], "-0", 3) && ft_strncmp(cmd->args[1], "+0",
+			3))
+		exit_err_arg(cmd->args[1], &value, 0);
+	else if (cmd->args[2])
+		// else if (value != 0 && check_only_numbers(cmd->args[1]))
+		// exit_err_arg(cmd->args[1]);
+		exit_err_arg(cmd->args[1], &value, 1);
+	else
+		exit(value);
+	return (0);
 }

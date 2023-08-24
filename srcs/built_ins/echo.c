@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:32:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 11:55:02 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:37:03 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ int	is_n(char *args, int *i)
 	return (FALSE);
 }
 
+void	print_echo(char *str)
+{
+	if (!ft_strncmp(str, "> ", 3) || !ft_strncmp(str, ">> ", 4)
+		|| !ft_strncmp(str, "< ", 3) || !ft_strncmp(str, "<< ", 4)
+		|| !ft_strncmp(str, "| ", 3))
+		str[ft_strlen(str) - 1] = '\0';
+	printf("%s", str);
+}
+
 int	ft_echo(char **args, int i)
 {
 	int	no_newline;
@@ -56,7 +65,7 @@ int	ft_echo(char **args, int i)
 			i++;
 			continue ;
 		}
-		printf("%s", args[i]);
+		print_echo(args[i]);
 		if (args[i + 1])
 			printf(" ");
 		i++;

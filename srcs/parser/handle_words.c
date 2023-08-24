@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/22 20:17:45 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:37:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,6 @@ int	multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end)
 		return (MALLOC);
 	return (0);
 }
-
-// TODO
-// Revisar loop
 
 int	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 {

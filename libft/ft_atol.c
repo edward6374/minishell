@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:42:28 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 13:34:26 by vduchi           ###   ########.fr       */
+/*   Created: 2023/08/24 13:22:49 by vduchi            #+#    #+#             */
+/*   Updated: 2023/08/24 14:14:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+long long int	ft_atol(const char *str)
 {
-	int	res;
-	int	sign;
+	int				sign;
+	long long int	res;
 
 	res = 0;
 	sign = 1;
@@ -30,9 +32,13 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
+		if (res > ((LONG_MAX - '0') / 10))
+			return (0);
 		res = (res * 10) + (*str - '0');
 		str++;
 	}
+	if (*str != '\0' && *str != ' ')
+		return (0);
 	res = res * sign;
 	return (res);
 }

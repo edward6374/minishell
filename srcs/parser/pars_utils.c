@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 23:18:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:37:05 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ t_cmd	*get_last_cmd(t_min **tk)
 
 int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 {
+	if ((!ft_strncmp(w->word, ">", 2) || !ft_strncmp(w->word, ">>", 3)
+			|| !ft_strncmp(w->word, "<", 2) || !ft_strncmp(w->word, "<<", 3)
+			|| !ft_strncmp(w->word, "<<", 3)) && (v->s[w->i + 1] == ' '
+			|| v->s[w->i + 1] == '\0'))
+		w->word = ft_strjoin(w->word, " ");
 	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
 			|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
 		&& add_word(word_lst, w->word))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 17:56:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:37:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	print_commands(t_min *tk)
 	{
 		k = -1;
 		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
-				cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
+			cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
 		while (cmd->args[++k])
 			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
 		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
@@ -74,8 +74,8 @@ static int	check_redir_syntax(t_parser *list)
 				|| !ft_strncmp(list->before->word, ">>", 3)))
 			return (PIPE_FIRST);
 		else if ((!ft_strncmp(list->word, "<", 2) || !ft_strncmp(list->word,
-						"<<", 3) || !ft_strncmp(list->word, ">", 2)
-					|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
+					"<<", 3) || !ft_strncmp(list->word, ">", 2)
+				|| !ft_strncmp(list->word, ">>", 3)) && list->next == NULL)
 			return (ONLY_REDIR);
 		list = list->next;
 	}
@@ -116,7 +116,7 @@ int	load_commands(t_min *tk, t_parser *list)
 
 	err = check_redir_syntax(list);
 	if (err)
-		return (free_parser(list, free_all(tk, err)));
+		return (free_parser(list, SYNTAX));
 	while (list && list->word)
 	{
 		new = set_new_command(&tk->num_cmds);
@@ -135,6 +135,6 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
-	// print_commands(tk);
+	print_commands(tk);
 	return (0);
 }
