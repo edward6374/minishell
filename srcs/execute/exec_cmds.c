@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 22:30:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:21:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int static	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	{
 		if ((*tmp)->err_f)
 			printf("minishell: %s: %s\n", (*tmp)->err_f,
-					g_error_array[(*tmp)->ok - 1]);
+				g_error_array[(*tmp)->ok - 1]);
 		else
 			printf("minishell: %s: %s\n", (*tmp)->cmd, g_error_array[(*tmp)->ok
-					- 1]);
+				- 1]);
 		set_g(tk, (*tmp)->ok);
 		*tmp = (*tmp)->next;
 		return (-1);
@@ -75,8 +75,6 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 	t_cmd	*tmp;
 	char	**env;
 
-	tmp = NULL;
-	env = NULL;
 	env = take_double(tk, tk->env);
 	if (!env)
 		return (MALLOC);
@@ -87,8 +85,6 @@ int	loop_commands(t_min *tk, pid_t *child_pid, int *p, int fd)
 		g_exit = run_builtin(tk, tk->cmds);
 	else
 	{
-		// TODO
-		// PONER EN OTRA FUNCION EL WHILE
 		while (tmp)
 		{
 			take_exit_value(tmp);
