@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 14:22:27 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:40:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	ft_exit(t_cmd *cmd)
 			3))
 		exit_err_arg(cmd->args[1], &value, 0);
 	else if (cmd->args[2])
-		// else if (value != 0 && check_only_numbers(cmd->args[1]))
-		// exit_err_arg(cmd->args[1]);
 		exit_err_arg(cmd->args[1], &value, 1);
 	else
 		exit(value);
