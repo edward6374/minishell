@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 22:11:19 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/24 15:50:07 by vduchi           ###   ########.fr        #
+#    Updated: 2023/08/24 15:52:39 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,6 +122,7 @@ clean			:
 	@$(RM) $(DEPS_DIR)
 
 fclean			:	clean
+	@$(RM) $(NAME)
 	@$(MAKE) -C libft fclean
 	@-cd readline; make distclean -sik;
 	@$(RM) readline/library
