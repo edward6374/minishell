@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:54:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:57:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	take_exit_value(t_cmd *tmp)
 	}
 }
 
-pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
+pid_t static	child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
 	pid_t	pid;
 
