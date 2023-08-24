@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 17:40:32 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/24 18:05:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int	join_paths(char **tmp, char *env)
 	char	*t1;
 	char	*t2;
 
-	if (is_builtin(*tmp))
-		return (0);
 	t1 = ft_strjoin(env, "/");
 	if (!t1)
 		return (MALLOC + 1);
@@ -117,10 +115,13 @@ int	add_command(t_min **tk, t_parser **list, t_cmd *new)
 	tmp = ft_strdup((*list)->word);
 	if (!tmp)
 		return (MALLOC);
-	if (tmp[0] != '/')
-		err = rel_path_cmd(tk, &tmp);
-	else
-		err = check_access(NULL, tmp, 1);
+	if (!is_builtin((*list)->word))
+	{
+		if (tmp[0] != '/')
+			err = rel_path_cmd(tk, &tmp);
+		else
+			err = check_access(NULL, tmp, 1);
+	}
 	new->cmd = tmp;
 	return (err);
 }
