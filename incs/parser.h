@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 13:22:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:14:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ typedef struct s_lastword
 {
 	int		i;
 	int		l;
-	int		k;
-	int		sq;
-	int		dq;
 	int		*idx;
 	int		count;
+	int		check;
 	char	*word;
 }			t_word;
 
@@ -95,7 +93,7 @@ void		check_quotes(t_vars *vars, char *c);
 int			add_word(t_parser **word_lst, char *word);
 int			join_words(t_parser **word_lst, char *word);
 int			create_word(t_parser **word_lst, t_vars *v, int *i, int mode);
-int			refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env);
+int			add_or_join(t_parser **word_lst, t_vars *v, char *word, int mode);
 int			multiple_words(t_parser **word_lst, t_env **env, t_vars *v,
 				int end);
 

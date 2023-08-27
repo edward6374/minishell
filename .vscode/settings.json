@@ -34,7 +34,10 @@
 		"vector": "c",
 		"array": "c",
 		"utility": "c",
-		"limits.h": "c"
+		"limits.h": "c",
+		"__mutex_base": "c",
+		"__threading_support": "c",
+		"unordered_map": "c"
 	},
 	"editor.fontLigatures": false,
 	"lldb.dbgconfig": {},

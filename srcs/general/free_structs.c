@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 23:11:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:19:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	free_env(t_env *first)
 {
 	t_env	*next;
 
+	if (!first)
+		return (MALLOC);
 	next = first->next;
 	while (next)
 	{

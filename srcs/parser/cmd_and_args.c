@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 18:05:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:58:43 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,7 @@ int	join_paths(char **tmp, char *env)
 		return (free_pointer(t1, MALLOC + 1));
 	err = check_access(t1, t2, 1);
 	if (err)
-	{
-		free(t2);
-		((err != CMD_NOT_FOUND) && (++err));
-		return (err);
-	}
+		return (free_pointer(t2, err));
 	free(*tmp);
 	*tmp = t2;
 	return (0);
@@ -81,15 +77,12 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	int		err;
 	char	**path;
 
+	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
+		return (check_access(NULL, (*tmp), 1));
 	path = path_env((*tk)->env);
 	if (!path)
-		return (CMD_NOT_FOUND);
+		return (join_paths(tmp, getcwd(NULL, 0)));
 	i = -1;
-	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
-	{
-		ft_free_dptr(path);
-		return (check_access(NULL, (*tmp), 1));
-	}
 	while (path[++i])
 	{
 		err = join_paths(tmp, path[i]);
@@ -98,7 +91,7 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 		else if (err == CMD_NOT_FOUND)
 			continue ;
 		else
-			return (err - 1);
+			return (err);
 	}
 	if (!path[i])
 		return (CMD_NOT_FOUND);

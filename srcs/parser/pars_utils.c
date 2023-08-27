@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 15:37:05 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:59:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,18 +86,11 @@ int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 			|| !ft_strncmp(w->word, "<<", 3)) && (v->s[w->i + 1] == ' '
 			|| v->s[w->i + 1] == '\0'))
 		w->word = ft_strjoin(w->word, " ");
-	if ((v->stp == 0 || v->s[*w->idx - 1] == ' ' || v->s[*w->idx - 1] == '<'
-			|| v->s[*w->idx - 1] == '>' || v->s[*w->idx - 1] == '|')
-		&& add_word(word_lst, w->word))
-		return (MALLOC);
-	else if (v->stp > 0 && v->s[*w->idx - 1] != ' ' && v->s[*w->idx - 1] != '<'
-		&& v->s[*w->idx - 1] != '>' && v->s[*w->idx - 1] != '|'
-		&& join_words(word_lst, w->word))
+	if (add_or_join(word_lst, v, w->word, 1))
 		return (MALLOC);
 	*w->idx = w->i;
-	v->stp = w->i + 1;
 	w->word = NULL;
-	w->k = 0;
+	v->stp = w->i + 1;
 	v->dq = 0;
 	v->sq = 0;
 	v->oq = 1;

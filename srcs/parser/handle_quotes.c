@@ -6,18 +6,45 @@
 /*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 17:59:39 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/27 12:04:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+int static	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
+{
+	char	c;
+
+	if (w->check)
+		c = '\"';
+	else
+		c = '\'';
+	w->word = (char *)malloc(sizeof(char) * (w->count + 1));
+	if (!w->word)
+		return (MALLOC);
+	w->i = *w->idx + 1;
+	while (v->s[w->i] != c && v->s[w->i] != '\0')
+	{
+		if (w->check && v->s[w->i] == '$'
+			&& *env && !ft_strncmp(&v->s[w->i + 1], (*env)->name, \
+			ft_strlen((*env)->name) - 1))
+			add_env_var(w, env);
+		else
+			w->word[++w->l] = v->s[w->i++];
+	}
+	w->word[++w->l] = '\0';
+	if (end_refill(word_lst, v, w))
+		return (MALLOC);
+	return (0);
+}
 
 int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 {
 	t_word	w;
 	t_env	*tmp;
 
-	w.k = 1;
+	w.check = 1;
 	w.l = -1;
 	w.i = *idx;
 	w.idx = idx;
@@ -43,12 +70,12 @@ int	words_sin_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 {
 	t_word	w;
 
-	w.k = 0;
+	w.check = 0;
 	w.l = -1;
 	w.i = *idx;
 	w.idx = idx;
 	w.count = 0;
-	if (v->s[*idx] == '\'' && v->s[*idx + 1] == '\"' && v->oq++ && v->sq--)
+	if (v->s[*idx] == '\'' && v->s[*idx + 1] == '\'' && v->oq++ && v->sq--)
 		return (0);
 	while (v->s[++w.i] != '\'')
 		w.count++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:59:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 {
 	t_env	*next;
 
-	if (!data.word || ((v->stp == 0 || v->s[v->stp - 1] == ' ')
-			&& add_word(word_lst, data.word)))
+	if (!data.check)
+		data.word = ft_strdup((*env)->value);
+	if (!data.word || add_or_join(word_lst, v, data.word, 0))
 		return (MALLOC);
-	else if (!data.word || (v->stp > 0 && v->s[v->stp - 1] != ' '
-			&& join_words(word_lst, data.word)))
-		return (MALLOC);
-	if (data.l)
+	if (data.check)
 		v->stp = (*data.idx)--;
 	else
-		v->stp = *data.idx + ft_strlen((*env)->name);
-	if (!data.l)
 	{
+		v->stp = *data.idx + ft_strlen((*env)->name);
 		next = (*env)->next;
 		free((*env)->name);
 		free((*env)->value);
@@ -40,46 +37,39 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 	return (0);
 }
 
-int	before_word(t_parser **word_lst, t_vars *v, t_word *data, int *i)
+void static	not_env_var(t_vars *v, t_word *data)
 {
-	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
+	data->check = 1;
+	if (v->s[++(*data->idx)] == '?')
+		(*data->idx)++;
+	while (ft_isalnum(v->s[(*data->idx)]))
+		(*data->idx)++;
+	if (v->s[data->i + 1] == '?' || ft_isdigit(v->s[data->i + 1]))
 	{
-		data->word = ft_substr(v->s, v->stp, *i - v->stp);
-		if (!data->word || create_word(word_lst, v, i, 1))
-			return (2);
+		if (ft_isdigit(v->s[data->i + 1]))
+			data->i = data->i + 2;
+		data->word = ft_substr(v->s, data->i, *data->idx - data->i);
 	}
-	if (!ft_strncmp(&v->s[*i], "$?", 3))
-	{
-		*i += 3;
-		data->l = 1;
-		data->word = ft_substr(v->s, v->stp, *i - v->stp);
-		return (0);
-	}
-	return (1);
+	else
+		data->word = ft_strdup("");
 }
 
 int	check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 {
-	int		res;
 	t_word	data;
 
-	data.l = 0;
+	data.i = *i;
 	data.idx = i;
-	res = before_word(word_lst, v, &data, i);
-	if (res == 2)
-		return (MALLOC);
-	else if (res == 1 && (!(*env) || ft_strncmp(&v->s[*i + 1], (*env)->name,
-				ft_strlen((*env)->name) - 1)))
+	data.check = 0;
+	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
 	{
-		data.l = 1;
-		if (v->s[++(*i)] == '?')
-			(*i)++;
-		while (ft_isalnum(v->s[(*i)]))
-			(*i)++;
-		data.word = ft_strdup("");
+		data.word = ft_substr(v->s, v->stp, *i - v->stp);
+		if (!data.word || create_word(word_lst, v, i, 1))
+			return (MALLOC);
 	}
-	else if (res == 1)
-		data.word = ft_strdup((*env)->value);
+	if ((!(*env) || ft_strncmp(&v->s[*i + 1], (*env)->name,
+				ft_strlen((*env)->name) - 1)) && ++data.check)
+		not_env_var(v, &data);
 	return (change_env_list(word_lst, env, v, data));
 }
 
