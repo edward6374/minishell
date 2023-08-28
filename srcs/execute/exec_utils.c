@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 16:39:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 17:06:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,26 @@ void	set_g(t_min *tk, int ok)
 void	take_more_exit(char **str, int i)
 {
 	int		j;
-	char	*new;
 	char	*last;
 
 	j = 1;
-	new = ft_strdup(ft_itoa(g_exit));
 	last = ft_strdup(ft_itoa(g_exit));
 	while (str[i][++j])
 	{
 		if (str[i][j] == '$' && str[i][j + 1] == '?')
-			((last = ft_strjoin(last, new)) && (++j));
-		else
+			((last = ft_strjoin(last, ft_strdup(ft_itoa(g_exit)))) && (++j));
+		else if (ft_strchr(str[i] + j, '$'))
+		{
 			last = ft_strjoin(last, ft_substr(str[i], j, ft_strchr(str[i] + j,
-						'$') - &str[i][j]));
+							'$') - &str[i][j]));
+			j += ft_strchr(str[i] + j, '$') - &str[i][j] - 1;
+		}
+		else if (!ft_strchr(str[i] + j, '$'))
+		{
+			last = ft_strjoin(last, ft_substr(str[i], j, ft_strlen(str[i])
+						- j));
+			break ;
+		}
 	}
 	free(str[i]);
 	str[i] = ft_strdup(last);
