@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 09:23:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:37:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 	t_env	*next;
 
 	if (!data.check)
-		data.word = ft_strdup((*env)->value);
+		data.word = check_spaces(ft_strdup((*env)->value));
 	if (!data.word || add_or_join(word_lst, v, data.word, 0))
 		return (MALLOC);
 	if (data.check)
@@ -61,7 +61,7 @@ int	check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i)
 	data.i = *i;
 	data.idx = i;
 	data.check = 0;
-	if (v->stp > 0 && *i - v->stp > 0 && v->s[v->stp - 1] != ' ')
+	if (*i - v->stp > 0 && (v->s[v->stp - 1] != ' ' || v->s[*i - 1] != ' '))
 	{
 		data.word = ft_substr(v->s, v->stp, *i - v->stp);
 		if (!data.word || create_word(word_lst, v, i, 1))

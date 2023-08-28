@@ -3,15 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:44:25 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/28 09:23:01 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:37:20 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_ins.h"
 #include "parser.h"
+
+void static	check_space_loop(char *str, t_space *sp)
+{
+	if (str[sp->i] != ' ')
+	{
+		str[sp->j++] = str[sp->i++];
+		sp->space = FALSE;
+	}
+	else if (!sp->space)
+	{
+		str[sp->j++] = ' ';
+		sp->space = TRUE;
+		while (sp->i < sp->len && str[sp->i] == ' ')
+			sp->i++;
+	}
+	else
+		sp->i++;
+}
+
+char	*check_spaces(char *str)
+{
+	t_space	sp;
+
+	sp.i = 0;
+	sp.j = 0;
+	sp.space = FALSE;
+	sp.len = ft_strlen(str);
+	while (sp.i < sp.len)
+		check_space_loop(str, &sp);
+	if (sp.j > 0 && str[sp.j - 1] == ' ')
+		sp.j--;
+	str[sp.j] = '\0';
+	return (str);
+}
 
 t_env	*search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *, int))
 {

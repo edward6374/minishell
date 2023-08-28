@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 11:14:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:37:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 // char *s; // string -> variable that represent the string came fom readline
 
 # include "minishell.h"
+
+typedef struct s_space
+{
+	int		i;
+	int		j;
+	int		len;
+	int		space;
+}			t_space;
 
 typedef struct s_vars
 {
@@ -77,6 +85,7 @@ int			check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
 t_env		*find_env_vars(t_env *env, t_vars *v);
 
 /* ---			Env_utils.c			--- */
+char		*check_spaces(char *str);
 int			add_env_var(t_word *w, t_env **env);
 t_env		*search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *,
 					int));
@@ -107,7 +116,7 @@ char		**path_env(t_env *env);
 /* ---			Redirections.c			--- */
 int			take_redir(t_parser **tmp, t_cmd *new);
 
-/* ---			Utils.c			--- */
+/* ---			Pars_utils.c			--- */
 int			check_access(char *to_free, char *str, int mode);
 int			end_refill(t_parser **word_lst, t_vars *v, t_word *w);
 void		set_vars(t_vars *v, char *s);

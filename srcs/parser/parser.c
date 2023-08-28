@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 12:06:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:39:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ static int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 	while (++i < v->i)
 	{
 		check_quotes(v, &v->s[i]);
-		if (v->oq && ((v->s[i + 1] == '\'' || v->s[i + 1] == '\"')
-				|| (v->s[i + 1] == '\0' && v->s[i] != ' ')
-				|| v->s[i + 1] == ' ')
+		if (v->oq && ((v->s[i + 1] == '\'' || v->s[i + 1] == '\"') || (v->s[i
+						+ 1] == '\0' && v->s[i] != ' ') || v->s[i + 1] == ' ')
 			&& multiple_words(tmp, &env_list, v, i + 1))
 			return (free_env(env_list));
 		else if (v->sq && words_sin_qts(tmp, v, &env_list, &i))
