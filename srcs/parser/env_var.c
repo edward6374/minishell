@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 11:51:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 15:37:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:51:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	change_env_list(t_parser **word_lst, t_env **env, t_vars *v, t_word data)
 	t_env	*next;
 
 	if (!data.check)
-		data.word = check_spaces(ft_strdup((*env)->value));
+		data.word = check_spaces(env, ft_strdup((*env)->value));
 	if (!data.word || add_or_join(word_lst, v, data.word, 0))
 		return (MALLOC);
 	if (data.check)

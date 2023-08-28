@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 15:37:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:54:36 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			check_env_word(t_parser **word_lst, t_env **env, t_vars *v, int *i);
 t_env		*find_env_vars(t_env *env, t_vars *v);
 
 /* ---			Env_utils.c			--- */
-char		*check_spaces(char *str);
+char		*check_spaces(t_env **env, char *str);
 int			add_env_var(t_word *w, t_env **env);
 t_env		*search_env(t_env *env, void *data_ref, int (*cmp)(char *, char *,
 					int));

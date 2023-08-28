@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:44:25 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/28 15:46:35 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:54:40 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ void static	check_space_loop(char *str, t_space *sp)
 		sp->i++;
 }
 
-char	*check_spaces(char *str)
+char	*check_spaces(t_env **env, char *str)
 {
 	t_space	sp;
 
 	sp.i = 0;
 	sp.j = 0;
-	sp.space = FALSE;
+	sp.space = TRUE;
 	sp.len = ft_strlen(str);
 	while (sp.i < sp.len)
 		check_space_loop(str, &sp);
+	if (sp.j > 0 && str[sp.j - 1] == ' ' && !(*env)->next)
+		sp.j--;
 	str[sp.j] = '\0';
 	return (str);
 }
