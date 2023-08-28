@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 17:06:35 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 17:07:29 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	take_exit_value(t_cmd *tmp)
 	}
 }
 
-pid_t static	child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
+pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
 	pid_t	pid;
 
