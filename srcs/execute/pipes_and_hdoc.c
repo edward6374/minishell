@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   pipes_and_hdoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 22:36:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:39:33 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+
+int	is_builtin(char *cmd)
+{
+	if (!ft_strncmp(cmd, "cd", 3) || !ft_strncmp(cmd, "echo", 5)
+		|| !ft_strncmp(cmd, "env", 4) || !ft_strncmp(cmd, "exit", 5)
+		|| !ft_strncmp(cmd, "export", 7) || !ft_strncmp(cmd, "pwd", 4)
+		|| !ft_strncmp(cmd, "unset", 6))
+		return (1);
+	return (0);
+}
 
 void	close_here_doc(t_min *tk)
 {

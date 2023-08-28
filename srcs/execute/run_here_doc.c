@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   run_here_doc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:34:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/24 12:30:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:40:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 #include "signalm.h"
 
-void	run_loop(t_cmd *tmp, char *line)
+void static	run_loop(t_cmd *tmp, char *line)
 {
 	set_signals(2);
 	while (42)

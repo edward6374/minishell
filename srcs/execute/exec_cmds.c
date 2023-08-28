@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 17:30:41 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 16:39:50 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	take_exit_value(t_cmd *tmp)
 		{
 			free(tmp->args[i]);
 			tmp->args[i] = ft_strdup(ft_itoa(g_exit));
-			g_exit = 0;
 		}
+		else if (!ft_strncmp(tmp->args[i], "$?", 2))
+			take_more_exit(tmp->args, i);
+		g_exit = 0;
 	}
 }
 
-pid_t static	child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
+pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)
 {
 	pid_t	pid;
 

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:46:37 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/28 16:39:55 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,28 @@ void	set_g(t_min *tk, int ok)
 	else
 		g_exit = 1;
 	tk->num_cmds = tk->num_cmds - 1;
+}
+
+void	take_more_exit(char **str, int i)
+{
+	int		j;
+	char	*new;
+	char	*last;
+
+	j = 1;
+	new = ft_strdup(ft_itoa(g_exit));
+	last = ft_strdup(ft_itoa(g_exit));
+	while (str[i][++j])
+	{
+		if (str[i][j] == '$' && str[i][j + 1] == '?')
+			((last = ft_strjoin(last, new)) && (++j));
+		else
+			last = ft_strjoin(last, ft_substr(str[i], j, ft_strchr(str[i] + j,
+						'$') - &str[i][j]));
+	}
+	free(str[i]);
+	str[i] = ft_strdup(last);
+	free(last);
 }
 
 void	end_exec(t_min *tk, pid_t *child_pid, char **env)
@@ -45,16 +67,6 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	if (child_pid)
 		free(child_pid);
 	free_double_void(env);
-}
-
-int	is_builtin(char *cmd)
-{
-	if (!ft_strncmp(cmd, "cd", 3) || !ft_strncmp(cmd, "echo", 5)
-		|| !ft_strncmp(cmd, "env", 4) || !ft_strncmp(cmd, "exit", 5)
-		|| !ft_strncmp(cmd, "export", 7) || !ft_strncmp(cmd, "pwd", 4)
-		|| !ft_strncmp(cmd, "unset", 6))
-		return (1);
-	return (0);
 }
 
 int	run_builtin(t_min *tk, t_cmd *tmp, pid_t *child_pid)
