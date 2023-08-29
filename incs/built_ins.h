@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:15:45 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 15:46:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/29 23:22:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ typedef struct s_quotes
 typedef struct s_export
 {
 	int		i;
+	int		res;
 	t_env	*find;
 	char	*name;
 	char	*value;
 
 }			t_export;
 
-int ft_cd(char **args, t_min *tk);
+int			ft_cd(char **args, t_min *tk);
 int			ft_pwd(void);
 int			ft_echo(char **args, int i);
 int			ft_exit(t_cmd *temp);

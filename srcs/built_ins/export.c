@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:48:56 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 11:55:03 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 22:45:17 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,24 @@ int	ft_export(t_min *tk, t_cmd *tmp)
 	}
 	else
 		return (export_add(tk->env, tmp->args));
+}
+
+// this is the export_add
+
+t_env	*new_env(char *str, char *value)
+{
+	t_env	*new;
+	char	*name;
+
+	new = (t_env *)malloc(sizeof(t_env));
+	if (!new)
+		return (NULL);
+	name = ft_strjoin(str, "=");
+	new->name = name;
+	if (ft_strlen(value) == 0)
+		new->value = NULL;
+	else
+		new->value = value;
+	new->next = NULL;
+	return (new);
 }
