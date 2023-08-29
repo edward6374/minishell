@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 13:17:00 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/24 13:17:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:43:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ typedef struct s_min
 	char				**pt_env;
 	t_env				*env;
 	t_cmd				*cmds;
+	char *pwd;
+	char *oldpwd;
+	char *home;
 }						t_min;
 
 #endif

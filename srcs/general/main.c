@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 12:11:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:33:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	main(int argc, char *argv[], char *env[])
 	if (argc == 1)
 	{
 		tk = init_struct(env);
+		init_pwd(tk);
 		set_term();
 		if (!tk)
 			return (end_program(NULL, MALLOC));

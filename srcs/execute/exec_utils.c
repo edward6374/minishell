@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 17:07:27 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 15:46:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	run_builtin(t_min *tk, t_cmd *tmp, pid_t *child_pid)
 	if (!ft_strncmp("echo", tmp->cmd, 5))
 		return (ft_echo(tmp->args, 1));
 	else if (!ft_strncmp("cd", tmp->cmd, 3))
-		return (ft_cd(tmp->args, tk->env));
+		return (ft_cd(tmp->args, tk));
 	else if (!ft_strncmp("pwd", tmp->cmd, 4))
 		return (ft_pwd());
 	else if (!ft_strncmp("export", tmp->cmd, 7))
