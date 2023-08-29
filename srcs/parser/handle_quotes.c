@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 12:04:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 13:54:00 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int static	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 	w->i = *w->idx + 1;
 	while (v->s[w->i] != c && v->s[w->i] != '\0')
 	{
-		if (w->check && v->s[w->i] == '$'
-			&& *env && !ft_strncmp(&v->s[w->i + 1], (*env)->name, \
-			ft_strlen((*env)->name) - 1))
+		if (w->check && v->s[w->i] == '$' && *env && !ft_strncmp(&v->s[w->i
+				+ 1], (*env)->name, ft_strlen((*env)->name) - 1))
 			add_env_var(w, env);
 		else
 			w->word[++w->l] = v->s[w->i++];
@@ -50,7 +49,7 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 	w.idx = idx;
 	w.count = 0;
 	tmp = *env;
-	if (v->s[*idx] == '\"' && v->s[*idx + 1] == '\"' && v->oq++ && v->dq--)
+	if (v->s[*idx] == '\"' && v->s[*idx + 1] == '\"')
 		return (0);
 	while (v->s[++w.i] != '\"')
 	{

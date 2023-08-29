@@ -6,13 +6,24 @@ Para el parsing
 
 echo $NONEXIST  ""
 
-echoecho
-bash: echoecho: command not found
-
 tiene que retornor 127
 
+# bash: : command not found
+# Tiene que ser NULL
+""
 
-l====================
+# Esta es una cosa posible
+export A+=uno
+
+tk struct -> poner pwd y oldpwd
+
+# Pipe abierto
+cat | cat | cat | cat | ls
+
+# Redireccion con un solo comando que es built-in
+echo hola > out
+
+====================
 exit ""
 
 
@@ -27,7 +38,5 @@ bash: warning: shell level (1001) too high, resetting to 1\
 	int sq; // single_quotes -> variable used to check if you are in a single quote
 	int dq; // double_quotes -> variable used to check if you are in a double quote
 	int oq; // out_quotes -> variable used to check if you are in any quotes
-	// int nq;	   // number_quotes -> variable that is the number of quotes in a word
 	int stp; // starting_point -> variable that is the starting point of a word
-	// int count; // variable to used to checkk if a env variable is after another one
 	char *s; // string -> variable that represent the string came fom readline

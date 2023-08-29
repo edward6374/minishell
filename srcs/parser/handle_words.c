@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_words.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 12:04:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 13:46:26 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ int	add_or_join(t_parser **word_lst, t_vars *v, char *word, int mode)
 				|| v->s[v->stp - 1] == '>' || v->s[v->stp - 1] == '|')
 			&& add_word(word_lst, word))
 			return (MALLOC);
-		else if (v->stp > 0 && v->s[v->stp - 1] != ' '
-			&& v->s[v->stp - 1] != '<' && v->s[v->stp - 1] != '>'
-			&& v->s[v->stp - 1] != '|'
+		else if (v->stp > 0 && v->s[v->stp - 1] != ' ' && v->s[v->stp
+			- 1] != '<' && v->s[v->stp - 1] != '>' && v->s[v->stp - 1] != '|'
 			&& join_words(word_lst, word))
 			return (MALLOC);
 	}
@@ -76,6 +75,7 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	int		len;
 	char	*word;
 
+	printf("Create word\n");
 	if (!mode)
 	{
 		len = 1;

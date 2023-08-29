@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 17:46:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 11:19:54 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 13:47:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	free_env(t_env *first)
 {
 	t_env	*next;
 
+	printf("Free env\n");
 	if (!first)
 		return (MALLOC);
 	next = first->next;
