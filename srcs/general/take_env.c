@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   take_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/23 23:12:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:37:34 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ t_env	*save_node(t_min *tk, t_env *new, t_env *old_tmp)
 	return (tmp);
 }
 
-void	print_env(t_env *env)
-{
-	t_env	*tmp;
+// void	print_env(t_env *env)
+// {
+// 	t_env	*tmp;
 
-	tmp = env;
-	while (tmp)
-	{
-		printf("Name: %s\tValue: %s\n", tmp->name, tmp->value);
-		tmp = tmp->next;
-	}
-}
+// 	tmp = env;
+// 	while (tmp)
+// 	{
+// 		printf("Name: %s\tValue: %s\n", tmp->name, tmp->value);
+// 		tmp = tmp->next;
+// 	}
+// }
 
 int	take_env(t_min *tk, char *env[])
 {
@@ -59,7 +59,7 @@ int	take_env(t_min *tk, char *env[])
 		new->name = ft_substr(env[i], 0, ft_strrchr(env[i], '=') - env[i] + 1);
 		if (!ft_strncmp(env[i], "SHLVL=", 6))
 			new->value = ft_strdup(ft_itoa(ft_atoi(ft_strrchr(env[i], '=') + 1)
-						+ 1));
+					+ 1));
 		else if (!ft_strncmp(env[i], "OLDPWD=", 7))
 			new->value = NULL;
 		else

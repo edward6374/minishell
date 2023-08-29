@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 15:33:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:37:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ t_min	*init_struct(char *env[])
 	return (tk);
 }
 
+void	print_env(t_env *env)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		printf("Name: %s\tValue: %s\n", tmp->name, tmp->value);
+		tmp = tmp->next;
+	}
+}
+
 void	program(t_min *tk, char *line)
 {
 	int	err;
@@ -77,6 +89,7 @@ int	loop_main(t_min *tk)
 
 	path = get_curr_path();
 	line = readline(path);
+	print_env(tk->env);
 	if (!line)
 	{
 		if (isatty(STDIN_FILENO))
