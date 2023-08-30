@@ -18,10 +18,10 @@ tiene que retornor 127
 ~~ tk struct -> poner pwd y oldpwd ~~
 
 # Pipe abierto
-cat | cat | cat | cat | ls
+~~ cat | cat | cat | cat | ls ~~
 
 # Corregir este comando
-exrp $? + $?
+~~ exrp $? + $? ~~
 
 # Redireccion con un solo comando que es built-in
 ~~ echo hola > out ~~
