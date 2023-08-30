@@ -6,11 +6,36 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 16:39:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 10:35:28 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+
+void	one_builtin(t_min *tk, t_cmd *tmp, pid_t *child_pid)
+{
+	int	out_tmp;
+
+	out_tmp = -1;
+	if (check_before_exec(tk, &tmp, NULL, NULL) == -1)
+		return ;
+	if (tmp->out_fd != 1)
+	{
+		out_tmp = dup(1);
+		dup2(tmp->out_fd, 1);
+		close(tmp->out_fd);
+	}
+	take_exit_value(tmp);
+	free_double_void(tk->pt_env);
+	if (child_pid)
+		free(child_pid);
+	g_exit = run_builtin(tk, tmp);
+	if (out_tmp != -1)
+	{
+		dup2(out_tmp, 1);
+		close(out_tmp);
+	}
+}
 
 int	is_builtin(char *cmd)
 {
@@ -20,22 +45,6 @@ int	is_builtin(char *cmd)
 		|| !ft_strncmp(cmd, "unset", 6))
 		return (1);
 	return (0);
-}
-
-void	close_here_doc(t_min *tk)
-{
-	t_cmd	*tmp;
-
-	tmp = tk->cmds;
-	while (tmp)
-	{
-		if (tmp->hdoc->yes)
-		{
-			close(tmp->hdoc->fd[0]);
-			close(tmp->hdoc->fd[1]);
-		}
-		tmp = tmp->next;
-	}
 }
 
 void	close_all_pipes(t_min *tk, int *p, int fd)

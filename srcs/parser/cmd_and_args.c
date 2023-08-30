@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:47:54 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 11:58:43 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 10:29:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	rel_path_cmd(t_min **tk, char **tmp)
 	int		err;
 	char	**path;
 
-	if ((*tmp)[0] == '.' && (*tmp)[1] == '/')
+	if (((*tmp)[0] == '.' && (*tmp)[1] == '/') || (*tmp)[0] == '\0')
 		return (check_access(NULL, (*tmp), 1));
 	path = path_env((*tk)->env);
 	if (!path)

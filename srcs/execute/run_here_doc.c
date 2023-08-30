@@ -6,12 +6,28 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:34:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/28 16:40:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 10:29:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 #include "signalm.h"
+
+void	close_here_doc(t_min *tk)
+{
+	t_cmd	*tmp;
+
+	tmp = tk->cmds;
+	while (tmp)
+	{
+		if (tmp->hdoc->yes)
+		{
+			close(tmp->hdoc->fd[0]);
+			close(tmp->hdoc->fd[1]);
+		}
+		tmp = tmp->next;
+	}
+}
 
 void static	run_loop(t_cmd *tmp, char *line)
 {

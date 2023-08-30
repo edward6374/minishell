@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 13:46:26 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 20:09:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	int		len;
 	char	*word;
 
-	printf("Create word\n");
 	if (!mode)
 	{
 		len = 1;
@@ -85,7 +84,13 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	}
 	else
 		len = *i - v->stp;
-	word = ft_substr(v->s, v->stp, len);
+	if (!ft_strncmp(&v->s[v->stp], "\"\"", 3))
+	{
+		word = ft_strdup("");
+		v->stp += 2;
+	}
+	else
+		word = ft_substr(v->s, v->stp, len);
 	if (!mode && add_word(word_lst, word))
 		return (MALLOC);
 	else if (mode && add_or_join(word_lst, v, word, 0))
