@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 13:54:02 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 10:28:20 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 	t_env	*env_list;
 
 	i = v->stp - 1;
+	// if (!ft_strncmp(&v->s[v->i - 2], "\"\"", 3))
+	// return (0);
 	env_list = find_env_vars(env_vars, v);
 	while (++i < v->i)
 	{
@@ -74,7 +76,7 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
-	print_words(all_words);
+	// print_words(all_words);
 	return (0);
 }
 

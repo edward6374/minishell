@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 18:50:22 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/27 11:59:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 20:09:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	end_refill(t_parser **word_lst, t_vars *v, t_word *w)
 {
 	if ((!ft_strncmp(w->word, ">", 2) || !ft_strncmp(w->word, ">>", 3)
 			|| !ft_strncmp(w->word, "<", 2) || !ft_strncmp(w->word, "<<", 3)
-			|| !ft_strncmp(w->word, "<<", 3)) && (v->s[w->i + 1] == ' '
-			|| v->s[w->i + 1] == '\0'))
+			|| !ft_strncmp(w->word, "<<", 3) || !ft_strncmp(w->word, "|", 2))
+		&& (v->s[w->i + 1] == ' ' || v->s[w->i + 1] == '\0'))
 		w->word = ft_strjoin(w->word, " ");
 	if (add_or_join(word_lst, v, w->word, 1))
 		return (MALLOC);

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 13:54:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 20:09:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	words_dbl_qts(t_parser **word_lst, t_vars *v, t_env **env, int *idx)
 	w.count = 0;
 	tmp = *env;
 	if (v->s[*idx] == '\"' && v->s[*idx + 1] == '\"')
-		return (0);
+		return (create_word(word_lst, v, idx, 0));
+	// return (0);
 	while (v->s[++w.i] != '\"')
 	{
 		if (v->s[w.i] == '$' && tmp && !ft_strncmp(tmp->name, &v->s[w.i + 1],

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 16:08:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 18:37:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/29 20:09:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	loop_main(t_min *tk)
 
 	path = get_curr_path();
 	line = readline(path);
-	print_env(tk->env);
+	// print_env(tk->env);
 	if (!line)
 	{
 		if (isatty(STDIN_FILENO))

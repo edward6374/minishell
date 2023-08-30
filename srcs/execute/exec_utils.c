@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 15:46:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:15:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,8 @@ void	end_exec(t_min *tk, pid_t *child_pid, char **env)
 	free_double_void(env);
 }
 
-int	run_builtin(t_min *tk, t_cmd *tmp, pid_t *child_pid)
+int	run_builtin(t_min *tk, t_cmd *tmp)
 {
-	if (tk->num_cmds == 1)
-	{
-		take_exit_value(tmp);
-		free_double_void(tk->pt_env);
-		if (child_pid)
-			free(child_pid);
-	}
 	if (!ft_strncmp("echo", tmp->cmd, 5))
 		return (ft_echo(tmp->args, 1));
 	else if (!ft_strncmp("cd", tmp->cmd, 3))
