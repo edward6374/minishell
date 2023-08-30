@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:23:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/30 10:35:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 12:06:18 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	check_temp_fd(t_cmd *tmp, int *p, int *fd)
 		pipe(p);
 	else if (tmp->before && tmp->in_fd == 0 && tmp->next && !tmp->hdoc->yes)
 	{
+		if (*fd != -1)
+			close(*fd);
 		*fd = dup(p[0]);
 		close(p[0]);
 		close(p[1]);

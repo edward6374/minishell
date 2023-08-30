@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/30 10:33:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 12:07:05 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	take_exit_value(t_cmd *tmp)
 		}
 		else if (!ft_strncmp(tmp->args[i], "$?", 2))
 			take_more_exit(tmp->args, i);
-		g_exit = 0;
 	}
+	g_exit = 0;
 }
 
 pid_t static child_exec(t_min *tk, t_cmd *tmp, int *p, int fd)

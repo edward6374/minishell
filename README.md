@@ -10,21 +10,24 @@ tiene que retornor 127
 
 # bash: : command not found
 # Tiene que ser NULL
-""
+~~ "" ~~
 
 # Esta es una cosa posible
-export A+=uno
+~~ export A+=uno ~~
 
-tk struct -> poner pwd y oldpwd
+~~ tk struct -> poner pwd y oldpwd ~~
 
 # Pipe abierto
 cat | cat | cat | cat | ls
 
+# Corregir este comando
+exrp $? + $?
+
 # Redireccion con un solo comando que es built-in
-echo hola > out
+~~ echo hola > out ~~
 
 ====================
-exit ""
+~~ exit "" ~~
 
 
 SHLVL=1000
