@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 13:17:00 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/29 15:43:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:50:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ extern unsigned char	g_exit;
 # define MID_GRAY "\033[38;5;245m"
 # define DARK_GREEN "\033[38;2;75;179;82m"
 # define DARK_YELLOW "\033[38;5;143m"
+
+#define TERROR "\xF0\x9F\x98\xB1"
 
 enum
 {

@@ -6,21 +6,22 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 15:40:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:52:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_ins.h"
 #include "minishell.h"
+#include "struct.h"
 
-void	exit_err_arg(char *str, long long int *value, int mode)
+void exit_err_arg(char *str, long long int *value, int mode)
 {
 	if (!mode)
 	{
-		printf(":( exit: %s: number argument required\n", str);
+		printf("%s exit: %s: number argument required\n", TERROR, str);
 		exit(255);
 	}
-	printf(":( exit: too many arguments\n");
+	printf("%s exit: too many arguments\n", TERROR);
 	g_exit = 0;
 	*value = 0;
 }

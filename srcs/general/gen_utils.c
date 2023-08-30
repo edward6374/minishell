@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 17:57:06 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/24 15:14:28 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/30 20:54:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	end_program(char **line, int error)
 		free(*line);
 		*line = NULL;
 	}
-	printf(":( %s\n", g_error_array[error - 1]);
+	printf("%s %s\n", TERROR, g_error_array[error - 1]);
 	return (error);
 }
 

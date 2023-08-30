@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:25:41 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/30 11:49:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:53:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	export_loop(t_env *env, char **args, t_export *dt)
 {
 	if (!is_name(dt->name))
 	{
-		printf(":( export: `%s\': not valid identifier\n", args[dt->i]);
+		printf("%s export: `%s\': not valid identifier\n", TERROR, args[dt->i]);
 		dt->res = 1;
 		dt->name = NULL;
 	}
