@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:41:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/28 15:54:36 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/31 18:29:54 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,12 @@ int			add_word(t_parser **word_lst, char *word);
 int			join_words(t_parser **word_lst, char *word);
 int			create_word(t_parser **word_lst, t_vars *v, int *i, int mode);
 int			add_or_join(t_parser **word_lst, t_vars *v, char *word, int mode);
-int			multiple_words(t_parser **word_lst, t_env **env, t_vars *v,
-				int end);
 
 /* ---			Parser.c			--- */
 int			parser(t_min *tk, char *line);
 int			add_word(t_parser **tmp, char *word);
+int			multiple_words(t_parser **word_lst, t_env **env, t_vars *v,
+				int end);
 
 /* ---			Path_env.c			--- */
 char		**path_env(t_env *env);

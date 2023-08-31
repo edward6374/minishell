@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:49:21 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/30 20:52:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/31 18:30:47 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "minishell.h"
 #include "struct.h"
 
-void exit_err_arg(char *str, long long int *value, int mode)
+void	exit_err_arg(char *str, long long int *value, int mode)
 {
 	if (!mode)
 	{

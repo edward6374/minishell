@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 11:02:42 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 20:09:18 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/31 18:35:53 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,14 @@ int	take_env(t_min *tk, char *env[])
 		new = ft_calloc(1, sizeof(t_env));
 		if (!new)
 			return (MALLOC);
-		// printf("Env value: %s\n", env[i]);
 		new->name = ft_substr(env[i], 0, ft_strrchr(env[i], '=') - env[i] + 1);
 		if (!ft_strncmp(env[i], "SHLVL=", 6))
 			new->value = ft_strdup(ft_itoa(ft_atoi(ft_strrchr(env[i], '=') + 1)
-					+ 1));
+						+ 1));
 		else if (!ft_strncmp(env[i], "OLDPWD", 6))
 			new->value = NULL;
 		else
 			new->value = ft_strdup(ft_strrchr(env[i], '=') + 1);
-		// printf("ENV: %s\n", new->name);
 		if (!new->name || (ft_strncmp(new->name, "OLDPWD=", 7) && !new->value))
 			return (free_env(new));
 		tmp = save_node(tk, new, tmp);

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 13:10:16 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/30 12:07:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/08/31 18:35:35 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	take_more_exit(char **str, int i)
 		else if (ft_strchr(str[i] + j, '$'))
 		{
 			last = ft_strjoin(last, ft_substr(str[i], j, ft_strchr(str[i] + j,
-						'$') - &str[i][j]));
+							'$') - &str[i][j]));
 			j += ft_strchr(str[i] + j, '$') - &str[i][j] - 1;
 		}
 		else if (!ft_strchr(str[i] + j, '$'))
 		{
 			last = ft_strjoin(last, ft_substr(str[i], j, ft_strlen(str[i])
-					- j));
+						- j));
 			break ;
 		}
 	}

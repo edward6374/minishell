@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
+/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/30 20:54:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/08/31 18:55:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	check_before_exec(t_min *tk, t_cmd **tmp, int *p, int *fd)
 	if ((*tmp)->ok)
 	{
 		if ((*tmp)->err_f)
-			printf("%s %s: %s\n", TERROR, (*tmp)->err_f, g_error_array[(*tmp)->ok - 1]);
+			printf("%s %s: %s\n", TERROR, (*tmp)->err_f,
+				g_error_array[(*tmp)->ok - 1]);
 		else
-			printf("%s %s: %s\n", TERROR, (*tmp)->cmd, g_error_array[(*tmp)->ok - 1]);
+			printf("%s %s: %s\n", TERROR, (*tmp)->cmd, g_error_array[(*tmp)->ok
+				- 1]);
 		set_g(tk, (*tmp)->ok);
 		*tmp = (*tmp)->next;
 		return (-1);
@@ -115,6 +117,7 @@ int	execute_commands(t_min *tk)
 	tmp = tk->cmds;
 	while (tmp)
 	{
+		printf("Here\n");
 		run_here_doc(tmp);
 		tmp = tmp->next;
 	}
