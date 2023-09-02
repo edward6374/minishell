@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 20:24:51 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 18:55:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 10:57:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ int	execute_commands(t_min *tk)
 	tmp = tk->cmds;
 	while (tmp)
 	{
-		printf("Here\n");
 		run_here_doc(tmp);
 		tmp = tmp->next;
 	}

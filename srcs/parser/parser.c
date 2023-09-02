@@ -6,28 +6,28 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 18:51:37 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 11:14:37 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-// int	print_words(t_parser *all_words)
-// {
-// 	t_parser	*p;
+int	print_words(t_parser *all_words)
+{
+	t_parser	*p;
 
-// 	p = all_words;
-// 	while (p)
-// 	{
-// 		printf("Temp:-->%p\n", p);
-// 		printf("Word:--%s--\n", p->word);
-// 		printf("Next:-->%p\n", p->next);
-// 		printf("Before:-->%p\n\n", p->before);
-// 		p = p->next;
-// 	}
-// 	printf("Temp: %p\n", p);
-// 	return (0);
-// }
+	p = all_words;
+	while (p)
+	{
+		printf("Temp:-->%p\n", p);
+		printf("Word:--%s--\n", p->word);
+		printf("Next:-->%p\n", p->next);
+		printf("Before:-->%p\n\n", p->before);
+		p = p->next;
+	}
+	printf("Temp: %p\n", p);
+	return (0);
+}
 
 int	multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end)
 {
@@ -46,7 +46,7 @@ int	multiple_words(t_parser **word_lst, t_env **env, t_vars *v, int end)
 		else if (v->s[i] == '$' && check_env_word(word_lst, env, v, &i))
 			return (MALLOC);
 	}
-	if (i - v->stp > 0 && create_word(word_lst, v, &i, 0))
+	if (i - v->stp > 0 && create_word(word_lst, v, &i, 1))
 		return (MALLOC);
 	return (0);
 }
@@ -96,6 +96,7 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
+	// print_words(all_words);
 	return (0);
 }
 
