@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/02 11:14:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 11:54:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	create_word(t_parser **word_lst, t_vars *v, int *i, int mode)
 	{
 		len = 1;
 		if (((v->s[*i] == '<' && v->s[*i + 1] == '<') || (v->s[*i] == '>'
-					&& v->s[*i + 1] == '>')) && (*i)++)
+					&& v->s[*i + 1] == '>')) && ++(*i))
 			len++;
 	}
 	else

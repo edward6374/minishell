@@ -6,39 +6,40 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:56:41 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 18:51:44 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 11:55:05 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-// void	print_commands(t_min *tk)
-// {
-// 	int		i;
-// 	int		k;
-// 	t_cmd	*cmd;
-
-// 	i = 0;
-// 	cmd = tk->cmds;
-// 	while (cmd)
-// 	{
-// 		k = -1;
-// 		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
-// 			cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
-// 		while (cmd->args[++k])
-// 			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
-// 		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
-// 		cmd = cmd->next;
-// 		i++;
-// 	}
-// }
-
-void	if_redir(int err, t_parser **tmp, t_parser **list, t_cmd *new)
+void	print_commands(t_min *tk)
 {
+	int		i;
+	int		k;
+	t_cmd	*cmd;
+
+	i = 0;
+	cmd = tk->cmds;
+	while (cmd)
+	{
+		k = -1;
+		printf("Tokens %d\t%p\n\tOk: %d\n\tIn: %d\n\tOut: %d\n\tCmd: %s\n", i,
+			cmd, cmd->ok, cmd->in_fd, cmd->out_fd, cmd->cmd);
+		while (cmd->args[++k])
+			printf("\tArg %d:-->%s--\n", k, cmd->args[k]);
+		printf("\tNext: %p\n\tBefore: %p\n", cmd->next, cmd->before);
+		cmd = cmd->next;
+		i++;
+	}
+}
+
+int static	if_redir(t_parser **tmp, t_parser **list, t_cmd *new)
+{
+	int	err;
+
 	err = take_redir(list, new);
 	*tmp = *list;
-	if (err == -1 && *list)
-		*tmp = (*tmp)->next;
+	return (err);
 }
 
 static int	look_for_redir(t_parser **list, t_cmd *new)
@@ -52,7 +53,7 @@ static int	look_for_redir(t_parser **list, t_cmd *new)
 		if (!ft_strncmp((*list)->word, "<<", 3) || !ft_strncmp((*list)->word,
 				"<", 2) || !ft_strncmp((*list)->word, ">>", 3)
 			|| !ft_strncmp((*list)->word, ">", 2))
-			if_redir(err, &tmp, list, new);
+			err = if_redir(&tmp, list, new);
 		else
 			err = take_redir(&tmp, new);
 		if (err > 1)
@@ -138,5 +139,6 @@ int	load_commands(t_min *tk, t_parser *list)
 			return (free_all(tk, err));
 		new = NULL;
 	}
+	// print_commands(tk);
 	return (0);
 }

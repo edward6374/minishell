@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 19:00:41 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 11:56:46 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	int	err;
 
+	err = 0;
 	if (!mode)
 	{
 		if (new->hdoc->first)
@@ -50,9 +51,8 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		if (new->in_fd != 0)
 			close(new->in_fd);
 		err = check_access(NULL, (*tmp)->next->word, 2);
-		if (err)
-			return (err);
-		new->in_fd = open((*tmp)->next->word, O_RDWR);
+		if (!err)
+			new->in_fd = open((*tmp)->next->word, O_RDWR);
 	}
 	else
 	{
@@ -62,31 +62,33 @@ int	minor_redir(t_parser **tmp, t_cmd *new, int mode)
 		if (!new->hdoc->stop)
 			return (free_commands(&new, MALLOC));
 	}
-	if (new->err_f)
+	if (!err && new->err_f)
 		free_err_f(&new->err_f);
 	change_tmp(tmp);
-	return (0);
+	return (err);
 }
 
 int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 {
 	int	err;
 
+	err = 0;
 	if (new->out_fd != 1 && mode)
 		close(new->out_fd);
 	err = check_access(NULL, (*tmp)->next->word, 0);
-	if (err)
-		return (err);
-	if (mode)
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
-			0644);
-	else
-		new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
-			0644);
-	if (new->err_f)
-		free_err_f(&new->err_f);
+	if (!err)
+	{
+		if (mode)
+			new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
+				0644);
+		else
+			new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
+				0644);
+		if (new->err_f)
+			free_err_f(&new->err_f);
+	}
 	change_tmp(tmp);
-	return (0);
+	return (err);
 }
 
 int	rel_path_file(t_parser **tmp, t_cmd *new)
