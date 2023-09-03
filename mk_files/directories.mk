@@ -6,13 +6,13 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 19:45:46 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/24 11:55:02 by vduchi           ###   ########.fr        #
+#    Updated: 2023/09/03 13:02:51 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR				=	srcs
 INC_DIR				=	incs
-INC_DIR				+=	libft
+INC_DIR				+=	libft/incs
 INC_DIR				+=	readline
 OBJS_DIR			=	.objs
 DEPS_DIR			=	.deps
