@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:01:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/02 11:54:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 12:06:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int static	refill_word(t_parser **word_lst, t_vars *v, t_word *w, t_env **env)
 	while (v->s[w->i] != c && v->s[w->i] != '\0')
 	{
 		if (w->check && v->s[w->i] == '$' && *env && !ft_strncmp(&v->s[w->i
-				+ 1], (*env)->name, ft_strlen((*env)->name) - 1))
+					+ 1], (*env)->name, ft_strlen((*env)->name) - 1))
 			add_env_var(w, env);
 		else
 			w->word[++w->l] = v->s[w->i++];

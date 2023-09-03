@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 18:38:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/02 11:56:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 12:02:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ int	major_redir(t_parser **tmp, t_cmd *new, int mode)
 	{
 		if (mode)
 			new->out_fd = open((*tmp)->next->word, O_RDWR | O_APPEND | O_CREAT,
-				0644);
+					0644);
 		else
 			new->out_fd = open((*tmp)->next->word, O_RDWR | O_TRUNC | O_CREAT,
-				0644);
+					0644);
 		if (new->err_f)
 			free_err_f(&new->err_f);
 	}

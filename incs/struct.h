@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 13:17:00 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/08/30 20:50:28 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:09:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ extern unsigned char	g_exit;
 # define DARK_GREEN "\033[38;2;75;179;82m"
 # define DARK_YELLOW "\033[38;5;143m"
 
-#define TERROR "\xF0\x9F\x98\xB1"
+# define TERROR "\xF0\x9F\x98\xB1"
 
 enum
 {
@@ -104,9 +104,9 @@ typedef struct s_min
 	char				**pt_env;
 	t_env				*env;
 	t_cmd				*cmds;
-	char *pwd;
-	char *oldpwd;
-	char *home;
+	char				*pwd;
+	char				*oldpwd;
+	char				*home;
 }						t_min;
 
 #endif

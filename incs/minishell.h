@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:14:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/29 15:33:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:27:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int		free_parser(t_parser *words, int out);
 int		free_commands(t_cmd **first, int out);
 
 /* ---			init_pwd.c			--- */
-void init_pwd(t_min *tk);
+void	init_pwd(t_min *tk);
 
 #endif

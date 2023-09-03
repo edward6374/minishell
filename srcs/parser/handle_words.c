@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_words.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:40:29 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/02 11:54:30 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 12:07:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	add_or_join(t_parser **word_lst, t_vars *v, char *word, int mode)
 			&& add_word(word_lst, word))
 			return (MALLOC);
 		else if (v->stp > 0 && v->s[v->stp - 1] != ' ' && v->s[v->stp
-			- 1] != '<' && v->s[v->stp - 1] != '>' && v->s[v->stp - 1] != '|'
-			&& join_words(word_lst, word))
+				- 1] != '<' && v->s[v->stp - 1] != '>' && v->s[v->stp
+				- 1] != '|' && join_words(word_lst, word))
 			return (MALLOC);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:40:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/02 11:54:42 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/02 12:08:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static int	find_words(t_env *env_vars, t_parser **tmp, t_vars *v)
 	{
 		check_quotes(v, &v->s[i]);
 		if (v->oq && ((v->s[i + 1] == '\'' || v->s[i + 1] == '\"') || (v->s[i
-					+ 1] == '\0' && v->s[i] != ' ') || v->s[i + 1] == ' ')
-					&& multiple_words(tmp, &env_list, v, i + 1))
+						+ 1] == '\0' && v->s[i] != ' ') || v->s[i + 1] == ' ')
+			&& multiple_words(tmp, &env_list, v, i + 1))
 			return (free_env(env_list));
 		else if (v->sq && words_sin_qts(tmp, v, &env_list, &i))
 			return (free_env(env_list));
@@ -96,7 +96,6 @@ static int	parse_line(t_min *tk, t_parser *all_words, char *s)
 		if (find_words(tk->env, &tmp, &v))
 			return (free_parser(all_words, MALLOC));
 	}
-	// print_words(all_words);
 	return (0);
 }
 
